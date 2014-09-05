@@ -12,14 +12,48 @@
     <name>MiniBank</name>
     <url>http://maven.apache.org</url>
 
+    <properties>
+        <org.spring.version>4.0.1.RELEASE</org.spring.version>
+    </properties>
+
     <dependencies>
 
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.11</version>
-                <scope>test</scope>
-            </dependency>
+        <dependency>
+           <groupId>junit</groupId>
+           <artifactId>junit</artifactId>
+           <version>4.11</version>
+           <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${org.spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${org.spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${org.spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${org.spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${org.spring.version}</version>
+        </dependency>
+
+
+
+
+
 
     </dependencies>
 
