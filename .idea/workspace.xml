@@ -2,17 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="516b530b-83bd-4fd4-b0bf-21a5703189b8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/services/LoanEventHandlerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/SpringContextTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/TestConfig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/TestConfigTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/Ann.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Ann.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/config/DatasourceConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/config/DatasourceConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/config/DatasourceConfigTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/config/DatasourceConfigTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanEventHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanEventHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanService.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/config/MVCConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/config/MVCConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MiniBank.iml" afterPath="$PROJECT_DIR$/MiniBank.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MiniBankProject.iws" />
@@ -1019,7 +1008,8 @@
     <MESSAGE value="project prototype&#10;" />
     <MESSAGE value="datasource configuration" />
     <MESSAGE value="datasource configuration&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="datasource configuration&#10;" />
+    <MESSAGE value="datasource configuration test; test configuration test&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="datasource configuration test; test configuration test&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
