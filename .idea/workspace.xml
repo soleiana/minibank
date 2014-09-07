@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="516b530b-83bd-4fd4-b0bf-21a5703189b8" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__cglib_cglib_nodep_2_1_3.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MiniBank.iml" afterPath="$PROJECT_DIR$/MiniBank.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MiniBankProject.iws" />
@@ -66,6 +69,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="130" column="21" selection-start="4586" selection-end="4586" vertical-scroll-proportion="0.925641" vertical-offset="1849" max-vertical-offset="3264">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="DatasourceConfig.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/config/DatasourceConfig.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -77,10 +89,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MVCConfig.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MVCConfig.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/config/MVCConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="65" selection-start="359" selection-end="359" vertical-scroll-proportion="0.38958332" vertical-offset="0" max-vertical-offset="480">
+            <state line="11" column="65" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -123,7 +135,7 @@
       <file leaf-file-name="LoanEventHandlerTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/services/LoanEventHandlerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="59" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0" vertical-offset="131" max-vertical-offset="595">
+            <state line="16" column="33" selection-start="454" selection-end="474" vertical-scroll-proportion="0.0" vertical-offset="131" max-vertical-offset="595">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -149,15 +161,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CoreConfig.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/config/CoreConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="23" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -196,7 +199,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/events/loans/LoanExtensionCreatedEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/events/loans/RequestLoanDetailsEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/events/loans/LoanDetailsEvent.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/rest/controller/LoanExtensionController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/schema.sql" />
         <option value="$PROJECT_DIR$/src/main/resources/ddl.sql" />
@@ -216,6 +218,7 @@
         <option value="$PROJECT_DIR$/src/test/java/com/minibank/TestConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/config/DatasourceConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/config/MVCConfig.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -928,7 +931,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="699" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -944,11 +947,11 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.04609929" sideWeight="0.7453125" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.01328125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31953126" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32578126" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.06560284" sideWeight="0.87421876" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31484374" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09042553" sideWeight="0.87421876" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1246,13 +1249,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="24" selection-start="1102" selection-end="1102" vertical-scroll-proportion="0.0" vertical-offset="551" max-vertical-offset="3162">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/repository/BankParamsRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="11" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
@@ -1338,15 +1334,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/services/LoanEventHandlerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="59" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0" vertical-offset="131" max-vertical-offset="595">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/TestConfigTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="13" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0" vertical-offset="320" max-vertical-offset="765">
@@ -1385,10 +1372,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/config/MVCConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="65" selection-start="359" selection-end="359" vertical-scroll-proportion="0.38958332" vertical-offset="0" max-vertical-offset="480">
+        <state line="11" column="65" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/services/LoanEventHandlerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="33" selection-start="454" selection-end="474" vertical-scroll-proportion="0.0" vertical-offset="131" max-vertical-offset="595">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="130" column="21" selection-start="4586" selection-end="4586" vertical-scroll-proportion="0.925641" vertical-offset="1849" max-vertical-offset="3264">
+          <folding />
         </state>
       </provider>
     </entry>
