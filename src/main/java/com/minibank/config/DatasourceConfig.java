@@ -48,7 +48,7 @@ public class DatasourceConfig
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
-    @Bean
+    @Bean(name = "transactionManager")
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory)
     {
