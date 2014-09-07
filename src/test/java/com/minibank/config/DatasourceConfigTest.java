@@ -3,23 +3,24 @@ package com.minibank.config;
 /**
  * Created by Ann on 07/09/14.
  */
+import com.minibank.TestConfig;
 import com.minibank.core.repository.BankParamsRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static junit.framework.Assert.assertNotNull;
-import static junit.framework.TestCase.*;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(classes = {DatasourceConfig.class})
+//@ContextConfiguration(classes = {TestConfig.class})
 public class DatasourceConfigTest
 {
-
+    //@Autowired
+    //BankParamsRepository repository;
     @Test
     public void testDatasourceConfig()
     {
@@ -27,6 +28,7 @@ public class DatasourceConfigTest
         BankParamsRepository bankParamsRepository = context.getBean(BankParamsRepository.class);
 
         assertNotNull(bankParamsRepository);
+        //assertNotNull(repository);
 
     }
 
