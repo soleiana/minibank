@@ -35,4 +35,53 @@ public class BankParams
     @Column(name="RISK_TIME_END", nullable = false)
     private Time riskTimeEnd;
 
+    public BankParams()
+    {}
+
+    public BankParams(BigDecimal maxLoanAmount, BigDecimal baseInterestRate,
+                      BigDecimal interestRateFactor, Byte maxLoanAttempts,
+                      Time riskTimeStart, Time riskTimeEnd)
+    {
+        this.maxLoanAmount = maxLoanAmount;
+        this.baseInterestRate = baseInterestRate;
+        this.interestRateFactor = interestRateFactor;
+        this.maxLoanAttempts = maxLoanAttempts;
+        this.riskTimeStart = riskTimeStart;
+        this.riskTimeEnd = riskTimeEnd;
+    }
+
+    public void setId(Integer id)
+    {
+        this.id = id;
+    }
+
+    public void setMaxLoanAmount(BigDecimal maxLoanAmount)
+    {
+        this.maxLoanAmount = maxLoanAmount;
+    }
+
+    public void setBaseInterestRate(BigDecimal baseInterestRate)
+    {
+        this.baseInterestRate = baseInterestRate;
+    }
+
+    public void setInterestRateFactor(BigDecimal interestRateFactor)
+    {
+        this.interestRateFactor = interestRateFactor;
+    }
+
+    public void setMaxLoanAttempts(Byte maxLoanAttempts)
+    {
+        this.maxLoanAttempts = maxLoanAttempts;
+    }
+
+    public void setRiskTimeStart(Time riskTimeStart)
+    {
+        this.riskTimeStart = riskTimeStart;
+    }
+
+    public void setRiskTimeEnd(Time riskTimeEnd)
+    {
+        this.riskTimeEnd = riskTimeEnd;
+    }
 }

@@ -36,4 +36,89 @@ public class Loan
 
     @Column(name="END_DATE", nullable = false)
     private Date endDate;
+
+    public Loan()
+    {}
+
+    public Loan(Integer loanRequestId, Integer customerId,
+                BigDecimal currInterestRate, BigDecimal currInterest,
+                Date startDate, Date endDate)
+    {
+        this.loanRequestId = loanRequestId;
+        this.customerId = customerId;
+        this.currInterestRate = currInterestRate;
+        this.currInterest = currInterest;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    public Integer getId()
+    {
+        return id;
+    }
+
+    public void setId(Integer id)
+    {
+        this.id = id;
+    }
+
+    public Integer getLoanRequestId()
+    {
+        return loanRequestId;
+    }
+
+    public void setLoanRequestId(Integer loanRequestId)
+    {
+        this.loanRequestId = loanRequestId;
+    }
+
+    public Integer getCustomerId()
+    {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId)
+    {
+        this.customerId = customerId;
+    }
+
+    public BigDecimal getCurrInterestRate()
+    {
+        return currInterestRate;
+    }
+
+    public void setCurrInterestRate(BigDecimal currInterestRate)
+    {
+        this.currInterestRate = currInterestRate;
+    }
+
+    public BigDecimal getCurrInterest()
+    {
+        return currInterest;
+    }
+
+    public void setCurrInterest(BigDecimal currInterest)
+    {
+        this.currInterest = currInterest;
+    }
+
+    public Date getStartDate()
+    {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate)
+    {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate()
+    {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate)
+    {
+        this.endDate = endDate;
+    }
 }
