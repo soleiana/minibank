@@ -1,12 +1,9 @@
 package com.minibank.core.services;
 
 import com.minibank.SpringContextTest;
-import com.minibank.config.TestConfigTest;
-import com.minibank.TestConfig;
 import com.minibank.core.repository.BankParamsRepository;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import static junit.framework.TestCase.assertEquals;

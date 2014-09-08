@@ -23,6 +23,7 @@ public class DatasourceConfigTest
     public void testDatasourceConfig()
     {
         ApplicationContext context = new AnnotationConfigApplicationContext(DatasourceConfig.class);
+
         BankParamsRepository bankParamsRepository = context.getBean(BankParamsRepository.class);
 
         assertNotNull(bankParamsRepository);

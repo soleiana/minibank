@@ -33,6 +33,7 @@ public class DatasourceConfig
         return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.HSQL)
                 .addScript("classpath:script-ddl.sql")
+                .addScript("classpath:script-clear-data.sql")
                 .addScript("classpath:script-test-data.sql")
                 .build();
     }

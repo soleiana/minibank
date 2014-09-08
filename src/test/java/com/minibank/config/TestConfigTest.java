@@ -6,14 +6,12 @@ package com.minibank.config;
 
 import com.minibank.TestConfig;
 import com.minibank.core.services.LoanService;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.minibank.core.repository.BankParamsRepository;
-import org.springframework.stereotype.Component;
 
 import static junit.framework.TestCase.assertNotNull;
 
