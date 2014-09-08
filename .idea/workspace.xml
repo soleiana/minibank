@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="516b530b-83bd-4fd4-b0bf-21a5703189b8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/config/CoreConfigTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/MavenTest.java" />
-      <change type="MOVED" beforePath="C:\Users\Ann\IdeaProjects\MiniBank\minibank.repo\src\main\java\spring-config.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/BankParamsRepositoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/BankParamsRepositoryImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/services/BankParamsRepositoryImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/services/BankParamsRepositoryImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/config/CoreConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/config/CoreConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/config/DatasourceConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/config/DatasourceConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/config/DatasourceConfigTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/config/DatasourceConfigTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanEventHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanEventHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanService.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanService.java" />
+    <list default="true" id="516b530b-83bd-4fd4-b0bf-21a5703189b8" name="Default" comment="test *Config&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/config/CoreConfigTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/config/CoreConfigTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MiniBank.iml" afterPath="$PROJECT_DIR$/MiniBank.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/SpringContextTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/SpringContextTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/TestConfig.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/TestConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MiniBankProject.iws" />
@@ -79,10 +70,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="0" selection-start="1676" selection-end="1676" vertical-scroll-proportion="1.5804988" vertical-offset="0" max-vertical-offset="3264">
+            <state line="209" column="0" selection-start="7427" selection-end="7427" vertical-scroll-proportion="0.0" vertical-offset="4206" max-vertical-offset="4641">
               <folding />
             </state>
           </provider>
@@ -148,7 +139,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state line="18" column="20" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
               <folding>
-                <element signature="imports" expanded="true" />
+                <marker date="1410163628807" expanded="true" signature="261:373" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -170,16 +161,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state line="16" column="1" selection-start="568" selection-end="568" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
               <folding>
-                <element signature="imports" expanded="true" />
+                <marker date="1410162265556" expanded="true" signature="456:542" placeholder="@{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoreConfigTest.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CoreConfigTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/config/CoreConfigTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="35" selection-start="749" selection-end="749" vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="561">
+            <state line="26" column="1" selection-start="805" selection-end="805" vertical-scroll-proportion="0.7468085" vertical-offset="91" max-vertical-offset="561">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -223,20 +214,20 @@
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/config/MVCConfig.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/minibank/core/services/LoanEventHandlerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/spring-config.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/com/minibank/config/DatasourceConfigTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/config/DatasourceConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/BankParamsRepositoryImpl.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/minibank/TestConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanEventHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanService.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/minibank/config/CoreConfigTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/config/CoreConfig.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/minibank/TestConfigTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/minibank/config/TestConfigTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/minibank/core/services/BankParamsRepositoryImplTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/minibank/SpringContextTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/minibank/MavenTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/com/minibank/config/CoreConfigTest.java" />
       </list>
     </option>
   </component>
@@ -272,6 +263,10 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="MiniBank" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Plugins" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
@@ -702,7 +697,7 @@
       <recent name="com.minibank" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MavenTest">
+  <component name="RunManager">
     <configuration default="false" name="TestConfigTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MiniBank" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -951,11 +946,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.MavenTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.SpringContextTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.BankParamsRepositoryImplTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TestConfigTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.CoreConfigTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.BankParamsRepositoryImplTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.CoreConfigTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.MavenTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.SpringContextTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TestConfigTest" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
@@ -992,7 +987,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="699" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1005,14 +1000,14 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.060283687" sideWeight="0.12578125" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.05496454" sideWeight="0.7453125" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18262412" sideWeight="0.7453125" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11328125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35390624" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.03723404" sideWeight="0.87421876" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25234374" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.083333336" sideWeight="0.87421876" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1075,7 +1070,8 @@
     <MESSAGE value="dependencies" />
     <MESSAGE value="changes" />
     <MESSAGE value="changes&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes&#10;" />
+    <MESSAGE value="test *Config&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="test *Config&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1333,7 +1329,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="65" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1365,7 +1361,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="5" selection-start="644" selection-end="946" vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="646">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1381,7 +1377,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="1" selection-start="568" selection-end="568" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1410162265556" expanded="true" signature="456:542" placeholder="@{...}" />
           </folding>
         </state>
       </provider>
@@ -1407,15 +1403,6 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/TestConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="1" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/config/CoreConfigTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="35" selection-start="749" selection-end="749" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="561">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1453,15 +1440,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="20" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1410163628807" expanded="true" signature="261:373" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1676" selection-end="1676" vertical-scroll-proportion="1.5804988" vertical-offset="0" max-vertical-offset="3264">
+        <state line="209" column="0" selection-start="7427" selection-end="7427" vertical-scroll-proportion="0.0" vertical-offset="4206" max-vertical-offset="4641">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/config/CoreConfigTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="1" selection-start="805" selection-end="805" vertical-scroll-proportion="0.7468085" vertical-offset="91" max-vertical-offset="561">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import static junit.framework.Assert.assertNotNull;
+import static junit.framework.TestCase.assertNotNull;
 
 /**
  * Created by Ann on 08/09/14.
