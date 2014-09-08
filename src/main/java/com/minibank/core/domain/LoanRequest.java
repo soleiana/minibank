@@ -18,6 +18,10 @@ public class LoanRequest
     @Column(name="ID", nullable = false)
     private Integer id;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="LOAN_ID", nullable = true)
+    private Loan loan;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="CUSTOMER_ID", nullable = false)
     private Customer customer;
@@ -45,10 +49,11 @@ public class LoanRequest
     public LoanRequest()
     {}
 
-    public LoanRequest(Customer customer, RequestIP requestIP,
-                       Date submissionDate, Time submissionTime,
-                       Integer term, BigDecimal amount, LoanRequestStatus status)
+    public LoanRequest(Loan loan, Customer customer, RequestIP requestIP,
+                       Date submissionDate, Time submissionTime, Integer term,
+                       BigDecimal amount, LoanRequestStatus status)
     {
+        this.loan = loan;
         this.customer = customer;
         this.requestIP = requestIP;
         this.submissionDate = submissionDate;
@@ -137,6 +142,16 @@ public class LoanRequest
         this.status = status;
     }
 
+    public Loan getLoan()
+    {
+        return loan;
+    }
+
+    public void setLoan(Loan loan)
+    {
+        this.loan = loan;
+    }
+
     @Override
     public boolean equals(Object o)
     {
@@ -148,6 +163,7 @@ public class LoanRequest
         if (amount != null ? !amount.equals(that.amount) : that.amount != null) return false;
         if (customer != null ? !customer.equals(that.customer) : that.customer != null) return false;
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (loan != null ? !loan.equals(that.loan) : that.loan != null) return false;
         if (requestIP != null ? !requestIP.equals(that.requestIP) : that.requestIP != null) return false;
         if (status != that.status) return false;
         if (submissionDate != null ? !submissionDate.equals(that.submissionDate) : that.submissionDate != null)
@@ -163,6 +179,7 @@ public class LoanRequest
     public int hashCode()
     {
         int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (loan != null ? loan.hashCode() : 0);
         result = 31 * result + (customer != null ? customer.hashCode() : 0);
         result = 31 * result + (requestIP != null ? requestIP.hashCode() : 0);
         result = 31 * result + (submissionDate != null ? submissionDate.hashCode() : 0);
