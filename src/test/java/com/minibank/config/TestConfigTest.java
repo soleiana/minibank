@@ -1,9 +1,10 @@
-package com.minibank;
+package com.minibank.config;
 
 /**
  * Created by Ann on 07/09/14.
  */
 
+import com.minibank.TestConfig;
 import com.minibank.core.services.LoanService;
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,7 +16,6 @@ import com.minibank.core.repository.BankParamsRepository;
 import org.springframework.stereotype.Component;
 
 import static junit.framework.TestCase.assertNotNull;
-
 
 
 public class TestConfigTest

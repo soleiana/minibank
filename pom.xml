@@ -33,7 +33,7 @@
     </repositories>
 
     <properties>
-        <org.spring.version>4.0.1.RELEASE</org.spring.version>
+        <org.spring.version>4.1.0.RELEASE</org.spring.version>
 
         <hibernate-core.version>3.6.9.Final</hibernate-core.version>
         <hibernate-entitymanager.version>3.6.9.Final</hibernate-entitymanager.version>
