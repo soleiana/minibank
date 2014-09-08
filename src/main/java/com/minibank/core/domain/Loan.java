@@ -22,8 +22,9 @@ public class Loan
     @Transient
     private Integer loanRequestId;
 
-    @Transient
-    private Integer customerId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="CUSTOMER_ID", nullable = false)
+    private Customer customer;
 
     @Column(name="CURRENT_INTEREST_RATE", precision = 10, scale = 2, nullable = false)
     private BigDecimal currInterestRate;
@@ -40,12 +41,12 @@ public class Loan
     public Loan()
     {}
 
-    public Loan(Integer loanRequestId, Integer customerId,
+    public Loan(Integer loanRequestId, Customer customer,
                 BigDecimal currInterestRate, BigDecimal currInterest,
                 Date startDate, Date endDate)
     {
         this.loanRequestId = loanRequestId;
-        this.customerId = customerId;
+        this.customer = customer;
         this.currInterestRate = currInterestRate;
         this.currInterest = currInterest;
         this.startDate = startDate;
@@ -72,14 +73,14 @@ public class Loan
         this.loanRequestId = loanRequestId;
     }
 
-    public Integer getCustomerId()
+    public Customer getCustomer()
     {
-        return customerId;
+        return customer;
     }
 
-    public void setCustomerId(Integer customerId)
+    public void setCustomer(Customer customer)
     {
-        this.customerId = customerId;
+        this.customer = customer;
     }
 
     public BigDecimal getCurrInterestRate()

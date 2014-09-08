@@ -18,11 +18,13 @@ public class LoanRequest
     @Column(name="ID", nullable = false)
     private Integer id;
 
-    @Transient
-    private Integer customerId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="CUSTOMER_ID", nullable = false)
+    private Customer customer;
 
-    @Transient
-    private Integer requestIPId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="REQUEST_IP_ID", nullable = false)
+    private RequestIP requestIP;
 
     @Column(name="SUBMISSION_DATE", nullable = false)
     private Date submissionDate;
@@ -43,12 +45,12 @@ public class LoanRequest
     public LoanRequest()
     {}
 
-    public LoanRequest(Integer customerId, Integer requestIPId,
+    public LoanRequest(Customer customer, RequestIP requestIP,
                        Date submissionDate, Time submissionTime,
                        Integer term, BigDecimal amount, LoanRequestStatus status)
     {
-        this.customerId = customerId;
-        this.requestIPId = requestIPId;
+        this.customer = customer;
+        this.requestIP = requestIP;
         this.submissionDate = submissionDate;
         this.submissionTime = submissionTime;
         this.term = term;
@@ -66,23 +68,24 @@ public class LoanRequest
         this.id = id;
     }
 
-    public Integer getCustomerId()
+    public Customer getCustomer()
     {
-        return customerId;
+        return customer;
     }
 
-    public void setCustomerId(Integer customerId)
+    public void setCustomer(Customer customer)
     {
-        this.customerId = customerId;
+        this.customer = customer;
     }
 
-    public Integer getRequestIPId() {
-        return requestIPId;
+    public RequestIP getRequestIP()
+    {
+        return requestIP;
     }
 
-    public void setRequestIPId(Integer requestIPId)
+    public void setRequestIP(RequestIP requestIP)
     {
-        this.requestIPId = requestIPId;
+        this.requestIP = requestIP;
     }
 
     public Date getSubmissionDate()
@@ -132,5 +135,41 @@ public class LoanRequest
     public void setStatus(LoanRequestStatus status)
     {
         this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        LoanRequest that = (LoanRequest) o;
+
+        if (amount != null ? !amount.equals(that.amount) : that.amount != null) return false;
+        if (customer != null ? !customer.equals(that.customer) : that.customer != null) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (requestIP != null ? !requestIP.equals(that.requestIP) : that.requestIP != null) return false;
+        if (status != that.status) return false;
+        if (submissionDate != null ? !submissionDate.equals(that.submissionDate) : that.submissionDate != null)
+            return false;
+        if (submissionTime != null ? !submissionTime.equals(that.submissionTime) : that.submissionTime != null)
+            return false;
+        if (term != null ? !term.equals(that.term) : that.term != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (customer != null ? customer.hashCode() : 0);
+        result = 31 * result + (requestIP != null ? requestIP.hashCode() : 0);
+        result = 31 * result + (submissionDate != null ? submissionDate.hashCode() : 0);
+        result = 31 * result + (submissionTime != null ? submissionTime.hashCode() : 0);
+        result = 31 * result + (term != null ? term.hashCode() : 0);
+        result = 31 * result + (amount != null ? amount.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        return result;
     }
 }
