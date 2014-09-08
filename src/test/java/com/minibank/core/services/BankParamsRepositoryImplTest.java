@@ -1,7 +1,7 @@
 package com.minibank.core.services;
 
 import com.minibank.SpringContextTest;
-import com.minibank.TestConfigTest;
+import com.minibank.config.TestConfigTest;
 import com.minibank.TestConfig;
 import com.minibank.core.repository.BankParamsRepository;
 import org.junit.Test;
@@ -22,6 +22,7 @@ public class BankParamsRepositoryImplTest extends SpringContextTest
     private BankParamsRepository repository;
 
     @Test
+    @Transactional
     public void testSomeMethod() throws Exception
     {
         assertNotNull(repository);

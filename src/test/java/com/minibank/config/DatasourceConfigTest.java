@@ -15,12 +15,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static junit.framework.Assert.assertNotNull;
 
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(classes = {TestConfig.class})
+
 public class DatasourceConfigTest
 {
-    //@Autowired
-    //BankParamsRepository repository;
+
     @Test
     public void testDatasourceConfig()
     {
@@ -28,7 +26,6 @@ public class DatasourceConfigTest
         BankParamsRepository bankParamsRepository = context.getBean(BankParamsRepository.class);
 
         assertNotNull(bankParamsRepository);
-        //assertNotNull(repository);
 
     }
 

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by Ann on 07/09/14.
  */
-@Component("bankParams")
+@Component
 public class BankParamsRepositoryImpl implements BankParamsRepository
 {
 }
