@@ -1,13 +1,14 @@
 package com.minibank.config;
 
-
+/**
+ * Created by Ann on 09/09/14.
+ */
+import com.minibank.config.TestDatasourceConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 
-/**
- * Created by Ann on 06/09/14.
- */
 @ComponentScan(basePackages = {"com.minibank.core"})
-@Import({DatasourceConfig.class})
-public class CoreConfig
-{}
+@Import({TestDatasourceConfig.class})
+public class TestCoreConfig
+{
+}

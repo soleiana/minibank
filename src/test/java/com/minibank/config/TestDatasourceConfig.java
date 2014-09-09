@@ -1,9 +1,8 @@
 package com.minibank.config;
 
 /**
- * Created by Ann on 07/09/14.
+ * Created by Ann on 09/09/14.
  */
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
@@ -22,7 +21,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @PropertySource({ "classpath:datasource.properties" })
 @ComponentScan(basePackages = {"com.minibank.core.domain","com.minibank.core.repository" })
-public class DatasourceConfig
+public class TestDatasourceConfig
 {
     @Autowired
     private Environment env;
@@ -34,7 +33,6 @@ public class DatasourceConfig
                 .setType(EmbeddedDatabaseType.HSQL)
                 .addScript("classpath:script-clear-schema.sql")
                 .addScript("classpath:script-ddl.sql")
-                .addScript("classpath:script-test-data.sql")
                 .build();
     }
     @Bean
@@ -46,7 +44,7 @@ public class DatasourceConfig
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
-    @Bean(name = "transactionManager")
+    @Bean(name = "testTransactionManager")
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory)
     {
@@ -75,5 +73,4 @@ public class DatasourceConfig
             }
         };
     }
-
 }

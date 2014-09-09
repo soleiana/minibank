@@ -4,15 +4,18 @@ package com.minibank;
  * Created by Ann on 08/09/14.
  */
 
-import com.minibank.config.CoreConfigTest;
-import junit.framework.Test;
+import com.minibank.config.DatasourceConfig;
+import com.minibank.config.tests.CoreConfigTest;
+import com.minibank.config.tests.TestCoreConfigTest;
+import com.minibank.core.services.BankParamsRepositoryImplTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-        CoreConfigTest.class,
+        TestCoreConfigTest.class,
+        BankParamsRepositoryImplTest.class
           })
 public class AllTests
 {}

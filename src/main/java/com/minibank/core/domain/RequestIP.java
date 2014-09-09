@@ -27,20 +27,12 @@ public class RequestIP
     @Column(name="IP", nullable = false)
     private String ip;
 
-    @Column(name="LOAN_ATTEMPTS", nullable = false)
-    private Byte loanAttempts;
-
-    @Column(name="LAST_LOAN_ATTEMPT", nullable = false)
-    private Date lastLoanAttempt;
-
     public RequestIP()
     {}
 
     public RequestIP(String ip, Date lastLoanAttempt, Byte loanAttempts)
     {
         this.ip = ip;
-        this.lastLoanAttempt = lastLoanAttempt;
-        this.loanAttempts = loanAttempts;
     }
 
     public Integer getId()
@@ -63,26 +55,6 @@ public class RequestIP
         this.ip = ip;
     }
 
-    public Byte getLoanAttempts()
-    {
-        return loanAttempts;
-    }
-
-    public void setLoanAttempts(Byte loanAttempts)
-    {
-        this.loanAttempts = loanAttempts;
-    }
-
-    public Date getLastLoanAttempt()
-    {
-        return lastLoanAttempt;
-    }
-
-    public void setLastLoanAttempt(Date lastLoanAttempt)
-    {
-        this.lastLoanAttempt = lastLoanAttempt;
-    }
-
     public List<LoanRequest> getLoanRequests()
     {
         return loanRequests;
@@ -103,10 +75,6 @@ public class RequestIP
 
         if (id != null ? !id.equals(requestIP.id) : requestIP.id != null) return false;
         if (ip != null ? !ip.equals(requestIP.ip) : requestIP.ip != null) return false;
-        if (lastLoanAttempt != null ? !lastLoanAttempt.equals(requestIP.lastLoanAttempt) : requestIP.lastLoanAttempt != null)
-            return false;
-        if (loanAttempts != null ? !loanAttempts.equals(requestIP.loanAttempts) : requestIP.loanAttempts != null)
-            return false;
         if (loanRequests != null ? !loanRequests.equals(requestIP.loanRequests) : requestIP.loanRequests != null)
             return false;
 
@@ -119,8 +87,6 @@ public class RequestIP
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (loanRequests != null ? loanRequests.hashCode() : 0);
         result = 31 * result + (ip != null ? ip.hashCode() : 0);
-        result = 31 * result + (loanAttempts != null ? loanAttempts.hashCode() : 0);
-        result = 31 * result + (lastLoanAttempt != null ? lastLoanAttempt.hashCode() : 0);
         return result;
     }
 }

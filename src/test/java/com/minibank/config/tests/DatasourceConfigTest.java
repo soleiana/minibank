@@ -1,9 +1,10 @@
-package com.minibank.config;
+package com.minibank.config.tests;
 
 /**
  * Created by Ann on 07/09/14.
  */
-import com.minibank.TestConfig;
+
+import com.minibank.config.DatasourceConfig;
 import com.minibank.core.repository.BankParamsRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;

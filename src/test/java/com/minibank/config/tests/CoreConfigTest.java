@@ -1,5 +1,6 @@
-package com.minibank.config;
+package com.minibank.config.tests;
 
+import com.minibank.config.CoreConfig;
 import com.minibank.core.repository.BankParamsRepository;
 import com.minibank.core.services.LoanService;
 import org.junit.Test;
