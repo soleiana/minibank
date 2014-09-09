@@ -1,0 +1,21 @@
+package com.minibank.core.repository;
+
+/**
+ * Created by Ann on 09/09/14.
+ */
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+public class SessionProvider
+{
+    @Autowired
+    @Qualifier("testSessionFactory")
+    private SessionFactory sessionFactory;
+
+    protected Session getCurrentSession()
+    {
+        return sessionFactory.getCurrentSession();
+    }
+}

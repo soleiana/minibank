@@ -37,7 +37,7 @@ public class DatasourceConfig
                 .addScript("classpath:script-test-data.sql")
                 .build();
     }
-    @Bean
+    @Bean(name = "sessionFactory")
     public AnnotationSessionFactoryBean sessionFactory()
     {
         AnnotationSessionFactoryBean sessionFactory = new AnnotationSessionFactoryBean();
