@@ -20,50 +20,68 @@ public class JDBCProvider
     private String password = null;
 
 
-    public JDBCProvider() {
+    public JDBCProvider()
+    {
         registerJDBCDriver();
         initDatabaseConnectionProperties();
     }
 
-    private void registerJDBCDriver() {
-        try {
+    private void registerJDBCDriver()
+    {
+        try
+        {
             Class.forName("org.hsqldb.jdbc.JDBCDriver");
-        } catch (ClassNotFoundException e) {
+        }
+        catch (ClassNotFoundException e)
+        {
             System.out.println("Exception while registering JDBC driver!");
             e.printStackTrace();
         }
     }
 
-    private void initDatabaseConnectionProperties() {
+    private void initDatabaseConnectionProperties()
+    {
         Properties properties = new Properties();
-        try {
+        try
+        {
             properties.load(JDBCProvider.class.getClassLoader().getResourceAsStream(DB_CONFIG_FILE));
 
             dbUrl = properties.getProperty("database.jdbcUrl");
             userName = properties.getProperty("database.userName");
             password = properties.getProperty("database.password");
-        } catch (IOException e){
+        }
+        catch (IOException e)
+        {
             System.out.println("Exception while reading JDBC configuration from file = " + DB_CONFIG_FILE);
             e.printStackTrace();
         }
     }
 
-    protected Connection getConnection() throws DBException {
-        try{
+    protected Connection getConnection() throws DBException
+    {
+        try
+        {
             return DriverManager.getConnection(dbUrl, userName, password);
-        } catch (SQLException e) {
+        }
+        catch (SQLException e)
+        {
             System.out.println("Exception while getting connection to database");
             e.printStackTrace();
             throw new DBException(e);
         }
     }
 
-    protected void closeConnection(Connection connection) throws DBException {
-        try {
-            if(connection != null) {
+    protected void closeConnection(Connection connection) throws DBException
+    {
+        try
+        {
+            if(connection != null)
+            {
                 connection.close();
             }
-        } catch (SQLException e) {
+        }
+        catch (SQLException e)
+        {
             System.out.println("Exception while closing connection to database");
             e.printStackTrace();
             throw new DBException(e);
