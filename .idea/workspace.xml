@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="516b530b-83bd-4fd4-b0bf-21a5703189b8" name="Default" comment="&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/AllTests.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/AllTests.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/DBCleanerImpl.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/DBCleanerImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/JDBCProvider.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/JDBCProvider.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanRequestRepositoryImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanRequestRepositoryImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -1276,10 +1274,10 @@
     <MESSAGE value="RequestIPRepositoryImpl, RequestIPRepositoryTest, RequestIPFixture&#10;" />
     <MESSAGE value="JDBC Tool to clean DB&#10;" />
     <MESSAGE value="RequestIP: unique constraint on ip&#10;" />
-    <MESSAGE value="minor changes&#10;" />
     <MESSAGE value="LoanRequestRepository, LoanRequestRepositoryImpl, LoanRequestFixture" />
     <MESSAGE value="Loan: loanRequest unique = true; LoanRequest: loan unique = true" />
-    <option name="LAST_COMMIT_MESSAGE" value="Loan: loanRequest unique = true; LoanRequest: loan unique = true" />
+    <MESSAGE value="minor changes&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

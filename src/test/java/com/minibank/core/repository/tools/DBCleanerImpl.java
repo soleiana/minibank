@@ -18,12 +18,20 @@ public class DBCleanerImpl extends JDBCProvider
     public void clear() throws DBException
     {
         Connection connection = null;
-        try {
+        try
+        {
             connection = getConnection();
+
+            Statement stmt = connection.createStatement();
+            stmt.execute("DELETE FROM LOAN_EXTENSION");
+            stmt.execute("DELETE FROM LOAN");
+            stmt.execute("DELETE FROM LOAN_REQUEST");
+            stmt.execute("DELETE FROM CUSTOMER");
+            stmt.execute("DELETE FROM REQUEST_IP");
+            stmt.execute("DELETE FROM BANK_PARAMS");
+           /*
             connection.setAutoCommit(false);
-            //connection.prepareStatement("SET SQL_SAFE_UPDATES=0;").execute();
-            //Statement stmt = connection.createStatement();
-            //stmt.execute("SET FOREIGN_KEY_CHECKS=0");
+            stmt.execute("SET REFERENTIAL_INTEGRITY FALSE");
             connection.commit();
             try {
                 for (String tableName : getDatabaseMetaData(connection)) {
@@ -33,33 +41,42 @@ public class DBCleanerImpl extends JDBCProvider
                     preparedStatement.executeUpdate();
                 }
                 connection.commit();
-               // stmt.execute("SET FOREIGN_KEY_CHECKS=1");
-                connection.commit();
-            } catch (SQLException e) {
+
+                stmt.execute("SET REFERENTIAL_INTEGRITY TRUE");
+                connection.commit();*/
+            }
+        catch (SQLException e)
+            {
                 System.out.println("Deleted All Rows In  Table Error. ");
                 e.printStackTrace();
                 throw new DBException(e);
             }
+        try
+        {
             connection.close();
-        } catch (Throwable e) {
+        } catch (Throwable e)
+        {
             System.out.println("Exception while deleting data from DB.");
             e.printStackTrace();
             throw new DBException(e);
-        } finally {
+        } finally
+        {
             closeConnection(connection);
         }
     }
 
     private List<String> getDatabaseMetaData(Connection connection) {
         List<String> tableList = new ArrayList<String>();
-        try {
+        try
+        {
             DatabaseMetaData metaData = connection.getMetaData();
             String[] types = {"TABLE"};
             ResultSet rs = metaData.getTables(null, null, "%", types);
             while (rs.next())
                 tableList.add(rs.getString("TABLE_NAME"));
 
-        } catch (SQLException e) {
+        } catch (SQLException e)
+        {
             e.printStackTrace();
         }
         return tableList;
