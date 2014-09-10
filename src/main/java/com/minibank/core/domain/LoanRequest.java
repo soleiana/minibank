@@ -19,7 +19,7 @@ public class LoanRequest
     private Integer id;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="LOAN_ID", nullable = true)
+    @JoinColumn(name="LOAN_ID", unique = true, nullable = true)
     private Loan loan;
 
     @ManyToOne(fetch = FetchType.EAGER)

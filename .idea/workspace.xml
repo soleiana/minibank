@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="516b530b-83bd-4fd4-b0bf-21a5703189b8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/domain/LoanRequestFixture.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepositoryImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/domain/Loan.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/domain/Loan.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/domain/LoanRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/domain/LoanRequest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MiniBankProject.iws" />
@@ -69,81 +68,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="JDBCProvider.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/JDBCProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="53" selection-start="707" selection-end="707" vertical-scroll-proportion="0.0" vertical-offset="316" max-vertical-offset="1326">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBCleanerImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/DBCleanerImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="64" selection-start="1961" selection-end="1985" vertical-scroll-proportion="0.0" vertical-offset="815" max-vertical-offset="1258">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BankParamsRepositoryImplTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/BankParamsRepositoryImplTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="26" selection-start="861" selection-end="861" vertical-scroll-proportion="0.0" vertical-offset="309" max-vertical-offset="1377">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomerRepositoryImplTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/CustomerRepositoryImplTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="26" selection-start="848" selection-end="848" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="935">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoanExtensionRepositoryImplTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanExtensionRepositoryImplTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="26" selection-start="818" selection-end="818" vertical-scroll-proportion="0.0" vertical-offset="207" max-vertical-offset="731">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoanRequestRepositoryImpl.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepositoryImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="21" selection-start="235" selection-end="235" vertical-scroll-proportion="0.12641084" vertical-offset="114" max-vertical-offset="595">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoanRequestRepository.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="289" selection-end="289" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RequestIPRepository.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/repository/RequestIPRepository.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -156,10 +80,28 @@
       <file leaf-file-name="RequestIPRepositoryImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/repository/RequestIPRepositoryImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="1" selection-start="781" selection-end="781" vertical-scroll-proportion="0.0" vertical-offset="152" max-vertical-offset="595">
+            <state line="28" column="1" selection-start="781" selection-end="781" vertical-scroll-proportion="0.0" vertical-offset="57" max-vertical-offset="595">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoanRequest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/domain/LoanRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="47" selection-start="452" selection-end="452" vertical-scroll-proportion="0.49801588" vertical-offset="55" max-vertical-offset="2414">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Loan.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/domain/Loan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="55" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0" vertical-offset="38" max-vertical-offset="2244">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -192,7 +134,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/domain/feedback/LoanExtensionReply.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/domain/Customer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/domain/LoanRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/domain/LoanExtension.java" />
         <option value="$PROJECT_DIR$/src/main/resources/script-test-data.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/config/CoreConfig.java" />
@@ -225,7 +166,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepositoryImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/domain/Loan.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/minibank/core/domain/LoanRequestFixture.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/domain/RequestIP.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spring-config.xml" />
@@ -241,6 +181,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/RequestIPRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/RequestIPRepositoryImpl.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/RequestIPRepositoryImplTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/domain/LoanRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/domain/Loan.java" />
       </list>
     </option>
   </component>
@@ -894,29 +836,7 @@
       <recent name="C:\Users\Ann\IdeaProjects\MiniBank\minibank.repo\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RequestIPRepositoryImplTest">
-    <configuration default="false" name="RequestIPRepositoryImplTest.testGetByIP" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MiniBank" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.minibank.core.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.minibank.core.repository.RequestIPRepositoryImplTest" />
-      <option name="METHOD_NAME" value="testGetByIP" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.AllTests">
     <configuration default="false" name="RequestIPRepositoryImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MiniBank" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -989,6 +909,28 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.minibank.core.repository" />
       <option name="MAIN_CLASS_NAME" value="com.minibank.core.repository.LoanExtensionRepositoryImplTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="AllTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MiniBank" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.minibank" />
+      <option name="MAIN_CLASS_NAME" value="com.minibank.AllTests" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -1135,19 +1077,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.RequestIPRepositoryImplTest.testGetByIP" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.RequestIPRepositoryImplTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.BankParamsRepositoryImplTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.CustomerRepositoryImplTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.LoanExtensionRepositoryImplTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.RequestIPRepositoryImplTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.BankParamsRepositoryImplTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.CustomerRepositoryImplTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.LoanExtensionRepositoryImplTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.AllTests" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.RequestIPRepositoryImplTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.LoanExtensionRepositoryImplTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.CustomerRepositoryImplTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.BankParamsRepositoryImplTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.RequestIPRepositoryImplTest.testGetByIP" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.AllTests" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.RequestIPRepositoryImplTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.LoanExtensionRepositoryImplTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.CustomerRepositoryImplTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.BankParamsRepositoryImplTest" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
@@ -1184,7 +1126,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="699" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1195,7 +1137,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09397163" sideWeight="0.115625" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.115625" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.095744684" sideWeight="0.7453125" order="7" side_tool="false" content_ui="tabs" />
@@ -1204,8 +1146,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.084375" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3359375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09397163" sideWeight="0.884375" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.884375" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1252,7 +1194,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="test&#10;" />
     <MESSAGE value="sql scripts" />
     <MESSAGE value="project prototype" />
     <MESSAGE value="project prototype&#10;" />
@@ -1277,7 +1218,8 @@
     <MESSAGE value="JDBC Tool to clean DB&#10;" />
     <MESSAGE value="RequestIP: unique constraint on ip&#10;" />
     <MESSAGE value="minor changes&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor changes&#10;" />
+    <MESSAGE value="LoanRequestRepository, LoanRequestRepositoryImpl, LoanRequestFixture" />
+    <option name="LAST_COMMIT_MESSAGE" value="LoanRequestRepository, LoanRequestRepositoryImpl, LoanRequestFixture" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1568,13 +1510,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/domain/Loan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="31" selection-start="1788" selection-end="1788" vertical-scroll-proportion="0.0" vertical-offset="548" max-vertical-offset="2244">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/spring-config.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="473" selection-end="473" vertical-scroll-proportion="0.1918736" vertical-offset="0" max-vertical-offset="443">
@@ -1588,13 +1523,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/domain/LoanRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="47" selection-start="452" selection-end="452" vertical-scroll-proportion="-0.24766356" vertical-offset="412" max-vertical-offset="2414">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1664,36 +1592,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/JDBCProvider.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/RequestIPRepositoryImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="53" selection-start="707" selection-end="707" vertical-scroll-proportion="0.0" vertical-offset="316" max-vertical-offset="1326">
+        <state line="27" column="11" selection-start="762" selection-end="762" vertical-scroll-proportion="0.0" vertical-offset="356" max-vertical-offset="1003">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/DBCleanerImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="64" selection-start="1961" selection-end="1985" vertical-scroll-proportion="0.0" vertical-offset="815" max-vertical-offset="1258">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/BankParamsRepositoryImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="26" selection-start="861" selection-end="861" vertical-scroll-proportion="0.0" vertical-offset="309" max-vertical-offset="1377">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/CustomerRepositoryImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="26" selection-start="848" selection-end="848" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="935">
+        <state line="10" column="21" selection-start="235" selection-end="235" vertical-scroll-proportion="0.14314516" vertical-offset="99" max-vertical-offset="595">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1702,7 +1612,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanExtensionRepositoryImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="26" selection-start="818" selection-end="818" vertical-scroll-proportion="0.0" vertical-offset="207" max-vertical-offset="731">
+        <state line="27" column="26" selection-start="818" selection-end="818" vertical-scroll-proportion="0.5080645" vertical-offset="207" max-vertical-offset="731">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/CustomerRepositoryImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="26" selection-start="848" selection-end="848" vertical-scroll-proportion="0.6063158" vertical-offset="205" max-vertical-offset="935">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="289" selection-end="289" vertical-scroll-proportion="0.39458415" vertical-offset="0" max-vertical-offset="517">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/BankParamsRepositoryImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="26" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3313492" vertical-offset="309" max-vertical-offset="1377">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/DBCleanerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="64" selection-start="1961" selection-end="1985" vertical-scroll-proportion="0.3752418" vertical-offset="741" max-vertical-offset="1258">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/JDBCProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="53" selection-start="707" selection-end="707" vertical-scroll-proportion="0.33714285" vertical-offset="316" max-vertical-offset="1326">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1725,28 +1678,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/RequestIPRepositoryImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/domain/Loan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="11" selection-start="762" selection-end="762" vertical-scroll-proportion="0.0" vertical-offset="356" max-vertical-offset="1003">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="289" selection-end="289" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+        <state line="23" column="55" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0" vertical-offset="38" max-vertical-offset="2244">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepositoryImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/domain/LoanRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="21" selection-start="235" selection-end="235" vertical-scroll-proportion="0.12641084" vertical-offset="114" max-vertical-offset="595">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="21" column="47" selection-start="452" selection-end="452" vertical-scroll-proportion="0.49801588" vertical-offset="55" max-vertical-offset="2414">
+          <folding />
         </state>
       </provider>
     </entry>
