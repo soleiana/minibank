@@ -9,8 +9,8 @@ import java.sql.Time;
  */
 public class LoanRequestFixture
 {
-    public static final Date SUBMISSION_DATE = Date.valueOf("2014-09-10");
-    public static final Time SUBMISSION_TIME = Time.valueOf("14:33:00");
+    public static final Date SUBMISSION_DATE = Date.valueOf("2014-09-01");
+    public static final Time SUBMISSION_TIME = Time.valueOf("14:00:00");
     public static final Integer TERM = new Integer(30);
     public static final BigDecimal AMOUNT = new BigDecimal("200.00");
     public static final LoanRequestStatus STANDARD_STATUS = LoanRequestStatus.NEW;
