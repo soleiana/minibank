@@ -2,6 +2,7 @@ package com.minibank.core.repository;
 
 import com.minibank.SpringContextTest;
 import com.minibank.core.domain.LoanExtension;
+import com.minibank.core.domain.LoanExtensionFixture;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,12 @@ public class LoanExtensionRepositoryImplTest  extends SpringContextTest
     @Before
     public void setUp() throws Exception
     {
-
+        loanExtension = LoanExtensionFixture.standardLoanExtension();
     }
 
     @Test
     public void testCreate() throws Exception
     {
-
+        //todo:
     }
 }

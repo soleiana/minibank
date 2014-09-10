@@ -9,8 +9,5 @@ public interface CustomerRepository
 {
     void create(Customer customer) throws DBException;
 
-    Customer getByName(String name) throws DBException;
-
     Customer getById(Integer id) throws DBException;
-
 }

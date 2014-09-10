@@ -6,6 +6,7 @@ package com.minibank;
 
 import com.minibank.config.tests.TestCoreConfigTest;
 import com.minibank.core.repository.BankParamsRepositoryImplTest;
+import com.minibank.core.repository.CustomerRepositoryImplTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -13,7 +14,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({
         TestCoreConfigTest.class,
-        BankParamsRepositoryImplTest.class
+        BankParamsRepositoryImplTest.class,
+        CustomerRepositoryImplTest.class
           })
 public class AllTests
 {}
