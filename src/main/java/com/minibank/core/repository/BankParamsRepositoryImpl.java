@@ -23,4 +23,10 @@ public class BankParamsRepositoryImpl extends SessionProvider
         Session session = getCurrentSession();
         return (BankParams) session.get(BankParams.class, id);
     }
+
+    @Override
+    public void update(BankParams bankParams) throws DBException {
+        Session session = getCurrentSession();
+        session.saveOrUpdate(bankParams);
+    }
 }

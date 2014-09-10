@@ -10,4 +10,6 @@ public interface BankParamsRepository
     void create(BankParams bankParams) throws DBException;
 
     BankParams getById(Integer id) throws DBException;
+
+    void update(BankParams bankParams) throws DBException;
 }
