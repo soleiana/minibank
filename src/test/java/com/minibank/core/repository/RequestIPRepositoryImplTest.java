@@ -1,6 +1,7 @@
 package com.minibank.core.repository;
 
 import com.minibank.SpringContextTest;
+import com.minibank.core.repository.tools.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,6 +20,8 @@ import com.minibank.core.domain.RequestIPFixture;
 public class RequestIPRepositoryImplTest extends SpringContextTest
 {
     @Autowired
+    private DBCleaner dbCleaner;
+    @Autowired
     RequestIPRepository requestIPRepository;
     RequestIP requestIP;
 
@@ -26,7 +29,9 @@ public class RequestIPRepositoryImplTest extends SpringContextTest
     @Transactional
     public void setUp() throws DBException
     {
+        dbCleaner.clear();
         requestIP = RequestIPFixture.standardRequestIP();
+
     }
 
     @Test

@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="516b530b-83bd-4fd4-b0bf-21a5703189b8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/DBCleaner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/DBCleanerImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/JDBCProvider.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/domain/LoanRequestFixture.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepositoryImpl.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanRequestRepositoryImplTest.java" />
@@ -1263,7 +1260,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Signed-off-by: anna.su &lt;anna2111@gmai.com&gt;&#10;" />
     <MESSAGE value="test" />
     <MESSAGE value="test&#10;" />
     <MESSAGE value="sql scripts" />
@@ -1288,7 +1284,8 @@
     <MESSAGE value="CustomerRepositoryImpl, CustomerRepositoryImplTest, CustomerFixture" />
     <MESSAGE value="RequestIPRepositoryImpl, RequestIPRepositoryTest, RequestIPFixture&#10;" />
     <MESSAGE value="minor changes&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor changes&#10;" />
+    <MESSAGE value="JDBC Tool to clean DB&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="JDBC Tool to clean DB&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

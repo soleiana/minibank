@@ -3,6 +3,7 @@ package com.minibank.core.repository;
 import com.minibank.SpringContextTest;
 import com.minibank.core.domain.BankParams;
 import com.minibank.core.domain.BankParamsFixture;
+import com.minibank.core.repository.tools.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +18,15 @@ import static junit.framework.TestCase.assertEquals;
 public class BankParamsRepositoryImplTest extends SpringContextTest
 {
     @Autowired
+    private DBCleaner dbCleaner;
+    @Autowired
     private BankParamsRepository bankParamsRepository;
     private BankParams bankParams;
 
     @Before
     public void setUp() throws DBException
     {
+        dbCleaner.clear();
         bankParams = BankParamsFixture.standardBankParams();
     }
 
