@@ -26,7 +26,6 @@ public class RequestIPRepositoryImplTest extends SpringContextTest
     RequestIP requestIP;
 
     @Before
-    @Transactional
     public void setUp() throws DBException
     {
         dbCleaner.clear();

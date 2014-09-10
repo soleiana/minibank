@@ -7,7 +7,7 @@ import com.minibank.core.domain.RequestIP;
  */
 public interface RequestIPRepository
 {
-    void create(RequestIP requestIP);
+    void create(RequestIP requestIP)  throws DBException;;
 
-    RequestIP getByIP(String ip);
+    RequestIP getByIP(String ip)  throws DBException;
 }
