@@ -24,13 +24,13 @@ public class RequestIP
             org.hibernate.annotations.CascadeType.REMOVE})
     private List<LoanRequest> loanRequests = new ArrayList<LoanRequest>();
 
-    @Column(name="IP", nullable = false)
+    @Column(name="IP", unique = true, nullable = false)
     private String ip;
 
     public RequestIP()
     {}
 
-    public RequestIP(String ip, Date lastLoanAttempt, Byte loanAttempts)
+    public RequestIP(String ip)
     {
         this.ip = ip;
     }
