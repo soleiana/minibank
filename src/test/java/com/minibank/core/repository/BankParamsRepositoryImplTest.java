@@ -11,8 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
-
-
 /**
  * Created by Ann on 09/09/14.
  */
@@ -20,7 +18,6 @@ public class BankParamsRepositoryImplTest extends SpringContextTest
 {
     @Autowired
     private BankParamsRepository bankParamsRepository;
-
     private BankParams bankParams;
 
     @Before
@@ -59,6 +56,7 @@ public class BankParamsRepositoryImplTest extends SpringContextTest
         bankParams.setMaxLoanAttempts(newBankParams.getMaxLoanAttempts());
         bankParams.setRiskTimeStart(newBankParams.getRiskTimeStart());
         bankParams.setRiskTimeEnd(newBankParams.getRiskTimeEnd());
+        bankParams.setLoanExtensionTerm(newBankParams.getLoanExtensionTerm());
 
         bankParamsRepository.update(bankParams);
 
@@ -68,5 +66,6 @@ public class BankParamsRepositoryImplTest extends SpringContextTest
         assertEquals(newBankParams.getMaxLoanAttempts(), bankParams.getMaxLoanAttempts());
         assertEquals(newBankParams.getRiskTimeStart(), bankParams.getRiskTimeStart());
         assertEquals(newBankParams.getRiskTimeEnd(), bankParams.getRiskTimeEnd());
+        assertEquals(newBankParams.getLoanExtensionTerm(), bankParams.getLoanExtensionTerm());
     }
 }

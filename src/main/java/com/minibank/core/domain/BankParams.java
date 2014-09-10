@@ -35,12 +35,15 @@ public class BankParams
     @Column(name="RISK_TIME_END", nullable = false)
     private Time riskTimeEnd;
 
+    @Column(name="LOAN_EXTENSION_TERM", nullable = false)
+    private Short loanExtensionTerm;
+
     public BankParams()
     {}
 
     public BankParams(BigDecimal maxLoanAmount, BigDecimal baseInterestRate,
                       BigDecimal interestRateFactor, Byte maxLoanAttempts,
-                      Time riskTimeStart, Time riskTimeEnd)
+                      Time riskTimeStart, Time riskTimeEnd, Short loanExtensionTerm)
     {
         this.maxLoanAmount = maxLoanAmount;
         this.baseInterestRate = baseInterestRate;
@@ -48,6 +51,8 @@ public class BankParams
         this.maxLoanAttempts = maxLoanAttempts;
         this.riskTimeStart = riskTimeStart;
         this.riskTimeEnd = riskTimeEnd;
+        this.loanExtensionTerm = loanExtensionTerm;
+
     }
 
     public Integer getId()
@@ -119,6 +124,16 @@ public class BankParams
         this.riskTimeEnd = riskTimeEnd;
     }
 
+    public Short getLoanExtensionTerm()
+    {
+        return loanExtensionTerm;
+    }
+
+    public void setLoanExtensionTerm(Short loanExtensionTerm)
+    {
+        this.loanExtensionTerm = loanExtensionTerm;
+    }
+
     @Override
     public boolean equals(Object o)
     {
@@ -131,6 +146,8 @@ public class BankParams
             return false;
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (interestRateFactor != null ? !interestRateFactor.equals(that.interestRateFactor) : that.interestRateFactor != null)
+            return false;
+        if (loanExtensionTerm != null ? !loanExtensionTerm.equals(that.loanExtensionTerm) : that.loanExtensionTerm != null)
             return false;
         if (maxLoanAmount != null ? !maxLoanAmount.equals(that.maxLoanAmount) : that.maxLoanAmount != null)
             return false;
@@ -153,6 +170,7 @@ public class BankParams
         result = 31 * result + (maxLoanAttempts != null ? maxLoanAttempts.hashCode() : 0);
         result = 31 * result + (riskTimeStart != null ? riskTimeStart.hashCode() : 0);
         result = 31 * result + (riskTimeEnd != null ? riskTimeEnd.hashCode() : 0);
+        result = 31 * result + (loanExtensionTerm != null ? loanExtensionTerm.hashCode() : 0);
         return result;
     }
 }

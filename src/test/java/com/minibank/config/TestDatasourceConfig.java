@@ -31,8 +31,8 @@ public class TestDatasourceConfig
     {
         return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.HSQL)
-                .addScript("classpath:script-clear-schema.sql")
-                .addScript("classpath:script-ddl.sql")
+                //.addScript("classpath:script-clear-schema.sql")
+                //.addScript("classpath:script-ddl.sql")
                 .build();
     }
     @Bean(name = "testSessionFactory")

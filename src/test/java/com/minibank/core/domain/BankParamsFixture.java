@@ -20,6 +20,8 @@ public class BankParamsFixture
     public static final Time NEW_RISK_TIME_START = Time.valueOf("01:00:00");
     public static final Time STANDARD_RISK_TIME_END = Time.valueOf("07:00:00");
     public static final Time NEW_RISK_TIME_END = Time.valueOf("08:00:00");
+    public static final Short STANDARD_lOAN_EXTENSION_TERM = new Short("7");
+    public static final Short NEW_LOAN_EXTENSION_TERM = new Short("14");
 
 
     public static BankParams standardBankParams()
@@ -31,6 +33,7 @@ public class BankParamsFixture
         bankParams.setMaxLoanAttempts(STANDARD_MAX_LOAN_ATTEMPTS);
         bankParams.setRiskTimeStart(STANDARD_RISK_TIME_START);
         bankParams.setRiskTimeEnd(STANDARD_RISK_TIME_END);
+        bankParams.setLoanExtensionTerm(STANDARD_lOAN_EXTENSION_TERM);
         return bankParams;
     }
 
@@ -43,6 +46,7 @@ public class BankParamsFixture
         bankParams.setMaxLoanAttempts(NEW_MAX_LOAN_ATTEMPTS);
         bankParams.setRiskTimeStart(NEW_RISK_TIME_START);
         bankParams.setRiskTimeEnd(NEW_RISK_TIME_END);
+        bankParams.setLoanExtensionTerm(NEW_LOAN_EXTENSION_TERM);
         return bankParams;
     }
 }

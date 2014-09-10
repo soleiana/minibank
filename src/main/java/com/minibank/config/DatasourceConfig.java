@@ -32,9 +32,9 @@ public class DatasourceConfig
     {
         return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.HSQL)
-                .addScript("classpath:script-clear-schema.sql")
-                .addScript("classpath:script-ddl.sql")
-                .addScript("classpath:script-test-data.sql")
+                //.addScript("classpath:script-clear-schema.sql")
+                //.addScript("classpath:script-ddl.sql")
+                //.addScript("classpath:script-test-data.sql")
                 .build();
     }
     @Bean(name = "sessionFactory")
