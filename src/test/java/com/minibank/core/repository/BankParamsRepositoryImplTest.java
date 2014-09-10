@@ -21,14 +21,14 @@ public class BankParamsRepositoryImplTest extends SpringContextTest
     private BankParams bankParams;
 
     @Before
-    public void setUp() throws Exception
+    public void setUp() throws DBException
     {
         bankParams = BankParamsFixture.standardBankParams();
     }
 
     @Test
     @Transactional
-    public void testCreate() throws Exception
+    public void testCreate() throws DBException
     {
         bankParamsRepository.create(bankParams);
         assertNotNull(bankParams.getId());
@@ -36,7 +36,7 @@ public class BankParamsRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetById() throws Exception
+    public void testGetById() throws DBException
     {
         bankParamsRepository.create(bankParams);
         Integer id = bankParams.getId();
@@ -45,7 +45,7 @@ public class BankParamsRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testUpdate() throws Exception
+    public void testUpdate() throws DBException
     {
         bankParamsRepository.create(bankParams);
         BankParams newBankParams = BankParamsFixture.newBankParams();

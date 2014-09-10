@@ -22,13 +22,13 @@ public class CustomerRepositoryImplTest extends SpringContextTest
     private Customer customer;
 
     @Before
-    public void setUp() throws Exception
+    public void setUp() throws DBException
     {
         customer = CustomerFixture.standardCustomer();
     }
     @Test
     @Transactional
-    public void testCreate() throws Exception
+    public void testCreate() throws DBException
     {
         customerRepository.create(customer);
         assertNotNull(customer.getId());
@@ -36,7 +36,7 @@ public class CustomerRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetById() throws Exception
+    public void testGetById() throws DBException
     {
         customerRepository.create(customer);
         Integer id = customer.getId();

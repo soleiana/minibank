@@ -20,13 +20,13 @@ public class LoanExtensionRepositoryImplTest  extends SpringContextTest
     private LoanExtension loanExtension;
 
     @Before
-    public void setUp() throws Exception
+    public void setUp() throws DBException
     {
         loanExtension = LoanExtensionFixture.standardLoanExtension();
     }
 
     @Test
-    public void testCreate() throws Exception
+    public void testCreate() throws DBException
     {
         //todo:
     }
