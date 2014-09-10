@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="516b530b-83bd-4fd4-b0bf-21a5703189b8" name="Default" comment="&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/DBCleanerImpl.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/DBCleanerImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanRequestRepositoryImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanRequestRepositoryImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -103,7 +102,7 @@
       <file leaf-file-name="JDBCProvider.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/JDBCProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="4" selection-start="2020" selection-end="2020" vertical-scroll-proportion="0.61042184" vertical-offset="1012" max-vertical-offset="1632">
+            <state line="75" column="11" selection-start="2033" selection-end="2033" vertical-scroll-proportion="0.6831169" vertical-offset="1012" max-vertical-offset="1632">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1195,7 +1194,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10460993" sideWeight="0.115625" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13652483" sideWeight="0.115625" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.095744684" sideWeight="0.7453125" order="7" side_tool="false" content_ui="tabs" />
@@ -1205,7 +1204,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39765626" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10460993" sideWeight="0.884375" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13652483" sideWeight="0.884375" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1252,7 +1251,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="project prototype" />
     <MESSAGE value="project prototype&#10;" />
     <MESSAGE value="datasource configuration" />
     <MESSAGE value="datasource configuration&#10;" />
@@ -1277,7 +1275,8 @@
     <MESSAGE value="LoanRequestRepository, LoanRequestRepositoryImpl, LoanRequestFixture" />
     <MESSAGE value="Loan: loanRequest unique = true; LoanRequest: loan unique = true" />
     <MESSAGE value="minor changes&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor changes&#10;" />
+    <MESSAGE value="DBCleanerImpl: SQL script changed&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="DBCleanerImpl: SQL script changed&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1744,7 +1743,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/JDBCProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="4" selection-start="2020" selection-end="2020" vertical-scroll-proportion="0.61042184" vertical-offset="1012" max-vertical-offset="1632">
+        <state line="75" column="11" selection-start="2033" selection-end="2033" vertical-scroll-proportion="0.6831169" vertical-offset="1012" max-vertical-offset="1632">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

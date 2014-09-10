@@ -3,11 +3,13 @@ package com.minibank.core.repository;
 import com.minibank.SpringContextTest;
 import com.minibank.core.domain.*;
 import com.minibank.core.repository.tools.DBCleaner;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertEquals;
 
 /**
  * Created by Ann on 10/09/14.
@@ -31,23 +33,23 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
     @Transactional
     public void setUp() throws DBException
     {
+        dbCleaner.clear();
         requestIP = RequestIPFixture.standardRequestIP();
         customer = CustomerFixture.standardCustomer();
+        loanRequest = LoanRequestFixture.standardLoanRequest();
 
-
-
-    }
-
-    @After
-    public void tearDown() throws  DBException
-    {
-
+        requestIPRepository.create(requestIP);
+        customerRepository.create(customer);
+        loanRequest.setCustomer(customer);
+        loanRequest.setRequestIP(requestIP);
     }
 
     @Test
     @Transactional
     public void testCreate() throws DBException
     {
+        loanRequestRepository.create(loanRequest);
+        assertNotNull(loanRequest.getId());
 
     }
 
@@ -55,13 +57,18 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
     @Transactional
     public void testUpdate() throws DBException
     {
-
+        loanRequestRepository.create(loanRequest);
+        loanRequest.setStatus(LoanRequestFixture.NEW_STATUS);
+        loanRequestRepository.update(loanRequest);
+        assertEquals(LoanRequestFixture.NEW_STATUS, loanRequest.getStatus());
     }
 
     @Test
     @Transactional
     public void testGetById() throws DBException
     {
-
+        loanRequestRepository.create(loanRequest);
+        Integer id = loanRequest.getId();
+        assertEquals(loanRequest, loanRequestRepository.getById(id));
     }
 }
