@@ -5,9 +5,6 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/domain/LoanRequestFixture.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepositoryImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/RequestIPRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/RequestIPRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/RequestIPRepositoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/RequestIPRepositoryImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/RequestIPRepositoryImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/RequestIPRepositoryImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MiniBankProject.iws" />
@@ -1187,7 +1184,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="699" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1207,7 +1204,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.084375" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3359375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3359375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09397163" sideWeight="0.884375" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1277,10 +1274,10 @@
     <MESSAGE value="BankParams: loanExtensionTerm added" />
     <MESSAGE value="CustomerRepositoryImpl, CustomerRepositoryImplTest, CustomerFixture" />
     <MESSAGE value="RequestIPRepositoryImpl, RequestIPRepositoryTest, RequestIPFixture&#10;" />
-    <MESSAGE value="minor changes&#10;" />
     <MESSAGE value="JDBC Tool to clean DB&#10;" />
     <MESSAGE value="RequestIP: unique constraint on ip&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="RequestIP: unique constraint on ip&#10;" />
+    <MESSAGE value="minor changes&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
