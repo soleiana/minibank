@@ -5,10 +5,7 @@ package com.minibank;
  */
 
 import com.minibank.config.tests.TestCoreConfigTest;
-import com.minibank.core.repository.BankParamsRepositoryImplTest;
-import com.minibank.core.repository.CustomerRepositoryImplTest;
-import com.minibank.core.repository.LoanRequestRepositoryImplTest;
-import com.minibank.core.repository.RequestIPRepositoryImplTest;
+import com.minibank.core.repository.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -20,7 +17,8 @@ import org.junit.runners.Suite.SuiteClasses;
         CustomerRepositoryImplTest.class,
         RequestIPRepositoryImplTest.class,
         LoanRequestRepositoryImplTest.class,
-        LoanRequestRepositoryImplTest.class
+        LoanRequestRepositoryImplTest.class,
+        LoanExtensionRepositoryImplTest.class
 
           })
 public class AllTests

@@ -9,16 +9,20 @@ import  java.sql.Date;
 public class LoanExtensionFixture
 {
 
-    public static final Date START_DATE = Date.valueOf("2014-09-10");
-    public static final Date END_DATE = Date.valueOf("2014-09-17");
+    public static final Date START_DATE = Date.valueOf("2014-09-30");
+    public static final Date END_DATE = Date.valueOf("2014-10-06");
     public static final BigDecimal INTEREST_RATE =  new BigDecimal("150.00");
     public static final BigDecimal INTEREST =  new BigDecimal("300.00");
-    public static final Date SUBMISSION_DATE = Date.valueOf("2014-09-09");
+    public static final Date SUBMISSION_DATE = Date.valueOf("2014-09-29");
 
     public static LoanExtension standardLoanExtension()
     {
         LoanExtension loanExtension = new LoanExtension();
-        //Todo: set properties
+        loanExtension.setStartDate(START_DATE);
+        loanExtension.setEndDate(END_DATE);
+        loanExtension.setInterestRate(INTEREST_RATE);
+        loanExtension.setInterest(INTEREST);
+        loanExtension.setSubmissionDate(SUBMISSION_DATE);
         return loanExtension;
     }
 
