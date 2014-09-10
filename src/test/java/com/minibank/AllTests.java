@@ -19,6 +19,7 @@ import org.junit.runners.Suite.SuiteClasses;
         BankParamsRepositoryImplTest.class,
         CustomerRepositoryImplTest.class,
         RequestIPRepositoryImplTest.class,
+        LoanRequestRepositoryImplTest.class,
         LoanRequestRepositoryImplTest.class
 
           })
