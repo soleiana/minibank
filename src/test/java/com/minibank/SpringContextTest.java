@@ -3,8 +3,8 @@ package com.minibank;
  * Created by Ann on 07/09/14.
  */
 
-import com.minibank.config.TestCoreConfig;
-import com.minibank.config.TestDatasourceConfig;
+import com.minibank.config.CoreConfig;
+import com.minibank.config.DatasourceConfig;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -12,8 +12,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {TestCoreConfig.class, TestDatasourceConfig.class})
-@TransactionConfiguration(transactionManager = "testTransactionManager", defaultRollback = false)
+@ContextConfiguration(classes = {CoreConfig.class, DatasourceConfig.class})
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
 @Ignore
 public class SpringContextTest
 {}

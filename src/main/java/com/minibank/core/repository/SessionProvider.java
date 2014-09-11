@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 public class SessionProvider
 {
     @Autowired
-    @Qualifier("testSessionFactory")
+    @Qualifier("sessionFactory")
     private SessionFactory sessionFactory;
 
     protected Session getCurrentSession()
