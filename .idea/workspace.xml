@@ -11,8 +11,6 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/Logger.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoggerImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanEventHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanEventHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/domain/LoanRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/domain/LoanRequest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/events/loans/LoanRequestDetails.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/events/loans/LoanRequestDetails.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MiniBankProject.iws" />
@@ -77,11 +75,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LoanEventHandler.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="LoanEventHandler.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanEventHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="40" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122">
-              <folding />
+            <state line="11" column="13" selection-start="289" selection-end="289" vertical-scroll-proportion="0.40215054" vertical-offset="0" max-vertical-offset="1122">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -161,10 +161,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoanRequest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LoanRequest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/domain/LoanRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="0" selection-start="2529" selection-end="2529" vertical-scroll-proportion="0.32300884" vertical-offset="1180" max-vertical-offset="3009">
+            <state line="83" column="0" selection-start="2529" selection-end="2529" vertical-scroll-proportion="0.0" vertical-offset="619" max-vertical-offset="3009">
               <folding />
             </state>
           </provider>
@@ -1241,7 +1241,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="domain&#10;" />
     <MESSAGE value="domain: entity relationships&#10;" />
     <MESSAGE value="entity Request_IP ; script-clear-schema.sql; TestCoreConfig; TestDatasourceConfig&#10;" />
     <MESSAGE value="BankParamsRepositoryImpl, BankParamsRepositoryImplTest" />
@@ -1266,7 +1265,8 @@
     <MESSAGE value="CreateLoanEvent, LoanCreatedEvent, LoanRequestDetails&#10;" />
     <MESSAGE value="Customer: new constructor Customer(Integer id)&#10;" />
     <MESSAGE value="BankParamsRepository, BankParamsRepositoryImpl:  getLast()&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="BankParamsRepository, BankParamsRepositoryImpl:  getLast()&#10;" />
+    <MESSAGE value="LoanRequest.fromLoanRequestDetails, LoanRequest.toLoanRequestDetails, LoanRequestDetails&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="LoanRequest.fromLoanRequestDetails, LoanRequest.toLoanRequestDetails, LoanRequestDetails&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1643,13 +1643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanEventHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="40" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanFactoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="31" selection-start="868" selection-end="868" vertical-scroll-proportion="0.0" vertical-offset="203" max-vertical-offset="833">
@@ -1704,8 +1697,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/domain/LoanRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="0" selection-start="2529" selection-end="2529" vertical-scroll-proportion="0.32300884" vertical-offset="1180" max-vertical-offset="3009">
+        <state line="83" column="0" selection-start="2529" selection-end="2529" vertical-scroll-proportion="0.0" vertical-offset="619" max-vertical-offset="3009">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="289" selection-end="289" vertical-scroll-proportion="0.40215054" vertical-offset="0" max-vertical-offset="1122">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
