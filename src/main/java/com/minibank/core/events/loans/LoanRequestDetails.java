@@ -11,8 +11,8 @@ import java.sql.Time;
 public class LoanRequestDetails
 {
     private Integer id;
-    private Integer loan_id;
-    private Integer customer_id;
+    private Integer loanId;
+    private Integer customerId;
     private String requestIP;
     private Date submissionDate;
     private Time submissionTime;
@@ -35,24 +35,24 @@ public class LoanRequestDetails
         this.id = id;
     }
 
-    public Integer getLoan_id()
+    public Integer getLoanId()
     {
-        return loan_id;
+        return loanId;
     }
 
-    public void setLoan_id(Integer loan_id)
+    public void setLoanId(Integer loanId)
     {
-        this.loan_id = loan_id;
+        this.loanId = loanId;
     }
 
-    public Integer getCustomer_id()
+    public Integer getCustomerId()
     {
-        return customer_id;
+        return customerId;
     }
 
-    public void setCustomer_id(Integer customer_id)
+    public void setCustomerId(Integer customerId)
     {
-        this.customer_id = customer_id;
+        this.customerId = customerId;
     }
 
     public String getRequestIP()

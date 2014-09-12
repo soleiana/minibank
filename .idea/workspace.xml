@@ -10,9 +10,6 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanFactoryImpl.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/Logger.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoggerImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/BankParamsRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/BankParamsRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/BankParamsRepositoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/BankParamsRepositoryImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/BankParamsRepositoryImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/BankParamsRepositoryImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanEventHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanEventHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/domain/LoanRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/domain/LoanRequest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/events/loans/LoanRequestDetails.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/events/loans/LoanRequestDetails.java" />
@@ -167,7 +164,7 @@
       <file leaf-file-name="LoanRequest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/domain/LoanRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="0" selection-start="2774" selection-end="2774" vertical-scroll-proportion="0.51106197" vertical-offset="1180" max-vertical-offset="3009">
+            <state line="83" column="0" selection-start="2529" selection-end="2529" vertical-scroll-proportion="0.32300884" vertical-offset="1180" max-vertical-offset="3009">
               <folding />
             </state>
           </provider>
@@ -1244,7 +1241,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="domain" />
     <MESSAGE value="domain&#10;" />
     <MESSAGE value="domain: entity relationships&#10;" />
     <MESSAGE value="entity Request_IP ; script-clear-schema.sql; TestCoreConfig; TestDatasourceConfig&#10;" />
@@ -1269,7 +1265,8 @@
     <MESSAGE value="LoanService defined&#10;" />
     <MESSAGE value="CreateLoanEvent, LoanCreatedEvent, LoanRequestDetails&#10;" />
     <MESSAGE value="Customer: new constructor Customer(Integer id)&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Customer: new constructor Customer(Integer id)&#10;" />
+    <MESSAGE value="BankParamsRepository, BankParamsRepositoryImpl:  getLast()&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="BankParamsRepository, BankParamsRepositoryImpl:  getLast()&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1707,7 +1704,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/domain/LoanRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="0" selection-start="2774" selection-end="2774" vertical-scroll-proportion="0.51106197" vertical-offset="1180" max-vertical-offset="3009">
+        <state line="83" column="0" selection-start="2529" selection-end="2529" vertical-scroll-proportion="0.32300884" vertical-offset="1180" max-vertical-offset="3009">
           <folding />
         </state>
       </provider>
