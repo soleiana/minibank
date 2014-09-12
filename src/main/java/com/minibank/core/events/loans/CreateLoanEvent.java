@@ -17,5 +17,6 @@ public class CreateLoanEvent extends CreateEvent
     public LoanRequestDetails getLoanRequestDetails()
     {
         return loanRequestDetails;
+
     }
 }

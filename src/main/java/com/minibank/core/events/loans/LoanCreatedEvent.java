@@ -22,6 +22,7 @@ public class LoanCreatedEvent extends CreatedEvent
         return loanRequestId;
     }
 
+
     public LoanRequestDetails getLoanRequestDetails()
     {
         return loanRequestDetails;
