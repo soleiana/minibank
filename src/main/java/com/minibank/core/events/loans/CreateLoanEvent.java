@@ -7,4 +7,15 @@ import com.minibank.core.events.CreateEvent;
  */
 public class CreateLoanEvent extends CreateEvent
 {
+    private LoanRequestDetails loanRequestDetails;
+
+    public CreateLoanEvent(LoanRequestDetails loanRequestDetails)
+    {
+        this.loanRequestDetails = loanRequestDetails;
+    }
+
+    public LoanRequestDetails getLoanRequestDetails()
+    {
+        return loanRequestDetails;
+    }
 }
