@@ -1,7 +1,5 @@
 package com.minibank.core.services;
 
-import com.minibank.config.CoreConfig;
-import com.minibank.core.domain.BankParams;
 import com.minibank.core.repository.BankParamsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
