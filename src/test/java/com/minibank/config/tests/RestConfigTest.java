@@ -1,6 +1,6 @@
 package com.minibank.config.tests;
 
-import com.minibank.config.CoreConfig;
+import com.minibank.config.RestConfig;
 import com.minibank.core.repository.BankParamsRepository;
 import com.minibank.core.services.LoanService;
 import org.junit.Test;
@@ -12,12 +12,12 @@ import static junit.framework.TestCase.assertNotNull;
 /**
  * Created by Ann on 08/09/14.
  */
-public class CoreConfigTest
+public class RestConfigTest
 {
     @Test
     public void testCoreConfig()
     {
-        ApplicationContext context = new AnnotationConfigApplicationContext(CoreConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(RestConfig.class);
         LoanService loanService = context.getBean(LoanService.class);
         BankParamsRepository bankParamsRepository = loanService.getRepository();
 
