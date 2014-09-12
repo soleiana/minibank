@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by Ann on 10/09/14.
  */
-@Component
+@Component(value = "JDBC")
 public class DBCleanerImpl extends JDBCProvider
     implements DBCleaner
 {
@@ -29,21 +29,6 @@ public class DBCleanerImpl extends JDBCProvider
             stmt.execute("DELETE FROM CUSTOMER");
             stmt.execute("DELETE FROM REQUEST_IP");
             stmt.execute("DELETE FROM BANK_PARAMS");
-           /*
-            connection.setAutoCommit(false);
-            stmt.execute("SET REFERENTIAL_INTEGRITY FALSE");
-            connection.commit();
-            try {
-                for (String tableName : getDatabaseMetaData(connection)) {
-                    PreparedStatement preparedStatement = connection
-                            .prepareStatement("DELETE FROM " + tableName);
-                    System.out.println(preparedStatement.toString());
-                    preparedStatement.executeUpdate();
-                }
-                connection.commit();
-
-                stmt.execute("SET REFERENTIAL_INTEGRITY TRUE");
-                connection.commit();*/
             }
         catch (SQLException e)
             {

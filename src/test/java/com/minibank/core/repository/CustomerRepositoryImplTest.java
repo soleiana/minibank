@@ -11,6 +11,7 @@ import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -19,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class CustomerRepositoryImplTest extends SpringContextTest
 {
     @Autowired
+    @Qualifier("ORM")
     private DBCleaner dbCleaner;
     @Autowired
     private CustomerRepository customerRepository;

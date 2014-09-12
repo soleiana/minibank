@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="516b530b-83bd-4fd4-b0bf-21a5703189b8" name="Default" comment="CoreConfig renamed to RestConfig&#10;">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/ORMCleanerImpl.java" />
-      <change type="DELETED" beforePath="C:\Users\Ann\IdeaProjects\MiniBank\minibank.repo\src\main\java\Test.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/BankParamsRepositoryImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/BankParamsRepositoryImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/CustomerRepositoryImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/CustomerRepositoryImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/DBCleanerImpl.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/DBCleanerImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanEventHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanEventHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanExtensionRepositoryImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanExtensionRepositoryImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanRepositoryImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanRepositoryImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanRequestRepositoryImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanRequestRepositoryImplTest.java" />

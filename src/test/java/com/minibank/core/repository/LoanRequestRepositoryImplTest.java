@@ -6,6 +6,7 @@ import com.minibank.core.repository.tools.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
 import static junit.framework.TestCase.assertNotNull;
@@ -17,6 +18,7 @@ import static junit.framework.TestCase.assertEquals;
 public class LoanRequestRepositoryImplTest extends SpringContextTest
 {
     @Autowired
+    @Qualifier("ORM")
     private DBCleaner dbCleaner;
     @Autowired
     private LoanRequestRepository loanRequestRepository;
