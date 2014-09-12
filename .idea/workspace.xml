@@ -6,7 +6,6 @@
       <change type="MOVED" beforePath="C:\Users\Ann\IdeaProjects\MiniBank\minibank.repo\src\main\java\com\minibank\core\events\loans\LoanExtensionsEvent.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/events/loans/AllLoansEvent.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanEventHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanEventHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanService.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/LoanService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/config/tests/RestConfigTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/config/tests/RestConfigTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MiniBankProject.iws" />

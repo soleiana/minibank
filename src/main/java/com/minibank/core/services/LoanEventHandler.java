@@ -1,7 +1,6 @@
 package com.minibank.core.services;
 
-import com.minibank.core.repository.BankParamsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.minibank.core.events.loans.*;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,17 +9,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoanEventHandler implements LoanService
 {
-    @Autowired
-    private BankParamsRepository repository;
-
+    @Override
+    public LoanCreatedEvent createLoan(CreateLoanEvent event)
+    {return  null;}
 
     @Override
-    public BankParamsRepository getRepository()
-    {
-        return  repository;
-    }
+    public LoanExtensionCreatedEvent createLoanExtension(CreateLoanExtensionEvent event)
+    {return  null;}
 
-  /*  public LoanEventHandler(final BankParamsRepository repository) {
-        this.repository = repository;
-    }*/
+    @Override
+    public AllLoansEvent requestAllLoans(RequestAllLoansEvent event)
+    {return  null;}
 }

@@ -5,5 +5,5 @@ import com.minibank.core.events.RequestReadEvent;
 /**
  * Created by Ann on 06/09/14.
  */
-public class GetLoanExtensionsEvent extends RequestReadEvent {
+public class RequestAllLoansEvent extends RequestReadEvent {
 }
