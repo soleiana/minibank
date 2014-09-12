@@ -39,6 +39,11 @@ public class Customer
     public Customer()
     {}
 
+    public Customer(Integer id)
+    {
+        this.id = id;
+    }
+
     public Customer(String name, String surname)
     {
         this.name = name;
