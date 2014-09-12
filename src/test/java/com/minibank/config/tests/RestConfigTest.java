@@ -19,10 +19,10 @@ public class RestConfigTest
     {
         ApplicationContext context = new AnnotationConfigApplicationContext(RestConfig.class);
         LoanService loanService = context.getBean(LoanService.class);
-        BankParamsRepository bankParamsRepository = loanService.getRepository();
+
 
         assertNotNull(loanService);
-        assertNotNull(bankParamsRepository);
+
 
     }
 }
