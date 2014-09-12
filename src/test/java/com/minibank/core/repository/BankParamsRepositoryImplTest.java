@@ -75,4 +75,21 @@ public class BankParamsRepositoryImplTest extends SpringContextTest
         assertEquals(newBankParams.getRiskTimeEnd(), bankParams.getRiskTimeEnd());
         assertEquals(newBankParams.getLoanExtensionTerm(), bankParams.getLoanExtensionTerm());
     }
+
+    @Test
+    @Transactional
+    public void testGetLast() throws DBException
+    {
+        BankParams bp1 = BankParamsFixture.standardBankParams();
+        bp1.setLoanExtensionTerm(BankParamsFixture.NEW_LOAN_EXTENSION_TERM);
+        BankParams bp2 = BankParamsFixture.standardBankParams();
+        bp2.setInterestRateFactor(BankParamsFixture.NEW_INTEREST_RATE_FACTOR);
+
+        bankParamsRepository.create(bankParams);
+        bankParamsRepository.create(bp1);
+        bankParamsRepository.create(bp2);
+
+        BankParams bp = bankParamsRepository.getLast();
+        assertEquals(bp2,bp);
+    }
 }

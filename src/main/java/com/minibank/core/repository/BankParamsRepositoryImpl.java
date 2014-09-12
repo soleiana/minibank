@@ -1,6 +1,7 @@
 package com.minibank.core.repository;
 
 import com.minibank.core.domain.BankParams;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 
@@ -25,8 +26,19 @@ public class BankParamsRepositoryImpl extends SessionProvider
     }
 
     @Override
-    public void update(BankParams bankParams) throws DBException {
+    public void update(BankParams bankParams) throws DBException
+    {
         Session session = getCurrentSession();
         session.saveOrUpdate(bankParams);
+    }
+
+    @Override
+    public BankParams getLast() throws DBException
+    {
+       Session session = getCurrentSession();
+       Query query = session.createQuery("from BankParams order by id DESC");
+       query.setMaxResults(1);
+       BankParams last = (BankParams) query.uniqueResult();
+       return  last;
     }
 }
