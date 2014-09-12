@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="516b530b-83bd-4fd4-b0bf-21a5703189b8" name="Default" comment="">
+    <list default="true" id="516b530b-83bd-4fd4-b0bf-21a5703189b8" name="Default" comment="CoreConfig renamed to RestConfig&#10;">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/ORMCleanerImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\Ann\IdeaProjects\MiniBank\minibank.repo\src\main\java\com\minibank\config\CoreConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/config/RestConfig.java" />
-      <change type="MOVED" beforePath="C:\Users\Ann\IdeaProjects\MiniBank\minibank.repo\src\test\java\com\minibank\config\tests\CoreConfigTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/config/tests/RestConfigTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/hello/Application.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/hello/Application.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/BankParamsRepositoryImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/BankParamsRepositoryImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/CustomerRepositoryImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/CustomerRepositoryImplTest.java" />
@@ -14,7 +12,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanRepositoryImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanRepositoryImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanRequestRepositoryImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/LoanRequestRepositoryImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/RequestIPRepositoryImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/repository/RequestIPRepositoryImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/SpringContextTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/SpringContextTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MiniBankProject.iws" />
@@ -106,10 +103,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Application.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Application.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/hello/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="5" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+            <state line="17" column="5" selection-start="578" selection-end="578" vertical-scroll-proportion="0.44" vertical-offset="0" max-vertical-offset="425">
               <folding />
             </state>
           </provider>
@@ -126,10 +123,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DBCleanerImpl.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DBCleanerImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/DBCleanerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="52" selection-start="891" selection-end="891" vertical-scroll-proportion="0.68" vertical-offset="136" max-vertical-offset="1207">
+            <state line="30" column="52" selection-start="891" selection-end="891" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1207">
               <folding />
             </state>
           </provider>
@@ -1177,7 +1174,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="changes&#10;" />
     <MESSAGE value="test *Config&#10;" />
     <MESSAGE value="maven plugins" />
     <MESSAGE value="spring dependencies&#10;" />
@@ -1202,7 +1198,8 @@
     <MESSAGE value="LoanExtensionFixture, LoanExtensionRepositoryImplTest" />
     <MESSAGE value="Hateoas, boot spring dependencies added" />
     <MESSAGE value="DatasourceConfig, CoreConfig" />
-    <option name="LAST_COMMIT_MESSAGE" value="DatasourceConfig, CoreConfig" />
+    <MESSAGE value="CoreConfig renamed to RestConfig&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="CoreConfig renamed to RestConfig&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -2134,13 +2131,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/hello/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="5" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/services/BankParamsRepositoryImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="13" selection-start="447" selection-end="447" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
@@ -2201,7 +2191,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/minibank/core/repository/tools/DBCleanerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="52" selection-start="891" selection-end="891" vertical-scroll-proportion="0.68" vertical-offset="136" max-vertical-offset="1207">
+        <state line="30" column="52" selection-start="891" selection-end="891" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1207">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/hello/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="5" selection-start="578" selection-end="578" vertical-scroll-proportion="0.44" vertical-offset="0" max-vertical-offset="425">
           <folding />
         </state>
       </provider>
