@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by Ann on 12/09/14.
  */
-@Component(value = "ORM")
+@Component
 public class ORMCleanerImpl extends SessionProvider
         implements  DBCleaner
 {

@@ -21,7 +21,6 @@ import com.minibank.core.domain.RequestIPFixture;
 public class RequestIPRepositoryImplTest extends SpringContextTest
 {
     @Autowired
-    @Qualifier("ORM")
     private DBCleaner dbCleaner;
     @Autowired
     RequestIPRepository requestIPRepository;

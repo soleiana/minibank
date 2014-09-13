@@ -18,7 +18,6 @@ import static junit.framework.TestCase.assertEquals;
 public class LoanExtensionRepositoryImplTest  extends SpringContextTest
 {
     @Autowired
-    @Qualifier("ORM")
     private DBCleaner dbCleaner;
     @Autowired
     private LoanExtensionRepository loanExtensionRepository;

@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class CustomerRepositoryImplTest extends SpringContextTest
 {
     @Autowired
-    @Qualifier("ORM")
     private DBCleaner dbCleaner;
     @Autowired
     private CustomerRepository customerRepository;
