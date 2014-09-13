@@ -99,7 +99,11 @@ public class CreditExpertImpl implements CreditExpert
 
     private boolean isBetween(Time start, Time end, Time timeToCheck)
     {
-        return  false;
+        if ((timeToCheck.compareTo(start)==1)&&(end.compareTo(timeToCheck)==1))
+            return true;
+
+        else
+            return false;
     }
 
     private boolean checkAmountConstraint(LoanRequest loanRequest) throws DBException
