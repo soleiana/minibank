@@ -2,7 +2,6 @@ package com.minibank.core.services.helpers;
 
 import com.minibank.core.domain.*;
 import com.minibank.core.repository.*;
-import com.minibank.core.services.helpers.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
