@@ -1,7 +1,8 @@
-package com.minibank.core.services;
+package com.minibank.core.services.helpers;
 
 import com.minibank.core.domain.*;
 import com.minibank.core.repository.*;
+import com.minibank.core.services.helpers.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
  * Created by Ann on 12/09/14.
  */
 @Component
-public class LoggerImpl implements  Logger
+public class LoggerImpl implements Logger
 {
     @Autowired
     private LoanRequestRepository loanRequestRepository;
@@ -37,8 +38,8 @@ public class LoggerImpl implements  Logger
         loanRequestRepository.update(loanRequest);
     }
 
-    @Override
-    public void log(RequestIP requestIP) throws DBException
+
+    private void log(RequestIP requestIP) throws DBException
     {
         RequestIP req = requestIPRepository.getByIP(requestIP.getIP());
         if (req == null)

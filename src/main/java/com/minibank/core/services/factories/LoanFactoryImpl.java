@@ -1,10 +1,11 @@
-package com.minibank.core.services;
+package com.minibank.core.services.factories;
 
 import com.minibank.core.domain.BankParams;
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.repository.BankParamsRepository;
 import com.minibank.core.repository.DBException;
+import com.minibank.core.services.helpers.CreditCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

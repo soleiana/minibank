@@ -4,8 +4,6 @@ package com.minibank.core.domain;
  * Created by Ann on 06/09/14.
  */
 
-import com.minibank.core.events.loans.LoanRequestDetails;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -63,41 +61,6 @@ public class LoanRequest
         this.term = term;
         this.amount = amount;
         this.status = status;
-    }
-
-    public LoanRequestDetails toLoanRequestDetails()
-    {
-        LoanRequestDetails loanRequestDetails = new LoanRequestDetails();
-
-        loanRequestDetails.setId(this.id);
-        loanRequestDetails.setLoanId(this.loan.getId());
-        loanRequestDetails.setCustomerId(this.customer.getId());
-        loanRequestDetails.setSubmissionDate(this.submissionDate);
-        loanRequestDetails.setSubmissionTime(this.submissionTime);
-        loanRequestDetails.setAmount(this.amount);
-        loanRequestDetails.setRequestIP(this.requestIP.getIP().toString());
-        loanRequestDetails.setTerm(this.term);
-        loanRequestDetails.setStatus(this.status.toString());
-
-        return  loanRequestDetails;
-    }
-
-    public static LoanRequest fromLoanRequestDetails(LoanRequestDetails requestDetails)
-    {
-        RequestIP requestIP = new RequestIP(requestDetails.getRequestIP());
-        Customer customer = new Customer(requestDetails.getCustomerId());
-
-        LoanRequest loanRequest = new LoanRequest();
-
-        loanRequest.setRequestIP(requestIP);
-        loanRequest.setCustomer(customer);
-        loanRequest.setSubmissionDate(requestDetails.getSubmissionDate());
-        loanRequest.setSubmissionTime(requestDetails.getSubmissionTime());
-        loanRequest.setAmount(requestDetails.getAmount());
-        loanRequest.setTerm(requestDetails.getTerm());
-        loanRequest.setStatus(LoanRequestStatus.NEW);
-
-        return loanRequest;
     }
 
     public Integer getId()

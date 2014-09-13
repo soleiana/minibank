@@ -7,24 +7,22 @@ import com.minibank.core.events.CreatedEvent;
  */
 public class LoanCreatedEvent extends CreatedEvent
 {
-    private final Integer loanRequestId;
-    private final LoanRequestDetails loanRequestDetails;
+    private Boolean loanObtained;
+    private String errorMessage;
 
-    public LoanCreatedEvent(final Integer loanRequestId,
-                            final LoanRequestDetails loanRequestDetails)
+    public LoanCreatedEvent(Boolean loanObtained, String errorMessage)
     {
-        this.loanRequestId = loanRequestId;
-        this.loanRequestDetails = loanRequestDetails;
+        this.loanObtained = loanObtained;
+        this.errorMessage = errorMessage;
     }
 
-    public Integer getLoanRequestId()
+    public Boolean isLoanObtained()
     {
-        return loanRequestId;
+        return loanObtained;
     }
 
-
-    public LoanRequestDetails getLoanRequestDetails()
+    public String getErrorMessage()
     {
-        return loanRequestDetails;
+        return errorMessage;
     }
 }

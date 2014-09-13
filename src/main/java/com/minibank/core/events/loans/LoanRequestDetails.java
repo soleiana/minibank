@@ -10,49 +10,17 @@ import java.sql.Time;
  */
 public class LoanRequestDetails
 {
-    private Integer id;
-    private Integer loanId;
     private Integer customerId;
     private String requestIP;
-    private Date submissionDate;
-    private Time submissionTime;
     private Integer term;
     private BigDecimal amount;
-    private String status;
 
     public LoanRequestDetails()
-    {
-        id = null;
-    }
-
-    public Integer getId()
-    {
-        return id;
-    }
-
-    public void setId(Integer id)
-    {
-        this.id = id;
-    }
-
-    public Integer getLoanId()
-    {
-        return loanId;
-    }
-
-    public void setLoanId(Integer loanId)
-    {
-        this.loanId = loanId;
-    }
+    {}
 
     public Integer getCustomerId()
     {
         return customerId;
-    }
-
-    public void setCustomerId(Integer customerId)
-    {
-        this.customerId = customerId;
     }
 
     public String getRequestIP()
@@ -60,39 +28,9 @@ public class LoanRequestDetails
         return requestIP;
     }
 
-    public void setRequestIP(String requestIP)
-    {
-        this.requestIP = requestIP;
-    }
-
-    public Date getSubmissionDate()
-    {
-        return submissionDate;
-    }
-
-    public void setSubmissionDate(Date submissionDate)
-    {
-        this.submissionDate = submissionDate;
-    }
-
-    public Time getSubmissionTime()
-    {
-        return submissionTime;
-    }
-
-    public void setSubmissionTime(Time submissionTime)
-    {
-        this.submissionTime = submissionTime;
-    }
-
     public Integer getTerm()
     {
         return term;
-    }
-
-    public void setTerm(Integer term)
-    {
-        this.term = term;
     }
 
     public BigDecimal getAmount()
@@ -100,18 +38,4 @@ public class LoanRequestDetails
         return amount;
     }
 
-    public void setAmount(BigDecimal amount)
-    {
-        this.amount = amount;
-    }
-
-    public String getStatus()
-    {
-        return status;
-    }
-
-    public void setStatus(String status)
-    {
-        this.status = status;
-    }
 }

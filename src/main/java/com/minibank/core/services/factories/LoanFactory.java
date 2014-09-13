@@ -1,4 +1,4 @@
-package com.minibank.core.services;
+package com.minibank.core.services.factories;
 
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanRequest;

@@ -2,6 +2,10 @@ package com.minibank.core.services;
 
 import com.minibank.core.domain.*;
 import com.minibank.core.events.loans.*;
+import com.minibank.core.services.factories.LoanFactory;
+import com.minibank.core.services.factories.LoanRequestFactory;
+import com.minibank.core.services.helpers.CreditExpert;
+import com.minibank.core.services.helpers.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,17 +20,23 @@ public class LoanEventHandler implements LoanService
     @Autowired
     private Logger logger;
     @Autowired
-    LoanFactory loanFactory;
+    private LoanRequestFactory loanRequestFactory;
+    @Autowired
+    private LoanFactory loanFactory;
 
     @Override
     public LoanCreatedEvent createLoan(CreateLoanEvent event)
     {
         //Precondition: customer already logged in and its record exists in database
+
+        Boolean isLoanObtained = false;
+
         LoanRequestDetails requestDetails = event.getLoanRequestDetails();
-        LoanRequest loanRequest = LoanRequest.fromLoanRequestDetails(requestDetails);
+        LoanRequest loanRequest = loanRequestFactory.getNewLoanRequest(requestDetails);
 
         try
         {
+            //loanRequest created in DB
             logger.log(loanRequest);
 
             if (creditExpert.hasRisks(loanRequest))
@@ -43,11 +53,12 @@ public class LoanEventHandler implements LoanService
         {
             e.printStackTrace();
         }
-        requestDetails = loanRequest.toLoanRequestDetails();
+        //requestDetails = loanRequest.toLoanRequestDetails();
         Integer id = loanRequest.getId();
-        LoanCreatedEvent loanCreatedEvent = new LoanCreatedEvent(id,requestDetails);
+        //LoanCreatedEvent loanCreatedEvent = new LoanCreatedEvent(id,requestDetails);
 
-        return  loanCreatedEvent;
+        //return  loanCreatedEvent;
+        return  null;
     }
 
     @Override

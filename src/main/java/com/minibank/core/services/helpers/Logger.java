@@ -1,4 +1,4 @@
-package com.minibank.core.services;
+package com.minibank.core.services.helpers;
 
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanExtension;
@@ -14,8 +14,6 @@ public interface Logger
     void log(LoanRequest loanRequest) throws DBException;
 
     void update(LoanRequest loanRequest) throws DBException;
-
-    void log(RequestIP requestIP) throws DBException;
 
     void log(Loan loan) throws  DBException;
 
