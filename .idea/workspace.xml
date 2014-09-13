@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="516b530b-83bd-4fd4-b0bf-21a5703189b8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/services/helpers/CreditCalculatorImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/CreditCalculatorImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/CreditCalculatorImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/common/DateTimeUtility.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/common/DateTimeUtility.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/common/Number.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/common/Number.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MiniBankProject.iws" />
@@ -82,7 +79,7 @@
       <file leaf-file-name="CreditCalculatorImpl.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/CreditCalculatorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="0" selection-start="1653" selection-end="1653" vertical-scroll-proportion="0.71428573" vertical-offset="523" max-vertical-offset="986">
+            <state line="14" column="0" selection-start="529" selection-end="529" vertical-scroll-proportion="0.51843315" vertical-offset="13" max-vertical-offset="952">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -208,8 +205,8 @@
         <option value="$PROJECT_DIR$/src/test/java/com/minibank/core/services/helpers/CreditExpertImplTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/services/common/DateTimeUtility.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/services/common/Number.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/CreditCalculatorImpl.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/minibank/core/services/helpers/CreditCalculatorImplTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/CreditCalculatorImpl.java" />
       </list>
     </option>
   </component>
@@ -1262,7 +1259,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="699" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1283,7 +1280,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36171874" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07269503" sideWeight="0.884375" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07269503" sideWeight="0.884375" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1330,7 +1327,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="LoanFixture, LoanRepositoryImplTest, LoanRepository, LoanRepositoryImpl&#10;" />
     <MESSAGE value="LoanExtensionFixture, LoanExtensionRepositoryImplTest" />
     <MESSAGE value="Hateoas, boot spring dependencies added" />
     <MESSAGE value="DatasourceConfig, CoreConfig" />
@@ -1355,7 +1351,8 @@
     <MESSAGE value="CreditExpertImpl: new functionality" />
     <MESSAGE value="ConstraintChecker, ConstraintCheckerTest&#10;" />
     <MESSAGE value="ConstraintCheckerTest, CreditExpertImplTest&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="ConstraintCheckerTest, CreditExpertImplTest&#10;" />
+    <MESSAGE value="CreditExpertImpl, CreditExpertImplTest&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="CreditExpertImpl, CreditExpertImplTest&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1739,7 +1736,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/CreditCalculatorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="1653" selection-end="1653" vertical-scroll-proportion="0.71428573" vertical-offset="523" max-vertical-offset="986">
+        <state line="14" column="0" selection-start="529" selection-end="529" vertical-scroll-proportion="0.51843315" vertical-offset="13" max-vertical-offset="952">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
