@@ -5,12 +5,10 @@ import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.domain.LoanRequestStatus;
 import com.minibank.core.domain.RequestIP;
 import com.minibank.core.events.loans.LoanRequestDetails;
-import com.minibank.core.services.common.Format;
+import com.minibank.core.services.common.DateTimeConverter;
 import org.springframework.stereotype.Component;
 
-import java.sql.Time;
 import java.util.Date;
-import java.text.SimpleDateFormat;
 
 
 /**
@@ -36,8 +34,8 @@ public class LoanRequestFactoryImpl implements LoanRequestFactory
 
         Date dNow = new Date();
 
-        java.sql.Date submissionDate = getSubmissionDate(dNow);
-        java.sql.Time submissionTime = getSubmissionTime(dNow);
+        java.sql.Date submissionDate = DateTimeConverter.getSqlDate(dNow);
+        java.sql.Time submissionTime = DateTimeConverter.getSqlTime(dNow);
 
         loanRequest.setSubmissionDate(submissionDate);
         loanRequest.setSubmissionTime(submissionTime);
@@ -45,19 +43,5 @@ public class LoanRequestFactoryImpl implements LoanRequestFactory
         return loanRequest;
     }
 
-    private java.sql.Date getSubmissionDate(Date dNow)
-    {
 
-        SimpleDateFormat ft = new SimpleDateFormat(Format.DATE_FORMAT);
-        String output = ft.format(dNow);
-        return java.sql.Date.valueOf(output);
-    }
-
-    private java.sql.Time getSubmissionTime(Date dNow)
-    {
-
-        SimpleDateFormat ft = new SimpleDateFormat(Format.TIME_FORMAT);
-        String output = ft.format(dNow);
-        return Time.valueOf(output);
-    }
 }

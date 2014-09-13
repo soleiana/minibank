@@ -1,9 +1,19 @@
 package com.minibank.core.services.helpers;
 
+import com.minibank.core.domain.BankParams;
 import com.minibank.core.domain.LoanRequest;
+import com.minibank.core.domain.RequestIP;
+import com.minibank.core.repository.BankParamsRepository;
 import com.minibank.core.repository.DBException;
+import com.minibank.core.repository.LoanRequestRepository;
+import com.minibank.core.services.common.DateTimeConverter;
 import com.minibank.core.services.helpers.CreditExpert;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Ann on 12/09/14.
@@ -11,9 +21,73 @@ import org.springframework.stereotype.Component;
 @Component
 public class CreditExpertImpl implements CreditExpert
 {
+    @Autowired
+    private BankParamsRepository bankParamsRepository;
+
+    private BankParams bankParams;
+
     @Override
     public boolean hasRisks(LoanRequest loanRequest) throws DBException
     {
+        if (!checkMaxRequestsPerIP(loanRequest)
+                ||
+                  (
+                    !checkAmountConstraint(loanRequest)
+
+                    &&
+
+                     !checkTimeConstraint(loanRequest)
+                  )
+           )
+           return false;
+        else
+           return  true;
+    }
+
+    private void initBankParams() throws DBException
+    {
+        bankParams = bankParamsRepository.getLast();
+    }
+
+    private boolean checkMaxRequestsPerIP(LoanRequest loanRequest) throws DBException
+    {
+        initBankParams();
+        Byte maxLoanAttempts = bankParams.getMaxLoanAttempts();
+
+        RequestIP requestIP = loanRequest.getRequestIP();
+        List<LoanRequest> loanRequests = requestIP.getLoanRequests();
+
+        Date now = new Date();
+        java.sql.Date sqlNow = DateTimeConverter.getSqlDate(now);
+
+        int requestNum = 0;
+
+        for(LoanRequest req: loanRequests)
+          if (req.getSubmissionDate().equals(sqlNow))
+              requestNum++;
+
+        if (requestNum < maxLoanAttempts)
+           return true;
+        else
+            return false;
+    }
+
+    private boolean checkTimeConstraint(LoanRequest loanRequest) throws DBException
+    {
+        initBankParams();
         return false;
+    }
+
+    private boolean checkAmountConstraint(LoanRequest loanRequest) throws DBException
+    {
+        initBankParams();
+
+        BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
+        BigDecimal reqAmount = loanRequest.getAmount();
+
+        if(reqAmount.compareTo(maxLoanAmount) >= 0)
+             return false;
+        else
+            return true;
     }
 }
