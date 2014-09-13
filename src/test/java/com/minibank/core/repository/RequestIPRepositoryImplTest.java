@@ -9,7 +9,6 @@ import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.assertNotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.minibank.core.domain.RequestIP;

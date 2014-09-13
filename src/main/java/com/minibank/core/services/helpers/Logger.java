@@ -3,7 +3,6 @@ package com.minibank.core.services.helpers;
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanExtension;
 import com.minibank.core.domain.LoanRequest;
-import com.minibank.core.domain.RequestIP;
 import com.minibank.core.repository.DBException;
 
 /**

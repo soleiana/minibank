@@ -1,9 +1,12 @@
 package com.minibank.core.repository;
 
+import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.domain.RequestIP;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * Created by Ann on 10/09/14.
