@@ -5,7 +5,7 @@ import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.domain.LoanRequestStatus;
 import com.minibank.core.domain.RequestIP;
 import com.minibank.core.events.loans.LoanRequestDetails;
-import com.minibank.core.services.common.DateTimeConverter;
+import com.minibank.core.services.common.DateTimeUtility;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -34,8 +34,8 @@ public class LoanRequestFactoryImpl implements LoanRequestFactory
 
         Date dNow = new Date();
 
-        java.sql.Date submissionDate = DateTimeConverter.getSqlDate(dNow);
-        java.sql.Time submissionTime = DateTimeConverter.getSqlTime(dNow);
+        java.sql.Date submissionDate = DateTimeUtility.getSqlDate(dNow);
+        java.sql.Time submissionTime = DateTimeUtility.getSqlTime(dNow);
 
         loanRequest.setSubmissionDate(submissionDate);
         loanRequest.setSubmissionTime(submissionTime);

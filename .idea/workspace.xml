@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="516b530b-83bd-4fd4-b0bf-21a5703189b8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/CreditExpertImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/CreditExpertImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/factories/LoanRequestFactoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/factories/LoanRequestFactoryImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/LoggerImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/LoggerImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -1257,7 +1256,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="JDBC Tool to clean DB&#10;" />
     <MESSAGE value="RequestIP: unique constraint on ip&#10;" />
     <MESSAGE value="LoanRequestRepository, LoanRequestRepositoryImpl, LoanRequestFixture" />
     <MESSAGE value="Loan: loanRequest unique = true; LoanRequest: loan unique = true" />
@@ -1282,7 +1280,8 @@
     <MESSAGE value="DateTimeConverter, CreditExpertImpl" />
     <MESSAGE value="DateTimeConverter renamed to DateTimeUtility&#10;" />
     <MESSAGE value="CreditCalculatorImpl: refactoring&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="CreditCalculatorImpl: refactoring&#10;" />
+    <MESSAGE value="CreditExpertImpl: new functionality&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="CreditExpertImpl: new functionality&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
