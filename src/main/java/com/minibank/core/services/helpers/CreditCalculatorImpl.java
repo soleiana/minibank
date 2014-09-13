@@ -30,7 +30,7 @@ public class CreditCalculatorImpl implements CreditCalculator
         Date startDate = loanRequest.getSubmissionDate();
         Integer term = loanRequest.getTerm();
 
-        SimpleDateFormat sdf = new SimpleDateFormat(Format.DATE_FORMAT);
+        SimpleDateFormat sdf = new SimpleDateFormat(DateTimeUtility.DATE_FORMAT);
         Calendar c = Calendar.getInstance();
         c.setTime(startDate);
         c.add(Calendar.DATE, term);
