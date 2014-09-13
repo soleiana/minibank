@@ -5,15 +5,14 @@ import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.domain.RequestIP;
 import com.minibank.core.repository.BankParamsRepository;
 import com.minibank.core.repository.DBException;
-import com.minibank.core.repository.LoanRequestRepository;
-import com.minibank.core.services.common.DateTimeConverter;
-import com.minibank.core.services.helpers.CreditExpert;
+import com.minibank.core.services.common.DateTimeUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.sql.Time;
 
 /**
  * Created by Ann on 12/09/14.
@@ -58,7 +57,7 @@ public class CreditExpertImpl implements CreditExpert
         List<LoanRequest> loanRequests = requestIP.getLoanRequests();
 
         Date now = new Date();
-        java.sql.Date sqlNow = DateTimeConverter.getSqlDate(now);
+        java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);
 
         int requestNum = 0;
 
@@ -75,7 +74,32 @@ public class CreditExpertImpl implements CreditExpert
     private boolean checkTimeConstraint(LoanRequest loanRequest) throws DBException
     {
         initBankParams();
-        return false;
+        Time riskTimeStart = bankParams.getRiskTimeStart();
+        Time riskTimeEnd = bankParams.getRiskTimeEnd();
+
+        Time submissionTime = loanRequest.getSubmissionTime();
+
+        if (riskTimeStart.compareTo(riskTimeEnd)==1)
+            //check two time intervals: [riskTimeStart, 23:59:59]
+            //and [00:00:00, riskTimeEnd]
+            if ( isBetween(riskTimeStart, DateTimeUtility.MAX_TIME, submissionTime) ||
+                 isBetween(DateTimeUtility.MIN_TIME, riskTimeEnd, submissionTime)
+                )
+                return false;
+            else
+                return true;
+        else
+            //check one time interval: [riskTimeStart, riskTimeEnd]
+            if (isBetween(riskTimeStart, riskTimeEnd, submissionTime))
+                return false;
+            else
+                return  true;
+
+    }
+
+    private boolean isBetween(Time start, Time end, Time timeToCheck)
+    {
+        return  false;
     }
 
     private boolean checkAmountConstraint(LoanRequest loanRequest) throws DBException

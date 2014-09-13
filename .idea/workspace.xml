@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="516b530b-83bd-4fd4-b0bf-21a5703189b8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/CreditCalculatorImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/CreditCalculatorImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/CreditExpertImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/CreditExpertImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/factories/LoanRequestFactoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/factories/LoanRequestFactoryImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/LoggerImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/LoggerImpl.java" />
@@ -1258,7 +1257,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="RequestIPRepositoryImpl, RequestIPRepositoryTest, RequestIPFixture&#10;" />
     <MESSAGE value="JDBC Tool to clean DB&#10;" />
     <MESSAGE value="RequestIP: unique constraint on ip&#10;" />
     <MESSAGE value="LoanRequestRepository, LoanRequestRepositoryImpl, LoanRequestFixture" />
@@ -1283,7 +1281,8 @@
     <MESSAGE value="LoanEventHandler.createLoan" />
     <MESSAGE value="DateTimeConverter, CreditExpertImpl" />
     <MESSAGE value="DateTimeConverter renamed to DateTimeUtility&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="DateTimeConverter renamed to DateTimeUtility&#10;" />
+    <MESSAGE value="CreditCalculatorImpl: refactoring&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="CreditCalculatorImpl: refactoring&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
