@@ -2,6 +2,7 @@ package com.minibank.core.services;
 
 import com.minibank.core.domain.*;
 import com.minibank.core.events.loans.*;
+import com.minibank.core.services.common.Message;
 import com.minibank.core.services.factories.LoanFactory;
 import com.minibank.core.services.factories.LoanRequestFactory;
 import com.minibank.core.services.helpers.CreditExpert;
@@ -29,11 +30,11 @@ public class LoanEventHandler implements LoanService
     {
         //Precondition: customer already logged in and its record exists in database
 
+        LoanCreatedEvent loanCreated;
         Boolean isLoanObtained = false;
 
         LoanRequestDetails requestDetails = event.getLoanRequestDetails();
         LoanRequest loanRequest = loanRequestFactory.getNewLoanRequest(requestDetails);
-
         try
         {
             //loanRequest created in DB
@@ -45,20 +46,27 @@ public class LoanEventHandler implements LoanService
             {
                 loanRequest.setStatus(LoanRequestStatus.APPROVED);
                 Loan loan = loanFactory.getNewLoan(loanRequest);
+                //loan created in DB
                 logger.log(loan);
+                loanRequest.setLoan(loan);
+                isLoanObtained = true;
             }
+            //loanRequest is update with STATUS and LOAN_ID
             logger.update(loanRequest);
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
-        //requestDetails = loanRequest.toLoanRequestDetails();
-        Integer id = loanRequest.getId();
-        //LoanCreatedEvent loanCreatedEvent = new LoanCreatedEvent(id,requestDetails);
+        if (isLoanObtained)
+        {
+            loanCreated = new LoanCreatedEvent(true,null);
+        }
+        else
+            loanCreated = new LoanCreatedEvent(false, Message.LOAN_ERROR_MESSAGE);
 
-        //return  loanCreatedEvent;
-        return  null;
+        return  loanCreated;
+
     }
 
     @Override
