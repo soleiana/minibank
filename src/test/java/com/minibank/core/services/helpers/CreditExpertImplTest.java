@@ -10,19 +10,17 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import static junit.framework.TestCase.assertTrue;
-import static junit.framework.TestCase.assertNotNull;
-
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import static junit.framework.TestCase.assertTrue;
 
 /**
  * Created by Ann on 13/09/14.
  */
-public class ConstraintCheckerTest extends SpringContextTest
+public class CreditExpertImplTest extends SpringContextTest
 {
     @Autowired
     private DBCleaner dbCleaner;
@@ -34,9 +32,8 @@ public class ConstraintCheckerTest extends SpringContextTest
     private RequestIPRepository requestIPRepository;
     @Autowired
     private BankParamsRepository bankParamsRepository;
-
     @Autowired
-    private ConstraintChecker checker;
+    private CreditExpert expert;
 
     private BankParams bankParams;
     private LoanRequest loanRequest;
@@ -54,14 +51,13 @@ public class ConstraintCheckerTest extends SpringContextTest
         requestIP = RequestIPFixture.standardRequestIP();
         requestIPRepository.create(requestIP);
 
-        createLoanRequest(LoanRequestFixture.SUBMISSION_DATE);
+        createLoanRequest();
     }
 
-    private void createLoanRequest(java.sql.Date submissionDate) throws DBException
+    private void createLoanRequest() throws DBException
     {
         customer = CustomerFixture.standardCustomer();
         loanRequest = LoanRequestFixture.standardLoanRequest();
-        loanRequest.setSubmissionDate(submissionDate);
         customerRepository.create(customer);
         loanRequest.setCustomer(customer);
         loanRequest.setRequestIP(requestIP);
@@ -72,57 +68,32 @@ public class ConstraintCheckerTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testCheckMaxRequestsPerIP() throws DBException
+    public void testHasRisks_1() throws DBException
     {
-        bankParams.setMaxLoanAttempts(new Byte("3"));
-        bankParamsRepository.update(bankParams);
+        assertTrue(expert.hasRisks(loanRequest));
 
+        BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
+        Time riskTimeStart = bankParams.getRiskTimeStart();
+        Time submissionTime = DateTimeUtility.increaseTime(riskTimeStart,1);
+
+        loanRequest.setAmount(maxLoanAmount);
+        loanRequest.setSubmissionTime(submissionTime);
+
+        assertTrue(!expert.hasRisks(loanRequest));
+    }
+    @Test
+    @Transactional
+    public void testHasRisks_2() throws DBException
+    {
         Date now = new Date();
         java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);
 
-        assertNotNull(sqlNow);
-
-        createLoanRequest(sqlNow);
-        assertTrue(checker.checkMaxRequestsPerIP(loanRequest));
-        createLoanRequest(sqlNow);
-        assertTrue(checker.checkMaxRequestsPerIP(loanRequest));
-        createLoanRequest(sqlNow);
-        assertTrue(!checker.checkMaxRequestsPerIP(loanRequest));
-
-    }
-
-    @Test
-    @Transactional
-    public void testCheckTimeConstraint() throws DBException
-    {
-        Time riskTimeStart = bankParams.getRiskTimeStart();
-        Time riskTimeEnd = bankParams.getRiskTimeEnd();
-
-        Time submissionTime = DateTimeUtility.increaseTime(riskTimeStart,1);
-
-        loanRequest.setSubmissionTime(submissionTime);
-        assertTrue(!checker.checkTimeConstraint(loanRequest));
-
-        submissionTime = DateTimeUtility.increaseTime(riskTimeEnd,1);
-
-        loanRequest.setSubmissionTime(submissionTime);
-        assertTrue(checker.checkTimeConstraint(loanRequest));
-
-    }
-
-    @Test
-    @Transactional
-    public void testCheckAmountConstraint() throws DBException
-    {
-        BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
-        loanRequest.setAmount(maxLoanAmount);
-
-        assertTrue(!checker.checkAmountConstraint(loanRequest));
-
-        BigDecimal loanAmount = bankParams.getMaxLoanAmount().subtract(new BigDecimal(1.00));
-        loanRequest.setAmount(loanAmount);
-
-        assertTrue(checker.checkAmountConstraint(loanRequest));
+        for(int i = 0; i < bankParams.getMaxLoanAttempts(); i++)
+        {
+            createLoanRequest();
+            loanRequest.setSubmissionDate(sqlNow);
+        }
+        assertTrue(!expert.hasRisks(loanRequest));
 
     }
 }

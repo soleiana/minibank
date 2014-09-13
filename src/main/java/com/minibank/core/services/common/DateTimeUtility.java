@@ -2,6 +2,7 @@ package com.minibank.core.services.common;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -27,6 +28,16 @@ public class DateTimeUtility
 
         SimpleDateFormat ft = new SimpleDateFormat(TIME_FORMAT);
         String output = ft.format(utilDate);
+        return Time.valueOf(output);
+    }
+
+    public static Time increaseTime(Time fromTime, Integer hours)
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat(TIME_FORMAT);
+        Calendar c = Calendar.getInstance();
+        c.setTime(fromTime);
+        c.add(Calendar.HOUR_OF_DAY, hours);
+        String output = sdf.format(c.getTime());
         return Time.valueOf(output);
     }
 }
