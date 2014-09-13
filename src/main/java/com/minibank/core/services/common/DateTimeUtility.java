@@ -40,4 +40,14 @@ public class DateTimeUtility
         String output = sdf.format(c.getTime());
         return Time.valueOf(output);
     }
+
+    public static java.sql.Date increaseDate(Date fromDate, Integer days)
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+        Calendar c = Calendar.getInstance();
+        c.setTime(fromDate);
+        c.add(Calendar.DATE, days);
+        String output = sdf.format(c.getTime());
+        return  java.sql.Date.valueOf(output);
+    }
 }

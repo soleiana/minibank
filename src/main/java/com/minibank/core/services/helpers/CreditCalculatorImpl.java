@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -30,13 +31,8 @@ public class CreditCalculatorImpl implements CreditCalculator
         Date startDate = loanRequest.getSubmissionDate();
         Integer term = loanRequest.getTerm();
 
-        SimpleDateFormat sdf = new SimpleDateFormat(DateTimeUtility.DATE_FORMAT);
-        Calendar c = Calendar.getInstance();
-        c.setTime(startDate);
-        c.add(Calendar.DATE, term);
-        String output = sdf.format(c.getTime());
-        Date endDate = Date.valueOf(output);
-        return  endDate;
+        Date endDate = DateTimeUtility.increaseDate(startDate,term);
+        return endDate;
     }
 
     @Override
@@ -46,9 +42,11 @@ public class CreditCalculatorImpl implements CreditCalculator
         BigDecimal baseInterestRate = bankParams.getBaseInterestRate();
         BigDecimal amount = loanRequest.getAmount();
         BigDecimal term = new BigDecimal(loanRequest.getTerm());
+        BigDecimal factor = amount.multiply(baseInterestRate)
+                                   .multiply(term);
 
-        BigDecimal interest = amount.multiply(baseInterestRate).multiply(term).divide(Number.DENOMINATOR);
-
+        BigDecimal interest = factor.multiply(Number.FACTOR);
+        interest = interest.setScale(2, RoundingMode.HALF_EVEN);
         return interest;
     }
 }

@@ -7,5 +7,5 @@ import java.math.BigDecimal;
  */
 public class Number
 {
-    public static final BigDecimal DENOMINATOR = new BigDecimal("36000.00") ;
+    public static final BigDecimal FACTOR = new BigDecimal("0.0000277777") ;
 }
