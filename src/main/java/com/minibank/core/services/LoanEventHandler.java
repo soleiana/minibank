@@ -2,9 +2,13 @@ package com.minibank.core.services;
 
 import com.minibank.core.domain.*;
 import com.minibank.core.events.loans.*;
+import com.minibank.core.events.loans.domain.AllLoansDetails;
 import com.minibank.core.events.loans.domain.LoanExtensionDetails;
 import com.minibank.core.events.loans.domain.LoanRequestDetails;
+import com.minibank.core.events.loans.domain.RequestAllLoansDetails;
+import com.minibank.core.events.loans.factories.AllLoansDetailsFactory;
 import com.minibank.core.services.common.Message;
+import com.minibank.core.services.factories.AllLoansFactory;
 import com.minibank.core.services.factories.LoanExtensionFactory;
 import com.minibank.core.services.factories.LoanFactory;
 import com.minibank.core.services.factories.LoanRequestFactory;
@@ -29,6 +33,10 @@ public class LoanEventHandler implements LoanService
     private LoanFactory loanFactory;
     @Autowired
     private LoanExtensionFactory loanExtensionFactory;
+    @Autowired
+    private AllLoansFactory allLoansFactory;
+    @Autowired
+    private AllLoansDetailsFactory allLoansDetailsFactory;
 
     @Override
     public LoanCreatedEvent createLoan(CreateLoanEvent event)
@@ -103,5 +111,20 @@ public class LoanEventHandler implements LoanService
 
     @Override
     public AllLoansEvent requestAllLoans(RequestAllLoansEvent event)
-    {return  null;}
+    {
+        AllLoans allLoans = null;
+
+        RequestAllLoansDetails requestAllLoansDetails = event.getRequestAllLoansDetails();
+        try
+        {
+            allLoans = allLoansFactory.getNewAllLoans(requestAllLoansDetails);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        AllLoansDetails allLoansDetails = allLoansDetailsFactory.getNewAllLoansDetails(allLoans);
+        return  new AllLoansEvent(allLoansDetails);
+    }
+
 }
