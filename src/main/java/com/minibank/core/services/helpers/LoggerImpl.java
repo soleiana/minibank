@@ -32,6 +32,12 @@ public class LoggerImpl implements Logger
         loanRequestRepository.update(loanRequest);
     }
 
+    @Override
+    public void update(Loan extendedLoan) throws DBException
+    {
+        loanRepository.update(extendedLoan);
+    }
+
 
     private void log(RequestIP requestIP) throws DBException
     {

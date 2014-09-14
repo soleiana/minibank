@@ -2,6 +2,7 @@ package com.minibank.core.services.factories;
 
 import com.minibank.core.domain.BankParams;
 import com.minibank.core.domain.Loan;
+import com.minibank.core.domain.LoanExtension;
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.repository.BankParamsRepository;
 import com.minibank.core.repository.DBException;
@@ -39,6 +40,12 @@ public class LoanFactoryImpl implements LoanFactory
         BankParams bankParams = bankParamsRepository.getLast();
         loan.setCurrInterestRate(bankParams.getBaseInterestRate());
         return loan;
+    }
+
+    @Override
+    public Loan getExtendedLoan(LoanExtension loanExtension) throws DBException
+    {
+        return  null;
     }
 
 }

@@ -5,5 +5,25 @@ import com.minibank.core.events.CreateEvent;
 /**
  * Created by Ann on 06/09/14.
  */
-public class CreateLoanExtensionEvent extends CreateEvent {
+public class CreateLoanExtensionEvent extends CreateEvent
+{
+    private LoanExtensionDetails loanExtensionDetails;
+
+    public CreateLoanExtensionEvent()
+    {}
+
+    public CreateLoanExtensionEvent(LoanExtensionDetails loanExtensionDetails)
+    {
+        this.loanExtensionDetails = loanExtensionDetails;
+    }
+
+    public LoanExtensionDetails getLoanExtensionDetails()
+    {
+        return loanExtensionDetails;
+    }
+
+    public void setLoanExtensionDetails(LoanExtensionDetails loanExtensionDetails)
+    {
+        this.loanExtensionDetails = loanExtensionDetails;
+    }
 }
