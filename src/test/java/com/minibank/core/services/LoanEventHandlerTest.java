@@ -3,13 +3,8 @@ package com.minibank.core.services;
 import com.minibank.SpringContextTest;
 import com.minibank.core.domain.*;
 import com.minibank.core.events.LoanRequestDetailsFixture;
-import com.minibank.core.events.loans.CreateLoanEvent;
-import com.minibank.core.events.loans.LoanCreatedEvent;
-import com.minibank.core.events.loans.LoanRequestDetails;
-import com.minibank.core.repository.BankParamsRepository;
-import com.minibank.core.repository.CustomerRepository;
-import com.minibank.core.repository.DBException;
-import com.minibank.core.repository.RequestIPRepository;
+import com.minibank.core.events.loans.*;
+import com.minibank.core.repository.*;
 import com.minibank.core.repository.tools.DBCleaner;
 import com.minibank.core.services.common.DateTimeUtility;
 import com.minibank.core.services.common.Message;
@@ -36,6 +31,10 @@ public class LoanEventHandlerTest extends SpringContextTest
     @Autowired
     private RequestIPRepository requestIPRepository;
     @Autowired
+    private LoanRequestRepository loanRequestRepository;
+    @Autowired
+    private LoanRepository loanRepository;
+    @Autowired
     private BankParamsRepository bankParamsRepository;
     @Autowired
     private LoanService loanService;
@@ -43,7 +42,8 @@ public class LoanEventHandlerTest extends SpringContextTest
     private BankParams bankParams;
     private Customer customer;
     private RequestIP requestIP;
-    private CreateLoanEvent createLoanEvent;
+    private LoanRequest loanRequest;
+    private Loan loan;
 
 
     @Before
@@ -54,42 +54,67 @@ public class LoanEventHandlerTest extends SpringContextTest
         bankParams = BankParamsFixture.standardBankParams();
         bankParamsRepository.create(bankParams);
 
-    }
-
-    private CreateLoanEvent createCreateLoanEvent()throws DBException
-    {
         //We assume that customer already exists in DB
         customer = CustomerFixture.standardCustomer();
         customerRepository.create(customer);
 
+    }
+
+    private CreateLoanEvent createCreateLoanEvent()throws DBException
+    {
         LoanRequestDetails loanRequestDetails =
                   LoanRequestDetailsFixture.standardLoanRequestDetails();
         loanRequestDetails.setCustomerId(customer.getId());
 
-        CreateLoanEvent createLoanEvent = new CreateLoanEvent();
-        createLoanEvent.setLoanRequestDetails(loanRequestDetails);
-        return createLoanEvent;
+        return new CreateLoanEvent(loanRequestDetails);
+    }
+    private CreateLoanExtensionEvent createCreateLoanExtensionEvent()throws DBException
+    {
+        //Precondition: customer already logged in and its record exists in database
+        //Precondition: loan, subject to extension, exists in database
 
+        loanRequest = LoanRequestFixture.standardLoanRequest();
+        requestIP = RequestIPFixture.standardRequestIP();
+        loan = LoanFixture.standardLoan();
+
+        requestIPRepository.create(requestIP);
+        loanRequest.setCustomer(customer);
+        loanRequest.setRequestIP(requestIP);
+        loanRequestRepository.create(loanRequest);
+        loan.setCustomer(customer);
+        loan.setLoanRequest(loanRequest);
+        loanRepository.create(loan);
+
+        LoanExtensionDetails loanExtensionDetails = new LoanExtensionDetails();
+        loanExtensionDetails.setLoanId(loan.getId());
+
+        return new CreateLoanExtensionEvent(loanExtensionDetails);
     }
 
     @Test
     @Transactional
     public void testCreateLoan() throws Exception
     {
-        createLoanEvent = createCreateLoanEvent();
+        CreateLoanEvent createLoanEvent = createCreateLoanEvent();
         LoanCreatedEvent expectedLoanCreatedEvent = new LoanCreatedEvent(true,null);
         LoanCreatedEvent loanCreatedEvent = loanService.createLoan(createLoanEvent);
         assertEquals(expectedLoanCreatedEvent, loanCreatedEvent);
     }
 
- /*   @Test
+    @Test
     @Transactional
     public void testCreateLoanExtension() throws Exception
     {
+       CreateLoanExtensionEvent createLoanExtensionEvent = createCreateLoanExtensionEvent();
+       LoanExtensionCreatedEvent expectedEvent =
+                new LoanExtensionCreatedEvent(Message.LOAN_EXTENSION_MESSAGE);
 
+       LoanExtensionCreatedEvent loanExtensionCreatedEvent =
+               loanService.createLoanExtension(createLoanExtensionEvent);
+        assertEquals(expectedEvent, loanExtensionCreatedEvent);
     }
 
-    @Test
+   /* @Test
     @Transactional
     public void testRequestAllLoans() throws Exception
     {

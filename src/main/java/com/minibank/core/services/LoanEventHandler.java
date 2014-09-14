@@ -79,7 +79,7 @@ public class LoanEventHandler implements LoanService
     public LoanExtensionCreatedEvent createLoanExtension(CreateLoanExtensionEvent event)
     {
         //Precondition: customer already logged in and its record exists in database
-        //Precondition: loan, subject to extension, exists i database
+        //Precondition: loan, subject to extension, exists in database
 
         LoanExtensionCreatedEvent loanExtensionCreated;
 
