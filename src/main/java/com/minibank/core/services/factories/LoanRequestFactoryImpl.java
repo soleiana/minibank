@@ -5,7 +5,10 @@ import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.domain.LoanRequestStatus;
 import com.minibank.core.domain.RequestIP;
 import com.minibank.core.events.loans.LoanRequestDetails;
+import com.minibank.core.repository.CustomerRepository;
+import com.minibank.core.repository.DBException;
 import com.minibank.core.services.common.DateTimeUtility;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -18,14 +21,19 @@ import java.util.Date;
 public class LoanRequestFactoryImpl implements LoanRequestFactory
 {
 
+    @Autowired
+    CustomerRepository customerRepository;
 
     @Override
-    public LoanRequest getNewLoanRequest(LoanRequestDetails loanRequestDetails)
+    public LoanRequest getNewLoanRequest(LoanRequestDetails loanRequestDetails) throws DBException
     {
-        LoanRequest loanRequest = new LoanRequest();
+        //We assume that customer already exists in DB
+        Integer id = loanRequestDetails.getCustomerId();
+        Customer customer = customerRepository.getById(id);
 
+        LoanRequest loanRequest = new LoanRequest();
         RequestIP requestIP = new RequestIP(loanRequestDetails.getRequestIP());
-        Customer customer = new Customer(loanRequestDetails.getCustomerId());
+
         loanRequest.setRequestIP(requestIP);
         loanRequest.setCustomer(customer);
         loanRequest.setAmount(loanRequestDetails.getAmount());

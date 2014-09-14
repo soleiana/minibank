@@ -25,4 +25,26 @@ public class LoanCreatedEvent extends CreatedEvent
     {
         return errorMessage;
     }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        LoanCreatedEvent that = (LoanCreatedEvent) o;
+
+        if (errorMessage != null ? !errorMessage.equals(that.errorMessage) : that.errorMessage != null) return false;
+        if (loanObtained != null ? !loanObtained.equals(that.loanObtained) : that.loanObtained != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = loanObtained != null ? loanObtained.hashCode() : 0;
+        result = 31 * result + (errorMessage != null ? errorMessage.hashCode() : 0);
+        return result;
+    }
 }

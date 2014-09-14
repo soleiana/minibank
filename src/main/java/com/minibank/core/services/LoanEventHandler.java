@@ -9,6 +9,8 @@ import com.minibank.core.services.helpers.CreditExpert;
 import com.minibank.core.services.helpers.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by Ann on 07/09/14.
@@ -34,9 +36,10 @@ public class LoanEventHandler implements LoanService
         Boolean isLoanObtained = false;
 
         LoanRequestDetails requestDetails = event.getLoanRequestDetails();
-        LoanRequest loanRequest = loanRequestFactory.getNewLoanRequest(requestDetails);
+
         try
         {
+            LoanRequest loanRequest = loanRequestFactory.getNewLoanRequest(requestDetails);
             //loanRequest created in DB
             logger.log(loanRequest);
 

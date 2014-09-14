@@ -67,7 +67,7 @@ public class ConstraintChecker
         Time submissionTime = loanRequest.getSubmissionTime();
 
         if (riskTimeStart.compareTo(riskTimeEnd)==1)
-            //check two time intervals: [riskTimeStart, 23:59:59]
+            //check two time intervals: [riskTimeStart, 24:00:00]
             //and [00:00:00, riskTimeEnd]
             if ( isBetween(riskTimeStart, DateTimeUtility.MAX_TIME, submissionTime) ||
                     isBetween(DateTimeUtility.MIN_TIME, riskTimeEnd, submissionTime)

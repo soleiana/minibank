@@ -9,6 +9,9 @@ public class CreateLoanEvent extends CreateEvent
 {
     private LoanRequestDetails loanRequestDetails;
 
+    public CreateLoanEvent()
+    {}
+
     public CreateLoanEvent(LoanRequestDetails loanRequestDetails)
     {
         this.loanRequestDetails = loanRequestDetails;
@@ -18,5 +21,10 @@ public class CreateLoanEvent extends CreateEvent
     {
         return loanRequestDetails;
 
+    }
+
+    public void setLoanRequestDetails(LoanRequestDetails loanRequestDetails)
+    {
+        this.loanRequestDetails = loanRequestDetails;
     }
 }

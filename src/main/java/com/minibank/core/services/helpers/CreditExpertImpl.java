@@ -20,7 +20,7 @@ public class CreditExpertImpl implements CreditExpert
     public boolean hasRisks(LoanRequest loanRequest) throws DBException
     {
         if (!checker.checkMaxRequestsPerIP(loanRequest)
-                ||
+               ||
                   (
                     !checker.checkAmountConstraint(loanRequest)
 
@@ -29,8 +29,8 @@ public class CreditExpertImpl implements CreditExpert
                      !checker.checkTimeConstraint(loanRequest)
                   )
            )
-           return false;
+           return true;
         else
-           return  true;
+           return false;
     }
 }

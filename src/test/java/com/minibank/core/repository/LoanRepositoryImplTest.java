@@ -10,6 +10,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
@@ -42,19 +44,25 @@ public class LoanRepositoryImplTest extends SpringContextTest
 
         customer = CustomerFixture.standardCustomer();
         requestIP = RequestIPFixture.standardRequestIP();
-        loanRequest = LoanRequestFixture.standardLoanRequest();
-        loan = LoanFixture.standardLoan();
-
         customerRepository.create(customer);
         requestIPRepository.create(requestIP);
+        createLoan();
+    }
+
+    private void createLoan() throws DBException
+    {
+        loan = LoanFixture.standardLoan();
+        loan.setCustomer(customer);
+
+        createLoanRequest();
+        loanRequestRepository.create(loanRequest);
+        loan.setLoanRequest(loanRequest);
+    }
+    private void createLoanRequest()
+    {
+        loanRequest = LoanRequestFixture.standardLoanRequest();
         loanRequest.setCustomer(customer);
         loanRequest.setRequestIP(requestIP);
-
-        loanRequestRepository.create(loanRequest);
-
-        loan.setCustomer(customer);
-        loan.setLoanRequest(loanRequest);
-
     }
 
     @Test
@@ -89,5 +97,17 @@ public class LoanRepositoryImplTest extends SpringContextTest
         Loan ln = loanRepository.getById(loan.getId());
         assertEquals(loan,ln);
 
+    }
+
+    @Test
+    @Transactional
+    public void testGetByCustomer() throws DBException
+    {
+        createLoan();
+        loanRepository.create(loan);
+        createLoan();
+        loanRepository.create(loan);
+        List<Loan> loans = loanRepository.getByCustomer(customer);
+        assertEquals(2, loans.size());
     }
 }

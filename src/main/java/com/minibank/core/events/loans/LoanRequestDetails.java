@@ -38,4 +38,23 @@ public class LoanRequestDetails
         return amount;
     }
 
+    public void setCustomerId(Integer customerId)
+    {
+        this.customerId = customerId;
+    }
+
+    public void setRequestIP(String requestIP)
+    {
+        this.requestIP = requestIP;
+    }
+
+    public void setTerm(Integer term)
+    {
+        this.term = term;
+    }
+
+    public void setAmount(BigDecimal amount)
+    {
+        this.amount = amount;
+    }
 }

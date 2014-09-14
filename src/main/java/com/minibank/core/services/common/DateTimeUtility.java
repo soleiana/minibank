@@ -13,7 +13,7 @@ public class DateTimeUtility
     public static final String DATE_FORMAT = "yyyy-MM-dd";
     public static final String TIME_FORMAT = "HH:mm:ss";
     public static final Time MIN_TIME = Time.valueOf("00:00:00");
-    public static final Time MAX_TIME = Time.valueOf("23:59:59");
+    public static final Time MAX_TIME = Time.valueOf("24:00:00");
 
     public static java.sql.Date getSqlDate(Date utilDate)
     {

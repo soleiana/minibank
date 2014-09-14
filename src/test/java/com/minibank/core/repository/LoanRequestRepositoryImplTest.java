@@ -3,10 +3,13 @@ package com.minibank.core.repository;
 import com.minibank.SpringContextTest;
 import com.minibank.core.domain.*;
 import com.minibank.core.repository.tools.DBCleaner;
+import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
@@ -35,11 +38,15 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
     {
         dbCleaner.clear();
         requestIP = RequestIPFixture.standardRequestIP();
-        customer = CustomerFixture.standardCustomer();
-        loanRequest = LoanRequestFixture.standardLoanRequest();
-
         requestIPRepository.create(requestIP);
+        customer = CustomerFixture.standardCustomer();
         customerRepository.create(customer);
+        createLoanRequest();
+
+    }
+    private void createLoanRequest()
+    {
+        loanRequest = LoanRequestFixture.standardLoanRequest();
         loanRequest.setCustomer(customer);
         loanRequest.setRequestIP(requestIP);
     }
@@ -70,5 +77,17 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
         loanRequestRepository.create(loanRequest);
         Integer id = loanRequest.getId();
         assertEquals(loanRequest, loanRequestRepository.getById(id));
+    }
+
+    @Test
+    @Transactional
+    public void testGetByRequestIP() throws DBException
+    {
+        createLoanRequest();
+        loanRequestRepository.create(loanRequest);
+        createLoanRequest();
+        loanRequestRepository.create(loanRequest);
+        List<LoanRequest> loanRequests = loanRequestRepository.getByRequestIP(requestIP);
+        assertEquals(2, loanRequests.size());
     }
 }

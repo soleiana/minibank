@@ -12,9 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.sql.Time;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import static junit.framework.TestCase.assertTrue;
 
 /**
@@ -67,7 +65,7 @@ public class CreditExpertImplTest extends SpringContextTest
     @Transactional
     public void testHasRisks_1() throws DBException
     {
-        assertTrue(expert.hasRisks(loanRequest));
+        assertTrue(!expert.hasRisks(loanRequest));
 
         BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
         Time riskTimeStart = bankParams.getRiskTimeStart();
@@ -76,7 +74,7 @@ public class CreditExpertImplTest extends SpringContextTest
         loanRequest.setAmount(maxLoanAmount);
         loanRequest.setSubmissionTime(submissionTime);
 
-        assertTrue(!expert.hasRisks(loanRequest));
+        assertTrue(expert.hasRisks(loanRequest));
     }
     @Test
     @Transactional
@@ -90,7 +88,7 @@ public class CreditExpertImplTest extends SpringContextTest
             createLoanRequest();
             loanRequest.setSubmissionDate(sqlNow);
         }
-        assertTrue(!expert.hasRisks(loanRequest));
+        assertTrue(expert.hasRisks(loanRequest));
 
     }
 }

@@ -14,8 +14,6 @@ public class LoggerImpl implements Logger
     @Autowired
     private LoanRequestRepository loanRequestRepository;
     @Autowired
-    private CustomerRepository customerRepository;
-    @Autowired
     private RequestIPRepository requestIPRepository;
     @Autowired
     private LoanRepository loanRepository;
@@ -24,9 +22,6 @@ public class LoggerImpl implements Logger
     public void log(LoanRequest loanRequest) throws DBException
     {
         RequestIP requestIP = loanRequest.getRequestIP();
-        Customer customer = loanRequest.getCustomer();
-
-        customerRepository.getById(customer.getId());
         log(requestIP);
         loanRequestRepository.create(loanRequest);
     }
