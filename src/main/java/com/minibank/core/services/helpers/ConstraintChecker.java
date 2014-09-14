@@ -5,6 +5,7 @@ import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.domain.RequestIP;
 import com.minibank.core.repository.BankParamsRepository;
 import com.minibank.core.repository.DBException;
+import com.minibank.core.repository.LoanRequestRepository;
 import com.minibank.core.services.common.DateTimeUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,6 +24,9 @@ public class ConstraintChecker
     @Autowired
     private BankParamsRepository bankParamsRepository;
 
+    @Autowired
+    private LoanRequestRepository loanRequestRepository;
+
     private BankParams bankParams;
 
     private void initBankParams() throws DBException
@@ -37,8 +41,7 @@ public class ConstraintChecker
 
         RequestIP requestIP = loanRequest.getRequestIP();
 
-
-        List<LoanRequest> loanRequests = requestIP.getLoanRequests();
+        List<LoanRequest> loanRequests = loanRequestRepository.getByRequestIP(requestIP);
 
         Date now = new Date();
         java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);

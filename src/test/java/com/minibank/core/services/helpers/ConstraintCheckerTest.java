@@ -42,7 +42,6 @@ public class ConstraintCheckerTest extends SpringContextTest
     private LoanRequest loanRequest;
     private RequestIP requestIP;
     private Customer customer;
-    private List<LoanRequest> loanRequests = new ArrayList<>();
 
     @Before
     @Transactional
@@ -65,8 +64,6 @@ public class ConstraintCheckerTest extends SpringContextTest
         customerRepository.create(customer);
         loanRequest.setCustomer(customer);
         loanRequest.setRequestIP(requestIP);
-        loanRequests.add(loanRequest);
-        requestIP.setLoanRequests(loanRequests);
         loanRequestRepository.create(loanRequest);
     }
 

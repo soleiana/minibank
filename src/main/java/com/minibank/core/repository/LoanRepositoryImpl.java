@@ -1,5 +1,6 @@
 package com.minibank.core.repository;
 
+import com.minibank.core.domain.Customer;
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanRequest;
 import org.hibernate.Query;
@@ -31,5 +32,14 @@ public class LoanRepositoryImpl extends SessionProvider
     public Loan getById(Integer id) throws DBException
     {
         return (Loan) getCurrentSession().get(Loan.class, id);
+    }
+
+    @Override
+    public List<Loan> getByCustomer(Customer customer) throws DBException
+    {
+        Session session = getCurrentSession();
+        Query query = session.createQuery("from Loan where customer = :customer");
+        query.setParameter("customer", customer);
+        return query.list();
     }
 }

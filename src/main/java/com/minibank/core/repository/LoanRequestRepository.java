@@ -1,6 +1,7 @@
 package com.minibank.core.repository;
 
 import com.minibank.core.domain.LoanRequest;
+import com.minibank.core.domain.RequestIP;
 
 import java.util.List;
 
@@ -9,10 +10,12 @@ import java.util.List;
  */
 public interface LoanRequestRepository
 {
-    void create(LoanRequest loanRequest)  throws DBException;
+    void create(LoanRequest loanRequest) throws DBException;
 
     void update(LoanRequest loanRequest) throws DBException;
 
-    LoanRequest getById(Integer id) throws  DBException;
+    LoanRequest getById(Integer id) throws DBException;
+
+    List<LoanRequest> getByRequestIP(RequestIP requestIP) throws DBException;
 
 }

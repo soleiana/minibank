@@ -1,6 +1,7 @@
 package com.minibank.core.repository;
 
 import com.minibank.core.domain.LoanRequest;
+import com.minibank.core.domain.RequestIP;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
@@ -31,6 +32,15 @@ public class LoanRequestRepositoryImpl extends SessionProvider
     {
         Session session = getCurrentSession();
         return (LoanRequest) session.get(LoanRequest.class, id);
+    }
+
+    @Override
+    public  List<LoanRequest> getByRequestIP(RequestIP requestIP) throws DBException
+    {
+        Session session = getCurrentSession();
+        Query query = session.createQuery("from LoanRequest where requestIP = :requestIP");
+        query.setParameter("requestIP", requestIP);
+        return query.list();
     }
 
 }
