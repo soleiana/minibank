@@ -1,8 +1,10 @@
 package com.minibank.core.services.helpers;
 
 import com.minibank.core.domain.BankParams;
+import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.repository.BankParamsRepository;
+import com.minibank.core.repository.LoanRepository;
 import com.minibank.core.services.common.Number;
 import com.minibank.core.repository.DBException;
 import com.minibank.core.services.common.*;
@@ -32,6 +34,27 @@ public class CreditCalculatorImpl implements CreditCalculator
         Date endDate = DateTimeUtility.increaseDate(startDate,term);
         return endDate;
     }
+    @Override
+    public Date getLoanExtensionEndDate(Loan loan) throws DBException
+    {
+        Date startDate = loan.getEndDate();
+        short loanExtensionTerm = bankParamsRepository.getLast().getLoanExtensionTerm();
+        Date endDate = DateTimeUtility.increaseDate(startDate, (int)loanExtensionTerm);
+        return endDate;
+    }
+
+    private BigDecimal interestFormula(BigDecimal amount,
+                                       BigDecimal term,
+                                       BigDecimal interestRate)
+    {
+        BigDecimal factor = amount.multiply(interestRate)
+                .multiply(term);
+
+        BigDecimal interest = factor.multiply(Number.FACTOR);
+        interest = interest.setScale(2, RoundingMode.HALF_EVEN);
+        return interest;
+    }
+
 
     @Override
     public BigDecimal getInterest(LoanRequest loanRequest) throws DBException
@@ -40,11 +63,29 @@ public class CreditCalculatorImpl implements CreditCalculator
         BigDecimal baseInterestRate = bankParams.getBaseInterestRate();
         BigDecimal amount = loanRequest.getAmount();
         BigDecimal term = new BigDecimal(loanRequest.getTerm());
-        BigDecimal factor = amount.multiply(baseInterestRate)
-                                   .multiply(term);
+        return interestFormula(amount,term,baseInterestRate);
+    }
 
-        BigDecimal interest = factor.multiply(Number.FACTOR);
-        interest = interest.setScale(2, RoundingMode.HALF_EVEN);
-        return interest;
+    @Override
+    public BigDecimal getInterest(Loan loan) throws DBException
+    {
+       BigDecimal amount = loan.getLoanRequest().getAmount();
+       BigDecimal currInterestRate = getNewInterestRate(loan);
+
+       short loanExtensionTerm = bankParamsRepository.getLast().getLoanExtensionTerm();
+       int term = loan.getLoanRequest().getTerm();
+       term += loanExtensionTerm;
+       return  interestFormula(amount, new BigDecimal(term),currInterestRate);
+    }
+
+    @Override
+    public BigDecimal getNewInterestRate(Loan loan) throws DBException
+    {
+        BankParams bankParams = bankParamsRepository.getLast();
+        BigDecimal interestRateFactor = bankParams.getInterestRateFactor();
+        BigDecimal currInterestRate = loan.getCurrInterestRate();
+        currInterestRate = currInterestRate.multiply(interestRateFactor);
+        currInterestRate = currInterestRate.setScale(2, RoundingMode.HALF_EVEN);
+        return currInterestRate;
     }
 }

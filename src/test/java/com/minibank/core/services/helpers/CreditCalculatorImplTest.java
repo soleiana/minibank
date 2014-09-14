@@ -1,10 +1,7 @@
 package com.minibank.core.services.helpers;
 
 import com.minibank.SpringContextTest;
-import com.minibank.core.domain.BankParams;
-import com.minibank.core.domain.BankParamsFixture;
-import com.minibank.core.domain.LoanRequest;
-import com.minibank.core.domain.LoanRequestFixture;
+import com.minibank.core.domain.*;
 import com.minibank.core.repository.BankParamsRepository;
 import com.minibank.core.repository.DBException;
 import com.minibank.core.repository.tools.DBCleaner;
@@ -35,6 +32,7 @@ public class CreditCalculatorImplTest extends SpringContextTest
 
     private BankParams bankParams;
     private LoanRequest loanRequest;
+    private Loan loan;
 
     @Before
     @Transactional
@@ -44,6 +42,8 @@ public class CreditCalculatorImplTest extends SpringContextTest
         bankParams = BankParamsFixture.standardBankParams();
         bankParamsRepository.create(bankParams);
         loanRequest = LoanRequestFixture.standardLoanRequest();
+        loan = LoanFixture.standardLoan();
+        loan.setLoanRequest(loanRequest);
     }
 
     @Test
@@ -59,7 +59,7 @@ public class CreditCalculatorImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetInterest() throws DBException
+    public void testGetInterest_1() throws DBException
     {
         BigDecimal amount = new BigDecimal("200.00");
         Integer term = 20;
@@ -71,8 +71,37 @@ public class CreditCalculatorImplTest extends SpringContextTest
         expectedInterest = expectedInterest.setScale(2, RoundingMode.HALF_EVEN);
         loanRequest.setAmount(amount);
         loanRequest.setTerm(term);
+
         BigDecimal interest = creditCalculator.getInterest(loanRequest);
+
         assertTrue(interest.compareTo(expectedInterest) == 0);
 
+    }
+
+    @Test
+    @Transactional
+    public void testGetInterest_2() throws DBException
+    {
+        BigDecimal amount = new BigDecimal("200.00");
+        Integer term = 20;
+        BigDecimal t = new BigDecimal("20");
+        BigDecimal interestRate = new BigDecimal("100.00");
+        loan.getLoanRequest().setAmount(amount);
+        loan.getLoanRequest().setTerm(term);
+        loan.setCurrInterestRate(interestRate);
+
+        BigDecimal interest = creditCalculator.getInterest(loan);
+
+        assertTrue(interest.compareTo(new BigDecimal("22.50")) == 0);
+    }
+
+    @Test
+    @Transactional
+    public void testGetLoanExtensionEndDate() throws DBException
+    {
+        Date loanEndDate = Date.valueOf("2014-09-01");
+        loan.setEndDate(loanEndDate);
+        Date loanExtensionEndDate = creditCalculator.getLoanExtensionEndDate(loan);
+        assertEquals(Date.valueOf("2014-09-08"),loanExtensionEndDate);
     }
 }
