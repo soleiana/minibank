@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="516b530b-83bd-4fd4-b0bf-21a5703189b8" name="Default" comment="">
+    <list default="true" id="516b530b-83bd-4fd4-b0bf-21a5703189b8" name="Default" comment="Repositories: getByXXX methods added&#10;">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/services/helpers/LoggerImplTest.java" />
       <change type="DELETED" beforePath="C:\Users\Ann\IdeaProjects\MiniBank\minibank.repo\src\test\java\com\minibank\core\services\BankParamsRepositoryImplTest.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/ConstraintChecker.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/services/helpers/ConstraintChecker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/services/helpers/ConstraintCheckerTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/services/helpers/ConstraintCheckerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/minibank/core/services/helpers/CreditExpertImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/minibank/core/services/helpers/CreditExpertImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanExtensionRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanExtensionRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanExtensionRepositoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanExtensionRepositoryImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRepositoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRepositoryImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepositoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/minibank/core/repository/LoanRequestRepositoryImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MiniBankProject.iws" />
@@ -1244,11 +1235,11 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.095744684" sideWeight="0.7453125" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16953126" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16953126" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37109375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10460993" sideWeight="0.884375" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10460993" sideWeight="0.884375" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1295,7 +1286,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="LoanExtensionFixture, LoanExtensionRepositoryImplTest" />
     <MESSAGE value="Hateoas, boot spring dependencies added" />
     <MESSAGE value="DatasourceConfig, CoreConfig" />
     <MESSAGE value="CoreConfig renamed to RestConfig&#10;" />
@@ -1320,7 +1310,8 @@
     <MESSAGE value="ConstraintCheckerTest, CreditExpertImplTest&#10;" />
     <MESSAGE value="CreditExpertImpl, CreditExpertImplTest&#10;" />
     <MESSAGE value="minor changes&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor changes&#10;" />
+    <MESSAGE value="Repositories: getByXXX methods added&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Repositories: getByXXX methods added&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
