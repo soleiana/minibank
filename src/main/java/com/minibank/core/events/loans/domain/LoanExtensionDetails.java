@@ -1,4 +1,4 @@
-package com.minibank.core.events.loans;
+package com.minibank.core.events.loans.domain;
 
 /**
  * Created by Ann on 07/09/14.

@@ -4,7 +4,7 @@ import com.minibank.core.domain.Customer;
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.domain.LoanRequestStatus;
 import com.minibank.core.domain.RequestIP;
-import com.minibank.core.events.loans.LoanRequestDetails;
+import com.minibank.core.events.loans.domain.LoanRequestDetails;
 import com.minibank.core.repository.CustomerRepository;
 import com.minibank.core.repository.DBException;
 import com.minibank.core.services.common.DateTimeUtility;

@@ -2,6 +2,8 @@ package com.minibank.core.services;
 
 import com.minibank.core.domain.*;
 import com.minibank.core.events.loans.*;
+import com.minibank.core.events.loans.domain.LoanExtensionDetails;
+import com.minibank.core.events.loans.domain.LoanRequestDetails;
 import com.minibank.core.services.common.Message;
 import com.minibank.core.services.factories.LoanExtensionFactory;
 import com.minibank.core.services.factories.LoanFactory;
@@ -10,8 +12,6 @@ import com.minibank.core.services.helpers.CreditExpert;
 import com.minibank.core.services.helpers.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by Ann on 07/09/14.

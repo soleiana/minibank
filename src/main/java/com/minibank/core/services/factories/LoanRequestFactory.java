@@ -1,7 +1,7 @@
 package com.minibank.core.services.factories;
 
 import com.minibank.core.domain.LoanRequest;
-import com.minibank.core.events.loans.LoanRequestDetails;
+import com.minibank.core.events.loans.domain.LoanRequestDetails;
 import com.minibank.core.repository.DBException;
 
 /**

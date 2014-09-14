@@ -4,17 +4,15 @@ import com.minibank.SpringContextTest;
 import com.minibank.core.domain.*;
 import com.minibank.core.events.LoanRequestDetailsFixture;
 import com.minibank.core.events.loans.*;
+import com.minibank.core.events.loans.domain.LoanExtensionDetails;
+import com.minibank.core.events.loans.domain.LoanRequestDetails;
 import com.minibank.core.repository.*;
 import com.minibank.core.repository.tools.DBCleaner;
-import com.minibank.core.services.common.DateTimeUtility;
 import com.minibank.core.services.common.Message;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.sql.Time;
 
 import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.assertEquals;
@@ -44,7 +42,6 @@ public class LoanEventHandlerTest extends SpringContextTest
     private RequestIP requestIP;
     private LoanRequest loanRequest;
     private Loan loan;
-
 
     @Before
     //@Transactional

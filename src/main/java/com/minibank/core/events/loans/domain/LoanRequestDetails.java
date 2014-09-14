@@ -1,4 +1,4 @@
-package com.minibank.core.events.loans;
+package com.minibank.core.events.loans.domain;
 
 import java.math.BigDecimal;
 import java.sql.Date;
