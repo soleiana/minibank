@@ -53,6 +53,7 @@ public class CreditCalculatorImplTest extends SpringContextTest
         Date submissionDate = Date.valueOf("2014-09-01");
         loanRequest.setSubmissionDate(submissionDate);
         loanRequest.setTerm(20);
+
         Date endDate = creditCalculator.getLoanEndDate(loanRequest);
         assertEquals(Date.valueOf("2014-09-21"),endDate);
     }
@@ -73,9 +74,7 @@ public class CreditCalculatorImplTest extends SpringContextTest
         loanRequest.setTerm(term);
 
         BigDecimal interest = creditCalculator.getInterest(loanRequest);
-
         assertTrue(interest.compareTo(expectedInterest) == 0);
-
     }
 
     @Test
@@ -91,7 +90,6 @@ public class CreditCalculatorImplTest extends SpringContextTest
         loan.setCurrInterestRate(interestRate);
 
         BigDecimal interest = creditCalculator.getInterest(loan);
-
         assertTrue(interest.compareTo(new BigDecimal("22.50")) == 0);
     }
 
@@ -101,6 +99,7 @@ public class CreditCalculatorImplTest extends SpringContextTest
     {
         Date loanEndDate = Date.valueOf("2014-09-01");
         loan.setEndDate(loanEndDate);
+
         Date loanExtensionEndDate = creditCalculator.getLoanExtensionEndDate(loan);
         assertEquals(Date.valueOf("2014-09-08"),loanExtensionEndDate);
     }
