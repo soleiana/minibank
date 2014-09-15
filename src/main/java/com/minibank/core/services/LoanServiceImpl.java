@@ -60,10 +60,9 @@ public class LoanServiceImpl implements LoanService
                 Loan loan = loanFactory.getNewLoan(loanRequest);
                 //loan created in DB
                 logger.log(loan);
-                loanRequest.setLoan(loan);
                 isLoanObtained = true;
             }
-            //loanRequest is update with STATUS and LOAN_ID
+            //loanRequest is update with STATUS
             logger.update(loanRequest);
         }
         catch (Exception e)

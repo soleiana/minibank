@@ -62,7 +62,7 @@ public class LoanServiceImplTest_2 extends SpringContextTest
     @Transactional
     public void setUp() throws Exception
     {
-    /*    dbCleaner.clear();
+        dbCleaner.clear();
 
         bankParams = BankParamsFixture.standardBankParams();
         bankParamsRepository.create(bankParams);
@@ -71,14 +71,14 @@ public class LoanServiceImplTest_2 extends SpringContextTest
         customer = CustomerFixture.standardCustomer();
         customerRepository.create(customer);
         requestIP = RequestIPFixture.standardRequestIP();
-        requestIPRepository.create(requestIP);*/
+        requestIPRepository.create(requestIP);
     }
 
     @Test
     @Transactional
     public void testRequestAllLoans_1() throws Exception
     {
-    /*    //Precondition: customer already logged in and its record exists in database
+        //Precondition: customer already logged in and its record exists in database
         //Precondition: customer has no loans
         RequestAllLoansEvent requestAllLoansEvent = createRequestAllLoansEvent_1();
         AllLoansDetails expectedAllLoansDetails = new AllLoansDetails();
@@ -93,6 +93,6 @@ public class LoanServiceImplTest_2 extends SpringContextTest
         assertEquals(expectedAllLoansDetails.getName(), allLoansDetails.getName());
         assertEquals(expectedAllLoansDetails.getSurname(), allLoansDetails.getSurname());
         assertEquals(0, allLoansDetails.getLoans().size());
-*/
+
     }
 }

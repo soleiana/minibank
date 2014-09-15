@@ -4,7 +4,6 @@ import com.minibank.SpringContextTest;
 import com.minibank.core.domain.*;
 import com.minibank.core.events.domain.LoanRequestDetailsFixture;
 import com.minibank.core.events.loans.*;
-import com.minibank.core.events.loans.domain.AllLoansDetails;
 import com.minibank.core.events.loans.domain.LoanRequestDetails;
 import com.minibank.core.repository.*;
 import com.minibank.core.repository.tools.DBCleaner;
