@@ -20,7 +20,7 @@ import static junit.framework.TestCase.assertEquals;
 /**
  * Created by Ann on 14/09/14.
  */
-public class LoanEventHandlerTest extends SpringContextTest
+public class LoanServiceImplTest extends SpringContextTest
 {
     @Autowired
     private DBCleaner dbCleaner;
@@ -93,7 +93,7 @@ public class LoanEventHandlerTest extends SpringContextTest
     public void testCreateLoan() throws Exception
     {
         CreateLoanEvent createLoanEvent = createCreateLoanEvent();
-        LoanCreatedEvent expectedLoanCreatedEvent = new LoanCreatedEvent(true,null);
+        LoanCreatedEvent expectedLoanCreatedEvent = new LoanCreatedEvent(true,Message.LOAN_OBTAINED_MESSAGE);
         LoanCreatedEvent loanCreatedEvent = loanService.createLoan(createLoanEvent);
         assertEquals(expectedLoanCreatedEvent, loanCreatedEvent);
     }

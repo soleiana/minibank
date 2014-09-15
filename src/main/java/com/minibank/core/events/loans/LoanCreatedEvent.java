@@ -8,12 +8,12 @@ import com.minibank.core.events.CreatedEvent;
 public class LoanCreatedEvent extends CreatedEvent
 {
     private Boolean loanObtained;
-    private String errorMessage;
+    private String message;
 
     public LoanCreatedEvent(Boolean loanObtained, String errorMessage)
     {
         this.loanObtained = loanObtained;
-        this.errorMessage = errorMessage;
+        this.message = errorMessage;
     }
 
     public Boolean isLoanObtained()
@@ -21,9 +21,9 @@ public class LoanCreatedEvent extends CreatedEvent
         return loanObtained;
     }
 
-    public String getErrorMessage()
+    public String getMessage()
     {
-        return errorMessage;
+        return message;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class LoanCreatedEvent extends CreatedEvent
 
         LoanCreatedEvent that = (LoanCreatedEvent) o;
 
-        if (errorMessage != null ? !errorMessage.equals(that.errorMessage) : that.errorMessage != null) return false;
+        if (message != null ? !message.equals(that.message) : that.message != null) return false;
         if (loanObtained != null ? !loanObtained.equals(that.loanObtained) : that.loanObtained != null) return false;
 
         return true;
@@ -44,7 +44,7 @@ public class LoanCreatedEvent extends CreatedEvent
     public int hashCode()
     {
         int result = loanObtained != null ? loanObtained.hashCode() : 0;
-        result = 31 * result + (errorMessage != null ? errorMessage.hashCode() : 0);
+        result = 31 * result + (message != null ? message.hashCode() : 0);
         return result;
     }
 }

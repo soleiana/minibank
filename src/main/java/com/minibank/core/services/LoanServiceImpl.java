@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
  * Created by Ann on 07/09/14.
  */
 @Component
-public class LoanEventHandler implements LoanService
+public class LoanServiceImpl implements LoanService
 {
     @Autowired
     private CreditExpert creditExpert;
@@ -74,7 +74,7 @@ public class LoanEventHandler implements LoanService
         }
         if (isLoanObtained)
         {
-            loanCreated = new LoanCreatedEvent(true,null);
+            loanCreated = new LoanCreatedEvent(true,Message.LOAN_OBTAINED_MESSAGE);
         }
         else
             loanCreated = new LoanCreatedEvent(false, Message.LOAN_ERROR_MESSAGE);
