@@ -2,6 +2,7 @@
   <dictionary name="Ann">
     <words>
       <w>datasource</w>
+      <w>dbunit</w>
       <w>hateoas</w>
       <w>jdbc</w>
       <w>minibank</w>

@@ -29,4 +29,13 @@ public class LoanExtensionRepositoryImpl extends  SessionProvider
         query.setParameter("loan", loan);
         return query.list();
     }
+
+    @Override
+    public LoanExtension getLast() throws DBException
+    {
+        Session session = getCurrentSession();
+        Query query = session.createQuery("from LoanExtension order by id DESC");
+        query.setMaxResults(1);
+        return  (LoanExtension) query.uniqueResult();
+    }
 }

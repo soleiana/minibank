@@ -18,4 +18,5 @@ public interface LoanRequestRepository
 
     List<LoanRequest> getByRequestIP(RequestIP requestIP) throws DBException;
 
+    LoanRequest getLast() throws DBException;
 }

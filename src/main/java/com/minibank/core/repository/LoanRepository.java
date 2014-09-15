@@ -18,4 +18,5 @@ public interface LoanRepository
 
     List<Loan> getByCustomer(Customer customer) throws DBException;
 
+    Loan getLast() throws DBException;
 }

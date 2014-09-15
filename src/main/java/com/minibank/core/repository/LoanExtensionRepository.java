@@ -13,4 +13,6 @@ public interface LoanExtensionRepository
     void create(LoanExtension loanExtension) throws DBException;
 
     List<LoanExtension> getByLoan(Loan loan) throws DBException;
+
+    LoanExtension getLast() throws  DBException;
 }

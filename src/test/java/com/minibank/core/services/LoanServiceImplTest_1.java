@@ -4,6 +4,7 @@ import com.minibank.SpringContextTest;
 import com.minibank.core.domain.*;
 import com.minibank.core.events.domain.LoanRequestDetailsFixture;
 import com.minibank.core.events.loans.*;
+import com.minibank.core.events.loans.domain.AllLoansDetails;
 import com.minibank.core.events.loans.domain.LoanRequestDetails;
 import com.minibank.core.repository.*;
 import com.minibank.core.repository.tools.DBCleaner;
@@ -13,13 +14,13 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import static junit.framework.TestCase.assertTrue;
-import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.*;
+import static junit.framework.TestCase.assertNotNull;
 
 /**
  * Created by Ann on 14/09/14.
  */
-public class LoanServiceImplTest extends SpringContextTest
+public class LoanServiceImplTest_1 extends SpringContextTest
 {
     @Autowired
     private DBCleaner dbCleaner;
@@ -34,6 +35,8 @@ public class LoanServiceImplTest extends SpringContextTest
     @Autowired
     private BankParamsRepository bankParamsRepository;
     @Autowired
+    private LoanExtensionRepository loanExtensionRepository;
+    @Autowired
     private LoanService loanService;
 
     private BankParams bankParams;
@@ -43,7 +46,7 @@ public class LoanServiceImplTest extends SpringContextTest
     private Loan loan;
 
     @Before
-    //@Transactional
+    @Transactional
     public void setUp() throws Exception
     {
         dbCleaner.clear();
@@ -53,6 +56,8 @@ public class LoanServiceImplTest extends SpringContextTest
         //We assume that customer already exists in DB
         customer = CustomerFixture.standardCustomer();
         customerRepository.create(customer);
+        //requestIP = RequestIPFixture.standardRequestIP();
+        //requestIPRepository.create(requestIP);
 
     }
 
@@ -64,6 +69,7 @@ public class LoanServiceImplTest extends SpringContextTest
 
         return new CreateLoanEvent(loanRequestDetails);
     }
+
     private CreateLoanExtensionEvent createCreateLoanExtensionEvent()throws DBException
     {
         //Precondition: customer already logged in and its record exists in database
@@ -83,14 +89,31 @@ public class LoanServiceImplTest extends SpringContextTest
         return new CreateLoanExtensionEvent(loan.getId());
     }
 
+
     @Test
     @Transactional
     public void testCreateLoan() throws Exception
     {
         CreateLoanEvent createLoanEvent = createCreateLoanEvent();
-        LoanCreatedEvent expectedLoanCreatedEvent = new LoanCreatedEvent(true,Message.LOAN_OBTAINED_MESSAGE);
+        LoanCreatedEvent expectedLoanCreatedEvent =
+                new LoanCreatedEvent(true,Message.LOAN_OBTAINED_MESSAGE);
+
+        LoanRequest loanRequest1 = loanRequestRepository.getLast();
+        Loan loan1 = loanRepository.getLast();
+        assertNull(loanRequest1);
+        assertNull(loan1);
+
         LoanCreatedEvent loanCreatedEvent = loanService.createLoan(createLoanEvent);
+
         assertEquals(expectedLoanCreatedEvent, loanCreatedEvent);
+
+        loanRequest1 = loanRequestRepository.getLast();
+        loan1 = loanRepository.getLast();
+
+        assertNotNull(loanRequest1);
+        assertNotNull(loan1);
+        assertEquals(customer.getId(), loan1.getCustomer().getId());
+        assertEquals(customer.getId(), loanRequest1.getCustomer().getId());
     }
 
     @Test
@@ -101,15 +124,16 @@ public class LoanServiceImplTest extends SpringContextTest
        LoanExtensionCreatedEvent expectedEvent =
                 new LoanExtensionCreatedEvent(Message.LOAN_EXTENSION_MESSAGE);
 
+        LoanExtension loanExtension = loanExtensionRepository.getLast();
+        assertNull(loanExtension);
+
        LoanExtensionCreatedEvent loanExtensionCreatedEvent =
                loanService.createLoanExtension(createLoanExtensionEvent);
         assertEquals(expectedEvent, loanExtensionCreatedEvent);
+
+        loanExtension = loanExtensionRepository.getLast();
+        assertNotNull(loanExtension);
+        assertEquals(loan.getId(), loanExtension.getLoan().getId());
     }
-
-   /* @Test
-    @Transactional
-    public void testRequestAllLoans() throws Exception
-    {
-
-    }*/
 }
+

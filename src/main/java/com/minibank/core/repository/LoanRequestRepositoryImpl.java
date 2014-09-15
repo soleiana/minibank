@@ -43,4 +43,12 @@ public class LoanRequestRepositoryImpl extends SessionProvider
         return query.list();
     }
 
+    @Override
+    public LoanRequest getLast() throws DBException
+    {
+        Session session = getCurrentSession();
+        Query query = session.createQuery("from LoanRequest order by id DESC");
+        query.setMaxResults(1);
+        return  (LoanRequest) query.uniqueResult();
+    }
 }
