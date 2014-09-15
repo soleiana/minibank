@@ -85,18 +85,55 @@ public class ConstraintCheckerImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testCheckTimeConstraint() throws DBException
+    public void testCheckTimeConstraint_1() throws DBException
     {
+        //check loan requests for risk interval [00:00:00-07:00:00]
+
         Time riskTimeStart = bankParams.getRiskTimeStart();
         Time riskTimeEnd = bankParams.getRiskTimeEnd();
 
+        //loan request in risk interval
         Time submissionTime = DateTimeUtility.increaseTime(riskTimeStart,1);
-
         loanRequest.setSubmissionTime(submissionTime);
         assertTrue(!checker.checkTimeConstraint(loanRequest));
 
-        submissionTime = DateTimeUtility.increaseTime(riskTimeEnd,1);
+        submissionTime = DateTimeUtility.increaseTime(riskTimeEnd,-1);
+        loanRequest.setSubmissionTime(submissionTime);
+        assertTrue(!checker.checkTimeConstraint(loanRequest));
 
+        //loan request not in risk interval
+        submissionTime = DateTimeUtility.increaseTime(riskTimeStart,-1);
+        loanRequest.setSubmissionTime(submissionTime);
+        assertTrue(checker.checkTimeConstraint(loanRequest));
+
+        submissionTime = DateTimeUtility.increaseTime(riskTimeEnd,1);
+        loanRequest.setSubmissionTime(submissionTime);
+        assertTrue(checker.checkTimeConstraint(loanRequest));
+    }
+
+    @Test
+    @Transactional
+    public void testCheckTimeConstraint_2() throws DBException
+    {
+        //check loan requests for risk interval [22:00:00-08:00:00]
+
+        BankParams newBankParams = BankParamsFixture.newBankParams();
+        bankParamsRepository.create(newBankParams);
+
+        Time riskTimeStart = newBankParams.getRiskTimeStart();
+        Time riskTimeEnd = newBankParams.getRiskTimeEnd();
+
+        //loan request in risk interval
+        Time submissionTime = DateTimeUtility.increaseTime(riskTimeStart,1);
+        loanRequest.setSubmissionTime(submissionTime);
+        assertTrue(!checker.checkTimeConstraint(loanRequest));
+
+        //loan request not in risk interval
+        submissionTime = DateTimeUtility.increaseTime(riskTimeEnd,1);
+        loanRequest.setSubmissionTime(submissionTime);
+        assertTrue(checker.checkTimeConstraint(loanRequest));
+
+        submissionTime = DateTimeUtility.increaseTime(riskTimeStart,-1);
         loanRequest.setSubmissionTime(submissionTime);
         assertTrue(checker.checkTimeConstraint(loanRequest));
     }

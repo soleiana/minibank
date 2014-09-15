@@ -46,8 +46,6 @@ public class CreditExpertImplTest extends SpringContextTest
         bankParamsRepository.create(bankParams);
         requestIP = RequestIPFixture.standardRequestIP();
         requestIPRepository.create(requestIP);
-
-        createLoanRequest();
     }
 
     private void createLoanRequest() throws DBException
@@ -57,21 +55,23 @@ public class CreditExpertImplTest extends SpringContextTest
         customerRepository.create(customer);
         loanRequest.setCustomer(customer);
         loanRequest.setRequestIP(requestIP);
-        loanRequestRepository.create(loanRequest);
     }
 
     @Test
     @Transactional
     public void testHasRisks_1() throws DBException
     {
-        assertTrue(!expert.hasRisks(loanRequest));
+        //negative loan request scenario with max loan amount in risk time
+        //loan request gets rejected
 
         BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
         Time riskTimeStart = bankParams.getRiskTimeStart();
         Time submissionTime = DateTimeUtility.increaseTime(riskTimeStart,1);
 
+        createLoanRequest();
         loanRequest.setAmount(maxLoanAmount);
         loanRequest.setSubmissionTime(submissionTime);
+        loanRequestRepository.create(loanRequest);
 
         assertTrue(expert.hasRisks(loanRequest));
     }
@@ -79,6 +79,9 @@ public class CreditExpertImplTest extends SpringContextTest
     @Transactional
     public void testHasRisks_2() throws DBException
     {
+        //negative loan request scenario with max number of loan requests (attempts)
+        //during one day
+
         Date now = new Date();
         java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);
 
@@ -86,8 +89,39 @@ public class CreditExpertImplTest extends SpringContextTest
         {
             createLoanRequest();
             loanRequest.setSubmissionDate(sqlNow);
+            loanRequestRepository.create(loanRequest);
         }
         assertTrue(expert.hasRisks(loanRequest));
+    }
 
+    @Test
+    @Transactional
+    public void testHasRisks_3() throws DBException
+    {
+        //positive loan request scenario with loan amount below maximum in no risk time
+        //loan request gets accepted
+
+        createLoanRequest();
+        loanRequestRepository.create(loanRequest);
+        assertTrue(!expert.hasRisks(loanRequest));
+    }
+
+    @Test
+    @Transactional
+    public void testHasRisks_4() throws DBException
+    {
+        //positive loan request scenario with loan amount below maximum in no risk time
+        //loan requests get accepted (maxLoanAttempts - 1) times
+
+        Date now = new Date();
+        java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);
+
+        for(int i = 0; i < bankParams.getMaxLoanAttempts()-1; i++)
+        {
+            createLoanRequest();
+            loanRequest.setSubmissionDate(sqlNow);
+            loanRequestRepository.create(loanRequest);
+        }
+        assertTrue(!expert.hasRisks(loanRequest));
     }
 }

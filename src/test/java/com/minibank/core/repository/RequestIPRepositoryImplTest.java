@@ -30,7 +30,6 @@ public class RequestIPRepositoryImplTest extends SpringContextTest
     {
         dbCleaner.clear();
         requestIP = RequestIPFixture.standardRequestIP();
-
     }
 
     @Test

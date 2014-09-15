@@ -20,7 +20,7 @@ public class BankParamsFixture
     public static final BigDecimal NEW_BASE_INTEREST_RATE = new BigDecimal("150.00");
     public static final BigDecimal NEW_INTEREST_RATE_FACTOR = new BigDecimal("2.00");
     public static final Byte NEW_MAX_LOAN_ATTEMPTS = new Byte("5");
-    public static final Time NEW_RISK_TIME_START = Time.valueOf("01:00:00");
+    public static final Time NEW_RISK_TIME_START = Time.valueOf("22:00:00");
     public static final Time NEW_RISK_TIME_END = Time.valueOf("08:00:00");
     public static final Short NEW_LOAN_EXTENSION_TERM = new Short("14");
 
