@@ -38,18 +38,6 @@ public class LoanExtension
     public LoanExtension()
     {}
 
-    public LoanExtension(Loan loan, Date startDate, Date endDate,
-                         BigDecimal interestRate, BigDecimal interest,
-                         Date submissionDate)
-    {
-        this.loan = loan;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.interestRate = interestRate;
-        this.interest = interest;
-        this.submissionDate = submissionDate;
-    }
-
     public Integer getId()
     {
         return id;

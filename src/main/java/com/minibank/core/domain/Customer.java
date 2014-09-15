@@ -44,12 +44,6 @@ public class Customer
         this.id = id;
     }
 
-    public Customer(String name, String surname)
-    {
-        this.name = name;
-        this.surname = surname;
-    }
-
     public Integer getId()
     {
         return id;

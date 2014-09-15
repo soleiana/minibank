@@ -41,20 +41,6 @@ public class BankParams
     public BankParams()
     {}
 
-    public BankParams(BigDecimal maxLoanAmount, BigDecimal baseInterestRate,
-                      BigDecimal interestRateFactor, Byte maxLoanAttempts,
-                      Time riskTimeStart, Time riskTimeEnd, Short loanExtensionTerm)
-    {
-        this.maxLoanAmount = maxLoanAmount;
-        this.baseInterestRate = baseInterestRate;
-        this.interestRateFactor = interestRateFactor;
-        this.maxLoanAttempts = maxLoanAttempts;
-        this.riskTimeStart = riskTimeStart;
-        this.riskTimeEnd = riskTimeEnd;
-        this.loanExtensionTerm = loanExtensionTerm;
-
-    }
-
     public Integer getId()
     {
         return id;

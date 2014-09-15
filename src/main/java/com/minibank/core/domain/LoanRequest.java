@@ -49,20 +49,6 @@ public class LoanRequest
     public LoanRequest()
     {}
 
-    public LoanRequest(Loan loan, Customer customer, RequestIP requestIP,
-                       Date submissionDate, Time submissionTime, Integer term,
-                       BigDecimal amount, LoanRequestStatus status)
-    {
-        this.loan = loan;
-        this.customer = customer;
-        this.requestIP = requestIP;
-        this.submissionDate = submissionDate;
-        this.submissionTime = submissionTime;
-        this.term = term;
-        this.amount = amount;
-        this.status = status;
-    }
-
     public Integer getId()
     {
         return id;

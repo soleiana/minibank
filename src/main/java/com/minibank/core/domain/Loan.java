@@ -50,17 +50,6 @@ public class Loan
     public Loan()
     {}
 
-    public Loan(LoanRequest loanRequest, Customer customer, BigDecimal currInterestRate,
-                BigDecimal currInterest, Date startDate, Date endDate)
-    {
-        this.loanRequest = loanRequest;
-        this.customer = customer;
-        this.currInterestRate = currInterestRate;
-        this.currInterest = currInterest;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-
     public Integer getId()
     {
         return id;
