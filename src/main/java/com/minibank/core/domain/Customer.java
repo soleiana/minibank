@@ -21,13 +21,13 @@ public class Customer
     @JoinColumn(name= "CUSTOMER_ID")
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
             org.hibernate.annotations.CascadeType.REMOVE})
-    private List<LoanRequest> loanRequests = new ArrayList<LoanRequest>();
+    private List<LoanRequest> loanRequests = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name= "CUSTOMER_ID")
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
             org.hibernate.annotations.CascadeType.REMOVE})
-    private List<Loan> loans = new ArrayList<Loan>();
+    private List<Loan> loans = new ArrayList<>();
 
 
     @Column(name="NAME", nullable = false)

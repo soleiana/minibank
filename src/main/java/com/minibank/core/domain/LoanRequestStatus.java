@@ -8,7 +8,7 @@ public enum LoanRequestStatus
     NEW("NEW"), APPROVED("APPROVED"), REJECTED("REJECTED");
 
 
-    private String value;
+    private final String value;
 
     private LoanRequestStatus(String value) {
         this.value = value;

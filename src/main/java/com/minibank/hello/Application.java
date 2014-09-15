@@ -1,8 +1,6 @@
 package com.minibank.hello;
 
 import com.minibank.config.DatasourceConfig;
-import com.minibank.core.repository.LoanRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;

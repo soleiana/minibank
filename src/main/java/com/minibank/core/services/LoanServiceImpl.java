@@ -78,7 +78,6 @@ public class LoanServiceImpl implements LoanService
             loanCreated = new LoanCreatedEvent(false, Message.LOAN_ERROR_MESSAGE);
 
         return  loanCreated;
-
     }
 
     @Override

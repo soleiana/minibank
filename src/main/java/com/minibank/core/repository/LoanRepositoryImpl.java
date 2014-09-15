@@ -2,7 +2,6 @@ package com.minibank.core.repository;
 
 import com.minibank.core.domain.Customer;
 import com.minibank.core.domain.Loan;
-import com.minibank.core.domain.LoanRequest;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;

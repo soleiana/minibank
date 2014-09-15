@@ -8,7 +8,7 @@ import com.minibank.core.events.loans.domain.LoanRequestDetails;
  */
 public class CreateLoanEvent extends CreateEvent
 {
-    private LoanRequestDetails loanRequestDetails;
+    private final LoanRequestDetails loanRequestDetails;
 
     public CreateLoanEvent(LoanRequestDetails loanRequestDetails)
     {

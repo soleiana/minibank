@@ -6,7 +6,7 @@ import com.minibank.core.repository.DBException;
 /**
  * Created by Ann on 15/09/14.
  */
-public interface ConstraintChecker
+interface ConstraintChecker
 {
     boolean checkMaxRequestsPerIP(LoanRequest loanRequest) throws DBException;
 

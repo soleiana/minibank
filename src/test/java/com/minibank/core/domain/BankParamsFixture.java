@@ -8,21 +8,21 @@ import  java.sql.Time;
  */
 public class BankParamsFixture
 {
-    public static final BigDecimal STANDARD_MAX_LOAN_AMOUNT = new BigDecimal("4000.00");
-    public static final BigDecimal NEW_MAX_LOAN_AMOUNT = new BigDecimal("5000.00");
-    public static final BigDecimal STANDARD_BASE_INTEREST_RATE = new BigDecimal("100.00");
-    public static final BigDecimal NEW_BASE_INTEREST_RATE = new BigDecimal("150.00");
-    public static final BigDecimal STANDARD_INTEREST_RATE_FACTOR = new BigDecimal("1.50");
-    public static final BigDecimal NEW_INTEREST_RATE_FACTOR = new BigDecimal("2.00");
-    public static final Byte STANDARD_MAX_LOAN_ATTEMPTS = new Byte("3");
-    public static final Byte NEW_MAX_LOAN_ATTEMPTS = new Byte("5");
-    public static final Time STANDARD_RISK_TIME_START = Time.valueOf("00:00:00");
-    public static final Time NEW_RISK_TIME_START = Time.valueOf("01:00:00");
-    public static final Time STANDARD_RISK_TIME_END = Time.valueOf("07:00:00");
-    public static final Time NEW_RISK_TIME_END = Time.valueOf("08:00:00");
-    public static final Short STANDARD_lOAN_EXTENSION_TERM = new Short("7");
-    public static final Short NEW_LOAN_EXTENSION_TERM = new Short("14");
+    private static final BigDecimal STANDARD_MAX_LOAN_AMOUNT = new BigDecimal("4000.00");
+    private static final BigDecimal STANDARD_BASE_INTEREST_RATE = new BigDecimal("100.00");
+    private static final BigDecimal STANDARD_INTEREST_RATE_FACTOR = new BigDecimal("1.50");
+    private static final Byte STANDARD_MAX_LOAN_ATTEMPTS = new Byte("3");
+    private static final Time STANDARD_RISK_TIME_START = Time.valueOf("00:00:00");
+    private static final Time STANDARD_RISK_TIME_END = Time.valueOf("07:00:00");
+    private static final Short STANDARD_lOAN_EXTENSION_TERM = new Short("7");
 
+    public static final BigDecimal NEW_MAX_LOAN_AMOUNT = new BigDecimal("5000.00");
+    public static final BigDecimal NEW_BASE_INTEREST_RATE = new BigDecimal("150.00");
+    public static final BigDecimal NEW_INTEREST_RATE_FACTOR = new BigDecimal("2.00");
+    public static final Byte NEW_MAX_LOAN_ATTEMPTS = new Byte("5");
+    public static final Time NEW_RISK_TIME_START = Time.valueOf("01:00:00");
+    public static final Time NEW_RISK_TIME_END = Time.valueOf("08:00:00");
+    public static final Short NEW_LOAN_EXTENSION_TERM = new Short("14");
 
     public static BankParams standardBankParams()
     {

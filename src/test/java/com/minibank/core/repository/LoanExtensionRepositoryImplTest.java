@@ -59,6 +59,18 @@ public class LoanExtensionRepositoryImplTest  extends SpringContextTest
         loanExtension.setLoan(loan);
     }
 
+    private void createLoanRequest() throws DBException
+    {
+
+    }
+
+    private void createLoan() throws  DBException
+    {}
+
+    private void createLoanExtension() throws DBException
+    {}
+
+
     @Test
     @Transactional
     public void testCreate() throws DBException
@@ -66,4 +78,12 @@ public class LoanExtensionRepositoryImplTest  extends SpringContextTest
         loanExtensionRepository.create(loanExtension);
         assertNotNull(loanExtension.getId());
     }
+
+    @Test
+    @Transactional
+    public void testGetByLoan() throws DBException
+    {
+
+    }
+
 }

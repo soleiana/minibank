@@ -3,7 +3,6 @@ package com.minibank.core.repository;
 import com.minibank.SpringContextTest;
 import com.minibank.core.domain.*;
 import com.minibank.core.repository.tools.DBCleaner;
-import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -32,7 +32,7 @@ public class Loan
     @JoinColumn(name= "LOAN_ID")
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
             org.hibernate.annotations.CascadeType.REMOVE})
-    private List<LoanExtension> loanExtensions = new ArrayList<LoanExtension>();
+    private List<LoanExtension> loanExtensions = new ArrayList<>();
 
 
     @Column(name="CURRENT_INTEREST_RATE", precision = 10, scale = 2, nullable = false)

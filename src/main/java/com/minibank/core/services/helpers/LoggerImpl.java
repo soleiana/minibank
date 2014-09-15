@@ -17,6 +17,8 @@ public class LoggerImpl implements Logger
     private RequestIPRepository requestIPRepository;
     @Autowired
     private LoanRepository loanRepository;
+    @Autowired
+    private LoanExtensionRepository loanExtensionRepository;
 
     @Override
     public void log(LoanRequest loanRequest) throws DBException
@@ -38,7 +40,6 @@ public class LoggerImpl implements Logger
         loanRepository.update(extendedLoan);
     }
 
-
     private void log(RequestIP requestIP) throws DBException
     {
         RequestIP req = requestIPRepository.getByIP(requestIP.getIP());
@@ -55,5 +56,7 @@ public class LoggerImpl implements Logger
 
     @Override
     public void log(LoanExtension loanExtension) throws DBException
-    {}
+    {
+        loanExtensionRepository.create(loanExtension);
+    }
 }

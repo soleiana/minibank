@@ -7,7 +7,7 @@ import com.minibank.core.events.CreatedEvent;
  */
 public class LoanExtensionCreatedEvent extends CreatedEvent
 {
-    private String message;
+    private final String message;
 
     public LoanExtensionCreatedEvent(String message)
     {

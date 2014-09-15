@@ -5,7 +5,6 @@ package com.minibank.core.domain;
  */
 import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +21,7 @@ public class RequestIP
     @JoinColumn(name= "REQUEST_IP_ID")
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
             org.hibernate.annotations.CascadeType.REMOVE})
-    private List<LoanRequest> loanRequests = new ArrayList<LoanRequest>();
+    private List<LoanRequest> loanRequests = new ArrayList<>();
 
     @Column(name="IP", unique = true, nullable = false)
     private String ip;

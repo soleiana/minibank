@@ -2,7 +2,6 @@ package com.minibank.core.repository;
 
 import com.minibank.core.domain.BankParams;
 
-import java.util.List;
 
 /**
  * Created by Ann on 06/09/14.

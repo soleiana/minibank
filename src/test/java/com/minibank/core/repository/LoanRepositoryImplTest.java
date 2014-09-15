@@ -2,8 +2,6 @@ package com.minibank.core.repository;
 
 import com.minibank.SpringContextTest;
 import com.minibank.core.domain.*;
-import com.minibank.core.domain.Loan;
-import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.repository.tools.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;

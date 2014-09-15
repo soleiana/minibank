@@ -1,6 +1,5 @@
 package com.minibank.core.domain;
 
-import javax.persistence.Transient;
 import java.util.List;
 
 /**
@@ -9,9 +8,9 @@ import java.util.List;
 
 public class AllLoans
 {
-    Customer customer;
+    private Customer customer;
 
-    List<Loan> loans;
+    private List<Loan> loans;
 
     public Customer getCustomer() {
         return customer;

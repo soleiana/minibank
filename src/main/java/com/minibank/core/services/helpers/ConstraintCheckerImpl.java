@@ -34,6 +34,15 @@ public class ConstraintCheckerImpl implements ConstraintChecker
         bankParams = bankParamsRepository.getLast();
     }
 
+    private boolean isBetween(Time start, Time end, Time timeToCheck)
+    {
+        if ((timeToCheck.compareTo(start)==1)&&(end.compareTo(timeToCheck)==1))
+            return true;
+
+        else
+            return false;
+    }
+
     @Override
     public boolean checkMaxRequestsPerIP(LoanRequest loanRequest) throws DBException
     {
@@ -84,15 +93,6 @@ public class ConstraintCheckerImpl implements ConstraintChecker
             else
                 return  true;
 
-    }
-
-    private boolean isBetween(Time start, Time end, Time timeToCheck)
-    {
-        if ((timeToCheck.compareTo(start)==1)&&(end.compareTo(timeToCheck)==1))
-            return true;
-
-        else
-            return false;
     }
 
     @Override

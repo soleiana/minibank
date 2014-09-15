@@ -5,7 +5,7 @@ package com.minibank.core.events;
  */
 public class ReadEvent
 {
-    protected boolean entityFound = true;
+    protected final boolean entityFound = true;
 
     public boolean isEntityFound() {
         return entityFound;

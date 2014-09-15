@@ -83,7 +83,6 @@ public class CreditCalculatorImplTest extends SpringContextTest
     {
         BigDecimal amount = new BigDecimal("200.00");
         Integer term = 20;
-        BigDecimal t = new BigDecimal("20");
         BigDecimal interestRate = new BigDecimal("100.00");
         loan.getLoanRequest().setAmount(amount);
         loan.getLoanRequest().setTerm(term);

@@ -140,13 +140,7 @@
             <artifactId>spring-orm</artifactId>
             <version>${org.spring.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.hateoas</groupId>
-            <artifactId>spring-hateoas</artifactId>
-            <version>${spring.hateoas.version}</version>
-        </dependency>
-
+        
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib-nodep</artifactId>

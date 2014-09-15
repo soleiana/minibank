@@ -9,9 +9,9 @@ import java.math.BigDecimal;
  */
 public class LoanRequestDetailsFixture
 {
-    public static final String REQUEST_IP = "127.0.0.1";
-    public static final Integer TERM = 20;
-    public static final BigDecimal AMOUNT = new BigDecimal("200.00");
+    private static final String REQUEST_IP = "127.0.0.1";
+    private static final Integer TERM = 20;
+    private static final BigDecimal AMOUNT = new BigDecimal("200.00");
 
     public static LoanRequestDetails standardLoanRequestDetails()
     {
@@ -21,5 +21,4 @@ public class LoanRequestDetailsFixture
         loanRequestDetails.setAmount(AMOUNT);
         return loanRequestDetails;
     }
-
 }

@@ -38,7 +38,6 @@ public class BankParamsRepositoryImpl extends SessionProvider
        Session session = getCurrentSession();
        Query query = session.createQuery("from BankParams order by id DESC");
        query.setMaxResults(1);
-       BankParams last = (BankParams) query.uniqueResult();
-       return  last;
+       return  (BankParams) query.uniqueResult();
     }
 }

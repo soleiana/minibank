@@ -7,7 +7,7 @@ import com.minibank.core.events.CreateEvent;
  */
 public class CreateLoanExtensionEvent extends CreateEvent
 {
-    private Integer loanId;
+    private final Integer loanId;
 
     public CreateLoanExtensionEvent(Integer loanId)
     {

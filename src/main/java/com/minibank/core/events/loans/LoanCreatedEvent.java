@@ -7,8 +7,8 @@ import com.minibank.core.events.CreatedEvent;
  */
 public class LoanCreatedEvent extends CreatedEvent
 {
-    private Boolean loanObtained;
-    private String message;
+    private final Boolean loanObtained;
+    private final String message;
 
     public LoanCreatedEvent(Boolean loanObtained, String errorMessage)
     {

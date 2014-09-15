@@ -1,7 +1,6 @@
 package com.minibank.config.tests;
 
 import com.minibank.config.RestConfig;
-import com.minibank.core.repository.BankParamsRepository;
 import com.minibank.core.services.LoanService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

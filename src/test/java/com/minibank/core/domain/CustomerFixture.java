@@ -5,8 +5,8 @@ package com.minibank.core.domain;
  */
 public class CustomerFixture
 {
-    public static final String NAME = "James";
-    public static final String SURNAME = "Bond";
+    private static final String NAME = "James";
+    private static final String SURNAME = "Bond";
 
     public static Customer standardCustomer()
     {

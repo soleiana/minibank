@@ -7,7 +7,7 @@ import com.minibank.core.events.RequestReadEvent;
  */
 public class RequestAllLoansEvent extends RequestReadEvent
 {
-    private Integer customerId;
+    private final Integer customerId;
 
     public RequestAllLoansEvent(Integer customerId)
     {

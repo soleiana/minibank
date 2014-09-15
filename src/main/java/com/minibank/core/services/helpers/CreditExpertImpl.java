@@ -5,14 +5,12 @@ import com.minibank.core.repository.DBException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
 /**
  * Created by Ann on 12/09/14.
  */
 @Component
 public class CreditExpertImpl implements CreditExpert
 {
-
     @Autowired
     private ConstraintChecker checker;
 

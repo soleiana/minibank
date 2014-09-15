@@ -4,7 +4,6 @@ import com.minibank.core.domain.BankParams;
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.repository.BankParamsRepository;
-import com.minibank.core.repository.LoanRepository;
 import com.minibank.core.services.common.Number;
 import com.minibank.core.repository.DBException;
 import com.minibank.core.services.common.*;
@@ -25,6 +24,18 @@ public class CreditCalculatorImpl implements CreditCalculator
     @Autowired
     private BankParamsRepository bankParamsRepository;
 
+    private BigDecimal interestFormula(BigDecimal amount,
+                                       BigDecimal term,
+                                       BigDecimal interestRate)
+    {
+        BigDecimal factor = amount.multiply(interestRate)
+                .multiply(term);
+
+        BigDecimal interest = factor.multiply(Number.FACTOR);
+        interest = interest.setScale(2, RoundingMode.HALF_EVEN);
+        return interest;
+    }
+
     @Override
     public Date getLoanEndDate(LoanRequest loanRequest)
     {
@@ -42,19 +53,6 @@ public class CreditCalculatorImpl implements CreditCalculator
         Date endDate = DateTimeUtility.increaseDate(startDate, (int)loanExtensionTerm);
         return endDate;
     }
-
-    private BigDecimal interestFormula(BigDecimal amount,
-                                       BigDecimal term,
-                                       BigDecimal interestRate)
-    {
-        BigDecimal factor = amount.multiply(interestRate)
-                .multiply(term);
-
-        BigDecimal interest = factor.multiply(Number.FACTOR);
-        interest = interest.setScale(2, RoundingMode.HALF_EVEN);
-        return interest;
-    }
-
 
     @Override
     public BigDecimal getInterest(LoanRequest loanRequest) throws DBException
