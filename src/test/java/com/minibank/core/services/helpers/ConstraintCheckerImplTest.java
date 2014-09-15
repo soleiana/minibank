@@ -32,14 +32,12 @@ public class ConstraintCheckerImplTest extends SpringContextTest
     private RequestIPRepository requestIPRepository;
     @Autowired
     private BankParamsRepository bankParamsRepository;
-
     @Autowired
     private ConstraintChecker checker;
 
     private BankParams bankParams;
     private LoanRequest loanRequest;
     private RequestIP requestIP;
-    private Customer customer;
 
     @Before
     @Transactional
@@ -56,7 +54,7 @@ public class ConstraintCheckerImplTest extends SpringContextTest
 
     private void createLoanRequest(java.sql.Date submissionDate) throws DBException
     {
-        customer = CustomerFixture.standardCustomer();
+        Customer customer = CustomerFixture.standardCustomer();
         loanRequest = LoanRequestFixture.standardLoanRequest();
         loanRequest.setSubmissionDate(submissionDate);
         customerRepository.create(customer);
@@ -83,7 +81,6 @@ public class ConstraintCheckerImplTest extends SpringContextTest
         assertTrue(checker.checkMaxRequestsPerIP(loanRequest));
         createLoanRequest(sqlNow);
         assertTrue(!checker.checkMaxRequestsPerIP(loanRequest));
-
     }
 
     @Test
@@ -102,7 +99,6 @@ public class ConstraintCheckerImplTest extends SpringContextTest
 
         loanRequest.setSubmissionTime(submissionTime);
         assertTrue(checker.checkTimeConstraint(loanRequest));
-
     }
 
     @Test
@@ -118,6 +114,5 @@ public class ConstraintCheckerImplTest extends SpringContextTest
         loanRequest.setAmount(loanAmount);
 
         assertTrue(checker.checkAmountConstraint(loanRequest));
-
     }
 }

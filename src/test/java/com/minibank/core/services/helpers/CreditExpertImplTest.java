@@ -36,7 +36,6 @@ public class CreditExpertImplTest extends SpringContextTest
     private BankParams bankParams;
     private LoanRequest loanRequest;
     private RequestIP requestIP;
-    private Customer customer;
 
     @Before
     @Transactional
@@ -53,7 +52,7 @@ public class CreditExpertImplTest extends SpringContextTest
 
     private void createLoanRequest() throws DBException
     {
-        customer = CustomerFixture.standardCustomer();
+        Customer customer = CustomerFixture.standardCustomer();
         loanRequest = LoanRequestFixture.standardLoanRequest();
         customerRepository.create(customer);
         loanRequest.setCustomer(customer);
