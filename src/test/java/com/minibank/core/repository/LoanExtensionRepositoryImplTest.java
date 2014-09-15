@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
@@ -41,35 +43,37 @@ public class LoanExtensionRepositoryImplTest  extends SpringContextTest
     {
         dbCleaner.clear();
 
-        loanExtension = LoanExtensionFixture.standardLoanExtension();
         customer = CustomerFixture.standardCustomer();
         requestIP = RequestIPFixture.standardRequestIP();
-        loanRequest = LoanRequestFixture.standardLoanRequest();
-        loan = LoanFixture.standardLoan();
-
         customerRepository.create(customer);
         requestIPRepository.create(requestIP);
-        loanRequest.setCustomer(customer);
-        loanRequest.setRequestIP(requestIP);
-        loanRequestRepository.create(loanRequest);
-        loan.setCustomer(customer);
-        loan.setLoanRequest(loanRequest);
-        loanRepository.create(loan);
 
-        loanExtension.setLoan(loan);
+        createLoanExtension();
     }
 
     private void createLoanRequest() throws DBException
     {
-
+        loanRequest = LoanRequestFixture.standardLoanRequest();
+        loanRequest.setCustomer(customer);
+        loanRequest.setRequestIP(requestIP);
+        loanRequestRepository.create(loanRequest);
     }
 
     private void createLoan() throws  DBException
-    {}
+    {
+        createLoanRequest();
+        loan = LoanFixture.standardLoan();
+        loan.setCustomer(customer);
+        loan.setLoanRequest(loanRequest);
+        loanRepository.create(loan);
+    }
 
     private void createLoanExtension() throws DBException
-    {}
-
+    {
+        createLoan();
+        loanExtension = LoanExtensionFixture.standardLoanExtension();
+        loanExtension.setLoan(loan);
+    }
 
     @Test
     @Transactional
@@ -83,7 +87,16 @@ public class LoanExtensionRepositoryImplTest  extends SpringContextTest
     @Transactional
     public void testGetByLoan() throws DBException
     {
+        createLoan();
+        LoanExtension loanExtension1 = LoanExtensionFixture.standardLoanExtension();
+        loanExtension1.setLoan(loan);
+        LoanExtension loanExtension2 = LoanExtensionFixture.standardLoanExtension();
+        loanExtension2.setLoan(loan);
+        loanExtensionRepository.create(loanExtension1);
+        loanExtensionRepository.create(loanExtension2);
 
+        List<LoanExtension> loanExtensions = loanExtensionRepository.getByLoan(loan);
+        assertEquals(2, loanExtensions.size());
     }
 
 }
