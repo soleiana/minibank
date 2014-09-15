@@ -1,30 +1,21 @@
 package com.minibank.core.events.loans;
 
 import com.minibank.core.events.CreateEvent;
-import com.minibank.core.events.loans.domain.LoanExtensionDetails;
 
 /**
  * Created by Ann on 06/09/14.
  */
 public class CreateLoanExtensionEvent extends CreateEvent
 {
-    private LoanExtensionDetails loanExtensionDetails;
+    private Integer loanId;
 
-    public CreateLoanExtensionEvent()
-    {}
-
-    public CreateLoanExtensionEvent(LoanExtensionDetails loanExtensionDetails)
+    public CreateLoanExtensionEvent(Integer loanId)
     {
-        this.loanExtensionDetails = loanExtensionDetails;
+        this.loanId = loanId;
     }
 
-    public LoanExtensionDetails getLoanExtensionDetails()
+    public Integer getLoanId()
     {
-        return loanExtensionDetails;
-    }
-
-    public void setLoanExtensionDetails(LoanExtensionDetails loanExtensionDetails)
-    {
-        this.loanExtensionDetails = loanExtensionDetails;
+        return loanId;
     }
 }

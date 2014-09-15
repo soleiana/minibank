@@ -3,9 +3,7 @@ package com.minibank.core.services;
 import com.minibank.core.domain.*;
 import com.minibank.core.events.loans.*;
 import com.minibank.core.events.loans.domain.AllLoansDetails;
-import com.minibank.core.events.loans.domain.LoanExtensionDetails;
 import com.minibank.core.events.loans.domain.LoanRequestDetails;
-import com.minibank.core.events.loans.domain.RequestAllLoansDetails;
 import com.minibank.core.events.loans.factories.AllLoansDetailsFactory;
 import com.minibank.core.services.common.Message;
 import com.minibank.core.services.factories.AllLoansFactory;
@@ -91,10 +89,10 @@ public class LoanServiceImpl implements LoanService
 
         LoanExtensionCreatedEvent loanExtensionCreated;
 
-        LoanExtensionDetails loanExtensionDetails = event.getLoanExtensionDetails();
+        Integer loanId = event.getLoanId();
         try
         {
-            LoanExtension loanExtension = loanExtensionFactory.getNewLoanExtension(loanExtensionDetails);
+            LoanExtension loanExtension = loanExtensionFactory.getNewLoanExtension(loanId);
             //loanExtension created in DB
             logger.log(loanExtension);
             Loan extendedLoan = loanFactory.getExtendedLoan(loanExtension);
@@ -114,10 +112,10 @@ public class LoanServiceImpl implements LoanService
     {
         AllLoans allLoans = null;
 
-        RequestAllLoansDetails requestAllLoansDetails = event.getRequestAllLoansDetails();
+        Integer customerId = event.getCustomerId();
         try
         {
-            allLoans = allLoansFactory.getNewAllLoans(requestAllLoansDetails);
+            allLoans = allLoansFactory.getNewAllLoans(customerId);
         }
         catch (Exception e)
         {

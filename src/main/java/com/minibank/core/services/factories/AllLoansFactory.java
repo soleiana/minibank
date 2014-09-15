@@ -1,7 +1,6 @@
 package com.minibank.core.services.factories;
 
 import com.minibank.core.domain.AllLoans;
-import com.minibank.core.events.loans.domain.RequestAllLoansDetails;
 import com.minibank.core.repository.DBException;
 
 /**
@@ -9,6 +8,6 @@ import com.minibank.core.repository.DBException;
  */
 public interface AllLoansFactory
 {
-    AllLoans getNewAllLoans(RequestAllLoansDetails requestAllLoansDetails)
+    AllLoans getNewAllLoans(Integer customerId)
                    throws DBException;
 }

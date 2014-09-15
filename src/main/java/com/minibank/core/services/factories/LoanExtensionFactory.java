@@ -1,7 +1,6 @@
 package com.minibank.core.services.factories;
 
 import com.minibank.core.domain.LoanExtension;
-import com.minibank.core.events.loans.domain.LoanExtensionDetails;
 import com.minibank.core.repository.DBException;
 
 /**
@@ -9,6 +8,6 @@ import com.minibank.core.repository.DBException;
  */
 public interface LoanExtensionFactory
 {
-    LoanExtension getNewLoanExtension(LoanExtensionDetails loanExtensionDetails)
+    LoanExtension getNewLoanExtension(Integer loanId)
                                     throws DBException;
 }

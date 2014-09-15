@@ -4,7 +4,6 @@ import com.minibank.core.domain.AllLoans;
 import com.minibank.core.domain.Customer;
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanExtension;
-import com.minibank.core.events.loans.domain.RequestAllLoansDetails;
 import com.minibank.core.repository.CustomerRepository;
 import com.minibank.core.repository.DBException;
 import com.minibank.core.repository.LoanExtensionRepository;
@@ -28,11 +27,10 @@ public class AllLoansFactoryImpl implements AllLoansFactory
     LoanExtensionRepository loanExtensionRepository;
 
     @Override
-    public AllLoans getNewAllLoans(RequestAllLoansDetails requestAllLoansDetails)
+    public AllLoans getNewAllLoans(Integer customerId)
             throws DBException
     {
         AllLoans allLoans = new AllLoans();
-        Integer customerId = requestAllLoansDetails.getCustomerId();
         Customer customer = customerRepository.getById(customerId);
         allLoans.setCustomer(customer);
         List<Loan> loans = loanRepository.getByCustomer(customer);

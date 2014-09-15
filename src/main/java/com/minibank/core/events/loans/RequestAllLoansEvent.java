@@ -1,22 +1,21 @@
 package com.minibank.core.events.loans;
 
 import com.minibank.core.events.RequestReadEvent;
-import com.minibank.core.events.loans.domain.RequestAllLoansDetails;
 
 /**
  * Created by Ann on 06/09/14.
  */
 public class RequestAllLoansEvent extends RequestReadEvent
 {
-    private RequestAllLoansDetails requestAllLoansDetails;
+    private Integer customerId;
 
-    public RequestAllLoansEvent(RequestAllLoansDetails requestAllLoansDetails)
+    public RequestAllLoansEvent(Integer customerId)
     {
-        this.requestAllLoansDetails = requestAllLoansDetails;
+        this.customerId = customerId;
     }
 
-    public RequestAllLoansDetails getRequestAllLoansDetails()
+    public Integer getCustomerId()
     {
-        return requestAllLoansDetails;
+        return customerId;
     }
 }

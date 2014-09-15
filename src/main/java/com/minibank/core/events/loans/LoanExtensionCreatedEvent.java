@@ -9,9 +9,6 @@ public class LoanExtensionCreatedEvent extends CreatedEvent
 {
     private String message;
 
-    public LoanExtensionCreatedEvent()
-    {}
-
     public LoanExtensionCreatedEvent(String message)
     {
         this.message = message;
@@ -20,11 +17,6 @@ public class LoanExtensionCreatedEvent extends CreatedEvent
     public String getMessage()
     {
         return message;
-    }
-
-    public void setMessage(String message)
-    {
-        this.message = message;
     }
 
     @Override

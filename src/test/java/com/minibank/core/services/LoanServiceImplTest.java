@@ -2,9 +2,8 @@ package com.minibank.core.services;
 
 import com.minibank.SpringContextTest;
 import com.minibank.core.domain.*;
-import com.minibank.core.events.LoanRequestDetailsFixture;
+import com.minibank.core.events.domain.LoanRequestDetailsFixture;
 import com.minibank.core.events.loans.*;
-import com.minibank.core.events.loans.domain.LoanExtensionDetails;
 import com.minibank.core.events.loans.domain.LoanRequestDetails;
 import com.minibank.core.repository.*;
 import com.minibank.core.repository.tools.DBCleaner;
@@ -81,11 +80,7 @@ public class LoanServiceImplTest extends SpringContextTest
         loan.setCustomer(customer);
         loan.setLoanRequest(loanRequest);
         loanRepository.create(loan);
-
-        LoanExtensionDetails loanExtensionDetails = new LoanExtensionDetails();
-        loanExtensionDetails.setLoanId(loan.getId());
-
-        return new CreateLoanExtensionEvent(loanExtensionDetails);
+        return new CreateLoanExtensionEvent(loan.getId());
     }
 
     @Test

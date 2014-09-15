@@ -20,7 +20,7 @@ import java.util.Date;
 /**
  * Created by Ann on 13/09/14.
  */
-public class ConstraintCheckerTest extends SpringContextTest
+public class ConstraintCheckerImplTest extends SpringContextTest
 {
     @Autowired
     private DBCleaner dbCleaner;
