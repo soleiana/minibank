@@ -22,10 +22,11 @@ public class LoanExtensionController
     private LoanService loanService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<String> createLoanExtension(@RequestBody String loanId)
+    public ResponseEntity<String> createLoanExtension(@RequestBody String id)
     {
-        Integer id = Integer.parseInt(loanId);
-        CreateLoanExtensionEvent createLoanExtensionEvent = new CreateLoanExtensionEvent(id);
+        Integer loanId = Integer.parseInt(id);
+        CreateLoanExtensionEvent createLoanExtensionEvent =
+                new CreateLoanExtensionEvent(loanId);
         LoanExtensionCreatedEvent loanExtensionCreatedEvent =
                 loanService.createLoanExtension(createLoanExtensionEvent);
         String message = loanExtensionCreatedEvent.getMessage();

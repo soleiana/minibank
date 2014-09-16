@@ -1,7 +1,49 @@
 package com.minibank.rest.controller;
 
+import com.minibank.core.events.loans.AllLoansEvent;
+import com.minibank.core.events.loans.RequestAllLoansEvent;
+import com.minibank.core.events.loans.domain.AllLoansDetails;
+import com.minibank.core.services.LoanService;
+import com.minibank.rest.domain.AllLoans;
+import com.minibank.rest.factories.AllLoansFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 /**
  * Created by Ann on 16/09/14.
  */
-public class LoanQueriesController {
+
+@Controller
+@RequestMapping("/rest/loans")
+public class LoanQueriesController
+{
+    @Autowired
+    private LoanService loanService;
+
+    @Autowired
+    @Qualifier("Rest")
+    private AllLoansFactory allLoansFactory;
+
+    @RequestMapping(method = RequestMethod.GET, value = "/customers/{id}")
+    public ResponseEntity<AllLoans> requestAllLoans(@PathVariable String id)
+    {
+        Integer customerId = Integer.parseInt(id);
+        RequestAllLoansEvent requestAllLoansEvent = new RequestAllLoansEvent(customerId);
+        AllLoansEvent allLoansEvent = loanService.requestAllLoans(requestAllLoansEvent);
+
+        if(allLoansEvent.isEntityFound())
+        {
+            AllLoansDetails allLoansDetails = allLoansEvent.getAllLoansDetails();
+            AllLoans allLoans = allLoansFactory.getNewAllLoans(allLoansDetails);
+            return new ResponseEntity<>(allLoans, HttpStatus.OK);
+        }
+        else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 }
