@@ -1,11 +1,12 @@
 package com.minibank.rest.domain;
 
+import org.springframework.hateoas.ResourceSupport;
 import java.math.BigDecimal;
 
 /**
  * Created by Ann on 07/09/14.
  */
-public class LoanRequest
+public class LoanRequest extends ResourceSupport
 {
     private Integer customerId;
     private String requestIP;

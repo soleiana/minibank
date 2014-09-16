@@ -39,7 +39,7 @@
 
     <properties>
 
-        <start-class>com.minibank.hello.Application</start-class>
+        <start-class>com.minibank.rest.Application</start-class>
 
         <org.spring.version>4.0.7.RELEASE</org.spring.version>
         <spring.hateoas.version>0.16.0.RELEASE</spring.hateoas.version>

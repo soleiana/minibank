@@ -2,9 +2,9 @@
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/minibank/hello/Application.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/minibank/hello/Greeting.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/minibank/hello/GreetingController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/minibank/rest/Application.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/minibank/rest/controller/GreetingController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/minibank/rest/domain/Greeting.java" charset="UTF-8" />
   </component>
 </project>
 

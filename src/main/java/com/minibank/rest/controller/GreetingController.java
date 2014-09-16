@@ -1,5 +1,6 @@
-package com.minibank.hello;
+package com.minibank.rest.controller;
 
+import com.minibank.rest.domain.Greeting;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

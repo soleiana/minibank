@@ -1,4 +1,4 @@
-package com.minibank.hello;
+package com.minibank.rest;
 
 import com.minibank.config.DatasourceConfig;
 import org.springframework.boot.SpringApplication;
@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 
-@ComponentScan
+@ComponentScan(basePackages = "com.minibank")
 @Import({DatasourceConfig.class})
 @EnableAutoConfiguration
 public class Application {

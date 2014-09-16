@@ -1,4 +1,4 @@
-package com.minibank.hello;
+package com.minibank.rest.domain;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

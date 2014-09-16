@@ -1,12 +1,25 @@
 package com.minibank.rest.domain;
 
+import com.minibank.core.events.loans.domain.AllLoansDetails;
+import com.minibank.rest.controller.LoanQueriesController;
+import com.minibank.rest.factories.AllLoansFactory;
+import com.minibank.rest.factories.AllLoansFactoryImpl;
+import org.springframework.hateoas.ResourceSupport;
+
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 /**
  * Created by Ann on 14/09/14.
  */
-public class AllLoans
+
+@XmlRootElement
+public class AllLoans extends ResourceSupport
+        implements Serializable
 {
     private Integer customerId;
     private String name;
@@ -44,4 +57,14 @@ public class AllLoans
     public void setLoans(List<Loan> loans) {
         this.loans = loans;
     }
+
+    /*public static AllLoans fromAllLoansDetails(AllLoansDetails allLoansDetails)
+    {
+        AllLoansFactory allLoansFactory = new AllLoansFactoryImpl();
+        AllLoans allLoans = allLoansFactory.getNewAllLoans(allLoansDetails);
+
+
+        allLoans.add(linkTo(LoanQueriesController.class).slash(allLoans.customerId).withSelfRel());
+        return allLoans;
+    }*/
 }
