@@ -13,6 +13,7 @@ import com.minibank.core.services.factories.LoanRequestFactory;
 import com.minibank.core.services.helpers.CreditExpert;
 import com.minibank.core.services.helpers.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -32,6 +33,7 @@ public class LoanServiceImpl implements LoanService
     @Autowired
     private LoanExtensionFactory loanExtensionFactory;
     @Autowired
+    @Qualifier("Core")
     private AllLoansFactory allLoansFactory;
     @Autowired
     private AllLoansDetailsFactory allLoansDetailsFactory;

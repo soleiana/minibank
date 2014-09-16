@@ -31,7 +31,7 @@ public class AllLoansDetailsFactoryImpl implements AllLoansDetailsFactory
     private LoanExtension convert(com.minibank.core.domain.LoanExtension fromLoanExtension)
     {
         LoanExtension toLoanExtension = new LoanExtension();
-        toLoanExtension.setLoanId(fromLoanExtension.getId());
+        toLoanExtension.setLoanId(fromLoanExtension.getLoan().getId());
         toLoanExtension.setInterestRate(fromLoanExtension.getInterestRate());
         toLoanExtension.setInterest(fromLoanExtension.getInterest());
         toLoanExtension.setStartDate(fromLoanExtension.getStartDate());
@@ -39,6 +39,7 @@ public class AllLoansDetailsFactoryImpl implements AllLoansDetailsFactory
         toLoanExtension.setSubmissionDate(fromLoanExtension.getSubmissionDate());
         return  toLoanExtension;
     }
+
     @Override
     public AllLoansDetails getNewAllLoansDetails(AllLoans allLoans)
     {

@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by Ann on 14/09/14.
  */
-@Component
+@Component("Core")
 public class AllLoansFactoryImpl implements AllLoansFactory
 {
     @Autowired
