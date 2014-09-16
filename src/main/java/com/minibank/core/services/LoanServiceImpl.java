@@ -127,11 +127,12 @@ public class LoanServiceImpl implements LoanService
         }
 
         AllLoansDetails allLoansDetails = allLoansDetailsFactory.getNewAllLoansDetails(allLoans);
-        AllLoansEvent allLoansEvent = new AllLoansEvent(allLoansDetails);
+
+        AllLoansEvent allLoansEvent;
 
         if (allLoansDetails.getLoans().size()==0)
-            allLoansEvent.setEntityFound(false);
-        else allLoansEvent.setEntityFound(true);
+            allLoansEvent = new AllLoansEvent(allLoansDetails,false);
+        else allLoansEvent = new AllLoansEvent(allLoansDetails,true);
 
         return  allLoansEvent;
     }

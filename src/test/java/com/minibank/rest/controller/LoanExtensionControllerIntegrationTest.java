@@ -1,6 +1,5 @@
 package com.minibank.rest.controller;
 
-
 import com.minibank.core.events.loans.CreateLoanExtensionEvent;
 import com.minibank.core.events.loans.LoanExtensionCreatedEvent;
 import org.junit.Before;
