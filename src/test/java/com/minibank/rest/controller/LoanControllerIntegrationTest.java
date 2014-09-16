@@ -1,6 +1,5 @@
 package com.minibank.rest.controller;
 
-import com.minibank.core.events.CreatedEvent;
 import com.minibank.core.events.loans.CreateLoanEvent;
 import com.minibank.core.events.loans.domain.LoanRequestDetails;
 import com.minibank.core.events.loans.factories.LoanRequestDetailsFactory;
@@ -9,7 +8,6 @@ import com.minibank.core.services.common.Message;
 import com.minibank.rest.domain.LoanRequest;
 import org.junit.Before;
 import org.junit.Test;
-import org.hamcrest.Matchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -19,7 +17,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.mockito.Mockito.*;
 
 import static com.minibank.rest.domain.RestEventFixtures.*;
