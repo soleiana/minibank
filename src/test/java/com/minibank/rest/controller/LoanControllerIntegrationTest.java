@@ -1,6 +1,7 @@
 package com.minibank.rest.controller;
 
 import com.minibank.core.events.loans.CreateLoanEvent;
+import com.minibank.core.events.loans.LoanCreatedEvent;
 import com.minibank.core.events.loans.domain.LoanRequestDetails;
 import com.minibank.core.events.loans.factories.LoanRequestDetailsFactory;
 import com.minibank.core.services.LoanService;
@@ -19,7 +20,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 import static org.mockito.Mockito.*;
 
-import static com.minibank.rest.domain.RestEventFixtures.*;
 import static com.minibank.rest.domain.RestDataFixture.*;
 
 
@@ -49,7 +49,7 @@ public class LoanControllerIntegrationTest
     public void testThatCreateLoanUsesHttpCreatedOnSuccess() throws Exception
     {
         when(loanService.createLoan(any(CreateLoanEvent.class)))
-                .thenReturn(loanCreated(true, Message.LOAN_OBTAINED_MESSAGE));
+                .thenReturn(new LoanCreatedEvent(true, Message.LOAN_OBTAINED_MESSAGE));
         when(loanRequestDetailsFactory.getNewLoanRequestDetails(any(LoanRequest.class)))
                 .thenReturn(new LoanRequestDetails());
 
@@ -65,7 +65,7 @@ public class LoanControllerIntegrationTest
     public void testThatCreateLoanUsesHttpForbiddenOnFailure() throws Exception
     {
         when(loanService.createLoan(any(CreateLoanEvent.class)))
-                .thenReturn(loanCreated(false, Message.LOAN_ERROR_MESSAGE));
+                .thenReturn(new LoanCreatedEvent(false,Message.LOAN_ERROR_MESSAGE));
         when(loanRequestDetailsFactory.getNewLoanRequestDetails(any(LoanRequest.class)))
                 .thenReturn(new LoanRequestDetails());
 
