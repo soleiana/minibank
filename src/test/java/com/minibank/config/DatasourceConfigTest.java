@@ -1,16 +1,15 @@
-package com.minibank.config.tests;
+package com.minibank.config;
 
 /**
  * Created by Ann on 07/09/14.
  */
 
-import com.minibank.config.DatasourceConfig;
 import com.minibank.core.repository.BankParamsRepository;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import static junit.framework.Assert.assertNotNull;
+import static junit.framework.TestCase.assertNotNull;
 
 
 public class DatasourceConfigTest
@@ -24,7 +23,6 @@ public class DatasourceConfigTest
         BankParamsRepository bankParamsRepository = context.getBean(BankParamsRepository.class);
 
         assertNotNull(bankParamsRepository);
-
     }
 
 }

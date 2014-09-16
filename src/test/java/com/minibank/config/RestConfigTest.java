@@ -1,6 +1,5 @@
-package com.minibank.config.tests;
+package com.minibank.config;
 
-import com.minibank.config.RestConfig;
 import com.minibank.core.services.LoanService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -19,9 +18,6 @@ public class RestConfigTest
         ApplicationContext context = new AnnotationConfigApplicationContext(RestConfig.class);
         LoanService loanService = context.getBean(LoanService.class);
 
-
         assertNotNull(loanService);
-
-
     }
 }

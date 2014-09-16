@@ -15,6 +15,7 @@ import com.minibank.core.services.helpers.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by Ann on 07/09/14.
@@ -38,6 +39,7 @@ public class LoanServiceImpl implements LoanService
     @Autowired
     private AllLoansDetailsFactory allLoansDetailsFactory;
 
+    @Transactional
     @Override
     public LoanCreatedEvent createLoan(CreateLoanEvent event)
     {
@@ -81,6 +83,7 @@ public class LoanServiceImpl implements LoanService
         return  loanCreated;
     }
 
+    @Transactional
     @Override
     public LoanExtensionCreatedEvent createLoanExtension(CreateLoanExtensionEvent event)
     {
@@ -107,6 +110,7 @@ public class LoanServiceImpl implements LoanService
        return  loanExtensionCreated;
     }
 
+    @Transactional
     @Override
     public AllLoansEvent requestAllLoans(RequestAllLoansEvent event)
     {

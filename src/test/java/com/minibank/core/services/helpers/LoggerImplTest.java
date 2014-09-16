@@ -7,7 +7,6 @@ import com.minibank.core.repository.DBException;
 import com.minibank.core.repository.LoanRequestRepository;
 import com.minibank.core.repository.RequestIPRepository;
 import com.minibank.core.repository.tools.DBCleaner;
-import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
