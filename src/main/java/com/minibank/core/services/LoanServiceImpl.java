@@ -119,8 +119,15 @@ public class LoanServiceImpl implements LoanService
         {
             e.printStackTrace();
         }
+
         AllLoansDetails allLoansDetails = allLoansDetailsFactory.getNewAllLoansDetails(allLoans);
-        return  new AllLoansEvent(allLoansDetails);
+        AllLoansEvent allLoansEvent = new AllLoansEvent(allLoansDetails);
+
+        if (allLoansDetails.getLoans().size()==0)
+            allLoansEvent.setEntityFound(false);
+        else allLoansEvent.setEntityFound(true);
+
+        return  allLoansEvent;
     }
 
 }

@@ -93,6 +93,7 @@ public class LoanServiceImplTest_2 extends SpringContextTest
         assertEquals(expectedAllLoansDetails.getName(), allLoansDetails.getName());
         assertEquals(expectedAllLoansDetails.getSurname(), allLoansDetails.getSurname());
         assertEquals(0, allLoansDetails.getLoans().size());
+        assertEquals(false, allLoansEvent.isEntityFound());
 
     }
 }
