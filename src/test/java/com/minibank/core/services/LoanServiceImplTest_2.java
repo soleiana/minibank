@@ -41,20 +41,50 @@ public class LoanServiceImplTest_2 extends SpringContextTest
     private RequestIP requestIP;
     private LoanRequest loanRequest;
     private Loan loan;
+    private LoanExtension loanExtension;
+
+    private void createLoan() throws DBException
+    {
+        loanRequest = LoanRequestFixture.standardLoanRequest();
+        loanRequest.setCustomer(customer);
+        loanRequest.setRequestIP(requestIP);
+        loanRequestRepository.create(loanRequest);
+        loan = LoanFixture.standardLoan();
+        loan.setCustomer(customer);
+        loan.setLoanRequest(loanRequest);
+        loanRepository.create(loan);
+    }
+
+    private void createLoanExtension() throws DBException
+    {
+        loanExtension = LoanExtensionFixture.standardLoanExtension();
+        loanExtension.setLoan(loan);
+        loanExtensionRepository.create(loanExtension);
+    }
 
     private RequestAllLoansEvent createRequestAllLoansEvent_1() throws DBException
     {
-        //Precondition: customer already logged in and its record exists in database
-        //Precondition: customer has no loans
+        //customer has no loans
         return new RequestAllLoansEvent(customer.getId());
     }
 
     private RequestAllLoansEvent createRequestAllLoansEvent_2() throws DBException
     {
-        //Precondition: customer already logged in and its record exists in database
-        //Precondition: customer has 2 loans
-        //Precondition: customer has no loan extensions
+        //customer has 2 loans
+        //customer has no loan extensions
+        createLoan();
+        createLoan();
+        return new RequestAllLoansEvent(customer.getId());
+    }
 
+    private RequestAllLoansEvent createRequestAllLoansEvent_3() throws DBException
+    {
+        //customer has 2 loans
+        //customer has 2 extensions of a loan
+        createLoan();
+        createLoanExtension();
+        createLoanExtension();
+        createLoan();
         return new RequestAllLoansEvent(customer.getId());
     }
 
@@ -65,12 +95,11 @@ public class LoanServiceImplTest_2 extends SpringContextTest
         dbCleaner.clear();
 
         bankParams = BankParamsFixture.standardBankParams();
-        bankParamsRepository.create(bankParams);
-
-        //We assume that customer already exists in DB
         customer = CustomerFixture.standardCustomer();
-        customerRepository.create(customer);
         requestIP = RequestIPFixture.standardRequestIP();
+
+        bankParamsRepository.create(bankParams);
+        customerRepository.create(customer);
         requestIPRepository.create(requestIP);
     }
 
@@ -78,21 +107,46 @@ public class LoanServiceImplTest_2 extends SpringContextTest
     @Transactional
     public void testRequestAllLoans_1() throws Exception
     {
-        //Precondition: customer already logged in and its record exists in database
-        //Precondition: customer has no loans
         RequestAllLoansEvent requestAllLoansEvent = createRequestAllLoansEvent_1();
-        AllLoansDetails expectedAllLoansDetails = new AllLoansDetails();
-        expectedAllLoansDetails.setName(customer.getName());
-        expectedAllLoansDetails.setSurname(customer.getSurname());
-        expectedAllLoansDetails.setCustomerId(customer.getId());
 
         AllLoansEvent allLoansEvent = loanService.requestAllLoans(requestAllLoansEvent);
 
         AllLoansDetails allLoansDetails = allLoansEvent.getAllLoansDetails();
-        assertEquals(expectedAllLoansDetails.getCustomerId(),allLoansDetails.getCustomerId());
-        assertEquals(expectedAllLoansDetails.getName(), allLoansDetails.getName());
-        assertEquals(expectedAllLoansDetails.getSurname(), allLoansDetails.getSurname());
+
+        assertEquals(customer.getId(), allLoansDetails.getCustomerId());
+        assertEquals(customer.getName(), allLoansDetails.getName());
+        assertEquals(customer.getSurname(), allLoansDetails.getSurname());
         assertEquals(0, allLoansDetails.getLoans().size());
         assertEquals(false, allLoansEvent.isEntityFound());
+    }
+
+    @Test
+    @Transactional
+    public void testRequestAllLoans_2() throws Exception
+    {
+        RequestAllLoansEvent requestAllLoansEvent = createRequestAllLoansEvent_2();
+
+        AllLoansEvent allLoansEvent = loanService.requestAllLoans(requestAllLoansEvent);
+
+        AllLoansDetails allLoansDetails = allLoansEvent.getAllLoansDetails();
+
+        assertEquals(2, allLoansDetails.getLoans().size());
+        assertEquals(true, allLoansEvent.isEntityFound());
+    }
+
+    @Test
+    @Transactional
+    public void testRequestAllLoans_3() throws Exception
+    {
+        RequestAllLoansEvent requestAllLoansEvent = createRequestAllLoansEvent_3();
+
+        AllLoansEvent allLoansEvent = loanService.requestAllLoans(requestAllLoansEvent);
+
+        AllLoansDetails allLoansDetails = allLoansEvent.getAllLoansDetails();
+
+        assertEquals(2, allLoansDetails.getLoans().size());
+        assertEquals(2, allLoansDetails.getLoans().get(0).getLoanExtensions().size());
+        assertEquals(0, allLoansDetails.getLoans().get(1).getLoanExtensions().size());
+        assertEquals(true, allLoansEvent.isEntityFound());
     }
 }

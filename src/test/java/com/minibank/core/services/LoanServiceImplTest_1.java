@@ -44,26 +44,10 @@ public class LoanServiceImplTest_1 extends SpringContextTest
     private LoanRequest loanRequest;
     private Loan loan;
 
-    @Before
-    @Transactional
-    public void setUp() throws Exception
-    {
-        dbCleaner.clear();
-        bankParams = BankParamsFixture.standardBankParams();
-        bankParamsRepository.create(bankParams);
-
-        //We assume that customer already exists in DB
-        customer = CustomerFixture.standardCustomer();
-        customerRepository.create(customer);
-        //requestIP = RequestIPFixture.standardRequestIP();
-        //requestIPRepository.create(requestIP);
-
-    }
-
     private CreateLoanEvent createCreateLoanEvent()throws DBException
     {
         LoanRequestDetails loanRequestDetails =
-                  LoanRequestDetailsFixture.standardLoanRequestDetails();
+                LoanRequestDetailsFixture.standardLoanRequestDetails();
         loanRequestDetails.setCustomerId(customer.getId());
 
         return new CreateLoanEvent(loanRequestDetails);
@@ -71,9 +55,6 @@ public class LoanServiceImplTest_1 extends SpringContextTest
 
     private CreateLoanExtensionEvent createCreateLoanExtensionEvent()throws DBException
     {
-        //Precondition: customer already logged in and its record exists in database
-        //Precondition: loan, subject to extension, exists in database
-
         loanRequest = LoanRequestFixture.standardLoanRequest();
         requestIP = RequestIPFixture.standardRequestIP();
         loan = LoanFixture.standardLoan();
@@ -88,6 +69,17 @@ public class LoanServiceImplTest_1 extends SpringContextTest
         return new CreateLoanExtensionEvent(loan.getId());
     }
 
+    @Before
+    @Transactional
+    public void setUp() throws Exception
+    {
+        dbCleaner.clear();
+
+        bankParams = BankParamsFixture.standardBankParams();
+        bankParamsRepository.create(bankParams);
+        customer = CustomerFixture.standardCustomer();
+        customerRepository.create(customer);
+    }
 
     @Test
     @Transactional
@@ -95,7 +87,7 @@ public class LoanServiceImplTest_1 extends SpringContextTest
     {
         CreateLoanEvent createLoanEvent = createCreateLoanEvent();
         LoanCreatedEvent expectedLoanCreatedEvent =
-                new LoanCreatedEvent(true,Message.LOAN_OBTAINED_MESSAGE);
+                new LoanCreatedEvent(true, Message.LOAN_OBTAINED_MESSAGE);
 
         LoanRequest loanRequest1 = loanRequestRepository.getLast();
         Loan loan1 = loanRepository.getLast();

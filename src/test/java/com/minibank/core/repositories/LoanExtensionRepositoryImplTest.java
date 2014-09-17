@@ -37,20 +37,6 @@ public class LoanExtensionRepositoryImplTest  extends SpringContextTest
     private LoanRequest loanRequest;
     private Loan loan;
 
-    @Before
-    @Transactional
-    public void setUp() throws DBException
-    {
-        dbCleaner.clear();
-
-        customer = CustomerFixture.standardCustomer();
-        requestIP = RequestIPFixture.standardRequestIP();
-        customerRepository.create(customer);
-        requestIPRepository.create(requestIP);
-
-        createLoanExtension();
-    }
-
     private void createLoanRequest() throws DBException
     {
         loanRequest = LoanRequestFixture.standardLoanRequest();
@@ -73,6 +59,20 @@ public class LoanExtensionRepositoryImplTest  extends SpringContextTest
         createLoan();
         loanExtension = LoanExtensionFixture.standardLoanExtension();
         loanExtension.setLoan(loan);
+    }
+
+    @Before
+    @Transactional
+    public void setUp() throws DBException
+    {
+        dbCleaner.clear();
+
+        customer = CustomerFixture.standardCustomer();
+        requestIP = RequestIPFixture.standardRequestIP();
+        customerRepository.create(customer);
+        requestIPRepository.create(requestIP);
+
+        createLoanExtension();
     }
 
     @Test

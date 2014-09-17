@@ -29,7 +29,6 @@ public class LoanExtensionFactoryImpl implements LoanExtensionFactory
     {
         LoanExtension loanExtension = new LoanExtension();
 
-        //We assume that customer already exists in DB
         Loan loan = loanRepository.getById(loanId);
 
         loanExtension.setLoan(loan);

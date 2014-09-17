@@ -4,7 +4,6 @@ import com.minibank.SpringContextTest;
 import com.minibank.core.domain.*;
 import com.minibank.core.repositories.CustomerRepository;
 import com.minibank.core.repositories.DBException;
-import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.repositories.RequestIPRepository;
 import com.minibank.core.repositories.tools.DBCleaner;
 import org.junit.Before;
@@ -14,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertNull;
-import static junit.framework.TestCase.assertTrue;
 
 /**
  * Created by Ann on 13/09/14.
@@ -25,8 +23,6 @@ public class LoggerImplTest extends SpringContextTest
     private DBCleaner dbCleaner;
     @Autowired
     private RequestIPRepository requestIPRepository;
-    @Autowired
-    private LoanRequestRepository loanRequestRepository;
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -73,6 +69,7 @@ public class LoggerImplTest extends SpringContextTest
     public void testLog_2() throws DBException
     {
         //scenario with new loan request coming from registered ip address
+
         createLoanRequest();
         requestIPRepository.create(requestIP);
         assertNotNull(requestIP.getId());

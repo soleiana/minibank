@@ -37,6 +37,15 @@ public class CreditExpertImplTest extends SpringContextTest
     private LoanRequest loanRequest;
     private RequestIP requestIP;
 
+    private void createLoanRequest() throws DBException
+    {
+        Customer customer = CustomerFixture.standardCustomer();
+        loanRequest = LoanRequestFixture.standardLoanRequest();
+        customerRepository.create(customer);
+        loanRequest.setCustomer(customer);
+        loanRequest.setRequestIP(requestIP);
+    }
+
     @Before
     @Transactional
     public void setUp() throws DBException
@@ -46,15 +55,6 @@ public class CreditExpertImplTest extends SpringContextTest
         bankParamsRepository.create(bankParams);
         requestIP = RequestIPFixture.standardRequestIP();
         requestIPRepository.create(requestIP);
-    }
-
-    private void createLoanRequest() throws DBException
-    {
-        Customer customer = CustomerFixture.standardCustomer();
-        loanRequest = LoanRequestFixture.standardLoanRequest();
-        customerRepository.create(customer);
-        loanRequest.setCustomer(customer);
-        loanRequest.setRequestIP(requestIP);
     }
 
     @Test

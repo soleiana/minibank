@@ -1,13 +1,13 @@
 package com.minibank.core.domain;
 
-/**
- * Created by Ann on 06/09/14.
- */
 import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Ann on 06/09/14.
+ */
 @Entity
 @Table(name="CUSTOMER")
 public class Customer
@@ -28,7 +28,6 @@ public class Customer
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
             org.hibernate.annotations.CascadeType.REMOVE})
     private List<Loan> loans = new ArrayList<>();
-
 
     @Column(name="NAME", nullable = false)
     private String name;
@@ -74,24 +73,29 @@ public class Customer
         this.surname = surname;
     }
 
-    public List<LoanRequest> getLoanRequests() {
+    public List<LoanRequest> getLoanRequests()
+    {
         return loanRequests;
     }
 
-    public void setLoanRequests(List<LoanRequest> loanRequests) {
+    public void setLoanRequests(List<LoanRequest> loanRequests)
+    {
         this.loanRequests = loanRequests;
     }
 
-    public List<Loan> getLoans() {
+    public List<Loan> getLoans()
+    {
         return loans;
     }
 
-    public void setLoans(List<Loan> loans) {
+    public void setLoans(List<Loan> loans)
+    {
         this.loans = loans;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -108,7 +112,8 @@ public class Customer
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (loanRequests != null ? loanRequests.hashCode() : 0);
         result = 31 * result + (loans != null ? loans.hashCode() : 0);

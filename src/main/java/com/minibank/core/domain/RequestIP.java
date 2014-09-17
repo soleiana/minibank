@@ -1,13 +1,13 @@
 package com.minibank.core.domain;
 
-/**
- * Created by Ann on 06/09/14.
- */
 import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Ann on 06/09/14.
+ */
 @Entity
 @Table(name="REQUEST_IP")
 public class RequestIP

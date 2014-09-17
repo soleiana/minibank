@@ -3,7 +3,6 @@ package com.minibank.core.events.loans.domain;
 import java.math.BigDecimal;
 
 
-
 /**
  * Created by Ann on 12/09/14.
  */

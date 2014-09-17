@@ -7,7 +7,6 @@ public enum LoanRequestStatus
 {
     NEW("NEW"), APPROVED("APPROVED"), REJECTED("REJECTED");
 
-
     private final String value;
 
     private LoanRequestStatus(String value) {

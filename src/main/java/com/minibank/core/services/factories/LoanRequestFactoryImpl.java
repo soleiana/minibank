@@ -50,6 +50,4 @@ public class LoanRequestFactoryImpl implements LoanRequestFactory
 
         return loanRequest;
     }
-
-
 }

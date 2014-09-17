@@ -12,19 +12,23 @@ public class AllLoans
 
     private List<Loan> loans;
 
-    public Customer getCustomer() {
+    public Customer getCustomer()
+    {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(Customer customer)
+    {
         this.customer = customer;
     }
 
-    public List<Loan> getLoans() {
+    public List<Loan> getLoans()
+    {
         return loans;
     }
 
-    public void setLoans(List<Loan> loans) {
+    public void setLoans(List<Loan> loans)
+    {
         this.loans = loans;
     }
 }

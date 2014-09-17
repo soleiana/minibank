@@ -39,6 +39,17 @@ public class ConstraintCheckerImplTest extends SpringContextTest
     private LoanRequest loanRequest;
     private RequestIP requestIP;
 
+    private void createLoanRequest(java.sql.Date submissionDate) throws DBException
+    {
+        Customer customer = CustomerFixture.standardCustomer();
+        loanRequest = LoanRequestFixture.standardLoanRequest();
+        loanRequest.setSubmissionDate(submissionDate);
+        customerRepository.create(customer);
+        loanRequest.setCustomer(customer);
+        loanRequest.setRequestIP(requestIP);
+        loanRequestRepository.create(loanRequest);
+    }
+
     @Before
     @Transactional
     public void setUp() throws DBException
@@ -50,17 +61,6 @@ public class ConstraintCheckerImplTest extends SpringContextTest
         requestIPRepository.create(requestIP);
 
         createLoanRequest(LoanRequestFixture.SUBMISSION_DATE);
-    }
-
-    private void createLoanRequest(java.sql.Date submissionDate) throws DBException
-    {
-        Customer customer = CustomerFixture.standardCustomer();
-        loanRequest = LoanRequestFixture.standardLoanRequest();
-        loanRequest.setSubmissionDate(submissionDate);
-        customerRepository.create(customer);
-        loanRequest.setCustomer(customer);
-        loanRequest.setRequestIP(requestIP);
-        loanRequestRepository.create(loanRequest);
     }
 
     @Test

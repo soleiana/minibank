@@ -18,54 +18,64 @@ public class LoanExtension
     public LoanExtension()
     {}
 
-    public Integer getLoanId() {
+    public Integer getLoanId()
+    {
         return loanId;
     }
 
-    public BigDecimal getInterestRate() {
+    public BigDecimal getInterestRate()
+    {
         return interestRate;
     }
 
-    public BigDecimal getInterest() {
+    public BigDecimal getInterest()
+    {
         return interest;
     }
 
-    public Date getStartDate() {
+    public Date getStartDate()
+    {
         return startDate;
     }
 
-    public Date getEndDate() {
+    public Date getEndDate()
+    {
         return endDate;
     }
 
-    public Date getSubmissionDate() {
+    public Date getSubmissionDate()
+    {
         return submissionDate;
     }
 
     public void setLoanId(Integer loanId)
+
     {
         this.loanId = loanId;
     }
 
-    public void setSubmissionDate(Date submissionDate) {
+    public void setSubmissionDate(Date submissionDate)
+    {
         this.submissionDate = submissionDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(Date endDate)
+    {
         this.endDate = endDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(Date startDate)
+    {
         this.startDate = startDate;
     }
 
-    public void setInterest(BigDecimal interest) {
+    public void setInterest(BigDecimal interest)
+    {
         this.interest = interest;
     }
 
-    public void setInterestRate(BigDecimal interestRate) {
+    public void setInterestRate(BigDecimal interestRate)
+    {
         this.interestRate = interestRate;
     }
-
-
 }

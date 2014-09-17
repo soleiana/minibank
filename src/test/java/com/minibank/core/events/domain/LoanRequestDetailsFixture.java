@@ -1,7 +1,6 @@
 package com.minibank.core.events.domain;
 
 import com.minibank.core.events.loans.domain.LoanRequestDetails;
-
 import java.math.BigDecimal;
 
 /**

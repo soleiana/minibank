@@ -11,9 +11,4 @@ public class ReadEvent
     {
         return entityFound;
     }
-
-    public void setEntityFound(boolean entityFound)
-    {
-        this.entityFound = entityFound;
-    }
 }

@@ -31,6 +31,13 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
     private RequestIP requestIP;
     private Customer customer;
 
+    private void createLoanRequest()
+    {
+        loanRequest = LoanRequestFixture.standardLoanRequest();
+        loanRequest.setCustomer(customer);
+        loanRequest.setRequestIP(requestIP);
+    }
+
     @Before
     @Transactional
     public void setUp() throws DBException
@@ -43,12 +50,6 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
         createLoanRequest();
 
     }
-    private void createLoanRequest()
-    {
-        loanRequest = LoanRequestFixture.standardLoanRequest();
-        loanRequest.setCustomer(customer);
-        loanRequest.setRequestIP(requestIP);
-    }
 
     @Test
     @Transactional
@@ -56,7 +57,6 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
     {
         loanRequestRepository.create(loanRequest);
         assertNotNull(loanRequest.getId());
-
     }
 
     @Test

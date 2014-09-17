@@ -1,14 +1,13 @@
 package com.minibank.core.domain;
 
-/**
- * Created by Ann on 06/09/14.
- */
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 
+/**
+ * Created by Ann on 06/09/14.
+ */
 @Entity
 @Table(name="LOAN_REQUEST")
 public class LoanRequest

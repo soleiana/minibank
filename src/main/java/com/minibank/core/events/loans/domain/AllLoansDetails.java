@@ -13,35 +13,43 @@ public class AllLoansDetails
     private String surname;
     private List<Loan> loans = new ArrayList<>();
 
-    public Integer getCustomerId() {
+    public Integer getCustomerId()
+    {
         return customerId;
     }
 
-    public void setCustomerId(Integer customerId) {
+    public void setCustomerId(Integer customerId)
+    {
         this.customerId = customerId;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public String getSurname() {
+    public String getSurname()
+    {
         return surname;
     }
 
-    public void setSurname(String surname) {
+    public void setSurname(String surname)
+    {
         this.surname = surname;
     }
 
-    public List<Loan> getLoans() {
+    public List<Loan> getLoans()
+    {
         return loans;
     }
 
-    public void setLoans(List<Loan> loans) {
+    public void setLoans(List<Loan> loans)
+    {
         this.loans = loans;
     }
 }

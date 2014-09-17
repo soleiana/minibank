@@ -1,8 +1,5 @@
 package com.minibank.config;
 
-/**
- * Created by Ann on 07/09/14.
- */
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +15,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+/**
+ * Created by Ann on 07/09/14.
+ */
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:datasource.properties" })
@@ -34,6 +34,7 @@ public class DatasourceConfig
                 .setType(EmbeddedDatabaseType.HSQL)
                 .build();
     }
+
     @Bean(name = "sessionFactory")
     public AnnotationSessionFactoryBean sessionFactory()
     {
@@ -43,6 +44,7 @@ public class DatasourceConfig
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
+
     @Bean(name = "transactionManager")
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory)
@@ -52,6 +54,7 @@ public class DatasourceConfig
 
         return txManager;
     }
+
     @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation()
     {

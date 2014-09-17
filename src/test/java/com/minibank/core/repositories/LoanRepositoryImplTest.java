@@ -34,6 +34,23 @@ public class LoanRepositoryImplTest extends SpringContextTest
     private LoanRequest loanRequest;
     private Loan loan;
 
+    private void createLoan() throws DBException
+    {
+        loan = LoanFixture.standardLoan();
+        loan.setCustomer(customer);
+
+        createLoanRequest();
+        loanRequestRepository.create(loanRequest);
+        loan.setLoanRequest(loanRequest);
+    }
+
+    private void createLoanRequest()
+    {
+        loanRequest = LoanRequestFixture.standardLoanRequest();
+        loanRequest.setCustomer(customer);
+        loanRequest.setRequestIP(requestIP);
+    }
+
     @Before
     @Transactional
     public void setUp() throws DBException
@@ -45,22 +62,6 @@ public class LoanRepositoryImplTest extends SpringContextTest
         customerRepository.create(customer);
         requestIPRepository.create(requestIP);
         createLoan();
-    }
-
-    private void createLoan() throws DBException
-    {
-        loan = LoanFixture.standardLoan();
-        loan.setCustomer(customer);
-
-        createLoanRequest();
-        loanRequestRepository.create(loanRequest);
-        loan.setLoanRequest(loanRequest);
-    }
-    private void createLoanRequest()
-    {
-        loanRequest = LoanRequestFixture.standardLoanRequest();
-        loanRequest.setCustomer(customer);
-        loanRequest.setRequestIP(requestIP);
     }
 
     @Test
@@ -94,7 +95,6 @@ public class LoanRepositoryImplTest extends SpringContextTest
         loanRepository.create(loan);
         Loan ln = loanRepository.getById(loan.getId());
         assertEquals(loan,ln);
-
     }
 
     @Test

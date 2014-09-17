@@ -1,8 +1,5 @@
 package com.minibank.core.domain;
 
-/**
- * Created by Ann on 06/09/14.
- */
 import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -10,6 +7,9 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Ann on 06/09/14.
+ */
 @Entity
 @Table(name="LOAN")
 public class Loan
@@ -18,7 +18,6 @@ public class Loan
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID", nullable = false)
     private Integer id;
-
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="LOAN_REQUEST_ID", unique = true, nullable = false)
@@ -33,7 +32,6 @@ public class Loan
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
             org.hibernate.annotations.CascadeType.REMOVE})
     private List<LoanExtension> loanExtensions = new ArrayList<>();
-
 
     @Column(name="CURRENT_INTEREST_RATE", precision = 10, scale = 2, nullable = false)
     private BigDecimal currInterestRate;

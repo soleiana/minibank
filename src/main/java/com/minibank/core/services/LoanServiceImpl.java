@@ -130,7 +130,7 @@ public class LoanServiceImpl implements LoanService
 
         AllLoansEvent allLoansEvent;
 
-        if (allLoansDetails.getLoans().size()==0)
+        if (allLoansDetails.getLoans().size() == 0)
             allLoansEvent = new AllLoansEvent(allLoansDetails,false);
         else allLoansEvent = new AllLoansEvent(allLoansDetails,true);
 

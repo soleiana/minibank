@@ -20,6 +20,13 @@ public class LoggerImpl implements Logger
     @Autowired
     private LoanExtensionRepository loanExtensionRepository;
 
+    private void log(RequestIP requestIP) throws DBException
+    {
+        RequestIP req = requestIPRepository.getByIP(requestIP.getIP());
+        if (req == null)
+            requestIPRepository.create(requestIP);
+    }
+
     @Override
     public void log(LoanRequest loanRequest) throws DBException
     {
@@ -38,14 +45,6 @@ public class LoggerImpl implements Logger
     public void update(Loan extendedLoan) throws DBException
     {
         loanRepository.update(extendedLoan);
-    }
-
-    private void log(RequestIP requestIP) throws DBException
-    {
-        RequestIP req = requestIPRepository.getByIP(requestIP.getIP());
-        if (req == null)
-            requestIPRepository.create(requestIP);
-
     }
 
     @Override

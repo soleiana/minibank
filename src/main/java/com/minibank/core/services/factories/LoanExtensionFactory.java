@@ -8,6 +8,5 @@ import com.minibank.core.repositories.DBException;
  */
 public interface LoanExtensionFactory
 {
-    LoanExtension getNewLoanExtension(Integer loanId)
-                                    throws DBException;
+    LoanExtension getNewLoanExtension(Integer loanId) throws DBException;
 }

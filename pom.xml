@@ -97,7 +97,6 @@
             <scope>test</scope>
         </dependency>
 
-
         <!-- HSQLDB dependency - used as embedded database -->
         <dependency>
             <groupId>org.hsqldb</groupId>
