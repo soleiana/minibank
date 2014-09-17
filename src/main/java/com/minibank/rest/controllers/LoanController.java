@@ -5,9 +5,9 @@ import com.minibank.core.events.loans.LoanCreatedEvent;
 import com.minibank.core.events.loans.domain.LoanRequestDetails;
 import com.minibank.core.events.loans.factories.LoanRequestDetailsFactory;
 import com.minibank.core.services.LoanService;
+import com.minibank.rest.common.Message;
 import com.minibank.rest.domain.LoanRequest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.minibank.rest.validators.LoanRequestValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +26,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/rest/loans")
 public class LoanController
 {
-    private  static Logger log = LoggerFactory.getLogger(LoanController.class);
+    @Autowired
+    private LoanRequestValidator loanRequestValidator;
 
     @Autowired
     private LoanService loanService;
@@ -38,6 +39,9 @@ public class LoanController
     public ResponseEntity<String> createLoan(@RequestBody LoanRequest loanRequest,
                                              HttpServletRequest httpServletRequest)
     {
+        if (!loanRequestValidator.validate(loanRequest))
+            return new ResponseEntity<>(Message.INVALID_INPUT_FORMAT,HttpStatus.FORBIDDEN);
+
         String ip = httpServletRequest.getRemoteAddr();
         loanRequest.setRequestIP(ip);
         LoanRequestDetails loanRequestDetails = loanRequestDetailsFactory.getNewLoanRequestDetails(loanRequest);

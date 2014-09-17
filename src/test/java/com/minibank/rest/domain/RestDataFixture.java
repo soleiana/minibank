@@ -9,4 +9,15 @@ public class RestDataFixture
     {
         return "{\"customerId\": 2, \"requestIP\": null, \"term\": 30, \"amount\" : 200}";
     }
+
+    public static String wrongLoanRequestJSON_1()
+    {
+        return "{\"customerId\": null, \"requestIP\": null, \"term\": 30, \"amount\" : 200}";
+    }
+
+    public static String wrongLoanRequestJSON_2()
+    {
+        return "{\"customerId\": 2, \"requestIP\": null, \"term\": -30, \"amount\" : 200}";
+    }
+
 }
