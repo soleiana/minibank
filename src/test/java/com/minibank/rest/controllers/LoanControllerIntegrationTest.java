@@ -52,7 +52,7 @@ public class LoanControllerIntegrationTest
     public void testThatCreateLoanUsesHttpCreatedOnSuccess() throws Exception
     {
         when(loanRequestValidator.validate(any(LoanRequest.class)))
-                .thenReturn(true);
+               .thenReturn(true);
         when(loanService.createLoan(any(CreateLoanEvent.class)))
                 .thenReturn(new LoanCreatedEvent(true, Message.LOAN_OBTAINED_MESSAGE));
         when(loanRequestDetailsFactory.getNewLoanRequestDetails(any(LoanRequest.class)))
@@ -86,23 +86,13 @@ public class LoanControllerIntegrationTest
     }
 
     @Test
-    public void testThatCreateLoanUsesHttpForbiddenOnFailureToValidate_1() throws Exception
+    public void testThatCreateLoanUsesHttpForbiddenOnFailureToValidate() throws Exception
     {
+        when(loanRequestValidator.validate(any(LoanRequest.class)))
+                .thenReturn(false);
         this.mockMvc.perform(
                 post("/rest/loans")
-                        .content(wrongLoanRequestJSON_1())
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isForbidden());
-
-    }
-
-    @Test
-    public void testThatCreateLoanUsesHttpForbiddenOnFailureToValidate_2() throws Exception
-    {
-        this.mockMvc.perform(
-                post("/rest/loans")
-                        .content(wrongLoanRequestJSON_2())
+                        .content(standardLoanRequestJSON())
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isForbidden());
