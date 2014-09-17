@@ -2,7 +2,7 @@ package com.minibank.core.services.helpers;
 
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanRequest;
-import com.minibank.core.repository.DBException;
+import com.minibank.core.repositories.DBException;
 
 import java.math.BigDecimal;
 import java.sql.Date;

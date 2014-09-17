@@ -4,7 +4,7 @@ package com.minibank.config;
  * Created by Ann on 07/09/14.
  */
 
-import com.minibank.core.repository.BankParamsRepository;
+import com.minibank.core.repositories.BankParamsRepository;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

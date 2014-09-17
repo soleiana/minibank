@@ -2,9 +2,9 @@ package com.minibank.core.services.helpers;
 
 import com.minibank.SpringContextTest;
 import com.minibank.core.domain.*;
-import com.minibank.core.repository.BankParamsRepository;
-import com.minibank.core.repository.DBException;
-import com.minibank.core.repository.tools.DBCleaner;
+import com.minibank.core.repositories.BankParamsRepository;
+import com.minibank.core.repositories.DBException;
+import com.minibank.core.repositories.tools.DBCleaner;
 import com.minibank.core.services.common.Number;
 import org.junit.Before;
 import org.junit.Test;

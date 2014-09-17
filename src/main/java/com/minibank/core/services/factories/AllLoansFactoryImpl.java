@@ -4,10 +4,10 @@ import com.minibank.core.domain.AllLoans;
 import com.minibank.core.domain.Customer;
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanExtension;
-import com.minibank.core.repository.CustomerRepository;
-import com.minibank.core.repository.DBException;
-import com.minibank.core.repository.LoanExtensionRepository;
-import com.minibank.core.repository.LoanRepository;
+import com.minibank.core.repositories.CustomerRepository;
+import com.minibank.core.repositories.DBException;
+import com.minibank.core.repositories.LoanExtensionRepository;
+import com.minibank.core.repositories.LoanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

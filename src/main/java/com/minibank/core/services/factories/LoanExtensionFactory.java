@@ -1,7 +1,7 @@
 package com.minibank.core.services.factories;
 
 import com.minibank.core.domain.LoanExtension;
-import com.minibank.core.repository.DBException;
+import com.minibank.core.repositories.DBException;
 
 /**
  * Created by Ann on 14/09/14.

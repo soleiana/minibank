@@ -1,7 +1,7 @@
 package com.minibank.core.services.helpers;
 
 import com.minibank.core.domain.LoanRequest;
-import com.minibank.core.repository.DBException;
+import com.minibank.core.repositories.DBException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

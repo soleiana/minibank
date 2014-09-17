@@ -2,11 +2,11 @@ package com.minibank.core.services.helpers;
 
 import com.minibank.SpringContextTest;
 import com.minibank.core.domain.*;
-import com.minibank.core.repository.CustomerRepository;
-import com.minibank.core.repository.DBException;
-import com.minibank.core.repository.LoanRequestRepository;
-import com.minibank.core.repository.RequestIPRepository;
-import com.minibank.core.repository.tools.DBCleaner;
+import com.minibank.core.repositories.CustomerRepository;
+import com.minibank.core.repositories.DBException;
+import com.minibank.core.repositories.LoanRequestRepository;
+import com.minibank.core.repositories.RequestIPRepository;
+import com.minibank.core.repositories.tools.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -21,7 +21,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:datasource.properties" })
-@ComponentScan(basePackages = {"com.minibank.core.domain","com.minibank.core.repository" })
+@ComponentScan(basePackages = {"com.minibank.core.domain", "com.minibank.core.repositories"})
 public class DatasourceConfig
 {
     @Autowired
