@@ -3,6 +3,7 @@ package com.minibank.rest.controllers;
 import com.minibank.core.events.loans.CreateLoanExtensionEvent;
 import com.minibank.core.events.loans.LoanExtensionCreatedEvent;
 import com.minibank.core.services.LoanService;
+import com.minibank.rest.common.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +22,22 @@ public class LoanExtensionController
     @Autowired
     private LoanService loanService;
 
+    private boolean validate(Integer loanId)
+    {
+        if (loanId == null)
+            return  false;
+        if (loanId <= 0)
+            return  false;
+        return  true;
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<String> createLoanExtension(@RequestBody Integer id)
     {
+        if (!validate(id))
+            return new ResponseEntity<>(Message.INVALID_INPUT_FORMAT,
+                    HttpStatus.FORBIDDEN);
+
         CreateLoanExtensionEvent createLoanExtensionEvent =
                 new CreateLoanExtensionEvent(id);
         LoanExtensionCreatedEvent loanExtensionCreatedEvent =

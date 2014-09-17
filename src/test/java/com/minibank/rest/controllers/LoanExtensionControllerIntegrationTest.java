@@ -50,4 +50,26 @@ public class LoanExtensionControllerIntegrationTest
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated());
     }
+
+    @Test
+    public void testThatCreateLoanExtensionUsesHttpForbidden_1() throws Exception
+    {
+        this.mockMvc.perform(
+                post("/rest/loans/loanExtensions")
+                        .content("null")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isForbidden());
+    }
+
+    @Test
+    public void testThatCreateLoanExtensionUsesHttpForbidden_2() throws Exception
+    {
+        this.mockMvc.perform(
+                post("/rest/loans/loanExtensions")
+                        .content("-1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isForbidden());
+    }
 }
