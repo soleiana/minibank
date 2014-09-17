@@ -1,7 +1,7 @@
 Developer's memo:
 
 MiniBank-1.0-SNAPSHOT is an executable jar file.
-The app can be launched from the command line as 'java MiniBank-1.0-SNAPSHOT' or from an IDE
+The app can be launched from the command line as 'java Application' or from an IDE
 by running com.minibank.rest.Application.java. No prerequisites, JVM only.
 All JUnit test are launched by executing Maven 'test' phase.
 Integration tests can be run independently one by one from an IDE.
