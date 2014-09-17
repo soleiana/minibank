@@ -1,1 +1,0 @@
-MiniBank-1.0-1 - executable jar file
