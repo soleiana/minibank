@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by Ann on 06/09/14.
  */
@@ -35,8 +37,11 @@ public class LoanController
     private LoanRequestDetailsFactory loanRequestDetailsFactory;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<String> createLoan(@RequestBody LoanRequest loanRequest)
+    public ResponseEntity<String> createLoan(@RequestBody LoanRequest loanRequest,
+                                             HttpServletRequest httpServletRequest)
     {
+        String ip = httpServletRequest.getRemoteAddr();
+        loanRequest.setRequestIP(ip);
         LoanRequestDetails loanRequestDetails = loanRequestDetailsFactory.getNewLoanRequestDetails(loanRequest);
         LoanCreatedEvent loanCreatedEvent = loanService.createLoan(new CreateLoanEvent(loanRequestDetails));
 

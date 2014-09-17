@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 
 @Controller
-@RequestMapping("/rest/loans")
+@RequestMapping("/rest/customers")
 public class LoanQueriesController
 {
     @Autowired
@@ -30,11 +30,10 @@ public class LoanQueriesController
     @Qualifier("Rest")
     private AllLoansFactory allLoansFactory;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/customers/{id}")
-    public ResponseEntity<AllLoans> requestAllLoans(@PathVariable String id)
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}/loans")
+    public ResponseEntity<AllLoans> requestAllLoans(@PathVariable Integer id)
     {
-        Integer customerId = Integer.parseInt(id);
-        RequestAllLoansEvent requestAllLoansEvent = new RequestAllLoansEvent(customerId);
+        RequestAllLoansEvent requestAllLoansEvent = new RequestAllLoansEvent(id);
         AllLoansEvent allLoansEvent = loanService.requestAllLoans(requestAllLoansEvent);
 
         if(allLoansEvent.isEntityFound())

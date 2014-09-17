@@ -15,18 +15,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by Ann on 06/09/14.
  */
 @Controller
-@RequestMapping("/rest/loanExtensions")
+@RequestMapping("/rest/loans/loanExtensions")
 public class LoanExtensionController
 {
     @Autowired
     private LoanService loanService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<String> createLoanExtension(@RequestBody String id)
+    public ResponseEntity<String> createLoanExtension(@RequestBody Integer id)
     {
-        Integer loanId = Integer.parseInt(id);
         CreateLoanExtensionEvent createLoanExtensionEvent =
-                new CreateLoanExtensionEvent(loanId);
+                new CreateLoanExtensionEvent(id);
         LoanExtensionCreatedEvent loanExtensionCreatedEvent =
                 loanService.createLoanExtension(createLoanExtensionEvent);
         String message = loanExtensionCreatedEvent.getMessage();

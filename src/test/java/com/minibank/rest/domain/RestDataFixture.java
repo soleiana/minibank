@@ -7,6 +7,6 @@ public class RestDataFixture
 {
     public static String standardLoanRequestJSON()
     {
-        return "{\"customerId\": 2, \"requestIP\": \"127.0.0.1\", \"term\": 30, \"amount\" : 200}";
+        return "{\"customerId\": 2, \"requestIP\": null, \"term\": 30, \"amount\" : 200}";
     }
 }

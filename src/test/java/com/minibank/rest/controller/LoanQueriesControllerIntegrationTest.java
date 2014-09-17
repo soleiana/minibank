@@ -52,7 +52,7 @@ public class LoanQueriesControllerIntegrationTest
                 .thenReturn(new AllLoans());
 
         this.mockMvc.perform(
-                get("/rest/loans/customers/{id}", "1")
+                get("/rest/customers/{id}/loans", 1)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
@@ -66,7 +66,7 @@ public class LoanQueriesControllerIntegrationTest
                 .thenReturn(new AllLoans());
 
         this.mockMvc.perform(
-                get("/rest/loans/customers/{id}", "1")
+                get("/rest/customers/{id}/loans", 1)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
     }

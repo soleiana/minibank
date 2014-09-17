@@ -44,8 +44,8 @@ public class LoanExtensionControllerIntegrationTest
         when(loanService.createLoanExtension(any(CreateLoanExtensionEvent.class)))
                 .thenReturn(new LoanExtensionCreatedEvent(Message.LOAN_EXTENSION_MESSAGE));
         this.mockMvc.perform(
-                post("/rest/loanExtensions")
-                        .content("\"1\"")
+                post("/rest/loans/loanExtensions")
+                        .content("1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated());
