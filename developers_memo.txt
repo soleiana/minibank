@@ -9,7 +9,7 @@ All the business and technical requirements are implemented, except for the acce
 The most important classes and hardest algorithms are covered with unit tests.
 All the controller classes are covered with integration tests.
 Multiple scenarios are developed to check critical paths.
-Spring Boot is used as an embedded web container, HSQLDB - as an in-memory DBMS.
+Spring Boot is used to automatically configure embedded tomcat. HSQLDB is an in-memory database.
 
 Technologies applied:
 - Java
