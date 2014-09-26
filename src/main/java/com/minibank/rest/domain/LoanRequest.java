@@ -1,10 +1,12 @@
 package com.minibank.rest.domain;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
 /**
  * Created by Ann on 07/09/14.
  */
+@XmlRootElement
 public class LoanRequest
 {
     private Integer customerId;

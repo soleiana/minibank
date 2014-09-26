@@ -1,5 +1,6 @@
 package com.minibank.rest.domain;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
 /**
  * Created by Ann on 14/09/14.
  */
-
+@XmlRootElement
 public class AllLoans
 {
     private Integer customerId;

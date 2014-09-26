@@ -26,5 +26,4 @@ public class LoanFixture
         loan.setEndDate(STANDARD_END_DATE);
         return loan;
     }
-
 }

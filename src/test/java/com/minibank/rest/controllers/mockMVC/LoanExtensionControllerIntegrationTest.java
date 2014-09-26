@@ -1,7 +1,8 @@
-package com.minibank.rest.controllers;
+package com.minibank.rest.controllers.mockMVC;
 
 import com.minibank.core.events.loans.CreateLoanExtensionEvent;
 import com.minibank.core.events.loans.LoanExtensionCreatedEvent;
+import com.minibank.rest.controllers.LoanExtensionController;
 import org.junit.Before;
 import org.junit.Test;
 import com.minibank.core.services.LoanService;
@@ -46,8 +47,7 @@ public class LoanExtensionControllerIntegrationTest
         this.mockMvc.perform(
                 post("/rest/loans/loanExtensions")
                         .content("1")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated());
     }
 
@@ -57,8 +57,7 @@ public class LoanExtensionControllerIntegrationTest
         this.mockMvc.perform(
                 post("/rest/loans/loanExtensions")
                         .content("null")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isForbidden());
     }
 
@@ -68,8 +67,7 @@ public class LoanExtensionControllerIntegrationTest
         this.mockMvc.perform(
                 post("/rest/loans/loanExtensions")
                         .content("-1")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isForbidden());
     }
 }

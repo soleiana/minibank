@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.core.MediaType;
+
 /**
  * Created by Ann on 06/09/14.
  */
@@ -32,6 +35,7 @@ public class LoanExtensionController
     }
 
     @RequestMapping(method = RequestMethod.POST)
+    @Consumes(MediaType.APPLICATION_JSON)
     public ResponseEntity<String> createLoanExtension(@RequestBody Integer id)
     {
         if (!validate(id))

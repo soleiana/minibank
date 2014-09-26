@@ -1,4 +1,4 @@
-package com.minibank.rest.controllers;
+package com.minibank.rest.controllers.mockMVC;
 
 import com.minibank.core.events.loans.CreateLoanEvent;
 import com.minibank.core.events.loans.LoanCreatedEvent;
@@ -6,6 +6,7 @@ import com.minibank.core.events.loans.domain.LoanRequestDetails;
 import com.minibank.core.events.loans.factories.LoanRequestDetailsFactory;
 import com.minibank.core.services.LoanService;
 import com.minibank.core.services.common.Message;
+import com.minibank.rest.controllers.LoanController;
 import com.minibank.rest.domain.LoanRequest;
 import com.minibank.rest.validators.LoanRequestValidator;
 import org.junit.Before;
@@ -21,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 import static org.mockito.Mockito.*;
 
-import static com.minibank.rest.domain.RestDataFixture.*;
+import static com.minibank.rest.domain.JsonDataFixture.*;
 
 
 /**
@@ -61,8 +62,7 @@ public class LoanControllerIntegrationTest
         this.mockMvc.perform(
               post("/rest/loans")
                 .content(standardLoanRequestJSON())
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
+                .contentType(MediaType.APPLICATION_JSON))
               .andExpect(status().isCreated());
     }
 
@@ -79,8 +79,7 @@ public class LoanControllerIntegrationTest
         this.mockMvc.perform(
                 post("/rest/loans")
                         .content(standardLoanRequestJSON())
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isForbidden());
 
     }
@@ -93,9 +92,7 @@ public class LoanControllerIntegrationTest
         this.mockMvc.perform(
                 post("/rest/loans")
                         .content(standardLoanRequestJSON())
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isForbidden());
-
     }
 }
