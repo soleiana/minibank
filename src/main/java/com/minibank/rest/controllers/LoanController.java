@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -40,6 +41,7 @@ public class LoanController
 
     @RequestMapping(method = RequestMethod.POST)
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.TEXT_HTML})
     public ResponseEntity<String> createLoan(@RequestBody LoanRequest loanRequest,
                                              HttpServletRequest httpServletRequest)
     {
