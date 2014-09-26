@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.glassfish.jersey.servlet.ServletContainer;
 import org.glassfish.jersey.servlet.ServletProperties;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +19,9 @@ public class Application
 {
     public static void main(String[] args)
     {
-        SpringApplication.run(Application.class, args);
+        new SpringApplicationBuilder(Application.class)
+                .showBanner(false)
+                .run(args);
     }
 
     @Bean

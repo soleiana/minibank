@@ -18,9 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -39,13 +36,6 @@ public class LoanController
 
     @Autowired
     private LoanRequestDetailsFactory loanRequestDetailsFactory;
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/hello")
-    public String hello() {
-        return "Hello World";
-    }
 
 
     @RequestMapping(method = RequestMethod.POST)
