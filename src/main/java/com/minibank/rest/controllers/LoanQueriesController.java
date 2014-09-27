@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
 /**
  * Created by Ann on 16/09/14.
@@ -33,8 +31,9 @@ public class LoanQueriesController
     @Qualifier("Rest")
     private AllLoansFactory allLoansFactory;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}/loans")
-    @Produces(MediaType.APPLICATION_JSON)
+    @RequestMapping(method = RequestMethod.GET,
+                    value = "/{id}/loans",
+                    produces = "application/json")
     public ResponseEntity<AllLoans> requestAllLoans(@PathVariable Integer id)
     {
         RequestAllLoansEvent requestAllLoansEvent = new RequestAllLoansEvent(id);
