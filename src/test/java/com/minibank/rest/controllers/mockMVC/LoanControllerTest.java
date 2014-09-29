@@ -28,7 +28,7 @@ import static com.minibank.rest.domain.JsonDataFixture.*;
 /**
  * Created by Ann on 16/09/14.
  */
-public class LoanControllerIntegrationTest
+public class LoanControllerTest
 {
     MockMvc mockMvc;
 

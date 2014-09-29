@@ -11,7 +11,7 @@ import com.minibank.core.services.factories.LoanExtensionFactory;
 import com.minibank.core.services.factories.LoanFactory;
 import com.minibank.core.services.factories.LoanRequestFactory;
 import com.minibank.core.services.helpers.CreditExpert;
-import com.minibank.core.services.helpers.Logger;
+import com.minibank.core.services.helpers.DBWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -26,7 +26,7 @@ public class LoanServiceImpl implements LoanService
     @Autowired
     private CreditExpert creditExpert;
     @Autowired
-    private Logger logger;
+    private DBWriter dbWriter;
     @Autowired
     private LoanRequestFactory loanRequestFactory;
     @Autowired
@@ -54,7 +54,7 @@ public class LoanServiceImpl implements LoanService
         {
             LoanRequest loanRequest = loanRequestFactory.getNewLoanRequest(requestDetails);
             //loanRequest created in DB
-            logger.log(loanRequest);
+            dbWriter.create(loanRequest);
 
             if (creditExpert.hasRisks(loanRequest))
                 loanRequest.setStatus(LoanRequestStatus.REJECTED);
@@ -63,11 +63,11 @@ public class LoanServiceImpl implements LoanService
                 loanRequest.setStatus(LoanRequestStatus.APPROVED);
                 Loan loan = loanFactory.getNewLoan(loanRequest);
                 //loan created in DB
-                logger.log(loan);
+                dbWriter.create(loan);
                 isLoanObtained = true;
             }
             //loanRequest is update with STATUS
-            logger.update(loanRequest);
+            dbWriter.update(loanRequest);
         }
         catch (Exception e)
         {
@@ -97,10 +97,10 @@ public class LoanServiceImpl implements LoanService
         {
             LoanExtension loanExtension = loanExtensionFactory.getNewLoanExtension(loanId);
             //loanExtension created in DB
-            logger.log(loanExtension);
+            dbWriter.create(loanExtension);
             Loan extendedLoan = loanFactory.getExtendedLoan(loanExtension);
             //Extended loan gets persisted
-            logger.update(extendedLoan);
+            dbWriter.update(extendedLoan);
         }
         catch (Exception e)
         {

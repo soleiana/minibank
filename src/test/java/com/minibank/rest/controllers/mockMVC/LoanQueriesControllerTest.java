@@ -27,7 +27,7 @@ import static com.minibank.rest.domain.AllLoansFixture.*;
 /**
  * Created by Ann on 16/09/14.
  */
-public class LoanQueriesControllerIntegrationTest
+public class LoanQueriesControllerTest
 {
     MockMvc mockMvc;
 

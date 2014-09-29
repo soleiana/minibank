@@ -62,30 +62,23 @@ public class LoanServiceImplTest_2 extends SpringContextTest
         loanExtensionRepository.create(loanExtension);
     }
 
-    private RequestAllLoansEvent createRequestAllLoansEvent_1() throws DBException
+    private RequestAllLoansEvent createRequestAllLoansEvent() throws DBException
     {
-        //customer has no loans
         return new RequestAllLoansEvent(customer.getId());
     }
 
-    private RequestAllLoansEvent createRequestAllLoansEvent_2() throws DBException
+    private void prepareTestData_1() throws DBException
     {
-        //customer has 2 loans
-        //customer has no loan extensions
         createLoan();
         createLoan();
-        return new RequestAllLoansEvent(customer.getId());
     }
 
-    private RequestAllLoansEvent createRequestAllLoansEvent_3() throws DBException
+    private void prepareTestData_2() throws DBException
     {
-        //customer has 2 loans
-        //customer has 2 extensions of a loan
         createLoan();
         createLoanExtension();
         createLoanExtension();
         createLoan();
-        return new RequestAllLoansEvent(customer.getId());
     }
 
     @Before
@@ -107,7 +100,8 @@ public class LoanServiceImplTest_2 extends SpringContextTest
     @Transactional
     public void testRequestAllLoans_1() throws Exception
     {
-        RequestAllLoansEvent requestAllLoansEvent = createRequestAllLoansEvent_1();
+        //customer has no loans
+        RequestAllLoansEvent requestAllLoansEvent = createRequestAllLoansEvent();
 
         AllLoansEvent allLoansEvent = loanService.requestAllLoans(requestAllLoansEvent);
 
@@ -124,7 +118,10 @@ public class LoanServiceImplTest_2 extends SpringContextTest
     @Transactional
     public void testRequestAllLoans_2() throws Exception
     {
-        RequestAllLoansEvent requestAllLoansEvent = createRequestAllLoansEvent_2();
+        //customer has 2 loans
+        //customer has no loan extensions
+        prepareTestData_1();
+        RequestAllLoansEvent requestAllLoansEvent = createRequestAllLoansEvent();
 
         AllLoansEvent allLoansEvent = loanService.requestAllLoans(requestAllLoansEvent);
 
@@ -138,7 +135,10 @@ public class LoanServiceImplTest_2 extends SpringContextTest
     @Transactional
     public void testRequestAllLoans_3() throws Exception
     {
-        RequestAllLoansEvent requestAllLoansEvent = createRequestAllLoansEvent_3();
+        //customer has 2 loans
+        //customer has 2 extensions of a loan
+        prepareTestData_2();
+        RequestAllLoansEvent requestAllLoansEvent = createRequestAllLoansEvent();
 
         AllLoansEvent allLoansEvent = loanService.requestAllLoans(requestAllLoansEvent);
 

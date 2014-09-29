@@ -22,7 +22,7 @@ import static org.mockito.Mockito.*;
 /**
  * Created by Ann on 16/09/14.
  */
-public class LoanExtensionControllerIntegrationTest
+public class LoanExtensionControllerTest
 {
     MockMvc mockMvc;
 

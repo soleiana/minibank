@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Created by Ann on 12/09/14.
  */
 @Component
-public class LoggerImpl implements Logger
+public class DBWriterImpl implements DBWriter
 {
     @Autowired
     private LoanRequestRepository loanRequestRepository;
@@ -28,7 +28,7 @@ public class LoggerImpl implements Logger
     }
 
     @Override
-    public void log(LoanRequest loanRequest) throws DBException
+    public void create(LoanRequest loanRequest) throws DBException
     {
         RequestIP requestIP = loanRequest.getRequestIP();
         log(requestIP);
@@ -48,13 +48,13 @@ public class LoggerImpl implements Logger
     }
 
     @Override
-    public void log(Loan loan) throws  DBException
+    public void create(Loan loan) throws  DBException
     {
         loanRepository.create(loan);
     }
 
     @Override
-    public void log(LoanExtension loanExtension) throws DBException
+    public void create(LoanExtension loanExtension) throws DBException
     {
         loanExtensionRepository.create(loanExtension);
     }

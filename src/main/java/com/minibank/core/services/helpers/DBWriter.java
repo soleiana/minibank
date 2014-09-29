@@ -8,15 +8,15 @@ import com.minibank.core.repositories.DBException;
 /**
  * Created by Ann on 12/09/14.
  */
-public interface Logger
+public interface DBWriter
 {
-    void log(LoanRequest loanRequest) throws DBException;
+    void create(LoanRequest loanRequest) throws DBException;
 
     void update(LoanRequest loanRequest) throws DBException;
 
     void update(Loan extendedLoan) throws DBException;
 
-    void log(Loan loan) throws  DBException;
+    void create(Loan loan) throws  DBException;
 
-    void log(LoanExtension loanExtension) throws DBException;
+    void create(LoanExtension loanExtension) throws DBException;
 }

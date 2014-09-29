@@ -2,14 +2,10 @@ Developer's memo:
 
 MiniBank-1.0-SNAPSHOT is an executable jar file.
 The app can be launched from an IDE by running com.minibank.rest.Application.java.
-All JUnit test are launched by executing Maven 'test' phase.
-Integration tests can be run independently one by one from an IDE.
+Tests are launched by executing Maven 'test' goal.
 
 All the business and technical requirements are implemented, except for the acceptance test.
-The most important classes and hardest algorithms are covered with unit tests.
-All the controller classes are covered with integration tests.
-Multiple scenarios are developed to check critical paths.
-Spring Boot is used to automatically configure embedded tomcat. HSQLDB is an in-memory database.
+The most important classes and critical paths are covered with unit and integration tests.
 
 Technologies applied:
 - Java
@@ -20,8 +16,6 @@ Technologies applied:
 - Mockito
 - Spring Boot
 - HSQLDB
-- Jackson
-- Jersey
 - Maven
 - Git
 

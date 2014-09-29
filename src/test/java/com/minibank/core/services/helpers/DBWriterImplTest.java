@@ -17,7 +17,7 @@ import static junit.framework.TestCase.assertNull;
 /**
  * Created by Ann on 13/09/14.
  */
-public class LoggerImplTest extends SpringContextTest
+public class DBWriterImplTest extends SpringContextTest
 {
     @Autowired
     private DBCleaner dbCleaner;
@@ -25,10 +25,8 @@ public class LoggerImplTest extends SpringContextTest
     private RequestIPRepository requestIPRepository;
     @Autowired
     private CustomerRepository customerRepository;
-
     @Autowired
-    private Logger logger;
-
+    private DBWriter dbWriter;
     private RequestIP requestIP;
     private LoanRequest loanRequest;
     private Customer customer;
@@ -51,30 +49,28 @@ public class LoggerImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testLog_1() throws DBException
+    public void testDBWriter_1() throws DBException
     {
         //scenario with new loan request with new ip address
-
         createLoanRequest();
         assertNull(loanRequest.getId());
         assertNull(requestIP.getId());
 
-        logger.log(loanRequest);
+        dbWriter.create(loanRequest);
         assertNotNull(loanRequest.getId());
         assertNotNull(requestIP.getId());
     }
 
     @Test
     @Transactional
-    public void testLog_2() throws DBException
+    public void testDBWriter_2() throws DBException
     {
         //scenario with new loan request coming from registered ip address
-
         createLoanRequest();
         requestIPRepository.create(requestIP);
         assertNotNull(requestIP.getId());
 
-        logger.log(loanRequest);
+        dbWriter.create(loanRequest);
         assertNotNull(loanRequest.getId());
     }
 
