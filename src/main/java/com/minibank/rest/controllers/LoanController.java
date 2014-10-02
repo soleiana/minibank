@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 
 @Controller
-@RequestMapping("/rest/loans")
+@RequestMapping("/loans")
 public class LoanController
 {
     @Autowired

@@ -1,20 +1,43 @@
 package com.minibank.rest;
 
-import com.minibank.config.MVCConfig;
-import com.minibank.config.RestConfig;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.annotation.Import;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
+import org.springframework.boot.context.embedded.ServletRegistrationBean;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-
-@Import({RestConfig.class, MVCConfig.class})
-@EnableAutoConfiguration
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = {"com.minibank"})
 public class Application
 {
-    public static void main(String[] args)
+   public static void main(String[] args)
     {
-        new SpringApplicationBuilder(Application.class)
-                .showBanner(false)
-                .run(args);
+        SpringApplication.run(Application.class, args);
+    }
+
+    @Bean
+    public DispatcherServlet dispatcherServlet()
+    {
+        return new DispatcherServlet();
+    }
+
+    @Bean
+    public ServletRegistrationBean dispatcherRegistration(DispatcherServlet dispatcherServlet)
+    {
+        ServletRegistrationBean registration = new ServletRegistrationBean(dispatcherServlet);
+        registration.addUrlMappings("/rest/*");
+        return registration;
+    }
+
+    @Bean
+    public EmbeddedServletContainerFactory servletContainer()
+    {
+        TomcatEmbeddedServletContainerFactory factory = new TomcatEmbeddedServletContainerFactory();
+        return factory;
     }
 }

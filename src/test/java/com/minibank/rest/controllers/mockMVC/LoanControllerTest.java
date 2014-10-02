@@ -60,7 +60,7 @@ public class LoanControllerTest
                 .thenReturn(new LoanRequestDetails());
 
         this.mockMvc.perform(
-              post("/rest/loans")
+              post("/loans")
                 .content(standardLoanRequestJSON())
                 .contentType(MediaType.APPLICATION_JSON))
               .andExpect(status().isCreated());
@@ -77,7 +77,7 @@ public class LoanControllerTest
                 .thenReturn(new LoanRequestDetails());
 
         this.mockMvc.perform(
-                post("/rest/loans")
+                post("/loans")
                         .content(standardLoanRequestJSON())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isInternalServerError());
@@ -90,7 +90,7 @@ public class LoanControllerTest
         when(loanRequestValidator.validate(any(LoanRequest.class)))
                 .thenReturn(false);
         this.mockMvc.perform(
-                post("/rest/loans")
+                post("/loans")
                         .content(standardLoanRequestJSON())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());

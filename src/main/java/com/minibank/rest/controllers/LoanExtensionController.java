@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by Ann on 06/09/14.
  */
 @Controller
-@RequestMapping("/rest/loans/{id}/extensions")
+@RequestMapping("/loans/{id}/extensions")
 public class LoanExtensionController
 {
     @Autowired

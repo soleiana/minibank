@@ -46,7 +46,7 @@ public class LoanExtensionControllerTest
         when(queryExecutor.execute(any(CreateLoanExtensionQuery.class)))
                 .thenReturn(new CreateLoanExtensionResponse(Message.LOAN_EXTENSION_MESSAGE));
         this.mockMvc.perform(
-                  post("/rest/loans/1/extensions")
+                  post("/loans/1/extensions")
                   .contentType(MediaType.APPLICATION_JSON))
                   .andExpect(status().isCreated());
     }
@@ -55,7 +55,7 @@ public class LoanExtensionControllerTest
     public void testThatCreateLoanExtensionUsesHttpBadRequest_1() throws Exception
     {
         this.mockMvc.perform(
-                post("/rest/loans/null/extensions")
+                post("/loans/null/extensions")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
     }
@@ -64,7 +64,7 @@ public class LoanExtensionControllerTest
     public void testThatCreateLoanExtensionUsesHttpBadRequest_2() throws Exception
     {
         this.mockMvc.perform(
-                post("/rest/loans/-1/extensions")
+                post("/loans/-1/extensions")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
     }

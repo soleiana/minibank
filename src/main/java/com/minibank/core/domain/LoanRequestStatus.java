@@ -5,23 +5,5 @@ package com.minibank.core.domain;
  */
 public enum LoanRequestStatus
 {
-    NEW("NEW"), APPROVED("APPROVED"), REJECTED("REJECTED");
-
-    private final String value;
-
-    private LoanRequestStatus(String value)
-    {
-        this.value = value;
-    }
-
-    private String getValue()
-    {
-        return value;
-    }
-
-    @Override
-    public String toString()
-    {
-        return this.getValue();
-    }
+    NEW, APPROVED, REJECTED
 }
