@@ -1,6 +1,6 @@
 package com.minibank.config;
 
-import com.minibank.core.services.LoanService;
+import com.minibank.core.services.QueryExecutor;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -16,8 +16,9 @@ public class RestConfigTest
     public void testCoreConfig()
     {
         ApplicationContext context = new AnnotationConfigApplicationContext(RestConfig.class);
-        LoanService loanService = context.getBean(LoanService.class);
 
-        assertNotNull(loanService);
+        QueryExecutor queryExecutor = context.getBean(QueryExecutor.class);
+
+        assertNotNull(queryExecutor);
     }
 }

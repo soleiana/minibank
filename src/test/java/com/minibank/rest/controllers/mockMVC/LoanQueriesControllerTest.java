@@ -1,18 +1,17 @@
 package com.minibank.rest.controllers.mockMVC;
 
-import com.minibank.core.events.loans.AllLoansEvent;
-import com.minibank.core.events.loans.RequestAllLoansEvent;
-import com.minibank.core.events.loans.domain.AllLoansDetails;
+import com.minibank.core.communications.loans.GetAllLoansQuery;
+import com.minibank.core.communications.loans.GetAllLoansResponse;
+import com.minibank.core.communications.loans.domain.AllLoansDetails;
+import com.minibank.core.services.QueryExecutor;
 import com.minibank.rest.controllers.LoanQueriesController;
 import com.minibank.rest.domain.AllLoans;
-import com.minibank.rest.factories.AllLoansFactory;
+import com.minibank.rest.factories.AllLoansRestFactory;
 import org.junit.Before;
 import org.junit.Test;
-import com.minibank.core.services.LoanService;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
@@ -33,11 +32,12 @@ public class LoanQueriesControllerTest
 
     @InjectMocks
     LoanQueriesController loanQueriesController;
+
     @Mock
-    LoanService loanService;
+    QueryExecutor queryExecutor;
+
     @Mock
-    @Qualifier("Rest")
-    AllLoansFactory allLoansFactory;
+    AllLoansRestFactory allLoansRestFactory;
 
     @Before
     public void setUp() throws Exception
@@ -50,9 +50,9 @@ public class LoanQueriesControllerTest
     @Test
     public void testThatLoanQueriesControllerUsesHttpOkOnSuccess() throws Exception
     {
-        when(loanService.requestAllLoans(any(RequestAllLoansEvent.class)))
-                .thenReturn(new AllLoansEvent(new AllLoansDetails(), true));
-        when(allLoansFactory.getNewAllLoans(any(AllLoansDetails.class)))
+        when(queryExecutor.execute(any(GetAllLoansQuery.class)))
+                .thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
+        when(allLoansRestFactory.getNewAllLoans(any(AllLoansDetails.class)))
                 .thenReturn(new AllLoans());
 
         this.mockMvc.perform(
@@ -63,9 +63,9 @@ public class LoanQueriesControllerTest
     @Test
     public void testThatLoanQueriesControllerRendersCorrectly() throws Exception
     {
-        when(loanService.requestAllLoans(any(RequestAllLoansEvent.class)))
-                .thenReturn(new AllLoansEvent(new AllLoansDetails(), true));
-        when(allLoansFactory.getNewAllLoans(any(AllLoansDetails.class)))
+        when(queryExecutor.execute(any(GetAllLoansQuery.class)))
+                .thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
+        when(allLoansRestFactory.getNewAllLoans(any(AllLoansDetails.class)))
                 .thenReturn(standardAllLoans());
 
         this.mockMvc.perform(
@@ -79,9 +79,9 @@ public class LoanQueriesControllerTest
     @Test
     public void testThatLoanQueriesControllerUsesHttpNotFoundOnFailure() throws Exception
     {
-        when(loanService.requestAllLoans(any(RequestAllLoansEvent.class)))
-                .thenReturn(new AllLoansEvent(new AllLoansDetails(),false));
-        when(allLoansFactory.getNewAllLoans(any(AllLoansDetails.class)))
+        when(queryExecutor.execute(any(GetAllLoansQuery.class)))
+                .thenReturn(new GetAllLoansResponse(new AllLoansDetails(), false));
+        when(allLoansRestFactory.getNewAllLoans(any(AllLoansDetails.class)))
                 .thenReturn(new AllLoans());
 
         this.mockMvc.perform(

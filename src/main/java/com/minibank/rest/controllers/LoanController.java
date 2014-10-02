@@ -1,10 +1,10 @@
 package com.minibank.rest.controllers;
 
-import com.minibank.core.events.loans.CreateLoanEvent;
-import com.minibank.core.events.loans.LoanCreatedEvent;
-import com.minibank.core.events.loans.domain.LoanRequestDetails;
-import com.minibank.core.events.loans.factories.LoanRequestDetailsFactory;
-import com.minibank.core.services.LoanService;
+import com.minibank.core.communications.loans.CreateLoanQuery;
+import com.minibank.core.communications.loans.CreateLoanResponse;
+import com.minibank.core.communications.loans.domain.LoanRequestDetails;
+import com.minibank.core.communications.loans.factories.LoanRequestDetailsFactory;
+import com.minibank.core.services.QueryExecutor;
 import com.minibank.rest.common.Message;
 import com.minibank.rest.domain.LoanRequest;
 import com.minibank.rest.validators.LoanRequestValidator;
@@ -30,7 +30,7 @@ public class LoanController
     private LoanRequestValidator loanRequestValidator;
 
     @Autowired
-    private LoanService loanService;
+    private QueryExecutor queryExecutor;
 
     @Autowired
     private LoanRequestDetailsFactory loanRequestDetailsFactory;
@@ -47,11 +47,12 @@ public class LoanController
         String ip = httpServletRequest.getRemoteAddr();
         loanRequest.setRequestIP(ip);
         LoanRequestDetails loanRequestDetails = loanRequestDetailsFactory.getNewLoanRequestDetails(loanRequest);
-        LoanCreatedEvent loanCreatedEvent = loanService.createLoan(new CreateLoanEvent(loanRequestDetails));
 
-        String message = loanCreatedEvent.getMessage();
+        CreateLoanResponse createLoanResponse = queryExecutor.execute(new CreateLoanQuery(loanRequestDetails));
 
-        if(loanCreatedEvent.isLoanObtained())
+        String message = createLoanResponse.getMessage();
+
+        if(createLoanResponse.isLoanObtained())
            return  new ResponseEntity<>(message, HttpStatus.CREATED);
         else
             return new ResponseEntity<>(message, HttpStatus.FORBIDDEN);

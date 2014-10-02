@@ -1,8 +1,8 @@
 package com.minibank.rest.controllers;
 
-import com.minibank.core.events.loans.CreateLoanExtensionEvent;
-import com.minibank.core.events.loans.LoanExtensionCreatedEvent;
-import com.minibank.core.services.LoanService;
+import com.minibank.core.communications.loans.CreateLoanExtensionQuery;
+import com.minibank.core.communications.loans.CreateLoanExtensionResponse;
+import com.minibank.core.services.QueryExecutor;
 import com.minibank.rest.common.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/rest/loans/loanExtensions")
 public class LoanExtensionController
 {
+  /*  @Autowired
+    private LoanService loanService;*/
     @Autowired
-    private LoanService loanService;
+    private QueryExecutor queryExecutor;
 
     private boolean validate(Integer loanId)
     {
@@ -40,11 +42,13 @@ public class LoanExtensionController
             return new ResponseEntity<>(Message.INVALID_INPUT_FORMAT,
                     HttpStatus.FORBIDDEN);
 
-        CreateLoanExtensionEvent createLoanExtensionEvent =
-                new CreateLoanExtensionEvent(id);
-        LoanExtensionCreatedEvent loanExtensionCreatedEvent =
-                loanService.createLoanExtension(createLoanExtensionEvent);
-        String message = loanExtensionCreatedEvent.getMessage();
+        CreateLoanExtensionQuery createLoanExtensionQuery =
+                new CreateLoanExtensionQuery(id);
+        /*CreateLoanExtensionResponse createLoanExtensionResponse =
+                loanService.createLoanExtension(createLoanExtensionQuery);*/
+        CreateLoanExtensionResponse createLoanExtensionResponse =
+                queryExecutor.execute(createLoanExtensionQuery);
+        String message = createLoanExtensionResponse.getMessage();
 
         return new ResponseEntity<>(message, HttpStatus.CREATED);
     }

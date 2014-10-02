@@ -1,11 +1,11 @@
 package com.minibank.rest.controllers.mockMVC;
 
-import com.minibank.core.events.loans.CreateLoanExtensionEvent;
-import com.minibank.core.events.loans.LoanExtensionCreatedEvent;
+import com.minibank.core.communications.loans.CreateLoanExtensionQuery;
+import com.minibank.core.communications.loans.CreateLoanExtensionResponse;
+import com.minibank.core.services.QueryExecutor;
 import com.minibank.rest.controllers.LoanExtensionController;
 import org.junit.Before;
 import org.junit.Test;
-import com.minibank.core.services.LoanService;
 import com.minibank.core.services.common.Message;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -28,8 +28,9 @@ public class LoanExtensionControllerTest
 
     @InjectMocks
     LoanExtensionController loanExtensionController;
+
     @Mock
-    LoanService loanService;
+    QueryExecutor queryExecutor;
 
     @Before
     public void setUp() throws Exception
@@ -42,8 +43,8 @@ public class LoanExtensionControllerTest
     @Test
     public void testThatCreateLoanExtensionUsesHttpCreated() throws Exception
     {
-        when(loanService.createLoanExtension(any(CreateLoanExtensionEvent.class)))
-                .thenReturn(new LoanExtensionCreatedEvent(Message.LOAN_EXTENSION_MESSAGE));
+        when(queryExecutor.execute(any(CreateLoanExtensionQuery.class)))
+                .thenReturn(new CreateLoanExtensionResponse(Message.LOAN_EXTENSION_MESSAGE));
         this.mockMvc.perform(
                 post("/rest/loans/loanExtensions")
                         .content("1")

@@ -9,24 +9,19 @@ public enum LoanRequestStatus
 
     private final String value;
 
-    private LoanRequestStatus(String value) {
+    private LoanRequestStatus(String value)
+    {
         this.value = value;
     }
 
-    private String getValue() {
+    private String getValue()
+    {
         return value;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return this.getValue();
-    }
-
-    public static LoanRequestStatus getEnum(String value) {
-        if (value == null)
-            throw new IllegalArgumentException();
-        for (LoanRequestStatus type : values())
-            if (value.equalsIgnoreCase(type.getValue())) return type;
-        throw new IllegalArgumentException();
     }
 }

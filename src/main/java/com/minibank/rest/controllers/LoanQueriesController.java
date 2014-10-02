@@ -1,13 +1,12 @@
 package com.minibank.rest.controllers;
 
-import com.minibank.core.events.loans.AllLoansEvent;
-import com.minibank.core.events.loans.RequestAllLoansEvent;
-import com.minibank.core.events.loans.domain.AllLoansDetails;
-import com.minibank.core.services.LoanService;
+import com.minibank.core.communications.loans.GetAllLoansQuery;
+import com.minibank.core.communications.loans.GetAllLoansResponse;
+import com.minibank.core.communications.loans.domain.AllLoansDetails;
+import com.minibank.core.services.QueryExecutor;
 import com.minibank.rest.domain.AllLoans;
-import com.minibank.rest.factories.AllLoansFactory;
+import com.minibank.rest.factories.AllLoansRestFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -25,24 +24,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoanQueriesController
 {
     @Autowired
-    private LoanService loanService;
+    private QueryExecutor queryExecutor;
 
     @Autowired
-    @Qualifier("Rest")
-    private AllLoansFactory allLoansFactory;
+    private AllLoansRestFactory allLoansRestFactory;
 
     @RequestMapping(method = RequestMethod.GET,
                     value = "/{id}/loans",
                     produces = "application/json")
     public ResponseEntity<AllLoans> requestAllLoans(@PathVariable Integer id)
     {
-        RequestAllLoansEvent requestAllLoansEvent = new RequestAllLoansEvent(id);
-        AllLoansEvent allLoansEvent = loanService.requestAllLoans(requestAllLoansEvent);
+        GetAllLoansQuery getAllLoansQuery = new GetAllLoansQuery(id);
 
-        if(allLoansEvent.isEntityFound())
+        GetAllLoansResponse getAllLoansResponse = queryExecutor.execute(getAllLoansQuery);
+
+        if(getAllLoansResponse.isEntityFound())
         {
-            AllLoansDetails allLoansDetails = allLoansEvent.getAllLoansDetails();
-            AllLoans allLoans = allLoansFactory.getNewAllLoans(allLoansDetails);
+            AllLoansDetails allLoansDetails = getAllLoansResponse.getAllLoansDetails();
+            AllLoans allLoans = allLoansRestFactory.getNewAllLoans(allLoansDetails);
             return new ResponseEntity<>(allLoans, HttpStatus.OK);
         }
         else

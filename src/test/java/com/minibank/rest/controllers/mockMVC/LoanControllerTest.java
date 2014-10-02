@@ -1,11 +1,11 @@
 package com.minibank.rest.controllers.mockMVC;
 
-import com.minibank.core.events.loans.CreateLoanEvent;
-import com.minibank.core.events.loans.LoanCreatedEvent;
-import com.minibank.core.events.loans.domain.LoanRequestDetails;
-import com.minibank.core.events.loans.factories.LoanRequestDetailsFactory;
-import com.minibank.core.services.LoanService;
+import com.minibank.core.communications.loans.CreateLoanQuery;
+import com.minibank.core.communications.loans.CreateLoanResponse;
+import com.minibank.core.communications.loans.domain.LoanRequestDetails;
+import com.minibank.core.communications.loans.factories.LoanRequestDetailsFactory;
 import com.minibank.core.services.common.Message;
+import com.minibank.core.services.QueryExecutor;
 import com.minibank.rest.controllers.LoanController;
 import com.minibank.rest.domain.LoanRequest;
 import com.minibank.rest.validators.LoanRequestValidator;
@@ -37,7 +37,7 @@ public class LoanControllerTest
     @Mock
     LoanRequestValidator loanRequestValidator;
     @Mock
-    LoanService loanService;
+    QueryExecutor queryExecutor;
     @Mock
     LoanRequestDetailsFactory loanRequestDetailsFactory;
 
@@ -54,8 +54,8 @@ public class LoanControllerTest
     {
         when(loanRequestValidator.validate(any(LoanRequest.class)))
                .thenReturn(true);
-        when(loanService.createLoan(any(CreateLoanEvent.class)))
-                .thenReturn(new LoanCreatedEvent(true, Message.LOAN_OBTAINED_MESSAGE));
+        when(queryExecutor.execute(any(CreateLoanQuery.class)))
+                .thenReturn(new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE));
         when(loanRequestDetailsFactory.getNewLoanRequestDetails(any(LoanRequest.class)))
                 .thenReturn(new LoanRequestDetails());
 
@@ -71,8 +71,8 @@ public class LoanControllerTest
     {
         when(loanRequestValidator.validate(any(LoanRequest.class)))
                 .thenReturn(true);
-        when(loanService.createLoan(any(CreateLoanEvent.class)))
-                .thenReturn(new LoanCreatedEvent(false,Message.LOAN_ERROR_MESSAGE));
+        when(queryExecutor.execute(any(CreateLoanQuery.class)))
+                .thenReturn(new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE));
         when(loanRequestDetailsFactory.getNewLoanRequestDetails(any(LoanRequest.class)))
                 .thenReturn(new LoanRequestDetails());
 
