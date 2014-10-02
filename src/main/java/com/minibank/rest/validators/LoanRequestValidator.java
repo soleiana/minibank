@@ -18,12 +18,12 @@ public class LoanRequestValidator
         BigDecimal amount = loanRequest.getAmount();
         Integer term = loanRequest.getTerm();
 
-        if((customerId==null)|| (amount == null) || (term == null))
+        if((customerId == null)|| (amount == null) || (term == null))
             return false;
 
         if ((customerId <= 0)
              ||
-            (amount.compareTo(new BigDecimal("0.00"))== -1)
+            (amount.compareTo(new BigDecimal("0.00")) == -1)
              ||
             (term <= 0))
             return false;

@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CreateLoanQueryHandler
         implements QueryHandler<CreateLoanQuery, CreateLoanResponse>
-    {
+ {
     @Autowired
     private DBWriter dbWriter;
     @Autowired

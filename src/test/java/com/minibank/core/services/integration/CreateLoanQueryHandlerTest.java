@@ -1,4 +1,4 @@
-package com.minibank.core.services;
+package com.minibank.core.services.integration;
 
 import com.minibank.SpringContextTest;
 import com.minibank.core.communications.domain.LoanRequestDetailsFixture;
@@ -8,6 +8,7 @@ import com.minibank.core.communications.loans.domain.LoanRequestDetails;
 import com.minibank.core.domain.*;
 import com.minibank.core.repositories.*;
 import com.minibank.core.repositories.tools.DBCleaner;
+import com.minibank.core.services.CreateLoanQueryHandler;
 import com.minibank.core.services.common.Message;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,6 +48,7 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest
 
         return new CreateLoanQuery(loanRequestDetails);
     }
+
     @Before
     public void setUp() throws Exception
     {

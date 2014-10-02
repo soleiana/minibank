@@ -1,4 +1,4 @@
-package com.minibank.core.services;
+package com.minibank.core.services.integration;
 
 import com.minibank.SpringContextTest;
 import com.minibank.core.communications.loans.CreateLoanExtensionQuery;
@@ -6,6 +6,7 @@ import com.minibank.core.communications.loans.CreateLoanExtensionResponse;
 import com.minibank.core.domain.*;
 import com.minibank.core.repositories.*;
 import com.minibank.core.repositories.tools.DBCleaner;
+import com.minibank.core.services.CreateLoanExtensionQueryHandler;
 import com.minibank.core.services.common.Message;
 import org.junit.Before;
 import org.junit.Test;
