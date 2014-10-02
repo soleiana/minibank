@@ -60,16 +60,14 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
          //Positive path of execution
         //Customer obtains a loan
 
-        when(loanRequestFactory.getNewLoanRequest(any(LoanRequestDetails.class))).thenReturn(loanRequest);
         when(creditExpert.hasRisks(any(LoanRequest.class))).thenReturn(false);
-        when(loanFactory.getNewLoan(any(LoanRequest.class))).thenReturn(loan);
 
         CreateLoanResponse expectedResponse = new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);
         CreateLoanQuery query = new CreateLoanQuery(loanRequestDetails);
 
         CreateLoanResponse response = queryHandler.execute(query);
         assertNotNull(response);
-        assertEquals(expectedResponse,response);
+        assertEquals(expectedResponse, response);
         verify(loanRequestFactory, times(1)).getNewLoanRequest(loanRequestDetails);
         verify(dbWriter, times(1)).create(loanRequest);
         verify(loanFactory, times(1)).getNewLoan(loanRequest);
