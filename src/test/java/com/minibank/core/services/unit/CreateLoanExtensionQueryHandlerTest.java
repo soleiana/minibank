@@ -35,8 +35,6 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest
     private LoanExtensionFactory loanExtensionFactory;
     @Mock
     private LoanFactory loanFactory;
-    @Mock
-    private CreditExpert creditExpert;
 
     private LoanExtension loanExtension;
     private Loan loan;
