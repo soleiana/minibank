@@ -46,29 +46,26 @@ public class LoanExtensionControllerTest
         when(queryExecutor.execute(any(CreateLoanExtensionQuery.class)))
                 .thenReturn(new CreateLoanExtensionResponse(Message.LOAN_EXTENSION_MESSAGE));
         this.mockMvc.perform(
-                post("/rest/loans/loanExtensions")
-                        .content("1")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isCreated());
+                  post("/rest/loans/1/extensions")
+                  .contentType(MediaType.APPLICATION_JSON))
+                  .andExpect(status().isCreated());
     }
 
     @Test
-    public void testThatCreateLoanExtensionUsesHttpForbidden_1() throws Exception
+    public void testThatCreateLoanExtensionUsesHttpBadRequest_1() throws Exception
     {
         this.mockMvc.perform(
-                post("/rest/loans/loanExtensions")
-                        .content("null")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isForbidden());
+                post("/rest/loans/null/extensions")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void testThatCreateLoanExtensionUsesHttpForbidden_2() throws Exception
+    public void testThatCreateLoanExtensionUsesHttpBadRequest_2() throws Exception
     {
         this.mockMvc.perform(
-                post("/rest/loans/loanExtensions")
-                        .content("-1")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isForbidden());
+                post("/rest/loans/-1/extensions")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
     }
 }

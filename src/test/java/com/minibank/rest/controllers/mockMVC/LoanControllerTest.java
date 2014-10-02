@@ -67,7 +67,7 @@ public class LoanControllerTest
     }
 
     @Test
-    public void testThatCreateLoanUsesHttpForbiddenOnFailureToGetLoan() throws Exception
+    public void testThatCreateLoanUsesHttpInternalServerErrorOnFailureToGetLoan() throws Exception
     {
         when(loanRequestValidator.validate(any(LoanRequest.class)))
                 .thenReturn(true);
@@ -80,12 +80,12 @@ public class LoanControllerTest
                 post("/rest/loans")
                         .content(standardLoanRequestJSON())
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isForbidden());
+                .andExpect(status().isInternalServerError());
 
     }
 
     @Test
-    public void testThatCreateLoanUsesHttpForbiddenOnFailureToValidate() throws Exception
+    public void testThatCreateLoanUsesHttpBadRequestOnFailureToValidate() throws Exception
     {
         when(loanRequestValidator.validate(any(LoanRequest.class)))
                 .thenReturn(false);
@@ -93,6 +93,6 @@ public class LoanControllerTest
                 post("/rest/loans")
                         .content(standardLoanRequestJSON())
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isForbidden());
+                .andExpect(status().isBadRequest());
     }
 }

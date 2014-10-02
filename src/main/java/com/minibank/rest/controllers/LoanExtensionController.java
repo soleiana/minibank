@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,11 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by Ann on 06/09/14.
  */
 @Controller
-@RequestMapping("/rest/loans/loanExtensions")
+@RequestMapping("/rest/loans/{id}/extensions")
 public class LoanExtensionController
 {
-  /*  @Autowired
-    private LoanService loanService;*/
     @Autowired
     private QueryExecutor queryExecutor;
 
@@ -36,16 +35,15 @@ public class LoanExtensionController
 
     @RequestMapping(method = RequestMethod.POST,
                     consumes = "application/json")
-    public ResponseEntity<String> createLoanExtension(@RequestBody Integer id)
+    public ResponseEntity<String> createLoanExtension(@RequestBody @PathVariable Integer id)
     {
         if (!validate(id))
             return new ResponseEntity<>(Message.INVALID_INPUT_FORMAT,
-                    HttpStatus.FORBIDDEN);
+                    HttpStatus.BAD_REQUEST);
 
         CreateLoanExtensionQuery createLoanExtensionQuery =
                 new CreateLoanExtensionQuery(id);
-        /*CreateLoanExtensionResponse createLoanExtensionResponse =
-                loanService.createLoanExtension(createLoanExtensionQuery);*/
+
         CreateLoanExtensionResponse createLoanExtensionResponse =
                 queryExecutor.execute(createLoanExtensionQuery);
         String message = createLoanExtensionResponse.getMessage();

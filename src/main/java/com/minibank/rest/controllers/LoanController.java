@@ -42,7 +42,7 @@ public class LoanController
                                              HttpServletRequest httpServletRequest)
     {
         if (!loanRequestValidator.validate(loanRequest))
-            return new ResponseEntity<>(Message.INVALID_INPUT_FORMAT,HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>(Message.INVALID_INPUT_FORMAT,HttpStatus.BAD_REQUEST);
 
         String ip = httpServletRequest.getRemoteAddr();
         loanRequest.setRequestIP(ip);
@@ -55,7 +55,7 @@ public class LoanController
         if(createLoanResponse.isLoanObtained())
            return  new ResponseEntity<>(message, HttpStatus.CREATED);
         else
-            return new ResponseEntity<>(message, HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }
