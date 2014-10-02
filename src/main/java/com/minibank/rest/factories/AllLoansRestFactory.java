@@ -40,7 +40,6 @@ public class AllLoansRestFactory
         return  toLoanExtension;
     }
 
-
     public  AllLoans getNewAllLoans(AllLoansDetails allLoansDetails)
     {
         AllLoans allLoans = new AllLoans();

@@ -1,11 +1,33 @@
 package com.minibank.rest.validators;
 
 import com.minibank.rest.domain.LoanRequest;
+import org.springframework.stereotype.Component;
+
+import java.math.BigDecimal;
 
 /**
  * Created by Ann on 17/09/14.
  */
-public interface LoanRequestValidator
+
+@Component
+public class LoanRequestValidator
 {
-    boolean validate(LoanRequest loanRequest);
+    public boolean validate(LoanRequest loanRequest)
+    {
+        Integer customerId = loanRequest.getCustomerId();
+        BigDecimal amount = loanRequest.getAmount();
+        Integer term = loanRequest.getTerm();
+
+        if((customerId==null)|| (amount == null) || (term == null))
+            return false;
+
+        if ((customerId <= 0)
+             ||
+            (amount.compareTo(new BigDecimal("0.00"))== -1)
+             ||
+            (term <= 0))
+            return false;
+
+        return true;
+    }
 }
