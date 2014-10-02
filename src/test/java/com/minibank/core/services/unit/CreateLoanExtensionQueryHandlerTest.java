@@ -47,7 +47,7 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest
         loanExtension = LoanExtensionFixture.standardLoanExtension();
         loanId = 1;
 
-        when(loanExtensionFactory.getNewLoanExtension(any(Integer.class))).thenReturn(loanExtension);
+        when(loanExtensionFactory.getNewLoanExtension(loanId)).thenReturn(loanExtension);
         when(loanFactory.getExtendedLoan(loanExtension)).thenReturn(loan);
     }
 
