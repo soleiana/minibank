@@ -18,6 +18,8 @@ import java.util.Map;
 @Component
 public class QueryExecutorImpl implements QueryExecutor
 {
+    private final static String UNKNOWN_DOMAIN_QUERY = "Unknown domain query!";
+
     @Autowired
     private List<QueryHandler> services;
 
@@ -45,7 +47,7 @@ public class QueryExecutorImpl implements QueryExecutor
         }
         else
         {
-            throw new IllegalArgumentException(Message.UNKNOWN_DOMAIN_QUERY + query.toString());
+            throw new IllegalArgumentException(UNKNOWN_DOMAIN_QUERY + query.toString());
         }
     }
 }
