@@ -2,6 +2,7 @@ package com.minibank.core.services;
 
 import com.minibank.core.communications.DomainQuery;
 import com.minibank.core.communications.DomainResponse;
+import com.minibank.core.services.common.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,7 +45,7 @@ public class QueryExecutorImpl implements QueryExecutor
         }
         else
         {
-            throw new IllegalArgumentException("Unknown domain query!" + query.toString());
+            throw new IllegalArgumentException(Message.UNKNOWN_DOMAIN_QUERY + query.toString());
         }
     }
 }
