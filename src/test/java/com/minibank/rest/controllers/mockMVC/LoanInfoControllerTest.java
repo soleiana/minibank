@@ -4,7 +4,7 @@ import com.minibank.core.communications.loans.GetAllLoansQuery;
 import com.minibank.core.communications.loans.GetAllLoansResponse;
 import com.minibank.core.communications.loans.domain.AllLoansDetails;
 import com.minibank.core.services.QueryExecutor;
-import com.minibank.rest.controllers.LoanQueriesController;
+import com.minibank.rest.controllers.LoanInfoController;
 import com.minibank.rest.domain.AllLoans;
 import com.minibank.rest.factories.AllLoansRestFactory;
 import org.junit.Before;
@@ -26,12 +26,12 @@ import static com.minibank.rest.domain.AllLoansFixture.*;
 /**
  * Created by Ann on 16/09/14.
  */
-public class LoanQueriesControllerTest
+public class LoanInfoControllerTest
 {
     MockMvc mockMvc;
 
     @InjectMocks
-    LoanQueriesController loanQueriesController;
+    LoanInfoController loanInfoController;
 
     @Mock
     QueryExecutor queryExecutor;
@@ -43,12 +43,12 @@ public class LoanQueriesControllerTest
     public void setUp() throws Exception
     {
         MockitoAnnotations.initMocks(this);
-        this.mockMvc = standaloneSetup(loanQueriesController)
+        this.mockMvc = standaloneSetup(loanInfoController)
                 .setMessageConverters(new MappingJackson2HttpMessageConverter()).build();
     }
 
     @Test
-    public void testThatLoanQueriesControllerUsesHttpOkOnSuccess() throws Exception
+    public void testThatLoanInfoControllerUsesHttpOkOnSuccess() throws Exception
     {
         when(queryExecutor.execute(any(GetAllLoansQuery.class)))
                 .thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
@@ -61,7 +61,7 @@ public class LoanQueriesControllerTest
     }
 
     @Test
-    public void testThatLoanQueriesControllerRendersCorrectly() throws Exception
+    public void testThatLoanInfoControllerRendersCorrectly() throws Exception
     {
         when(queryExecutor.execute(any(GetAllLoansQuery.class)))
                 .thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
@@ -77,7 +77,7 @@ public class LoanQueriesControllerTest
     }
 
     @Test
-    public void testThatLoanQueriesControllerUsesHttpNotFoundOnFailure() throws Exception
+    public void testThatLoanInfoControllerUsesHttpNotFoundOnFailure() throws Exception
     {
         when(queryExecutor.execute(any(GetAllLoansQuery.class)))
                 .thenReturn(new GetAllLoansResponse(new AllLoansDetails(), false));
