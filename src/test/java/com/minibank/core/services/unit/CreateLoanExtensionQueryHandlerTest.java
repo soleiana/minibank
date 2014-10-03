@@ -52,21 +52,46 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest
     }
 
     @Test
-    public void testExecute() throws Exception
+    public void testExecute_1() throws Exception
     {
         //Positive path of execution
-        //Customer obtains an extension of a loan
+        //Customer obtains an extension of the loan
 
         CreateLoanExtensionResponse expectedResponse =
-                new CreateLoanExtensionResponse(Message.LOAN_EXTENSION_MESSAGE);
+                new CreateLoanExtensionResponse(true, Message.LOAN_EXTENSION_OBTAINED_MESSAGE);
         CreateLoanExtensionQuery query = new CreateLoanExtensionQuery(loanId);
 
         CreateLoanExtensionResponse response = queryHandler.execute(query);
+
         assertNotNull(response);
-        assertEquals(expectedResponse, response);
+        assertEquals(expectedResponse.isCreated(), response.isCreated());
+        assertEquals(expectedResponse.getMessage(), response.getMessage());
         verify(loanExtensionFactory, times(1)).getNewLoanExtension(loanId);
         verify(dbWriter, times(1)).create(loanExtension);
         verify(loanFactory, times(1)).getExtendedLoan(loanExtension);
         verify(dbWriter, times(1)).update(loan);
+    }
+
+    @Test
+    public void testExecute_2() throws Exception
+    {
+        //Negative path of execution
+        //Customer does not obtain an extension of the loan because of the database failure
+
+        doThrow(new RuntimeException()).when(dbWriter).create(loanExtension);
+
+        CreateLoanExtensionResponse expectedResponse =
+                new CreateLoanExtensionResponse(false, Message.LOAN_EXTENSION_ERROR_MESSAGE);
+        CreateLoanExtensionQuery query = new CreateLoanExtensionQuery(loanId);
+
+        CreateLoanExtensionResponse response = queryHandler.execute(query);
+
+        assertNotNull(response);
+        assertEquals(expectedResponse.isCreated(), response.isCreated());
+        assertEquals(expectedResponse.getMessage(), response.getMessage());
+        verify(loanExtensionFactory, times(1)).getNewLoanExtension(loanId);
+        verify(dbWriter, times(1)).create(loanExtension);
+        verify(loanFactory, times(0)).getExtendedLoan(loanExtension);
+        verify(dbWriter, times(0)).update(loan);
     }
 }

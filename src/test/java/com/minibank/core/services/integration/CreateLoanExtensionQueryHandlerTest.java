@@ -78,7 +78,7 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest
     {
         CreateLoanExtensionQuery createLoanExtensionQuery = createCreateLoanExtensionQuery();
         CreateLoanExtensionResponse expectedResponse =
-                new CreateLoanExtensionResponse(Message.LOAN_EXTENSION_MESSAGE);
+                new CreateLoanExtensionResponse(true, Message.LOAN_EXTENSION_OBTAINED_MESSAGE);
 
         LoanExtension loanExtension = loanExtensionRepository.getLast();
         assertNull(loanExtension);
@@ -86,7 +86,9 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest
         CreateLoanExtensionResponse createLoanExtensionResponse =
                 createLoanExtensionQueryHandler.execute(createLoanExtensionQuery);
 
-        assertEquals(expectedResponse, createLoanExtensionResponse);
+        assertEquals(expectedResponse.isCreated(), createLoanExtensionResponse.isCreated());
+        assertEquals(expectedResponse.getMessage(), createLoanExtensionResponse.getMessage());
+
         loanExtension = loanExtensionRepository.getLast();
         assertNotNull(loanExtension);
         assertEquals(loan.getId(), loanExtension.getLoan().getId());

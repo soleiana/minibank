@@ -5,7 +5,6 @@ import com.minibank.core.domain.*;
 import com.minibank.core.repositories.BankParamsRepository;
 import com.minibank.core.repositories.DBException;
 import com.minibank.core.repositories.tools.DBCleaner;
-import com.minibank.core.services.common.Number;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ import java.sql.Date;
 /**
  * Created by Ann on 13/09/14.
  */
-public class CreditCalculatorImplTest extends SpringContextTest
+public class CreditCalculatorTest extends SpringContextTest
 {
     @Autowired
     private DBCleaner dbCleaner;
@@ -68,7 +67,7 @@ public class CreditCalculatorImplTest extends SpringContextTest
         BigDecimal interestRate = bankParams.getBaseInterestRate();
         BigDecimal expectedInterest = amount.multiply(interestRate)
                                             .multiply(t)
-                                            .multiply(Number.FACTOR);
+                                            .multiply(creditCalculator.FACTOR);
         expectedInterest = expectedInterest.setScale(2, RoundingMode.HALF_EVEN);
         loanRequest.setAmount(amount);
         loanRequest.setTerm(term);

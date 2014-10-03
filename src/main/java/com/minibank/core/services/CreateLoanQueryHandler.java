@@ -35,9 +35,7 @@ public class CreateLoanQueryHandler
     {
         //Precondition: customer already logged in and its record exists in database
 
-        CreateLoanResponse createLoanResponse;
         Boolean isLoanObtained = false;
-
         LoanRequestDetails requestDetails = query.getLoanRequestDetails();
 
         try
@@ -62,15 +60,12 @@ public class CreateLoanQueryHandler
         catch (Exception e)
         {
             e.printStackTrace();
+            return new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
         }
         if (isLoanObtained)
-        {
-            createLoanResponse = new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);
-        }
+            return new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);
         else
-            createLoanResponse = new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
-
-        return  createLoanResponse;
+            return new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
     }
 
     @Override

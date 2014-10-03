@@ -75,7 +75,8 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest
 
         CreateLoanResponse createLoanResponse = createLoanQueryHandler.execute(createLoanQuery);
 
-        assertEquals(expectedCreateLoanResponse, createLoanResponse);
+        assertEquals(expectedCreateLoanResponse.getMessage(), createLoanResponse.getMessage());
+        assertEquals(expectedCreateLoanResponse.isCreated(), createLoanResponse.isCreated());
 
         loanRequest1 = loanRequestRepository.getLast();
         loan1 = loanRepository.getLast();

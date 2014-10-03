@@ -32,8 +32,6 @@ public class CreateLoanExtensionQueryHandler
         //Precondition: customer already logged in and its record exists in database
         //Precondition: loan, subject to extension, exists in database
 
-        CreateLoanExtensionResponse createLoanExtensionResponse;
-
         Integer loanId = query.getLoanId();
         try
         {
@@ -47,9 +45,9 @@ public class CreateLoanExtensionQueryHandler
         catch (Exception e)
         {
             e.printStackTrace();
+            return new CreateLoanExtensionResponse(false, Message.LOAN_EXTENSION_ERROR_MESSAGE);
         }
-        createLoanExtensionResponse = new CreateLoanExtensionResponse(Message.LOAN_EXTENSION_MESSAGE);
-        return  createLoanExtensionResponse;
+        return new CreateLoanExtensionResponse(true, Message.LOAN_EXTENSION_OBTAINED_MESSAGE);
     }
 
     @Override

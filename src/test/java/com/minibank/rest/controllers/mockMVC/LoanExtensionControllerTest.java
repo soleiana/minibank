@@ -44,7 +44,7 @@ public class LoanExtensionControllerTest
     public void testThatCreateLoanExtensionUsesHttpCreated() throws Exception
     {
         when(queryExecutor.execute(any(CreateLoanExtensionQuery.class)))
-                .thenReturn(new CreateLoanExtensionResponse(Message.LOAN_EXTENSION_MESSAGE));
+                .thenReturn(new CreateLoanExtensionResponse(true,Message.LOAN_EXTENSION_OBTAINED_MESSAGE));
         this.mockMvc.perform(
                   post("/loans/1/extensions")
                   .contentType(MediaType.APPLICATION_JSON))

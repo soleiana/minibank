@@ -18,7 +18,7 @@ import static junit.framework.TestCase.assertTrue;
 /**
  * Created by Ann on 13/09/14.
  */
-public class CreditExpertImplTest extends SpringContextTest
+public class CreditExpertTest extends SpringContextTest
 {
     @Autowired
     private DBCleaner dbCleaner;

@@ -67,7 +67,8 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
 
         CreateLoanResponse response = queryHandler.execute(query);
         assertNotNull(response);
-        assertEquals(expectedResponse, response);
+        assertEquals(expectedResponse.getMessage(), response.getMessage());
+        assertEquals(expectedResponse.isCreated(), response.isCreated());
         verify(loanRequestFactory, times(1)).getNewLoanRequest(loanRequestDetails);
         verify(dbWriter, times(1)).create(loanRequest);
         verify(creditExpert, times(1)).hasRisks(loanRequest);
@@ -79,7 +80,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
     public void testExecute_2() throws Exception
     {
         //Negative path of execution
-        //Customer is refused a loan
+        //Customer is refused a loan because of the risks surrounding the loan request
 
         when(creditExpert.hasRisks(any(LoanRequest.class))).thenReturn(true);
 
@@ -87,12 +88,38 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
         CreateLoanQuery query =  new CreateLoanQuery(loanRequestDetails);
 
         CreateLoanResponse response = queryHandler.execute(query);
+
         assertNotNull(response);
-        assertEquals(expectedResponse,response);
+        assertEquals(expectedResponse.getMessage(), response.getMessage());
+        assertEquals(expectedResponse.isCreated(), response.isCreated());
         verify(loanRequestFactory, times(1)).getNewLoanRequest(loanRequestDetails);
         verify(dbWriter, times(1)).create(loanRequest);
         verify(creditExpert, times(1)).hasRisks(loanRequest);
         verify(loanFactory, times(0)).getNewLoan(loanRequest);
         verify(dbWriter, times(0)).create(loan);
+    }
+
+    @Test
+    public void testExecute_3() throws Exception
+    {
+        //Negative path of execution
+        //Customer is refused a loan because of the database failure
+
+        when(creditExpert.hasRisks(any(LoanRequest.class))).thenReturn(false);
+        doThrow(new RuntimeException()).when(dbWriter).create(loan);
+
+        CreateLoanResponse expectedResponse = new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
+        CreateLoanQuery query =  new CreateLoanQuery(loanRequestDetails);
+
+        CreateLoanResponse response = queryHandler.execute(query);
+
+        assertNotNull(response);
+        assertEquals(expectedResponse.getMessage(), response.getMessage());
+        assertEquals(expectedResponse.isCreated(), response.isCreated());
+        verify(loanRequestFactory, times(1)).getNewLoanRequest(loanRequestDetails);
+        verify(dbWriter, times(1)).create(loanRequest);
+        verify(creditExpert, times(1)).hasRisks(loanRequest);
+        verify(loanFactory, times(1)).getNewLoan(loanRequest);
+        verify(dbWriter, times(1)).create(loan);
     }
 }

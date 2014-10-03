@@ -14,16 +14,10 @@ public class RequestIP
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="ID", nullable = false)
+    @Column(name = "ID", nullable = false)
     private Integer id;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name= "REQUEST_IP_ID")
-    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
-            org.hibernate.annotations.CascadeType.REMOVE})
-    private List<LoanRequest> loanRequests = new ArrayList<>();
-
-    @Column(name="IP", unique = true, nullable = false)
+    @Column(name = "IP", unique = true, nullable = false)
     private String ip;
 
     public RequestIP()
@@ -54,16 +48,6 @@ public class RequestIP
         this.ip = ip;
     }
 
-    public List<LoanRequest> getLoanRequests()
-    {
-        return loanRequests;
-    }
-
-    public void setLoanRequests(List<LoanRequest> loanRequests)
-    {
-        this.loanRequests = loanRequests;
-    }
-
     @Override
     public boolean equals(Object o)
     {
@@ -74,9 +58,6 @@ public class RequestIP
 
         if (id != null ? !id.equals(requestIP.id) : requestIP.id != null) return false;
         if (ip != null ? !ip.equals(requestIP.ip) : requestIP.ip != null) return false;
-        if (loanRequests != null ? !loanRequests.equals(requestIP.loanRequests) : requestIP.loanRequests != null)
-            return false;
-
         return true;
     }
 
@@ -84,7 +65,6 @@ public class RequestIP
     public int hashCode()
     {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (loanRequests != null ? loanRequests.hashCode() : 0);
         result = 31 * result + (ip != null ? ip.hashCode() : 0);
         return result;
     }

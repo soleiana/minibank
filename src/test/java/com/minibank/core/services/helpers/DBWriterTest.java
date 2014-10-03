@@ -17,7 +17,7 @@ import static junit.framework.TestCase.assertNull;
 /**
  * Created by Ann on 13/09/14.
  */
-public class DBWriterImplTest extends SpringContextTest
+public class DBWriterTest extends SpringContextTest
 {
     @Autowired
     private DBCleaner dbCleaner;

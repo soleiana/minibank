@@ -52,7 +52,7 @@ public class LoanController
 
         String message = createLoanResponse.getMessage();
 
-        if(createLoanResponse.isLoanObtained())
+        if(createLoanResponse.isCreated())
            return  new ResponseEntity<>(message, HttpStatus.CREATED);
         else
             return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);

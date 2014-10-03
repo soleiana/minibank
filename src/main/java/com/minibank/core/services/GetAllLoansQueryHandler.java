@@ -27,7 +27,8 @@ public class GetAllLoansQueryHandler
     @Override
     public GetAllLoansResponse execute(GetAllLoansQuery query)
     {
-        AllLoans allLoans = null;
+        AllLoans allLoans;
+        AllLoansDetails allLoansDetails = null;
 
         Integer customerId = query.getCustomerId();
         try
@@ -37,17 +38,16 @@ public class GetAllLoansQueryHandler
         catch (Exception e)
         {
             e.printStackTrace();
+            return new GetAllLoansResponse(allLoansDetails,false);
         }
 
-        AllLoansDetails allLoansDetails = allLoansDetailsFactory.getNewAllLoansDetails(allLoans);
-
-        GetAllLoansResponse getAllLoansResponse;
+        allLoansDetails = allLoansDetailsFactory.getNewAllLoansDetails(allLoans);
 
         if (allLoansDetails.getLoans().size() == 0)
-            getAllLoansResponse = new GetAllLoansResponse(allLoansDetails,false);
-        else getAllLoansResponse = new GetAllLoansResponse(allLoansDetails,true);
+            return new GetAllLoansResponse(allLoansDetails,false);
+        else
+            return new GetAllLoansResponse(allLoansDetails,true);
 
-        return getAllLoansResponse;
     }
 
     @Override

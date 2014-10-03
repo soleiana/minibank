@@ -48,6 +48,9 @@ public class LoanExtensionController
                 queryExecutor.execute(createLoanExtensionQuery);
         String message = createLoanExtensionResponse.getMessage();
 
-        return new ResponseEntity<>(message, HttpStatus.CREATED);
+        if (createLoanExtensionResponse.isCreated())
+            return new ResponseEntity<>(message, HttpStatus.CREATED);
+        else
+            return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

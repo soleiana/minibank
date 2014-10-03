@@ -4,7 +4,6 @@ import com.minibank.core.domain.BankParams;
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.repositories.BankParamsRepository;
-import com.minibank.core.services.common.Number;
 import com.minibank.core.repositories.DBException;
 import com.minibank.core.services.common.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +20,8 @@ import java.sql.Date;
 @Component
 public class CreditCalculator
 {
+    public static final BigDecimal FACTOR = new BigDecimal("0.0000277777");
+
     @Autowired
     private BankParamsRepository bankParamsRepository;
 
@@ -31,7 +32,7 @@ public class CreditCalculator
         BigDecimal factor = amount.multiply(interestRate)
                 .multiply(term);
 
-        BigDecimal interest = factor.multiply(Number.FACTOR);
+        BigDecimal interest = factor.multiply(FACTOR);
         interest = interest.setScale(2, RoundingMode.HALF_EVEN);
         return interest;
     }
