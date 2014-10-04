@@ -29,8 +29,7 @@ public class LoanInfoController
     @Autowired
     private AllLoansRestFactory allLoansRestFactory;
 
-    @RequestMapping(method = RequestMethod.GET,
-                    value = "/{id}/loans",
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}/loans",
                     produces = "application/json")
     public ResponseEntity<AllLoans> requestAllLoans(@PathVariable Integer id)
     {

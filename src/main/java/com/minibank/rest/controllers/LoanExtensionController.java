@@ -33,9 +33,8 @@ public class LoanExtensionController
         return  true;
     }
 
-    @RequestMapping(method = RequestMethod.POST,
-                    consumes = "application/json")
-    public ResponseEntity<String> createLoanExtension(@RequestBody @PathVariable Integer id)
+    @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<String> createLoanExtension(@PathVariable Integer id)
     {
         if (!validate(id))
             return new ResponseEntity<>(Message.INVALID_INPUT_FORMAT,

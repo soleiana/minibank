@@ -36,8 +36,7 @@ public class LoanController
     private LoanRequestDetailsFactory loanRequestDetailsFactory;
 
 
-    @RequestMapping(method = RequestMethod.POST,
-                    consumes = "application/json")
+    @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<String> createLoan(@RequestBody LoanRequest loanRequest,
                                              HttpServletRequest httpServletRequest)
     {
