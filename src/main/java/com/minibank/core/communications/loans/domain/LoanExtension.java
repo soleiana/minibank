@@ -78,4 +78,35 @@ public class LoanExtension
     {
         this.interestRate = interestRate;
     }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        LoanExtension that = (LoanExtension) o;
+
+        if (endDate != null ? !endDate.equals(that.endDate) : that.endDate != null) return false;
+        if (interest != null ? !interest.equals(that.interest) : that.interest != null) return false;
+        if (interestRate != null ? !interestRate.equals(that.interestRate) : that.interestRate != null) return false;
+        if (loanId != null ? !loanId.equals(that.loanId) : that.loanId != null) return false;
+        if (startDate != null ? !startDate.equals(that.startDate) : that.startDate != null) return false;
+        if (submissionDate != null ? !submissionDate.equals(that.submissionDate) : that.submissionDate != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = loanId != null ? loanId.hashCode() : 0;
+        result = 31 * result + (interestRate != null ? interestRate.hashCode() : 0);
+        result = 31 * result + (interest != null ? interest.hashCode() : 0);
+        result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
+        result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
+        result = 31 * result + (submissionDate != null ? submissionDate.hashCode() : 0);
+        return result;
+    }
 }

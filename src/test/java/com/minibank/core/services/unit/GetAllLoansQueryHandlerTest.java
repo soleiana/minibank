@@ -58,7 +58,8 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest
         when(allLoansDetailsFactory.getNewAllLoansDetails(allLoans)).thenReturn(allLoansDetails);
 
         GetAllLoansQuery query = new GetAllLoansQuery(customerId);
-        GetAllLoansResponse expectedResponse = new GetAllLoansResponse(allLoansDetails,true);
+        AllLoansDetails expectedDetails = AllLoanDetailsFixture.standardAllLoansDetails();
+        GetAllLoansResponse expectedResponse = new GetAllLoansResponse(expectedDetails,true);
 
         GetAllLoansResponse response = queryHandler.execute(query);
 
