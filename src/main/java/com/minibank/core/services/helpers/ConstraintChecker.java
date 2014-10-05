@@ -27,25 +27,23 @@ public class ConstraintChecker
     @Autowired
     private LoanRequestRepository loanRequestRepository;
 
-    private BankParams bankParams;
-
-    private void initBankParams() throws DBException
-    {
-        bankParams = bankParamsRepository.getLast();
-    }
-
     private boolean isBetween(Time start, Time end, Time timeToCheck)
     {
-        if ((timeToCheck.compareTo(start)==1)&&(end.compareTo(timeToCheck)==1))
+        if ((timeToCheck.compareTo(start) == 1)&&(end.compareTo(timeToCheck) == 1))
             return true;
 
         else
             return false;
     }
 
+    private BankParams getBankParams() throws DBException
+    {
+        return bankParamsRepository.getLast();
+    }
+
     public boolean checkMaxRequestsPerIP(LoanRequest loanRequest) throws DBException
     {
-        initBankParams();
+        BankParams bankParams = getBankParams();
         Byte maxLoanAttempts = bankParams.getMaxLoanAttempts();
 
         RequestIP requestIP = loanRequest.getRequestIP();
@@ -69,13 +67,13 @@ public class ConstraintChecker
 
     public boolean checkTimeConstraint(LoanRequest loanRequest) throws DBException
     {
-        initBankParams();
+        BankParams bankParams = getBankParams();
         Time riskTimeStart = bankParams.getRiskTimeStart();
         Time riskTimeEnd = bankParams.getRiskTimeEnd();
 
         Time submissionTime = loanRequest.getSubmissionTime();
 
-        if (riskTimeStart.compareTo(riskTimeEnd)==1)
+        if (riskTimeStart.compareTo(riskTimeEnd) == 1)
             //check two time intervals: [riskTimeStart, 24:00:00]
             //and [00:00:00, riskTimeEnd]
             if ( isBetween(riskTimeStart, DateTimeUtility.MAX_TIME, submissionTime) ||
@@ -95,14 +93,25 @@ public class ConstraintChecker
 
     public boolean checkAmountConstraint(LoanRequest loanRequest) throws DBException
     {
-        initBankParams();
-
+        BankParams bankParams = getBankParams();
         BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
         BigDecimal reqAmount = loanRequest.getAmount();
 
-        if(reqAmount.compareTo(maxLoanAmount) >= 0)
+        if(reqAmount.compareTo(maxLoanAmount) == 1)
             return false;
         else
             return true;
+    }
+
+    public boolean isMaxAmount(LoanRequest loanRequest) throws DBException
+    {
+        BankParams bankParams = getBankParams();
+        BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
+        BigDecimal reqAmount = loanRequest.getAmount();
+
+        if(reqAmount.compareTo(maxLoanAmount) == 0)
+            return true;
+        else
+            return false;
     }
 }

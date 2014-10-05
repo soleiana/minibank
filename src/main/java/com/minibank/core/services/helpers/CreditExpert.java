@@ -19,11 +19,11 @@ public class CreditExpert
         if (!checker.checkMaxRequestsPerIP(loanRequest)
                ||
                   (
-                    !checker.checkAmountConstraint(loanRequest)
+                    checker.isMaxAmount(loanRequest)
 
                     &&
 
-                     !checker.checkTimeConstraint(loanRequest)
+                    !checker.checkTimeConstraint(loanRequest)
                   )
            )
            return true;

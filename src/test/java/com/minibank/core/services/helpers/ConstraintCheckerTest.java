@@ -140,16 +140,36 @@ public class ConstraintCheckerTest extends SpringContextTest
 
     @Test
     @Transactional
+    public void testIsMaxAmount() throws DBException
+    {
+        BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
+        loanRequest.setAmount(maxLoanAmount);
+
+        assertTrue(checker.isMaxAmount(loanRequest));
+
+        BigDecimal loanAmount = bankParams.getMaxLoanAmount().subtract(new BigDecimal(1.00));
+        loanRequest.setAmount(loanAmount);
+
+        assertTrue(!checker.isMaxAmount(loanRequest));
+
+        loanAmount = bankParams.getMaxLoanAmount().add(new BigDecimal(1.00));
+        loanRequest.setAmount(loanAmount);
+
+        assertTrue(!checker.isMaxAmount(loanRequest));
+    }
+
+    @Test
+    @Transactional
     public void testCheckAmountConstraint() throws DBException
     {
         BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
         loanRequest.setAmount(maxLoanAmount);
 
-        assertTrue(!checker.checkAmountConstraint(loanRequest));
+        assertTrue(checker.checkAmountConstraint(loanRequest));
 
-        BigDecimal loanAmount = bankParams.getMaxLoanAmount().subtract(new BigDecimal(1.00));
+        BigDecimal loanAmount = bankParams.getMaxLoanAmount().add(new BigDecimal(1.00));
         loanRequest.setAmount(loanAmount);
 
-        assertTrue(checker.checkAmountConstraint(loanRequest));
+        assertTrue(!checker.checkAmountConstraint(loanRequest));
     }
 }
