@@ -23,7 +23,7 @@ public class LoanRequestValidator
 
         if ((customerId <= 0)
              ||
-            (amount.compareTo(new BigDecimal("0.00")) == -1)
+            (amount.compareTo(new BigDecimal("0.00")) <= 0)
              ||
             (term <= 0))
             return false;
