@@ -65,6 +65,7 @@ public class CreateLoanQueryHandler
         catch (Exception e)
         {
             e.printStackTrace();
+            return new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
         }
         if (isLoanObtained)
             return new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);
