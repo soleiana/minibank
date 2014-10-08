@@ -16,26 +16,26 @@ public class LoanRequestRepositoryImpl extends SessionProvider
     implements LoanRequestRepository
 {
     @Override
-    public void create(LoanRequest loanRequest)  throws DBException
+    public void create(LoanRequest loanRequest)
     {
         getCurrentSession().saveOrUpdate(loanRequest);
     }
 
     @Override
-    public void update(LoanRequest loanRequest) throws DBException
+    public void update(LoanRequest loanRequest)
     {
         getCurrentSession().saveOrUpdate(loanRequest);
     }
 
     @Override
-    public LoanRequest getById(Integer id) throws  DBException
+    public LoanRequest getById(Integer id)
     {
         Session session = getCurrentSession();
         return (LoanRequest) session.get(LoanRequest.class, id);
     }
 
     @Override
-    public  List<LoanRequest> getByRequestIP(RequestIP requestIP) throws DBException
+    public  List<LoanRequest> getByRequestIP(RequestIP requestIP)
     {
         Session session = getCurrentSession();
         Query query = session.createQuery("from LoanRequest where requestIP = :requestIP");
@@ -44,7 +44,7 @@ public class LoanRequestRepositoryImpl extends SessionProvider
     }
 
     @Override
-    public LoanRequest getLast() throws DBException
+    public LoanRequest getLast()
     {
         Session session = getCurrentSession();
         Query query = session.createQuery("from LoanRequest order by id DESC");

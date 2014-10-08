@@ -10,9 +10,9 @@ import java.util.List;
  */
 public interface LoanExtensionRepository
 {
-    void create(LoanExtension loanExtension) throws DBException;
+    void create(LoanExtension loanExtension);
 
-    List<LoanExtension> getByLoan(Loan loan) throws DBException;
+    List<LoanExtension> getByLoan(Loan loan);
 
-    LoanExtension getLast() throws  DBException;
+    LoanExtension getLast();
 }

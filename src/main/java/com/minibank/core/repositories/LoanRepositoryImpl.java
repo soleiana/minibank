@@ -16,25 +16,25 @@ public class LoanRepositoryImpl extends SessionProvider
     implements LoanRepository
 {
     @Override
-    public void create(Loan loan) throws DBException
+    public void create(Loan loan)
     {
         getCurrentSession().saveOrUpdate(loan);
     }
 
     @Override
-    public void update(Loan loan) throws DBException
+    public void update(Loan loan)
     {
         getCurrentSession().saveOrUpdate(loan);
     }
 
     @Override
-    public Loan getById(Integer id) throws DBException
+    public Loan getById(Integer id)
     {
         return (Loan) getCurrentSession().get(Loan.class, id);
     }
 
     @Override
-    public List<Loan> getByCustomer(Customer customer) throws DBException
+    public List<Loan> getByCustomer(Customer customer)
     {
         Session session = getCurrentSession();
         Query query = session.createQuery("from Loan where customer = :customer");
@@ -43,7 +43,7 @@ public class LoanRepositoryImpl extends SessionProvider
     }
 
     @Override
-    public Loan getLast() throws DBException
+    public Loan getLast()
     {
         Session session = getCurrentSession();
         Query query = session.createQuery("from Loan order by id DESC");

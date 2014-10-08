@@ -7,7 +7,7 @@ import com.minibank.core.domain.Customer;
  */
 public interface CustomerRepository
 {
-    void create(Customer customer) throws DBException;
+    void create(Customer customer);
 
-    Customer getById(Integer id) throws DBException;
+    Customer getById(Integer id);
 }

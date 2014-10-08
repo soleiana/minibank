@@ -13,27 +13,27 @@ public class BankParamsRepositoryImpl extends SessionProvider
         implements BankParamsRepository
 {
     @Override
-    public void create(BankParams bankParams) throws DBException
+    public void create(BankParams bankParams)
     {
         getCurrentSession().saveOrUpdate(bankParams);
     }
 
     @Override
-    public BankParams getById(Integer id) throws DBException
+    public BankParams getById(Integer id)
     {
         Session session = getCurrentSession();
         return (BankParams) session.get(BankParams.class, id);
     }
 
     @Override
-    public void update(BankParams bankParams) throws DBException
+    public void update(BankParams bankParams)
     {
         Session session = getCurrentSession();
         session.saveOrUpdate(bankParams);
     }
 
     @Override
-    public BankParams getLast() throws DBException
+    public BankParams getLast()
     {
        Session session = getCurrentSession();
        Query query = session.createQuery("from BankParams order by id DESC");

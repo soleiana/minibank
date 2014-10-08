@@ -10,13 +10,13 @@ import java.util.List;
  */
 public interface LoanRepository
 {
-    void create(Loan loan) throws  DBException;
+    void create(Loan loan);
 
-    void update(Loan loan) throws DBException;
+    void update(Loan loan);
 
-    Loan getById(Integer id) throws DBException;
+    Loan getById(Integer id);
 
-    List<Loan> getByCustomer(Customer customer) throws DBException;
+    List<Loan> getByCustomer(Customer customer);
 
-    Loan getLast() throws DBException;
+    Loan getLast();
 }

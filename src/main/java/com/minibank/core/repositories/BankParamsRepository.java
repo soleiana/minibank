@@ -8,11 +8,11 @@ import com.minibank.core.domain.BankParams;
  */
 public interface BankParamsRepository
 {
-    void create(BankParams bankParams) throws DBException;
+    void create(BankParams bankParams);
 
-    BankParams getById(Integer id) throws DBException;
+    BankParams getById(Integer id);
 
-    BankParams getLast() throws  DBException;
+    BankParams getLast();
 
-    void update(BankParams bankParams) throws DBException;
+    void update(BankParams bankParams);
 }

@@ -13,13 +13,13 @@ public class RequestIPRepositoryImpl extends SessionProvider
     implements RequestIPRepository
 {
     @Override
-    public void create(RequestIP requestIP)  throws DBException
+    public void create(RequestIP requestIP)
     {
           getCurrentSession().saveOrUpdate(requestIP);
     }
 
     @Override
-    public RequestIP getByIP(String ip) throws DBException
+    public RequestIP getByIP(String ip)
     {
         Session session = getCurrentSession();
         Query query = session.createQuery("from RequestIP where ip = :ip ");
