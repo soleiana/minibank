@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class CreditExpert
 {
     @Autowired
-    private ConstraintChecker checker;
+    private RiskConstraintChecker checker;
 
     public boolean hasRisks(LoanRequest loanRequest)
     {

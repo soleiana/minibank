@@ -11,7 +11,8 @@ import com.minibank.core.services.CreateLoanQueryHandler;
 import com.minibank.core.services.common.Message;
 import com.minibank.core.services.factories.LoanFactory;
 import com.minibank.core.services.factories.LoanRequestFactory;
-import com.minibank.core.services.helpers.ConstraintChecker;
+import com.minibank.core.services.helpers.InputConstraintChecker;
+import com.minibank.core.services.helpers.RiskConstraintChecker;
 import com.minibank.core.services.helpers.CreditExpert;
 import com.minibank.core.services.helpers.DBWriter;
 import org.junit.Before;
@@ -39,7 +40,9 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
     @Mock
     private CreditExpert creditExpert;
     @Mock
-    private ConstraintChecker constraintChecker;
+    private RiskConstraintChecker riskConstraintChecker;
+    @Mock
+    private InputConstraintChecker inputConstraintChecker;
 
     private LoanRequest loanRequest;
     private Loan loan;
@@ -64,7 +67,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
         //Customer obtains a loan
 
         when(creditExpert.hasRisks(any(LoanRequest.class))).thenReturn(false);
-        when(constraintChecker.checkAmountConstraint(any(LoanRequest.class))).thenReturn(true);
+        when(inputConstraintChecker.checkAmountConstraint(any(LoanRequest.class))).thenReturn(true);
 
         CreateLoanResponse expectedResponse = new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);
         CreateLoanQuery query = new CreateLoanQuery(loanRequestDetails);
@@ -75,7 +78,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
         assertEquals(expectedResponse.isCreated(), response.isCreated());
         verify(loanRequestFactory, times(1)).getNewLoanRequest(loanRequestDetails);
         verify(dbWriter, times(1)).create(loanRequest);
-        verify(constraintChecker, times(1)).checkAmountConstraint(loanRequest);
+        verify(inputConstraintChecker, times(1)).checkAmountConstraint(loanRequest);
         verify(creditExpert, times(1)).hasRisks(loanRequest);
         verify(loanFactory, times(1)).getNewLoan(loanRequest);
         verify(dbWriter, times(1)).create(loan);
@@ -88,7 +91,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
         //Customer is refused a loan because of the risks surrounding the loan request
 
         when(creditExpert.hasRisks(any(LoanRequest.class))).thenReturn(true);
-        when(constraintChecker.checkAmountConstraint(any(LoanRequest.class))).thenReturn(true);
+        when(inputConstraintChecker.checkAmountConstraint(any(LoanRequest.class))).thenReturn(true);
 
         CreateLoanResponse expectedResponse = new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
         CreateLoanQuery query =  new CreateLoanQuery(loanRequestDetails);
@@ -100,7 +103,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
         assertEquals(expectedResponse.isCreated(), response.isCreated());
         verify(loanRequestFactory, times(1)).getNewLoanRequest(loanRequestDetails);
         verify(dbWriter, times(1)).create(loanRequest);
-        verify(constraintChecker, times(1)).checkAmountConstraint(loanRequest);
+        verify(inputConstraintChecker, times(1)).checkAmountConstraint(loanRequest);
         verify(creditExpert, times(1)).hasRisks(loanRequest);
         verify(loanFactory, times(0)).getNewLoan(loanRequest);
         verify(dbWriter, times(0)).create(loan);
@@ -113,7 +116,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
         //Customer is refused a loan because of the database failure
 
         when(creditExpert.hasRisks(any(LoanRequest.class))).thenReturn(false);
-        when(constraintChecker.checkAmountConstraint(any(LoanRequest.class))).thenReturn(true);
+        when(inputConstraintChecker.checkAmountConstraint(any(LoanRequest.class))).thenReturn(true);
         doThrow(new RuntimeException()).when(dbWriter).create(loan);
 
         CreateLoanResponse expectedResponse = new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
@@ -126,7 +129,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
         assertEquals(expectedResponse.isCreated(), response.isCreated());
         verify(loanRequestFactory, times(1)).getNewLoanRequest(loanRequestDetails);
         verify(dbWriter, times(1)).create(loanRequest);
-        verify(constraintChecker, times(1)).checkAmountConstraint(loanRequest);
+        verify(inputConstraintChecker, times(1)).checkAmountConstraint(loanRequest);
         verify(creditExpert, times(1)).hasRisks(loanRequest);
         verify(loanFactory, times(1)).getNewLoan(loanRequest);
         verify(dbWriter, times(1)).create(loan);
@@ -139,7 +142,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
         //Customer is refused a loan because the requested loan amount exceeds the maximum
 
         when(creditExpert.hasRisks(any(LoanRequest.class))).thenReturn(false);
-        when(constraintChecker.checkAmountConstraint(any(LoanRequest.class))).thenReturn(false);
+        when(inputConstraintChecker.checkAmountConstraint(any(LoanRequest.class))).thenReturn(false);
 
         CreateLoanResponse expectedResponse = new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
         CreateLoanQuery query =  new CreateLoanQuery(loanRequestDetails);
@@ -151,7 +154,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
         assertEquals(expectedResponse.isCreated(), response.isCreated());
         verify(loanRequestFactory, times(1)).getNewLoanRequest(loanRequestDetails);
         verify(dbWriter, times(1)).create(loanRequest);
-        verify(constraintChecker, times(1)).checkAmountConstraint(loanRequest);
+        verify(inputConstraintChecker, times(1)).checkAmountConstraint(loanRequest);
         verify(creditExpert, times(0)).hasRisks(loanRequest);
         verify(loanFactory, times(0)).getNewLoan(loanRequest);
         verify(dbWriter, times(0)).create(loan);

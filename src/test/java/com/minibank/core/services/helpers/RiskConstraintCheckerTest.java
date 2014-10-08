@@ -20,7 +20,7 @@ import java.util.Date;
 /**
  * Created by Ann on 13/09/14.
  */
-public class ConstraintCheckerTest extends SpringContextTest
+public class RiskConstraintCheckerTest extends SpringContextTest
 {
     @Autowired
     private DBCleaner dbCleaner;
@@ -33,7 +33,7 @@ public class ConstraintCheckerTest extends SpringContextTest
     @Autowired
     private BankParamsRepository bankParamsRepository;
     @Autowired
-    private ConstraintChecker checker;
+    private RiskConstraintChecker checker;
 
     private BankParams bankParams;
     private LoanRequest loanRequest;
@@ -147,29 +147,14 @@ public class ConstraintCheckerTest extends SpringContextTest
 
         assertTrue(checker.isMaxAmount(loanRequest));
 
-        BigDecimal loanAmount = bankParams.getMaxLoanAmount().subtract(new BigDecimal(1.00));
+        BigDecimal loanAmount = maxLoanAmount.subtract(new BigDecimal(1.00));
         loanRequest.setAmount(loanAmount);
 
         assertTrue(!checker.isMaxAmount(loanRequest));
 
-        loanAmount = bankParams.getMaxLoanAmount().add(new BigDecimal(1.00));
+        loanAmount = maxLoanAmount.add(new BigDecimal(1.00));
         loanRequest.setAmount(loanAmount);
 
         assertTrue(!checker.isMaxAmount(loanRequest));
-    }
-
-    @Test
-    @Transactional
-    public void testCheckAmountConstraint()
-    {
-        BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
-        loanRequest.setAmount(maxLoanAmount);
-
-        assertTrue(checker.checkAmountConstraint(loanRequest));
-
-        BigDecimal loanAmount = bankParams.getMaxLoanAmount().add(new BigDecimal(1.00));
-        loanRequest.setAmount(loanAmount);
-
-        assertTrue(!checker.checkAmountConstraint(loanRequest));
     }
 }

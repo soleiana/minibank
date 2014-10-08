@@ -9,7 +9,8 @@ import com.minibank.core.domain.LoanRequestStatus;
 import com.minibank.core.services.common.Message;
 import com.minibank.core.services.factories.LoanFactory;
 import com.minibank.core.services.factories.LoanRequestFactory;
-import com.minibank.core.services.helpers.ConstraintChecker;
+import com.minibank.core.services.helpers.InputConstraintChecker;
+import com.minibank.core.services.helpers.RiskConstraintChecker;
 import com.minibank.core.services.helpers.CreditExpert;
 import com.minibank.core.services.helpers.DBWriter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,9 @@ public class CreateLoanQueryHandler
     @Autowired
     private CreditExpert creditExpert;
     @Autowired
-    private ConstraintChecker constraintChecker;
+    private InputConstraintChecker inputConstraintChecker;
+    @Autowired
+    private RiskConstraintChecker riskConstraintChecker;
 
     @Override
     public CreateLoanResponse execute(CreateLoanQuery query)
@@ -47,7 +50,7 @@ public class CreateLoanQueryHandler
             //loanRequest created in DB
             dbWriter.create(loanRequest);
 
-            if((!constraintChecker.checkAmountConstraint(loanRequest))||
+            if((!inputConstraintChecker.checkAmountConstraint(loanRequest))||
                  creditExpert.hasRisks(loanRequest))
                 loanRequest.setStatus(LoanRequestStatus.REJECTED);
             else
