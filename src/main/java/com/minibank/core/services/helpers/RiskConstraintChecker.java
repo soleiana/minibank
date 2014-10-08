@@ -36,10 +36,6 @@ public class RiskConstraintChecker extends ConstraintChecker
         BankParams bankParams = getBankParams();
         Byte maxLoanAttempts = bankParams.getMaxLoanAttempts();
 
-        //RequestIP requestIP = loanRequest.getRequestIP();
-
-        //List<LoanRequest> loanRequests = loanRequestRepository.getByRequestIP(requestIP);
-
         String requestIp = loanRequest.getRequestIp();
         List<LoanRequest> loanRequests = loanRequestRepository.getByRequestIp(requestIp);
 
