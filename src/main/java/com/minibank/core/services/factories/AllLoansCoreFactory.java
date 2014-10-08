@@ -5,7 +5,6 @@ import com.minibank.core.domain.Customer;
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanExtension;
 import com.minibank.core.repositories.CustomerRepository;
-import com.minibank.core.repositories.DBException;
 import com.minibank.core.repositories.LoanExtensionRepository;
 import com.minibank.core.repositories.LoanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,6 @@ public class AllLoansCoreFactory
     LoanExtensionRepository loanExtensionRepository;
 
     public AllLoans getNewAllLoans(Integer customerId)
-            throws DBException
     {
         AllLoans allLoans = new AllLoans();
         Customer customer = customerRepository.getById(customerId);

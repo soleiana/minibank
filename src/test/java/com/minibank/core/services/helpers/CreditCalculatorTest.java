@@ -3,7 +3,6 @@ package com.minibank.core.services.helpers;
 import com.minibank.SpringContextTest;
 import com.minibank.core.domain.*;
 import com.minibank.core.repositories.BankParamsRepository;
-import com.minibank.core.repositories.DBException;
 import com.minibank.core.repositories.tools.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +34,7 @@ public class CreditCalculatorTest extends SpringContextTest
 
     @Before
     @Transactional
-    public void setUp() throws DBException
+    public void setUp()
     {
         dbCleaner.clear();
         bankParams = BankParamsFixture.standardBankParams();
@@ -47,7 +46,7 @@ public class CreditCalculatorTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetLoanEndDate() throws DBException
+    public void testGetLoanEndDate()
     {
         Date submissionDate = Date.valueOf("2014-09-01");
         loanRequest.setSubmissionDate(submissionDate);
@@ -59,7 +58,7 @@ public class CreditCalculatorTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetInterest_1() throws DBException
+    public void testGetInterest_1()
     {
         BigDecimal amount = new BigDecimal("200.00");
         Integer term = 20;
@@ -78,7 +77,7 @@ public class CreditCalculatorTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetInterest_2() throws DBException
+    public void testGetInterest_2()
     {
         BigDecimal amount = new BigDecimal("200.00");
         Integer term = 20;
@@ -93,7 +92,7 @@ public class CreditCalculatorTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetLoanExtensionEndDate() throws DBException
+    public void testGetLoanExtensionEndDate()
     {
         Date loanEndDate = Date.valueOf("2014-09-01");
         loan.setEndDate(loanEndDate);

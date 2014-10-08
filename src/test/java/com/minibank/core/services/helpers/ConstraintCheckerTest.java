@@ -39,7 +39,7 @@ public class ConstraintCheckerTest extends SpringContextTest
     private LoanRequest loanRequest;
     private RequestIP requestIP;
 
-    private void createLoanRequest(java.sql.Date submissionDate) throws DBException
+    private void createLoanRequest(java.sql.Date submissionDate)
     {
         Customer customer = CustomerFixture.standardCustomer();
         loanRequest = LoanRequestFixture.standardLoanRequest();
@@ -52,7 +52,7 @@ public class ConstraintCheckerTest extends SpringContextTest
 
     @Before
     @Transactional
-    public void setUp() throws DBException
+    public void setUp()
     {
         dbCleaner.clear();
         bankParams = BankParamsFixture.standardBankParams();
@@ -65,7 +65,7 @@ public class ConstraintCheckerTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testCheckMaxRequestsPerIP() throws DBException
+    public void testCheckMaxRequestsPerIP()
     {
         bankParams.setMaxLoanAttempts(new Byte("3"));
         bankParamsRepository.update(bankParams);
@@ -85,7 +85,7 @@ public class ConstraintCheckerTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testCheckTimeConstraint_1() throws DBException
+    public void testCheckTimeConstraint_1()
     {
         //check loan requests for risk interval [00:00:00-07:00:00]
 
@@ -113,7 +113,7 @@ public class ConstraintCheckerTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testCheckTimeConstraint_2() throws DBException
+    public void testCheckTimeConstraint_2()
     {
         //check loan requests for risk interval [22:00:00-08:00:00]
 
@@ -140,7 +140,7 @@ public class ConstraintCheckerTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testIsMaxAmount() throws DBException
+    public void testIsMaxAmount()
     {
         BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
         loanRequest.setAmount(maxLoanAmount);
@@ -160,7 +160,7 @@ public class ConstraintCheckerTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testCheckAmountConstraint() throws DBException
+    public void testCheckAmountConstraint()
     {
         BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
         loanRequest.setAmount(maxLoanAmount);

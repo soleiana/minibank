@@ -40,7 +40,7 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest
     private BankParams bankParams;
     private Customer customer;
 
-    private CreateLoanQuery createCreateLoanQuery()throws DBException
+    private CreateLoanQuery createCreateLoanQuery()
     {
         LoanRequestDetails loanRequestDetails =
                 LoanRequestDetailsFixture.standardLoanRequestDetails();
@@ -50,7 +50,7 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest
     }
 
     @Before
-    public void setUp() throws Exception
+    public void setUp()
     {
         dbCleaner.clear();
 
@@ -62,7 +62,7 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testExecute() throws Exception
+    public void testExecute()
     {
         CreateLoanQuery createLoanQuery = createCreateLoanQuery();
         CreateLoanResponse expectedCreateLoanResponse =

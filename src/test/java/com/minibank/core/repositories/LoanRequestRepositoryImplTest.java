@@ -40,7 +40,7 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
 
     @Before
     @Transactional
-    public void setUp() throws DBException
+    public void setUp()
     {
         dbCleaner.clear();
         requestIP = RequestIPFixture.standardRequestIP();
@@ -53,7 +53,7 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testCreate() throws DBException
+    public void testCreate()
     {
         loanRequestRepository.create(loanRequest);
         assertNotNull(loanRequest.getId());
@@ -61,7 +61,7 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testUpdate() throws DBException
+    public void testUpdate()
     {
         loanRequestRepository.create(loanRequest);
         loanRequest.setStatus(LoanRequestFixture.NEW_STATUS);
@@ -71,7 +71,7 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetById() throws DBException
+    public void testGetById()
     {
         loanRequestRepository.create(loanRequest);
         Integer id = loanRequest.getId();
@@ -80,7 +80,7 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetByRequestIP() throws DBException
+    public void testGetByRequestIP()
     {
         createLoanRequest();
         loanRequestRepository.create(loanRequest);

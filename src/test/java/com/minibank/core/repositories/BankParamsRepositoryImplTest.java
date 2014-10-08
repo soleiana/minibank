@@ -25,7 +25,7 @@ public class BankParamsRepositoryImplTest extends SpringContextTest
 
     @Before
     @Transactional
-    public void setUp() throws DBException
+    public void setUp()
     {
         dbCleaner.clear();
         bankParams = BankParamsFixture.standardBankParams();
@@ -33,7 +33,7 @@ public class BankParamsRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testCreate() throws DBException
+    public void testCreate()
     {
         bankParamsRepository.create(bankParams);
         assertNotNull(bankParams.getId());
@@ -41,7 +41,7 @@ public class BankParamsRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetById() throws DBException
+    public void testGetById()
     {
         bankParamsRepository.create(bankParams);
         Integer id = bankParams.getId();
@@ -50,7 +50,7 @@ public class BankParamsRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testUpdate() throws DBException
+    public void testUpdate()
     {
         bankParamsRepository.create(bankParams);
         BankParams newBankParams = BankParamsFixture.newBankParams();
@@ -76,7 +76,7 @@ public class BankParamsRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetLast() throws DBException
+    public void testGetLast()
     {
         BankParams bp1 = BankParamsFixture.standardBankParams();
         bp1.setLoanExtensionTerm(BankParamsFixture.NEW_LOAN_EXTENSION_TERM);

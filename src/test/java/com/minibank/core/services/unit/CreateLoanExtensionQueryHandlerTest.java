@@ -41,7 +41,7 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest
     private Integer loanId;
 
     @Before
-    public void setUp() throws Exception
+    public void setUp()
     {
         loan = LoanFixture.standardLoan();
         loanExtension = LoanExtensionFixture.standardLoanExtension();
@@ -52,7 +52,7 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest
     }
 
     @Test
-    public void testExecute_1() throws Exception
+    public void testExecute_1()
     {
         //Positive path of execution
         //Customer obtains an extension of the loan
@@ -73,7 +73,7 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest
     }
 
     @Test
-    public void testExecute_2() throws Exception
+    public void testExecute_2()
     {
         //Negative path of execution
         //Customer does not obtain an extension of the loan because of the database failure

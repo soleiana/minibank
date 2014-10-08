@@ -44,7 +44,7 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest
     private Loan loan;
     private LoanExtension loanExtension;
 
-    private void createLoan() throws DBException
+    private void createLoan()
     {
         loanRequest = LoanRequestFixture.standardLoanRequest();
         loanRequest.setCustomer(customer);
@@ -56,25 +56,25 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest
         loanRepository.create(loan);
     }
 
-    private void createLoanExtension() throws DBException
+    private void createLoanExtension()
     {
         loanExtension = LoanExtensionFixture.standardLoanExtension();
         loanExtension.setLoan(loan);
         loanExtensionRepository.create(loanExtension);
     }
 
-    private GetAllLoansQuery createGetAllLoansQuery() throws DBException
+    private GetAllLoansQuery createGetAllLoansQuery()
     {
         return new GetAllLoansQuery(customer.getId());
     }
 
-    private void prepareTestData_1() throws DBException
+    private void prepareTestData_1()
     {
         createLoan();
         createLoan();
     }
 
-    private void prepareTestData_2() throws DBException
+    private void prepareTestData_2()
     {
         createLoan();
         createLoanExtension();
@@ -82,7 +82,7 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest
         createLoan();
     }
     @Before
-    public void setUp() throws Exception
+    public void setUp()
     {
         dbCleaner.clear();
 
@@ -97,7 +97,7 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testExecute_1() throws Exception
+    public void testExecute_1()
     {
         //customer has no loans
         GetAllLoansQuery getAllLoansQuery = createGetAllLoansQuery();
@@ -116,7 +116,7 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testExecute_2() throws Exception
+    public void testExecute_2()
     {
         //customer has 2 loans
         //customer has no loan extensions
@@ -133,7 +133,7 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testExecute_3() throws Exception
+    public void testExecute_3()
     {
         //customer has 2 loans
         //customer has 2 extensions of a loan

@@ -42,7 +42,7 @@ public class LoanControllerTest
     LoanRequestDetailsFactory loanRequestDetailsFactory;
 
     @Before
-    public void setUp() throws Exception
+    public void setUp()
     {
         MockitoAnnotations.initMocks(this);
         this.mockMvc = standaloneSetup(loanController)

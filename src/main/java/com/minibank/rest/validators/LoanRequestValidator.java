@@ -21,13 +21,10 @@ public class LoanRequestValidator
         if((customerId == null)|| (amount == null) || (term == null))
             return false;
 
-        if ((customerId <= 0)
-             ||
-            (amount.compareTo(new BigDecimal("0.00")) <= 0)
-             ||
+        if ((customerId <= 0)||
+            (amount.compareTo(new BigDecimal("0.00")) <= 0)||
             (term <= 0))
             return false;
-
         return true;
     }
 }

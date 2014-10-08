@@ -2,7 +2,6 @@ package com.minibank.core.services.factories;
 
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanExtension;
-import com.minibank.core.repositories.DBException;
 import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.services.common.DateTimeUtility;
 import com.minibank.core.services.helpers.CreditCalculator;
@@ -25,7 +24,6 @@ public class LoanExtensionFactory
 
 
     public LoanExtension getNewLoanExtension(Integer loanId)
-            throws DBException
     {
         LoanExtension loanExtension = new LoanExtension();
 

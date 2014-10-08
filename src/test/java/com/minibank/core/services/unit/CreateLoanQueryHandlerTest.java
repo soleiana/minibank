@@ -46,7 +46,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
     private LoanRequestDetails loanRequestDetails;
 
     @Before
-    public void setUp() throws Exception
+    public void setUp()
     {
         loanRequest = LoanRequestFixture.standardLoanRequest();
         loan = LoanFixture.standardLoan();
@@ -58,7 +58,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
     }
 
     @Test
-    public void testExecute_1() throws Exception
+    public void testExecute_1()
     {
          //Positive path of execution
         //Customer obtains a loan
@@ -82,7 +82,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
     }
 
     @Test
-    public void testExecute_2() throws Exception
+    public void testExecute_2()
     {
         //Negative path of execution
         //Customer is refused a loan because of the risks surrounding the loan request
@@ -107,7 +107,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
     }
 
     @Test
-    public void testExecute_3() throws Exception
+    public void testExecute_3()
     {
         //Negative path of execution
         //Customer is refused a loan because of the database failure
@@ -133,7 +133,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
     }
 
     @Test
-    public void testExecute_4() throws Exception
+    public void testExecute_4()
     {
         //Negative path of execution
         //Customer is refused a loan because the requested loan amount exceeds the maximum

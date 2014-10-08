@@ -40,7 +40,7 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest
     private Integer customerId;
 
     @Before
-    public void setUp() throws Exception
+    public void setUp()
     {
         customerId = 1;
         allLoans = AllLoansFixture.standardAllLoans();
@@ -50,7 +50,7 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest
     }
 
     @Test
-    public void testExecute_1() throws Exception
+    public void testExecute_1()
     {
         //Positive path of execution
         //Customer obtains loan history
@@ -70,7 +70,7 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest
     }
 
     @Test
-    public void testExecute_2() throws Exception
+    public void testExecute_2()
     {
         //Negative path of execution
         //Customer doesn't obtain loan history because he does not have it
@@ -94,7 +94,7 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest
     }
 
     @Test
-    public void testExecute_3() throws Exception
+    public void testExecute_3()
     {
         //Negative path of execution
         //Customer doesn't obtain loan history because of the database failure

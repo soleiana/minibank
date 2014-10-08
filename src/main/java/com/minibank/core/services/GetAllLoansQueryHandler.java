@@ -34,6 +34,7 @@ public class GetAllLoansQueryHandler
         try
         {
             allLoans = allLoansCoreFactory.getNewAllLoans(customerId);
+            allLoansDetails = allLoansDetailsFactory.getNewAllLoansDetails(allLoans);
         }
         catch (Exception e)
         {
@@ -41,9 +42,7 @@ public class GetAllLoansQueryHandler
             return new GetAllLoansResponse(allLoansDetails,false);
         }
 
-        allLoansDetails = allLoansDetailsFactory.getNewAllLoansDetails(allLoans);
-
-        if (allLoansDetails.getLoans().size() == 0)
+        if ((allLoansDetails != null)&&(allLoansDetails.getLoans().size() == 0))
             return new GetAllLoansResponse(allLoansDetails,false);
         else
             return new GetAllLoansResponse(allLoansDetails,true);

@@ -6,7 +6,6 @@ import com.minibank.core.domain.LoanRequestStatus;
 import com.minibank.core.domain.RequestIP;
 import com.minibank.core.communications.loans.domain.LoanRequestDetails;
 import com.minibank.core.repositories.CustomerRepository;
-import com.minibank.core.repositories.DBException;
 import com.minibank.core.services.common.DateTimeUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,7 +22,7 @@ public class LoanRequestFactory
     @Autowired
     CustomerRepository customerRepository;
 
-    public LoanRequest getNewLoanRequest(LoanRequestDetails loanRequestDetails) throws DBException
+    public LoanRequest getNewLoanRequest(LoanRequestDetails loanRequestDetails)
     {
         //We assume that customer already exists in DB
         Integer id = loanRequestDetails.getCustomerId();

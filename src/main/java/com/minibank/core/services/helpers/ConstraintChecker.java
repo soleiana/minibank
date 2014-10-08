@@ -4,7 +4,6 @@ import com.minibank.core.domain.BankParams;
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.domain.RequestIP;
 import com.minibank.core.repositories.BankParamsRepository;
-import com.minibank.core.repositories.DBException;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.services.common.DateTimeUtility;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +35,12 @@ public class ConstraintChecker
             return false;
     }
 
-    private BankParams getBankParams() throws DBException
+    private BankParams getBankParams()
     {
         return bankParamsRepository.getLast();
     }
 
-    public boolean checkMaxRequestsPerIP(LoanRequest loanRequest) throws DBException
+    public boolean checkMaxRequestsPerIP(LoanRequest loanRequest)
     {
         BankParams bankParams = getBankParams();
         Byte maxLoanAttempts = bankParams.getMaxLoanAttempts();
@@ -65,7 +64,7 @@ public class ConstraintChecker
             return false;
     }
 
-    public boolean checkTimeConstraint(LoanRequest loanRequest) throws DBException
+    public boolean checkTimeConstraint(LoanRequest loanRequest)
     {
         BankParams bankParams = getBankParams();
         Time riskTimeStart = bankParams.getRiskTimeStart();
@@ -91,7 +90,7 @@ public class ConstraintChecker
 
     }
 
-    public boolean checkAmountConstraint(LoanRequest loanRequest) throws DBException
+    public boolean checkAmountConstraint(LoanRequest loanRequest)
     {
         BankParams bankParams = getBankParams();
         BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
@@ -103,7 +102,7 @@ public class ConstraintChecker
             return true;
     }
 
-    public boolean isMaxAmount(LoanRequest loanRequest) throws DBException
+    public boolean isMaxAmount(LoanRequest loanRequest)
     {
         BankParams bankParams = getBankParams();
         BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();

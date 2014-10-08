@@ -26,7 +26,7 @@ public class RequestIPRepositoryImplTest extends SpringContextTest
     RequestIP requestIP;
 
     @Before
-    public void setUp() throws DBException
+    public void setUp()
     {
         dbCleaner.clear();
         requestIP = RequestIPFixture.standardRequestIP();
@@ -34,7 +34,7 @@ public class RequestIPRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testCreate() throws DBException
+    public void testCreate()
     {
         requestIPRepository.create(requestIP);
         assertNotNull(requestIP.getId());
@@ -42,7 +42,7 @@ public class RequestIPRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetByIP() throws DBException
+    public void testGetByIP()
     {
         requestIPRepository.create(requestIP);
         RequestIP req = requestIPRepository.getByIP(requestIP.getIP());

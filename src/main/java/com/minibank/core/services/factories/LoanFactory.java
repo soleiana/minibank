@@ -5,7 +5,6 @@ import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanExtension;
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.repositories.BankParamsRepository;
-import com.minibank.core.repositories.DBException;
 import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.services.helpers.CreditCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ public class LoanFactory
     @Autowired
     private LoanRepository loanRepository;
 
-    public Loan getNewLoan(LoanRequest loanRequest)throws DBException
+    public Loan getNewLoan(LoanRequest loanRequest)
     {
         Loan loan = new Loan();
         loan.setLoanRequest(loanRequest);
@@ -44,7 +43,7 @@ public class LoanFactory
         return loan;
     }
 
-    public Loan getExtendedLoan(LoanExtension loanExtension) throws DBException
+    public Loan getExtendedLoan(LoanExtension loanExtension)
     {
         Integer id = loanExtension.getLoan().getId();
         Loan loan = loanRepository.getById(id);

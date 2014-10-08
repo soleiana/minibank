@@ -37,7 +37,7 @@ public class CreditExpertTest extends SpringContextTest
     private LoanRequest loanRequest;
     private RequestIP requestIP;
 
-    private void createLoanRequest() throws DBException
+    private void createLoanRequest()
     {
         Customer customer = CustomerFixture.standardCustomer();
         loanRequest = LoanRequestFixture.standardLoanRequest();
@@ -48,7 +48,7 @@ public class CreditExpertTest extends SpringContextTest
 
     @Before
     @Transactional
-    public void setUp() throws DBException
+    public void setUp()
     {
         dbCleaner.clear();
         bankParams = BankParamsFixture.standardBankParams();
@@ -59,7 +59,7 @@ public class CreditExpertTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testHasRisks_1() throws DBException
+    public void testHasRisks_1()
     {
         //negative loan request scenario with max loan amount in risk time
         //loan request gets rejected
@@ -77,7 +77,7 @@ public class CreditExpertTest extends SpringContextTest
     }
     @Test
     @Transactional
-    public void testHasRisks_2() throws DBException
+    public void testHasRisks_2()
     {
         //negative loan request scenario with max number of loan requests (attempts)
         //during one day
@@ -96,7 +96,7 @@ public class CreditExpertTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testHasRisks_3() throws DBException
+    public void testHasRisks_3()
     {
         //positive loan request scenario with loan amount below maximum in no risk time
         //loan request gets accepted
@@ -108,7 +108,7 @@ public class CreditExpertTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testHasRisks_4() throws DBException
+    public void testHasRisks_4()
     {
         //positive loan request scenario with loan amount below maximum in no risk time
         //loan requests get accepted (maxLoanAttempts - 1) times

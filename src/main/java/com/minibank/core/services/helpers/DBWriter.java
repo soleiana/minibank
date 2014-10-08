@@ -20,36 +20,36 @@ public class DBWriter
     @Autowired
     private LoanExtensionRepository loanExtensionRepository;
 
-    private void log(RequestIP requestIP) throws DBException
+    private void log(RequestIP requestIP)
     {
         RequestIP req = requestIPRepository.getByIP(requestIP.getIP());
         if (req == null)
             requestIPRepository.create(requestIP);
     }
 
-    public void create(LoanRequest loanRequest) throws DBException
+    public void create(LoanRequest loanRequest)
     {
         RequestIP requestIP = loanRequest.getRequestIP();
         log(requestIP);
         loanRequestRepository.create(loanRequest);
     }
 
-    public void update(LoanRequest loanRequest)throws DBException
+    public void update(LoanRequest loanRequest)
     {
         loanRequestRepository.update(loanRequest);
     }
 
-    public void update(Loan extendedLoan) throws DBException
+    public void update(Loan extendedLoan)
     {
         loanRepository.update(extendedLoan);
     }
 
-    public void create(Loan loan) throws  DBException
+    public void create(Loan loan)
     {
         loanRepository.create(loan);
     }
 
-    public void create(LoanExtension loanExtension) throws DBException
+    public void create(LoanExtension loanExtension)
     {
         loanExtensionRepository.create(loanExtension);
     }

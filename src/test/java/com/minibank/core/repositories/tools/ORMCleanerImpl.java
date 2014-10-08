@@ -1,6 +1,5 @@
 package com.minibank.core.repositories.tools;
 
-import com.minibank.core.repositories.DBException;
 import com.minibank.core.repositories.SessionProvider;
 import org.hibernate.Query;
 import org.springframework.stereotype.Component;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class ORMCleanerImpl extends SessionProvider
         implements  DBCleaner
 {
-    public void clear() throws DBException
+    public void clear()
     {
         hqlTruncate("LoanExtension");
         hqlTruncate("Loan");

@@ -3,7 +3,6 @@ package com.minibank.core.services.helpers;
 import com.minibank.SpringContextTest;
 import com.minibank.core.domain.*;
 import com.minibank.core.repositories.CustomerRepository;
-import com.minibank.core.repositories.DBException;
 import com.minibank.core.repositories.RequestIPRepository;
 import com.minibank.core.repositories.tools.DBCleaner;
 import org.junit.Before;
@@ -32,14 +31,14 @@ public class DBWriterTest extends SpringContextTest
     private Customer customer;
 
     @Before
-    public void setUp() throws DBException
+    public void setUp()
     {
         dbCleaner.clear();
         customer = CustomerFixture.standardCustomer();
         customerRepository.create(customer);
     }
 
-    private void createLoanRequest() throws DBException
+    private void createLoanRequest()
     {
         loanRequest = LoanRequestFixture.standardLoanRequest();
         requestIP = RequestIPFixture.standardRequestIP();
@@ -49,7 +48,7 @@ public class DBWriterTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testDBWriter_1() throws DBException
+    public void testDBWriter_1()
     {
         //scenario with new loan request with new ip address
         createLoanRequest();
@@ -63,7 +62,7 @@ public class DBWriterTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testDBWriter_2() throws DBException
+    public void testDBWriter_2()
     {
         //scenario with new loan request coming from registered ip address
         createLoanRequest();

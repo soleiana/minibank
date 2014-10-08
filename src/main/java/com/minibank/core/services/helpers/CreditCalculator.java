@@ -4,7 +4,6 @@ import com.minibank.core.domain.BankParams;
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.repositories.BankParamsRepository;
-import com.minibank.core.repositories.DBException;
 import com.minibank.core.services.common.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -46,7 +45,7 @@ public class CreditCalculator
         return endDate;
     }
 
-    public Date getLoanExtensionEndDate(Loan loan) throws DBException
+    public Date getLoanExtensionEndDate(Loan loan)
     {
         Date startDate = loan.getEndDate();
         short loanExtensionTerm = bankParamsRepository.getLast().getLoanExtensionTerm();
@@ -54,7 +53,7 @@ public class CreditCalculator
         return endDate;
     }
 
-    public BigDecimal getInterest(LoanRequest loanRequest) throws DBException
+    public BigDecimal getInterest(LoanRequest loanRequest)
     {
         BankParams bankParams = bankParamsRepository.getLast();
         BigDecimal baseInterestRate = bankParams.getBaseInterestRate();
@@ -63,7 +62,7 @@ public class CreditCalculator
         return interestFormula(amount,term,baseInterestRate);
     }
 
-    public BigDecimal getInterest(Loan loan) throws DBException
+    public BigDecimal getInterest(Loan loan)
     {
        BigDecimal amount = loan.getLoanRequest().getAmount();
        BigDecimal currInterestRate = getNewInterestRate(loan);
@@ -74,7 +73,7 @@ public class CreditCalculator
        return  interestFormula(amount, new BigDecimal(term),currInterestRate);
     }
 
-    public BigDecimal getNewInterestRate(Loan loan) throws DBException
+    public BigDecimal getNewInterestRate(Loan loan)
     {
         BankParams bankParams = bankParamsRepository.getLast();
         BigDecimal interestRateFactor = bankParams.getInterestRateFactor();

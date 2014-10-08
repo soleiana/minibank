@@ -45,7 +45,7 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest
     private LoanRequest loanRequest;
     private Loan loan;
 
-    private CreateLoanExtensionQuery createCreateLoanExtensionQuery()throws DBException
+    private CreateLoanExtensionQuery createCreateLoanExtensionQuery()
     {
         loanRequest = LoanRequestFixture.standardLoanRequest();
         requestIP = RequestIPFixture.standardRequestIP();
@@ -62,7 +62,7 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest
     }
 
     @Before
-    public void setUp() throws Exception
+    public void setUp()
     {
         dbCleaner.clear();
 
@@ -74,7 +74,7 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testExecute() throws Exception
+    public void testExecute()
     {
         CreateLoanExtensionQuery createLoanExtensionQuery = createCreateLoanExtensionQuery();
         CreateLoanExtensionResponse expectedResponse =

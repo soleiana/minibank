@@ -34,7 +34,7 @@ public class LoanRepositoryImplTest extends SpringContextTest
     private LoanRequest loanRequest;
     private Loan loan;
 
-    private void createLoan() throws DBException
+    private void createLoan()
     {
         loan = LoanFixture.standardLoan();
         loan.setCustomer(customer);
@@ -53,7 +53,7 @@ public class LoanRepositoryImplTest extends SpringContextTest
 
     @Before
     @Transactional
-    public void setUp() throws DBException
+    public void setUp()
     {
         dbCleaner.clear();
 
@@ -66,7 +66,7 @@ public class LoanRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testCreate() throws DBException
+    public void testCreate()
     {
         loanRepository.create(loan);
         assertNotNull(loan.getId());
@@ -74,7 +74,7 @@ public class LoanRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testUpdate() throws DBException
+    public void testUpdate()
     {
         loanRepository.create(loan);
         loan.setCurrInterestRate(LoanFixture.NEW_CURRENT_INTEREST_RATE);
@@ -90,7 +90,7 @@ public class LoanRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetById() throws DBException
+    public void testGetById()
     {
         loanRepository.create(loan);
         Loan ln = loanRepository.getById(loan.getId());
@@ -99,7 +99,7 @@ public class LoanRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetByCustomer() throws DBException
+    public void testGetByCustomer()
     {
         createLoan();
         loanRepository.create(loan);

@@ -33,7 +33,7 @@ public class LoanExtensionControllerTest
     QueryExecutor queryExecutor;
 
     @Before
-    public void setUp() throws Exception
+    public void setUp()
     {
         MockitoAnnotations.initMocks(this);
         this.mockMvc = standaloneSetup(loanExtensionController)
