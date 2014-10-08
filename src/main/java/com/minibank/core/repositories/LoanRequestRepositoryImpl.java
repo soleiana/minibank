@@ -2,8 +2,10 @@ package com.minibank.core.repositories;
 
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.domain.RequestIP;
-import org.hibernate.Query;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -38,17 +40,20 @@ public class LoanRequestRepositoryImpl extends SessionProvider
     public  List<LoanRequest> getByRequestIP(RequestIP requestIP)
     {
         Session session = getCurrentSession();
-        Query query = session.createQuery("from LoanRequest where requestIP = :requestIP");
-        query.setParameter("requestIP", requestIP);
-        return query.list();
+        Criteria criteria = session.createCriteria(LoanRequest.class);
+        criteria.add(Restrictions.eq("requestIP", requestIP));
+        return  (List<LoanRequest>)criteria.list();
     }
 
     @Override
     public LoanRequest getLast()
     {
         Session session = getCurrentSession();
-        Query query = session.createQuery("from LoanRequest order by id DESC");
-        query.setMaxResults(1);
-        return  (LoanRequest) query.uniqueResult();
+        Criteria criteria = session.createCriteria(LoanRequest.class);
+        criteria.addOrder(Order.desc("id"));
+        if(criteria.list().size() != 0)
+            return  (LoanRequest)criteria.list().get(0);
+        else
+            return null;
     }
 }

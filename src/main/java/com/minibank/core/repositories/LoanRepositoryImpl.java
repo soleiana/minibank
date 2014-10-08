@@ -2,8 +2,10 @@ package com.minibank.core.repositories;
 
 import com.minibank.core.domain.Customer;
 import com.minibank.core.domain.Loan;
-import org.hibernate.Query;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -37,17 +39,21 @@ public class LoanRepositoryImpl extends SessionProvider
     public List<Loan> getByCustomer(Customer customer)
     {
         Session session = getCurrentSession();
-        Query query = session.createQuery("from Loan where customer = :customer");
-        query.setParameter("customer", customer);
-        return query.list();
+        Criteria criteria = session.createCriteria(Loan.class);
+        criteria.add(Restrictions.eq("customer", customer));
+        return  (List<Loan>)criteria.list();
+
     }
 
     @Override
     public Loan getLast()
     {
         Session session = getCurrentSession();
-        Query query = session.createQuery("from Loan order by id DESC");
-        query.setMaxResults(1);
-        return  (Loan) query.uniqueResult();
+        Criteria criteria = session.createCriteria(Loan.class);
+        criteria.addOrder(Order.desc("id"));
+        if(criteria.list().size() != 0)
+            return  (Loan)criteria.list().get(0);
+        else
+            return null;
     }
 }

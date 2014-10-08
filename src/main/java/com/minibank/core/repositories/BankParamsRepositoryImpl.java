@@ -1,9 +1,11 @@
 package com.minibank.core.repositories;
 
 import com.minibank.core.domain.BankParams;
-import org.hibernate.Query;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Component;
+
 
 /**
  * Created by Ann on 07/09/14.
@@ -35,9 +37,12 @@ public class BankParamsRepositoryImpl extends SessionProvider
     @Override
     public BankParams getLast()
     {
-       Session session = getCurrentSession();
-       Query query = session.createQuery("from BankParams order by id DESC");
-       query.setMaxResults(1);
-       return  (BankParams) query.uniqueResult();
+        Session session = getCurrentSession();
+        Criteria criteria = session.createCriteria(BankParams.class);
+        criteria.addOrder(Order.desc("id"));
+        if(criteria.list().size() != 0)
+            return  (BankParams)criteria.list().get(0);
+        else
+            return null;
     }
 }

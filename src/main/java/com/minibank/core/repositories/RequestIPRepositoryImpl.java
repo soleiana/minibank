@@ -1,8 +1,9 @@
 package com.minibank.core.repositories;
 
 import com.minibank.core.domain.RequestIP;
-import org.hibernate.Query;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,8 +23,8 @@ public class RequestIPRepositoryImpl extends SessionProvider
     public RequestIP getByIP(String ip)
     {
         Session session = getCurrentSession();
-        Query query = session.createQuery("from RequestIP where ip = :ip ");
-        query.setParameter("ip", ip);
-        return (RequestIP) query.uniqueResult();
+        Criteria criteria = session.createCriteria(RequestIP.class);
+        criteria.add(Restrictions.eq("ip", ip));
+        return  (RequestIP)criteria.uniqueResult();
     }
 }

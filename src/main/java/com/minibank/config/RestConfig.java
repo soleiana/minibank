@@ -12,9 +12,7 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @ComponentScan(basePackages = {"com.minibank"},
-               excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,
-                                                       value = {Application.class})}
-               )
+               excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = {Application.class})})
 @Import({DatasourceConfig.class})
 public class RestConfig
 {}
