@@ -3,7 +3,6 @@ package com.minibank.core.services.helpers;
 import com.minibank.core.domain.BankParams;
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.domain.RequestIP;
-import com.minibank.core.repositories.BankParamsRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.services.common.DateTimeUtility;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +19,6 @@ import java.util.List;
 @Component
 public class RiskConstraintChecker extends ConstraintChecker
 {
-    /*@Autowired
-    private BankParamsRepository bankParamsRepository;*/
 
     @Autowired
     private LoanRequestRepository loanRequestRepository;
@@ -34,11 +31,6 @@ public class RiskConstraintChecker extends ConstraintChecker
         else
             return false;
     }
-
-   /* private BankParams getBankParams()
-    {
-        return bankParamsRepository.getLast();
-    }*/
 
     public boolean checkMaxRequestsPerIP(LoanRequest loanRequest)
     {
@@ -89,18 +81,6 @@ public class RiskConstraintChecker extends ConstraintChecker
                 return  true;
 
     }
-
-   /* public boolean checkAmountConstraint(LoanRequest loanRequest)
-    {
-        BankParams bankParams = getBankParams();
-        BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
-        BigDecimal reqAmount = loanRequest.getAmount();
-
-        if(reqAmount.compareTo(maxLoanAmount) == 1)
-            return false;
-        else
-            return true;
-    }*/
 
     public boolean isMaxAmount(LoanRequest loanRequest)
     {
