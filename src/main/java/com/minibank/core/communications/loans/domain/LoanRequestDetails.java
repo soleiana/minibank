@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 public class LoanRequestDetails
 {
     private Integer customerId;
-    private String requestIP;
+    private String requestIp;
     private Integer term;
     private BigDecimal amount;
 
@@ -21,9 +21,9 @@ public class LoanRequestDetails
         return customerId;
     }
 
-    public String getRequestIP()
+    public String getRequestIp()
     {
-        return requestIP;
+        return requestIp;
     }
 
     public Integer getTerm()
@@ -41,9 +41,9 @@ public class LoanRequestDetails
         this.customerId = customerId;
     }
 
-    public void setRequestIP(String requestIP)
+    public void setRequestIp(String requestIp)
     {
-        this.requestIP = requestIP;
+        this.requestIp = requestIp;
     }
 
     public void setTerm(Integer term)

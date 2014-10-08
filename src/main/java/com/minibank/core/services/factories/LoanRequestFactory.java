@@ -3,7 +3,6 @@ package com.minibank.core.services.factories;
 import com.minibank.core.domain.Customer;
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.domain.LoanRequestStatus;
-import com.minibank.core.domain.RequestIP;
 import com.minibank.core.communications.loans.domain.LoanRequestDetails;
 import com.minibank.core.repositories.CustomerRepository;
 import com.minibank.core.services.common.DateTimeUtility;
@@ -29,9 +28,8 @@ public class LoanRequestFactory
         Customer customer = customerRepository.getById(id);
 
         LoanRequest loanRequest = new LoanRequest();
-        RequestIP requestIP = new RequestIP(loanRequestDetails.getRequestIP());
 
-        loanRequest.setRequestIP(requestIP);
+        loanRequest.setRequestIp(loanRequestDetails.getRequestIp());
         loanRequest.setCustomer(customer);
         loanRequest.setAmount(loanRequestDetails.getAmount());
         loanRequest.setTerm(loanRequestDetails.getTerm());

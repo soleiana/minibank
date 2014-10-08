@@ -1,14 +1,12 @@
 package com.minibank.rest.domain;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * Created by Ann on 14/09/14.
  */
-@XmlRootElement
+
 public class AllLoans
 {
     private Integer customerId;
@@ -16,7 +14,8 @@ public class AllLoans
     private String surname;
     private List<Loan> loans = new ArrayList<>();
 
-    public Integer getCustomerId() {
+    public Integer getCustomerId()
+    {
         return customerId;
     }
 
@@ -24,7 +23,8 @@ public class AllLoans
         this.customerId = customerId;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
@@ -32,7 +32,8 @@ public class AllLoans
         this.name = name;
     }
 
-    public String getSurname() {
+    public String getSurname()
+    {
         return surname;
     }
 

@@ -15,7 +15,7 @@ public class LoanRequestDetailsFixture
     public static LoanRequestDetails standardLoanRequestDetails()
     {
         LoanRequestDetails loanRequestDetails = new LoanRequestDetails();
-        loanRequestDetails.setRequestIP(REQUEST_IP);
+        loanRequestDetails.setRequestIp(REQUEST_IP);
         loanRequestDetails.setTerm(TERM);
         loanRequestDetails.setAmount(AMOUNT);
         return loanRequestDetails;

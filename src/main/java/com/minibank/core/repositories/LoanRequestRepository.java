@@ -1,7 +1,6 @@
 package com.minibank.core.repositories;
 
 import com.minibank.core.domain.LoanRequest;
-import com.minibank.core.domain.RequestIP;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ public interface LoanRequestRepository
 
     LoanRequest getById(Integer id);
 
-    List<LoanRequest> getByRequestIP(RequestIP requestIP);
+    List<LoanRequest> getByRequestIp(String requestIp);
 
     LoanRequest getLast();
 }

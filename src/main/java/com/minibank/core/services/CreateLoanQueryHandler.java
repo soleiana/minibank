@@ -6,13 +6,13 @@ import com.minibank.core.communications.loans.domain.LoanRequestDetails;
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.domain.LoanRequestStatus;
+import com.minibank.core.repositories.LoanRepository;
+import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.services.common.Message;
 import com.minibank.core.services.factories.LoanFactory;
 import com.minibank.core.services.factories.LoanRequestFactory;
 import com.minibank.core.services.helpers.InputConstraintChecker;
-import com.minibank.core.services.helpers.RiskConstraintChecker;
 import com.minibank.core.services.helpers.CreditExpert;
-import com.minibank.core.services.helpers.DBWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,8 +24,6 @@ public class CreateLoanQueryHandler
         implements QueryHandler<CreateLoanQuery, CreateLoanResponse>
  {
     @Autowired
-    private DBWriter dbWriter;
-    @Autowired
     private LoanRequestFactory loanRequestFactory;
     @Autowired
     private LoanFactory loanFactory;
@@ -34,7 +32,9 @@ public class CreateLoanQueryHandler
     @Autowired
     private InputConstraintChecker inputConstraintChecker;
     @Autowired
-    private RiskConstraintChecker riskConstraintChecker;
+    private LoanRequestRepository loanRequestRepository;
+    @Autowired
+    private LoanRepository loanRepository;
 
     @Override
     public CreateLoanResponse execute(CreateLoanQuery query)
@@ -47,8 +47,7 @@ public class CreateLoanQueryHandler
         try
         {
             LoanRequest loanRequest = loanRequestFactory.getNewLoanRequest(requestDetails);
-            //loanRequest created in DB
-            dbWriter.create(loanRequest);
+            loanRequestRepository.create(loanRequest);
 
             if((!inputConstraintChecker.checkAmountConstraint(loanRequest))||
                  creditExpert.hasRisks(loanRequest))
@@ -57,12 +56,11 @@ public class CreateLoanQueryHandler
             {
                 loanRequest.setStatus(LoanRequestStatus.APPROVED);
                 Loan loan = loanFactory.getNewLoan(loanRequest);
-                //loan created in DB
-                dbWriter.create(loan);
+                loanRepository.create(loan);
                 isLoanObtained = true;
             }
             //loanRequest is update with STATUS
-            dbWriter.update(loanRequest);
+            loanRequestRepository.update(loanRequest);
         }
         catch (Exception e)
         {

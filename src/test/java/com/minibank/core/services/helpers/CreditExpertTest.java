@@ -27,15 +27,12 @@ public class CreditExpertTest extends SpringContextTest
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired
-    private RequestIPRepository requestIPRepository;
-    @Autowired
     private BankParamsRepository bankParamsRepository;
     @Autowired
     private CreditExpert expert;
 
     private BankParams bankParams;
     private LoanRequest loanRequest;
-    private RequestIP requestIP;
 
     private void createLoanRequest()
     {
@@ -43,7 +40,6 @@ public class CreditExpertTest extends SpringContextTest
         loanRequest = LoanRequestFixture.standardLoanRequest();
         customerRepository.create(customer);
         loanRequest.setCustomer(customer);
-        loanRequest.setRequestIP(requestIP);
     }
 
     @Before
@@ -53,8 +49,6 @@ public class CreditExpertTest extends SpringContextTest
         dbCleaner.clear();
         bankParams = BankParamsFixture.standardBankParams();
         bankParamsRepository.create(bankParams);
-        requestIP = RequestIPFixture.standardRequestIP();
-        requestIPRepository.create(requestIP);
     }
 
     @Test

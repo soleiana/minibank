@@ -5,7 +5,6 @@ import com.minibank.core.domain.*;
 import com.minibank.core.repositories.BankParamsRepository;
 import com.minibank.core.repositories.CustomerRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
-import com.minibank.core.repositories.RequestIPRepository;
 import com.minibank.core.repositories.tools.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,15 +27,12 @@ public class InputConstraintCheckerTest extends SpringContextTest
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired
-    private RequestIPRepository requestIPRepository;
-    @Autowired
     private BankParamsRepository bankParamsRepository;
     @Autowired
     private InputConstraintChecker checker;
 
     private BankParams bankParams;
     private LoanRequest loanRequest;
-    private RequestIP requestIP;
 
     private void createLoanRequest(java.sql.Date submissionDate)
     {
@@ -45,7 +41,6 @@ public class InputConstraintCheckerTest extends SpringContextTest
         loanRequest.setSubmissionDate(submissionDate);
         customerRepository.create(customer);
         loanRequest.setCustomer(customer);
-        loanRequest.setRequestIP(requestIP);
         loanRequestRepository.create(loanRequest);
     }
 
@@ -56,8 +51,6 @@ public class InputConstraintCheckerTest extends SpringContextTest
         dbCleaner.clear();
         bankParams = BankParamsFixture.standardBankParams();
         bankParamsRepository.create(bankParams);
-        requestIP = RequestIPFixture.standardRequestIP();
-        requestIPRepository.create(requestIP);
 
         createLoanRequest(LoanRequestFixture.SUBMISSION_DATE);
     }

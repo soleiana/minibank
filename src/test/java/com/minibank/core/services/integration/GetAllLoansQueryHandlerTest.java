@@ -25,8 +25,6 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired
-    private RequestIPRepository requestIPRepository;
-    @Autowired
     private LoanRequestRepository loanRequestRepository;
     @Autowired
     private LoanRepository loanRepository;
@@ -39,7 +37,6 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest
 
     private BankParams bankParams;
     private Customer customer;
-    private RequestIP requestIP;
     private LoanRequest loanRequest;
     private Loan loan;
     private LoanExtension loanExtension;
@@ -48,7 +45,6 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest
     {
         loanRequest = LoanRequestFixture.standardLoanRequest();
         loanRequest.setCustomer(customer);
-        loanRequest.setRequestIP(requestIP);
         loanRequestRepository.create(loanRequest);
         loan = LoanFixture.standardLoan();
         loan.setCustomer(customer);
@@ -88,11 +84,9 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest
 
         bankParams = BankParamsFixture.standardBankParams();
         customer = CustomerFixture.standardCustomer();
-        requestIP = RequestIPFixture.standardRequestIP();
 
         bankParamsRepository.create(bankParams);
         customerRepository.create(customer);
-        requestIPRepository.create(requestIP);
     }
 
     @Test

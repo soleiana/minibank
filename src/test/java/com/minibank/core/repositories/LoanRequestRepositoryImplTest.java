@@ -24,18 +24,16 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
     private LoanRequestRepository loanRequestRepository;
     @Autowired
     private CustomerRepository customerRepository;
-    @Autowired
-    private RequestIPRepository requestIPRepository;
 
     private LoanRequest loanRequest;
-    private RequestIP requestIP;
     private Customer customer;
+    private String requestIp;
 
     private void createLoanRequest()
     {
         loanRequest = LoanRequestFixture.standardLoanRequest();
         loanRequest.setCustomer(customer);
-        loanRequest.setRequestIP(requestIP);
+        loanRequest.setRequestIp(requestIp);
     }
 
     @Before
@@ -43,12 +41,10 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
     public void setUp()
     {
         dbCleaner.clear();
-        requestIP = RequestIPFixture.standardRequestIP();
-        requestIPRepository.create(requestIP);
+        requestIp = RequestIPFixture.IP;
         customer = CustomerFixture.standardCustomer();
         customerRepository.create(customer);
         createLoanRequest();
-
     }
 
     @Test
@@ -80,13 +76,13 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetByRequestIP()
+    public void testGetByRequestIp()
     {
         createLoanRequest();
         loanRequestRepository.create(loanRequest);
         createLoanRequest();
         loanRequestRepository.create(loanRequest);
-        List<LoanRequest> loanRequests = loanRequestRepository.getByRequestIP(requestIP);
+        List<LoanRequest> loanRequests = loanRequestRepository.getByRequestIp(requestIp);
         assertEquals(2, loanRequests.size());
     }
 }

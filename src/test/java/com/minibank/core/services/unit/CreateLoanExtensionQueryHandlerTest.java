@@ -7,12 +7,12 @@ import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanExtension;
 import com.minibank.core.domain.LoanExtensionFixture;
 import com.minibank.core.domain.LoanFixture;
+import com.minibank.core.repositories.LoanExtensionRepository;
+import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.services.CreateLoanExtensionQueryHandler;
 import com.minibank.core.services.common.Message;
 import com.minibank.core.services.factories.LoanExtensionFactory;
 import com.minibank.core.services.factories.LoanFactory;
-import com.minibank.core.services.helpers.CreditExpert;
-import com.minibank.core.services.helpers.DBWriter;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -30,11 +30,13 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest
     @InjectMocks
     private CreateLoanExtensionQueryHandler queryHandler;
     @Mock
-    private DBWriter dbWriter;
-    @Mock
     private LoanExtensionFactory loanExtensionFactory;
     @Mock
     private LoanFactory loanFactory;
+    @Mock
+    private LoanRepository loanRepository;
+    @Mock
+    private LoanExtensionRepository loanExtensionRepository;
 
     private LoanExtension loanExtension;
     private Loan loan;
@@ -67,9 +69,9 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest
         assertEquals(expectedResponse.isCreated(), response.isCreated());
         assertEquals(expectedResponse.getMessage(), response.getMessage());
         verify(loanExtensionFactory, times(1)).getNewLoanExtension(loanId);
-        verify(dbWriter, times(1)).create(loanExtension);
+        verify(loanExtensionRepository, times(1)).create(loanExtension);
         verify(loanFactory, times(1)).getExtendedLoan(loanExtension);
-        verify(dbWriter, times(1)).update(loan);
+        verify(loanRepository, times(1)).update(loan);
     }
 
     @Test
@@ -78,7 +80,7 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest
         //Negative path of execution
         //Customer does not obtain an extension of the loan because of the database failure
 
-        doThrow(new RuntimeException()).when(dbWriter).create(loanExtension);
+        doThrow(new RuntimeException()).when(loanExtensionRepository).create(loanExtension);
 
         CreateLoanExtensionResponse expectedResponse =
                 new CreateLoanExtensionResponse(false, Message.LOAN_EXTENSION_ERROR_MESSAGE);
@@ -90,8 +92,8 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest
         assertEquals(expectedResponse.isCreated(), response.isCreated());
         assertEquals(expectedResponse.getMessage(), response.getMessage());
         verify(loanExtensionFactory, times(1)).getNewLoanExtension(loanId);
-        verify(dbWriter, times(1)).create(loanExtension);
+        verify(loanExtensionRepository, times(1)).create(loanExtension);
         verify(loanFactory, times(0)).getExtendedLoan(loanExtension);
-        verify(dbWriter, times(0)).update(loan);
+        verify(loanRepository, times(0)).update(loan);
     }
 }

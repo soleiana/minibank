@@ -17,7 +17,6 @@ public class ORMCleanerImpl extends SessionProvider
         hqlTruncate("Loan");
         hqlTruncate("LoanRequest");
         hqlTruncate("Customer");
-        hqlTruncate("RequestIP");
     }
 
     public int hqlTruncate(String myTable){

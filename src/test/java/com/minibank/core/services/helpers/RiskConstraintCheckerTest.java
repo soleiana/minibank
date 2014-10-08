@@ -29,15 +29,12 @@ public class RiskConstraintCheckerTest extends SpringContextTest
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired
-    private RequestIPRepository requestIPRepository;
-    @Autowired
     private BankParamsRepository bankParamsRepository;
     @Autowired
     private RiskConstraintChecker checker;
 
     private BankParams bankParams;
     private LoanRequest loanRequest;
-    private RequestIP requestIP;
 
     private void createLoanRequest(java.sql.Date submissionDate)
     {
@@ -46,7 +43,6 @@ public class RiskConstraintCheckerTest extends SpringContextTest
         loanRequest.setSubmissionDate(submissionDate);
         customerRepository.create(customer);
         loanRequest.setCustomer(customer);
-        loanRequest.setRequestIP(requestIP);
         loanRequestRepository.create(loanRequest);
     }
 
@@ -57,8 +53,6 @@ public class RiskConstraintCheckerTest extends SpringContextTest
         dbCleaner.clear();
         bankParams = BankParamsFixture.standardBankParams();
         bankParamsRepository.create(bankParams);
-        requestIP = RequestIPFixture.standardRequestIP();
-        requestIPRepository.create(requestIP);
 
         createLoanRequest(LoanRequestFixture.SUBMISSION_DATE);
     }

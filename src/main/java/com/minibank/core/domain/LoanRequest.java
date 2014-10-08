@@ -21,9 +21,8 @@ public class LoanRequest
     @JoinColumn(name="CUSTOMER_ID", nullable = false)
     private Customer customer;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="REQUEST_IP_ID", nullable = false)
-    private RequestIP requestIP;
+    @Column(name="REQUEST_IP",  nullable = false)
+    private String requestIp;
 
     @Column(name="SUBMISSION_DATE", nullable = false)
     private Date submissionDate;
@@ -64,14 +63,14 @@ public class LoanRequest
         this.customer = customer;
     }
 
-    public RequestIP getRequestIP()
+    public String getRequestIp()
     {
-        return requestIP;
+        return requestIp;
     }
 
-    public void setRequestIP(RequestIP requestIP)
+    public void setRequestIp(String requestIp)
     {
-        this.requestIP = requestIP;
+        this.requestIp = requestIp;
     }
 
     public Date getSubmissionDate()
@@ -134,7 +133,6 @@ public class LoanRequest
         if (amount != null ? !amount.equals(that.amount) : that.amount != null) return false;
         if (customer != null ? !customer.equals(that.customer) : that.customer != null) return false;
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (requestIP != null ? !requestIP.equals(that.requestIP) : that.requestIP != null) return false;
         if (status != that.status) return false;
         if (submissionDate != null ? !submissionDate.equals(that.submissionDate) : that.submissionDate != null)
             return false;
@@ -149,9 +147,7 @@ public class LoanRequest
     public int hashCode()
     {
         int result = id != null ? id.hashCode() : 0;
-      //  result = 31 * result + (loan != null ? loan.hashCode() : 0);
         result = 31 * result + (customer != null ? customer.hashCode() : 0);
-        result = 31 * result + (requestIP != null ? requestIP.hashCode() : 0);
         result = 31 * result + (submissionDate != null ? submissionDate.hashCode() : 0);
         result = 31 * result + (submissionTime != null ? submissionTime.hashCode() : 0);
         result = 31 * result + (term != null ? term.hashCode() : 0);

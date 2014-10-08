@@ -7,6 +7,8 @@ import com.minibank.core.communications.loans.CreateLoanResponse;
 import com.minibank.core.communications.loans.domain.*;
 import com.minibank.core.domain.*;
 import com.minibank.core.domain.Loan;
+import com.minibank.core.repositories.LoanRepository;
+import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.services.CreateLoanQueryHandler;
 import com.minibank.core.services.common.Message;
 import com.minibank.core.services.factories.LoanFactory;
@@ -14,7 +16,6 @@ import com.minibank.core.services.factories.LoanRequestFactory;
 import com.minibank.core.services.helpers.InputConstraintChecker;
 import com.minibank.core.services.helpers.RiskConstraintChecker;
 import com.minibank.core.services.helpers.CreditExpert;
-import com.minibank.core.services.helpers.DBWriter;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -32,8 +33,6 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
     @InjectMocks
     private CreateLoanQueryHandler queryHandler;
     @Mock
-    private DBWriter dbWriter;
-    @Mock
     private LoanRequestFactory loanRequestFactory;
     @Mock
     private LoanFactory loanFactory;
@@ -43,6 +42,10 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
     private RiskConstraintChecker riskConstraintChecker;
     @Mock
     private InputConstraintChecker inputConstraintChecker;
+    @Mock
+    private LoanRequestRepository loanRequestRepository;
+    @Mock
+    private LoanRepository loanRepository;
 
     private LoanRequest loanRequest;
     private Loan loan;
@@ -77,11 +80,12 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
         assertEquals(expectedResponse.getMessage(), response.getMessage());
         assertEquals(expectedResponse.isCreated(), response.isCreated());
         verify(loanRequestFactory, times(1)).getNewLoanRequest(loanRequestDetails);
-        verify(dbWriter, times(1)).create(loanRequest);
+        verify(loanRequestRepository, times(1)).create(loanRequest);
         verify(inputConstraintChecker, times(1)).checkAmountConstraint(loanRequest);
         verify(creditExpert, times(1)).hasRisks(loanRequest);
         verify(loanFactory, times(1)).getNewLoan(loanRequest);
-        verify(dbWriter, times(1)).create(loan);
+        verify(loanRepository, times(1)).create(loan);
+        verify(loanRequestRepository, times(1)).update(loanRequest);
     }
 
     @Test
@@ -102,11 +106,12 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
         assertEquals(expectedResponse.getMessage(), response.getMessage());
         assertEquals(expectedResponse.isCreated(), response.isCreated());
         verify(loanRequestFactory, times(1)).getNewLoanRequest(loanRequestDetails);
-        verify(dbWriter, times(1)).create(loanRequest);
+        verify(loanRequestRepository, times(1)).create(loanRequest);
         verify(inputConstraintChecker, times(1)).checkAmountConstraint(loanRequest);
         verify(creditExpert, times(1)).hasRisks(loanRequest);
         verify(loanFactory, times(0)).getNewLoan(loanRequest);
-        verify(dbWriter, times(0)).create(loan);
+        verify(loanRepository, times(0)).create(loan);
+        verify(loanRequestRepository, times(1)).update(loanRequest);
     }
 
     @Test
@@ -117,7 +122,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
 
         when(creditExpert.hasRisks(any(LoanRequest.class))).thenReturn(false);
         when(inputConstraintChecker.checkAmountConstraint(any(LoanRequest.class))).thenReturn(true);
-        doThrow(new RuntimeException()).when(dbWriter).create(loan);
+        doThrow(new RuntimeException()).when(loanRepository).create(loan);
 
         CreateLoanResponse expectedResponse = new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
         CreateLoanQuery query =  new CreateLoanQuery(loanRequestDetails);
@@ -128,11 +133,11 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
         assertEquals(expectedResponse.getMessage(), response.getMessage());
         assertEquals(expectedResponse.isCreated(), response.isCreated());
         verify(loanRequestFactory, times(1)).getNewLoanRequest(loanRequestDetails);
-        verify(dbWriter, times(1)).create(loanRequest);
+        verify(loanRequestRepository, times(1)).create(loanRequest);
         verify(inputConstraintChecker, times(1)).checkAmountConstraint(loanRequest);
         verify(creditExpert, times(1)).hasRisks(loanRequest);
         verify(loanFactory, times(1)).getNewLoan(loanRequest);
-        verify(dbWriter, times(1)).create(loan);
+        verify(loanRepository, times(1)).create(loan);
     }
 
     @Test
@@ -153,10 +158,10 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
         assertEquals(expectedResponse.getMessage(), response.getMessage());
         assertEquals(expectedResponse.isCreated(), response.isCreated());
         verify(loanRequestFactory, times(1)).getNewLoanRequest(loanRequestDetails);
-        verify(dbWriter, times(1)).create(loanRequest);
+        verify(loanRequestRepository, times(1)).create(loanRequest);
         verify(inputConstraintChecker, times(1)).checkAmountConstraint(loanRequest);
         verify(creditExpert, times(0)).hasRisks(loanRequest);
         verify(loanFactory, times(0)).getNewLoan(loanRequest);
-        verify(dbWriter, times(0)).create(loan);
+        verify(loanRepository, times(0)).create(loan);
     }
 }

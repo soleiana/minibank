@@ -2,7 +2,6 @@ package com.minibank.core.services.helpers;
 
 import com.minibank.core.domain.BankParams;
 import com.minibank.core.domain.LoanRequest;
-import com.minibank.core.domain.RequestIP;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.services.common.DateTimeUtility;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +36,12 @@ public class RiskConstraintChecker extends ConstraintChecker
         BankParams bankParams = getBankParams();
         Byte maxLoanAttempts = bankParams.getMaxLoanAttempts();
 
-        RequestIP requestIP = loanRequest.getRequestIP();
+        //RequestIP requestIP = loanRequest.getRequestIP();
 
-        List<LoanRequest> loanRequests = loanRequestRepository.getByRequestIP(requestIP);
+        //List<LoanRequest> loanRequests = loanRequestRepository.getByRequestIP(requestIP);
+
+        String requestIp = loanRequest.getRequestIp();
+        List<LoanRequest> loanRequests = loanRequestRepository.getByRequestIp(requestIp);
 
         Date now = new Date();
         java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);

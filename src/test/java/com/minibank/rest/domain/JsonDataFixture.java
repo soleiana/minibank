@@ -7,7 +7,7 @@ public class JsonDataFixture
 {
     public static String standardLoanRequestJSON()
     {
-        return "{\"customerId\": 2, \"requestIP\": null, \"term\": 30, \"amount\" : 200}";
+        return "{\"customerId\": 2, \"requestIp\": null, \"term\": 30, \"amount\" : 200}";
     }
 
     public static String standardAllLoansResponseJSON()

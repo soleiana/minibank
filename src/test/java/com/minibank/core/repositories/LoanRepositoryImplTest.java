@@ -23,14 +23,11 @@ public class LoanRepositoryImplTest extends SpringContextTest
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired
-    private RequestIPRepository requestIPRepository;
-    @Autowired
     private LoanRequestRepository loanRequestRepository;
     @Autowired
     private LoanRepository loanRepository;
 
     private Customer customer;
-    private RequestIP requestIP;
     private LoanRequest loanRequest;
     private Loan loan;
 
@@ -48,7 +45,7 @@ public class LoanRepositoryImplTest extends SpringContextTest
     {
         loanRequest = LoanRequestFixture.standardLoanRequest();
         loanRequest.setCustomer(customer);
-        loanRequest.setRequestIP(requestIP);
+
     }
 
     @Before
@@ -58,9 +55,7 @@ public class LoanRepositoryImplTest extends SpringContextTest
         dbCleaner.clear();
 
         customer = CustomerFixture.standardCustomer();
-        requestIP = RequestIPFixture.standardRequestIP();
         customerRepository.create(customer);
-        requestIPRepository.create(requestIP);
         createLoan();
     }
 

@@ -14,7 +14,7 @@ public class LoanRequestDetailsFactory
     {
         LoanRequestDetails loanRequestDetails = new LoanRequestDetails();
         loanRequestDetails.setCustomerId(loanRequest.getCustomerId());
-        loanRequestDetails.setRequestIP(loanRequest.getRequestIP());
+        loanRequestDetails.setRequestIp(loanRequest.getRequestIp());
         loanRequestDetails.setAmount(loanRequest.getAmount());
         loanRequestDetails.setTerm(loanRequest.getTerm());
 

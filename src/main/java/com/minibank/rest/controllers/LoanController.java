@@ -44,7 +44,7 @@ public class LoanController
             return new ResponseEntity<>(Message.INVALID_INPUT_FORMAT,HttpStatus.BAD_REQUEST);
 
         String ip = httpServletRequest.getRemoteAddr();
-        loanRequest.setRequestIP(ip);
+        loanRequest.setRequestIp(ip);
         LoanRequestDetails loanRequestDetails = loanRequestDetailsFactory.getNewLoanRequestDetails(loanRequest);
 
         CreateLoanResponse createLoanResponse = queryExecutor.execute(new CreateLoanQuery(loanRequestDetails));

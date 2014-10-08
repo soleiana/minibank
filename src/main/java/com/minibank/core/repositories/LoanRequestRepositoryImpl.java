@@ -1,7 +1,6 @@
 package com.minibank.core.repositories;
 
 import com.minibank.core.domain.LoanRequest;
-import com.minibank.core.domain.RequestIP;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
@@ -37,11 +36,11 @@ public class LoanRequestRepositoryImpl extends SessionProvider
     }
 
     @Override
-    public  List<LoanRequest> getByRequestIP(RequestIP requestIP)
+    public List<LoanRequest> getByRequestIp(String requestIp)
     {
         Session session = getCurrentSession();
         Criteria criteria = session.createCriteria(LoanRequest.class);
-        criteria.add(Restrictions.eq("requestIP", requestIP));
+        criteria.add(Restrictions.eq("requestIp", requestIp));
         return  (List<LoanRequest>)criteria.list();
     }
 

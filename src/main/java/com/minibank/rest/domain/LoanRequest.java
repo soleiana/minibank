@@ -1,16 +1,14 @@
 package com.minibank.rest.domain;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
 /**
  * Created by Ann on 07/09/14.
  */
-@XmlRootElement
 public class LoanRequest
 {
     private Integer customerId;
-    private String requestIP;
+    private String requestIp;
     private Integer term;
     private BigDecimal amount;
 
@@ -22,9 +20,9 @@ public class LoanRequest
         return customerId;
     }
 
-    public String getRequestIP()
+    public String getRequestIp()
     {
-        return requestIP;
+        return requestIp;
     }
 
     public Integer getTerm()
@@ -37,19 +35,9 @@ public class LoanRequest
         return amount;
     }
 
-    public void setCustomerId(Integer customerId)
+    public void setRequestIp(String requestIp)
     {
-        this.customerId = customerId;
-    }
-
-    public void setRequestIP(String requestIP)
-    {
-        this.requestIP = requestIP;
-    }
-
-    public void setTerm(Integer term)
-    {
-        this.term = term;
+        this.requestIp = requestIp;
     }
 
     public void setAmount(BigDecimal amount)
