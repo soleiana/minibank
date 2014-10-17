@@ -32,7 +32,7 @@ public class CreateLoanExtensionQueryHandler
     @Override
     public CreateLoanExtensionResponse execute(CreateLoanExtensionQuery query)
     {
-        //Precondition: customer already logged in and its record exists in database
+        //Precondition: customer already exists in database
         //Precondition: loan, subject to extension, exists in database
 
         Integer loanId = query.getLoanId();

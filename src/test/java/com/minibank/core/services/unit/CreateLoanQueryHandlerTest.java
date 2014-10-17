@@ -85,7 +85,6 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
         verify(creditExpert, times(1)).hasRisks(loanRequest);
         verify(loanFactory, times(1)).getNewLoan(loanRequest);
         verify(loanRepository, times(1)).create(loan);
-        verify(loanRequestRepository, times(1)).update(loanRequest);
     }
 
     @Test
@@ -111,7 +110,6 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
         verify(creditExpert, times(1)).hasRisks(loanRequest);
         verify(loanFactory, times(0)).getNewLoan(loanRequest);
         verify(loanRepository, times(0)).create(loan);
-        verify(loanRequestRepository, times(1)).update(loanRequest);
     }
 
     @Test

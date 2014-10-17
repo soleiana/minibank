@@ -4,20 +4,17 @@ MiniBank-1.0-SNAPSHOT is an executable jar file.
 The app can be launched from an IDE by running com.minibank.rest.Application.java.
 Tests are launched by executing Maven 'test' goal.
 
-All the business and technical requirements are implemented, except for the acceptance test.
-The most important classes and critical paths are covered with unit and integration tests.
-
 Technologies applied:
 - Java
 - Spring
 - Hibernate
 - JUnit
 - MockMvc
+- JSON
 - Mockito
 - Spring Boot
 - HSQLDB
 - Maven
 - Git
 
-Date: Sep 17, 2014
 Author: Anna Suleymanova

@@ -39,7 +39,7 @@ public class CreateLoanQueryHandler
     @Override
     public CreateLoanResponse execute(CreateLoanQuery query)
     {
-        //Precondition: customer already logged in and its record exists in database
+        //Precondition: customer already exists in database
 
         Boolean isLoanObtained = false;
         LoanRequestDetails requestDetails = query.getLoanRequestDetails();
@@ -59,8 +59,6 @@ public class CreateLoanQueryHandler
                 loanRepository.create(loan);
                 isLoanObtained = true;
             }
-            //loanRequest is update with STATUS
-            loanRequestRepository.update(loanRequest);
         }
         catch (Exception e)
         {
