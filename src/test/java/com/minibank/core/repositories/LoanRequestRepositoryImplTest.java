@@ -57,25 +57,6 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testUpdate()
-    {
-        loanRequestRepository.create(loanRequest);
-        loanRequest.setStatus(LoanRequestFixture.NEW_STATUS);
-        loanRequestRepository.update(loanRequest);
-        assertEquals(LoanRequestFixture.NEW_STATUS, loanRequest.getStatus());
-    }
-
-    @Test
-    @Transactional
-    public void testGetById()
-    {
-        loanRequestRepository.create(loanRequest);
-        Integer id = loanRequest.getId();
-        assertEquals(loanRequest, loanRequestRepository.getById(id));
-    }
-
-    @Test
-    @Transactional
     public void testGetByRequestIp()
     {
         createLoanRequest();

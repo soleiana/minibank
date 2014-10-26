@@ -28,25 +28,15 @@ public class GetAllLoansQueryHandler
     public GetAllLoansResponse execute(GetAllLoansQuery query)
     {
         AllLoans allLoans;
-        AllLoansDetails allLoansDetails = null;
-
         Integer customerId = query.getCustomerId();
-        try
-        {
-            allLoans = allLoansCoreFactory.getNewAllLoans(customerId);
-            allLoansDetails = allLoansDetailsFactory.getNewAllLoansDetails(allLoans);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            return new GetAllLoansResponse(allLoansDetails,false);
-        }
+
+        allLoans = allLoansCoreFactory.getNewAllLoans(customerId);
+        AllLoansDetails allLoansDetails = allLoansDetailsFactory.getNewAllLoansDetails(allLoans);
 
         if ((allLoansDetails != null)&&(allLoansDetails.getLoans().size() == 0))
             return new GetAllLoansResponse(allLoansDetails,false);
         else
             return new GetAllLoansResponse(allLoansDetails,true);
-
     }
 
     @Override

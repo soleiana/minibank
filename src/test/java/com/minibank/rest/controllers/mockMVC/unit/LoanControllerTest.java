@@ -1,4 +1,4 @@
-package com.minibank.rest.controllers.mockMVC;
+package com.minibank.rest.controllers.mockMVC.unit;
 
 import com.minibank.core.communications.loans.CreateLoanQuery;
 import com.minibank.core.communications.loans.CreateLoanResponse;
@@ -17,6 +17,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
@@ -46,7 +47,9 @@ public class LoanControllerTest
     {
         MockitoAnnotations.initMocks(this);
         this.mockMvc = standaloneSetup(loanController)
-              .setMessageConverters(new MappingJackson2HttpMessageConverter()).build();
+              .setMessageConverters(new MappingJackson2HttpMessageConverter())
+              .build();
+
     }
 
     @Test
@@ -54,10 +57,10 @@ public class LoanControllerTest
     {
         when(loanRequestValidator.validate(any(LoanRequest.class)))
                .thenReturn(true);
-        when(queryExecutor.execute(any(CreateLoanQuery.class)))
-                .thenReturn(new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE));
         when(loanRequestDetailsFactory.getNewLoanRequestDetails(any(LoanRequest.class)))
                 .thenReturn(new LoanRequestDetails());
+        when(queryExecutor.execute(any(CreateLoanQuery.class)))
+                .thenReturn(new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE));
 
         this.mockMvc.perform(
               post("/loans")
@@ -71,10 +74,10 @@ public class LoanControllerTest
     {
         when(loanRequestValidator.validate(any(LoanRequest.class)))
                 .thenReturn(true);
-        when(queryExecutor.execute(any(CreateLoanQuery.class)))
-                .thenReturn(new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE));
         when(loanRequestDetailsFactory.getNewLoanRequestDetails(any(LoanRequest.class)))
                 .thenReturn(new LoanRequestDetails());
+        when(queryExecutor.execute(any(CreateLoanQuery.class)))
+                .thenReturn(new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE));
 
         this.mockMvc.perform(
                 post("/loans")

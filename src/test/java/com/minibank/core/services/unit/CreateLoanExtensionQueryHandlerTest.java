@@ -54,7 +54,7 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest
     }
 
     @Test
-    public void testExecute_1()
+    public void testExecute()
     {
         //Positive path of execution
         //Customer obtains an extension of the loan
@@ -72,28 +72,5 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest
         verify(loanExtensionRepository, times(1)).create(loanExtension);
         verify(loanFactory, times(1)).getExtendedLoan(loanExtension);
         verify(loanRepository, times(1)).update(loan);
-    }
-
-    @Test
-    public void testExecute_2()
-    {
-        //Negative path of execution
-        //Customer does not obtain an extension of the loan because of the database failure
-
-        doThrow(new RuntimeException()).when(loanExtensionRepository).create(loanExtension);
-
-        CreateLoanExtensionResponse expectedResponse =
-                new CreateLoanExtensionResponse(false, Message.LOAN_EXTENSION_ERROR_MESSAGE);
-        CreateLoanExtensionQuery query = new CreateLoanExtensionQuery(loanId);
-
-        CreateLoanExtensionResponse response = queryHandler.execute(query);
-
-        assertNotNull(response);
-        assertEquals(expectedResponse.isCreated(), response.isCreated());
-        assertEquals(expectedResponse.getMessage(), response.getMessage());
-        verify(loanExtensionFactory, times(1)).getNewLoanExtension(loanId);
-        verify(loanExtensionRepository, times(1)).create(loanExtension);
-        verify(loanFactory, times(0)).getExtendedLoan(loanExtension);
-        verify(loanRepository, times(0)).update(loan);
     }
 }

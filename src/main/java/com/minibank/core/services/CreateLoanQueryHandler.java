@@ -44,27 +44,19 @@ public class CreateLoanQueryHandler
         Boolean isLoanObtained = false;
         LoanRequestDetails requestDetails = query.getLoanRequestDetails();
 
-        try
-        {
-            LoanRequest loanRequest = loanRequestFactory.getNewLoanRequest(requestDetails);
-            loanRequestRepository.create(loanRequest);
+        LoanRequest loanRequest = loanRequestFactory.getNewLoanRequest(requestDetails);
+        loanRequestRepository.create(loanRequest);
 
-            if((!inputConstraintChecker.checkAmountConstraint(loanRequest))||
-                 creditExpert.hasRisks(loanRequest))
+        if((!inputConstraintChecker.checkAmountConstraint(loanRequest))||
+             creditExpert.hasRisks(loanRequest))
                 loanRequest.setStatus(LoanRequestStatus.REJECTED);
-            else
-            {
-                loanRequest.setStatus(LoanRequestStatus.APPROVED);
-                Loan loan = loanFactory.getNewLoan(loanRequest);
-                loanRepository.create(loan);
-                isLoanObtained = true;
-            }
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            return new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
-        }
+        else
+          {
+             loanRequest.setStatus(LoanRequestStatus.APPROVED);
+             Loan loan = loanFactory.getNewLoan(loanRequest);
+             loanRepository.create(loan);
+             isLoanObtained = true;
+           }
         if (isLoanObtained)
             return new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);
         else

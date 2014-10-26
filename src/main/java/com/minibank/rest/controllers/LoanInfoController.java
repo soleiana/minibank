@@ -36,14 +36,14 @@ public class LoanInfoController
         GetAllLoansQuery getAllLoansQuery = new GetAllLoansQuery(id);
 
         GetAllLoansResponse getAllLoansResponse = queryExecutor.execute(getAllLoansQuery);
-
+        AllLoans allLoans = null;
         if(getAllLoansResponse.isEntityFound())
         {
             AllLoansDetails allLoansDetails = getAllLoansResponse.getAllLoansDetails();
-            AllLoans allLoans = allLoansRestFactory.getNewAllLoans(allLoansDetails);
+            allLoans = allLoansRestFactory.getNewAllLoans(allLoansDetails);
             return new ResponseEntity<>(allLoans, HttpStatus.OK);
         }
         else
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(allLoans, HttpStatus.NOT_FOUND);
     }
 }

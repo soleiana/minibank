@@ -1,4 +1,4 @@
-package com.minibank.rest.controllers.mockMVC;
+package com.minibank.rest.controllers.mockMVC.unit;
 
 import com.minibank.core.communications.loans.CreateLoanExtensionQuery;
 import com.minibank.core.communications.loans.CreateLoanExtensionResponse;

@@ -116,32 +116,6 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
     public void testExecute_3()
     {
         //Negative path of execution
-        //Customer is refused a loan because of the database failure
-
-        when(creditExpert.hasRisks(any(LoanRequest.class))).thenReturn(false);
-        when(inputConstraintChecker.checkAmountConstraint(any(LoanRequest.class))).thenReturn(true);
-        doThrow(new RuntimeException()).when(loanRepository).create(loan);
-
-        CreateLoanResponse expectedResponse = new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
-        CreateLoanQuery query =  new CreateLoanQuery(loanRequestDetails);
-
-        CreateLoanResponse response = queryHandler.execute(query);
-
-        assertNotNull(response);
-        assertEquals(expectedResponse.getMessage(), response.getMessage());
-        assertEquals(expectedResponse.isCreated(), response.isCreated());
-        verify(loanRequestFactory, times(1)).getNewLoanRequest(loanRequestDetails);
-        verify(loanRequestRepository, times(1)).create(loanRequest);
-        verify(inputConstraintChecker, times(1)).checkAmountConstraint(loanRequest);
-        verify(creditExpert, times(1)).hasRisks(loanRequest);
-        verify(loanFactory, times(1)).getNewLoan(loanRequest);
-        verify(loanRepository, times(1)).create(loan);
-    }
-
-    @Test
-    public void testExecute_4()
-    {
-        //Negative path of execution
         //Customer is refused a loan because the requested loan amount exceeds the maximum
 
         when(creditExpert.hasRisks(any(LoanRequest.class))).thenReturn(false);

@@ -93,27 +93,4 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest
         verify(allLoansDetailsFactory,times(1)).getNewAllLoansDetails(allLoans);
     }
 
-    @Test
-    public void testExecute_3()
-    {
-        //Negative path of execution
-        //Customer doesn't obtain loan history because of the database failure
-
-        when(allLoansDetailsFactory.getNewAllLoansDetails(allLoans)).thenReturn(allLoansDetails);
-
-        doThrow(new RuntimeException()).when(allLoansCoreFactory).getNewAllLoans(customerId);
-
-        AllLoansDetails nullAllLoansDetails = null;
-
-        GetAllLoansQuery query = new GetAllLoansQuery(customerId);
-        GetAllLoansResponse expectedResponse = new GetAllLoansResponse(nullAllLoansDetails,false);
-
-        GetAllLoansResponse response = queryHandler.execute(query);
-
-        assertNotNull(response);
-        assertEquals(expectedResponse.getAllLoansDetails(), response.getAllLoansDetails());
-        assertEquals(expectedResponse.isEntityFound(), response.isEntityFound());
-        verify(allLoansCoreFactory,times(1)).getNewAllLoans(customerId);
-        verify(allLoansDetailsFactory,times(0)).getNewAllLoansDetails(allLoans);
-    }
 }

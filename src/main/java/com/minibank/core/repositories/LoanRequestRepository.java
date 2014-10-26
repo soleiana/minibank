@@ -11,10 +11,6 @@ public interface LoanRequestRepository
 {
     void create(LoanRequest loanRequest);
 
-    void update(LoanRequest loanRequest);
-
-    LoanRequest getById(Integer id);
-
     List<LoanRequest> getByRequestIp(String requestIp);
 
     LoanRequest getLast();

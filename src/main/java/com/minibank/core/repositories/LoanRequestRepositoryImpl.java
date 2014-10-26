@@ -23,19 +23,6 @@ public class LoanRequestRepositoryImpl extends SessionProvider
     }
 
     @Override
-    public void update(LoanRequest loanRequest)
-    {
-        getCurrentSession().saveOrUpdate(loanRequest);
-    }
-
-    @Override
-    public LoanRequest getById(Integer id)
-    {
-        Session session = getCurrentSession();
-        return (LoanRequest) session.get(LoanRequest.class, id);
-    }
-
-    @Override
     public List<LoanRequest> getByRequestIp(String requestIp)
     {
         Session session = getCurrentSession();
