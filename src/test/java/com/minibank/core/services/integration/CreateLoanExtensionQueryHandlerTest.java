@@ -18,20 +18,26 @@ import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertNull;
 
 
-public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest
-{
+public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest {
+
     @Autowired
     private DBCleaner dbCleaner;
+
     @Autowired
     private CustomerRepository customerRepository;
+
     @Autowired
     private LoanRequestRepository loanRequestRepository;
+
     @Autowired
     private LoanRepository loanRepository;
+
     @Autowired
     private BankParamsRepository bankParamsRepository;
+
     @Autowired
     private LoanExtensionRepository loanExtensionRepository;
+
     @Autowired
     private CreateLoanExtensionQueryHandler createLoanExtensionQueryHandler;
 
@@ -40,22 +46,9 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest
     private LoanRequest loanRequest;
     private Loan loan;
 
-    private CreateLoanExtensionQuery createCreateLoanExtensionQuery()
-    {
-        loanRequest = LoanRequestFixture.standardLoanRequest();
-        loan = LoanFixture.standardLoan();
-
-        loanRequest.setCustomer(customer);
-        loanRequestRepository.create(loanRequest);
-        loan.setCustomer(customer);
-        loan.setLoanRequest(loanRequest);
-        loanRepository.create(loan);
-        return new CreateLoanExtensionQuery(loan.getId());
-    }
 
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         dbCleaner.clear();
 
         bankParams = BankParamsFixture.standardBankParams();
@@ -66,11 +59,9 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testExecute()
-    {
+    public void testExecute() {
         CreateLoanExtensionQuery createLoanExtensionQuery = createCreateLoanExtensionQuery();
-        CreateLoanExtensionResponse expectedResponse =
-                new CreateLoanExtensionResponse(true, Message.LOAN_EXTENSION_OBTAINED_MESSAGE);
+        CreateLoanExtensionResponse expectedResponse = new CreateLoanExtensionResponse(true, Message.LOAN_EXTENSION_OBTAINED_MESSAGE);
 
         LoanExtension loanExtension = loanExtensionRepository.getLast();
         assertNull(loanExtension);
@@ -84,6 +75,16 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest
         loanExtension = loanExtensionRepository.getLast();
         assertNotNull(loanExtension);
         assertEquals(loan.getId(), loanExtension.getLoan().getId());
+    }
 
+    private CreateLoanExtensionQuery createCreateLoanExtensionQuery() {
+        loanRequest = LoanRequestFixture.standardLoanRequest();
+        loan = LoanFixture.standardLoan();
+        loanRequest.setCustomer(customer);
+        loanRequestRepository.create(loanRequest);
+        loan.setCustomer(customer);
+        loan.setLoanRequest(loanRequest);
+        loanRepository.create(loan);
+        return new CreateLoanExtensionQuery(loan.getId());
     }
 }

@@ -14,32 +14,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 
-public class CustomerRepositoryImplTest extends SpringContextTest
-{
+public class CustomerRepositoryImplTest extends SpringContextTest {
+
     @Autowired
     private DBCleaner dbCleaner;
+
     @Autowired
     private CustomerRepository customerRepository;
+
     private Customer customer;
 
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         dbCleaner.clear();
         customer = CustomerFixture.standardCustomer();
     }
+
     @Test
     @Transactional
-    public void testCreate()
-    {
+    public void testCreate() {
         customerRepository.create(customer);
         assertNotNull(customer.getId());
     }
 
     @Test
     @Transactional
-    public void testGetById()
-    {
+    public void testGetById() {
         customerRepository.create(customer);
         Integer id = customer.getId();
         assertEquals(customer, customerRepository.getById(id));

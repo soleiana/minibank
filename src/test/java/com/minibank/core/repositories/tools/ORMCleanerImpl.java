@@ -4,15 +4,10 @@ import com.minibank.core.repositories.SessionProvider;
 import org.hibernate.Query;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by Ann on 12/09/14.
- */
+
 @Component
-public class ORMCleanerImpl extends SessionProvider
-        implements  DBCleaner
-{
-    public void clear()
-    {
+public class ORMCleanerImpl extends SessionProvider implements  DBCleaner {
+    public void clear() {
         hqlTruncate("LoanExtension");
         hqlTruncate("Loan");
         hqlTruncate("LoanRequest");

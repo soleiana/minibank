@@ -1,9 +1,6 @@
 package com.minibank.core.repositories.tools;
 
-/**
- * Created by Ann on 10/09/14.
- */
-public interface DBCleaner
-{
+
+public interface DBCleaner {
     void clear();
 }

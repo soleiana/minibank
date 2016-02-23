@@ -16,34 +16,30 @@ import java.util.Date;
 import static junit.framework.TestCase.assertTrue;
 
 
-public class CreditExpertTest extends SpringContextTest
-{
+public class CreditExpertTest extends SpringContextTest {
+
     @Autowired
     private DBCleaner dbCleaner;
+
     @Autowired
     private LoanRequestRepository loanRequestRepository;
+
     @Autowired
     private CustomerRepository customerRepository;
+
     @Autowired
     private BankParamsRepository bankParamsRepository;
+
     @Autowired
     private CreditExpert expert;
 
     private BankParams bankParams;
     private LoanRequest loanRequest;
 
-    private void createLoanRequest()
-    {
-        Customer customer = CustomerFixture.standardCustomer();
-        loanRequest = LoanRequestFixture.standardLoanRequest();
-        customerRepository.create(customer);
-        loanRequest.setCustomer(customer);
-    }
 
     @Before
     @Transactional
-    public void setUp()
-    {
+    public void setUp() {
         dbCleaner.clear();
         bankParams = BankParamsFixture.standardBankParams();
         bankParamsRepository.create(bankParams);
@@ -51,8 +47,7 @@ public class CreditExpertTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testHasRisks_1()
-    {
+    public void testHasRisks_1() {
         //negative loan request scenario with max loan amount in risk time
         //loan request gets rejected
 
@@ -67,18 +62,17 @@ public class CreditExpertTest extends SpringContextTest
 
         assertTrue(expert.hasRisks(loanRequest));
     }
+
     @Test
     @Transactional
-    public void testHasRisks_2()
-    {
+    public void testHasRisks_2() {
         //negative loan request scenario with max number of loan requests (attempts)
         //during one day
 
         Date now = new Date();
         java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);
 
-        for(int i = 0; i < bankParams.getMaxLoanAttempts(); i++)
-        {
+        for(int i = 0; i < bankParams.getMaxLoanAttempts(); i++) {
             createLoanRequest();
             loanRequest.setSubmissionDate(sqlNow);
             loanRequestRepository.create(loanRequest);
@@ -88,8 +82,7 @@ public class CreditExpertTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testHasRisks_3()
-    {
+    public void testHasRisks_3() {
         //positive loan request scenario with loan amount below maximum in no risk time
         //loan request gets accepted
 
@@ -100,20 +93,26 @@ public class CreditExpertTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testHasRisks_4()
-    {
+    public void testHasRisks_4() {
         //positive loan request scenario with loan amount below maximum in no risk time
         //loan requests get accepted (maxLoanAttempts - 1) times
 
         Date now = new Date();
         java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);
 
-        for(int i = 0; i < bankParams.getMaxLoanAttempts()-1; i++)
-        {
+        for(int i = 0; i < bankParams.getMaxLoanAttempts()-1; i++) {
             createLoanRequest();
             loanRequest.setSubmissionDate(sqlNow);
             loanRequestRepository.create(loanRequest);
         }
         assertTrue(!expert.hasRisks(loanRequest));
     }
+
+    private void createLoanRequest() {
+        Customer customer = CustomerFixture.standardCustomer();
+        loanRequest = LoanRequestFixture.standardLoanRequest();
+        customerRepository.create(customer);
+        loanRequest.setCustomer(customer);
+    }
+
 }

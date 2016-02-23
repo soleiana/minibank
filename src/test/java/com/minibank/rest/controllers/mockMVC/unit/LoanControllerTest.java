@@ -27,38 +27,34 @@ import static com.minibank.rest.domain.JsonDataFixture.*;
 
 
 
-public class LoanControllerTest
-{
+public class LoanControllerTest {
     MockMvc mockMvc;
 
     @InjectMocks
     LoanController loanController;
+
     @Mock
     LoanRequestValidator loanRequestValidator;
+
     @Mock
     QueryExecutor queryExecutor;
+
     @Mock
     LoanRequestDetailsFactory loanRequestDetailsFactory;
 
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
         this.mockMvc = standaloneSetup(loanController)
               .setMessageConverters(new MappingJackson2HttpMessageConverter())
               .build();
-
     }
 
     @Test
-    public void testThatCreateLoanUsesHttpCreatedOnSuccess() throws Exception
-    {
-        when(loanRequestValidator.validate(any(LoanRequest.class)))
-               .thenReturn(true);
-        when(loanRequestDetailsFactory.getNewLoanRequestDetails(any(LoanRequest.class)))
-                .thenReturn(new LoanRequestDetails());
-        when(queryExecutor.execute(any(CreateLoanQuery.class)))
-                .thenReturn(new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE));
+    public void testThatCreateLoanUsesHttpCreatedOnSuccess() throws Exception {
+        when(loanRequestValidator.validate(any(LoanRequest.class))).thenReturn(true);
+        when(loanRequestDetailsFactory.getNewLoanRequestDetails(any(LoanRequest.class))).thenReturn(new LoanRequestDetails());
+        when(queryExecutor.execute(any(CreateLoanQuery.class))).thenReturn(new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE));
 
         this.mockMvc.perform(
               post("/loans")
@@ -68,14 +64,10 @@ public class LoanControllerTest
     }
 
     @Test
-    public void testThatCreateLoanUsesHttpInternalServerErrorOnFailureToGetLoan() throws Exception
-    {
-        when(loanRequestValidator.validate(any(LoanRequest.class)))
-                .thenReturn(true);
-        when(loanRequestDetailsFactory.getNewLoanRequestDetails(any(LoanRequest.class)))
-                .thenReturn(new LoanRequestDetails());
-        when(queryExecutor.execute(any(CreateLoanQuery.class)))
-                .thenReturn(new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE));
+    public void testThatCreateLoanUsesHttpInternalServerErrorOnFailureToGetLoan() throws Exception {
+        when(loanRequestValidator.validate(any(LoanRequest.class))).thenReturn(true);
+        when(loanRequestDetailsFactory.getNewLoanRequestDetails(any(LoanRequest.class))).thenReturn(new LoanRequestDetails());
+        when(queryExecutor.execute(any(CreateLoanQuery.class))).thenReturn(new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE));
 
         this.mockMvc.perform(
                 post("/loans")
@@ -86,10 +78,8 @@ public class LoanControllerTest
     }
 
     @Test
-    public void testThatCreateLoanUsesHttpBadRequestOnFailureToValidate() throws Exception
-    {
-        when(loanRequestValidator.validate(any(LoanRequest.class)))
-                .thenReturn(false);
+    public void testThatCreateLoanUsesHttpBadRequestOnFailureToValidate() throws Exception {
+        when(loanRequestValidator.validate(any(LoanRequest.class))).thenReturn(false);
         this.mockMvc.perform(
                 post("/loans")
                         .content(standardLoanRequestJSON())

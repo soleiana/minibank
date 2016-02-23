@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AllLoansFixture
-{
+public class AllLoansFixture {
     private static final String NAME = "James";
     private static final String SURNAME = "Bond";
     private static final Integer CUSTOMER_ID = 2;
@@ -23,8 +22,7 @@ public class AllLoansFixture
     private static final Date LOAN_EXTENSION_END_DATE = LOAN_END_DATE;
     private static final Date LOAN_EXTENSION_SUBMISSION_DATE = LOAN_EXTENSION_START_DATE;
 
-    private static  Loan standardLoan()
-    {
+    private static  Loan standardLoan() {
         Loan loan = new Loan();
         loan.setId(LOAN_ID);
         loan.setCurrInterestRate(CURR_INTEREST_RATE);
@@ -35,8 +33,7 @@ public class AllLoansFixture
         return  loan;
     }
 
-    private static LoanExtension standardLoanExtension()
-    {
+    private static LoanExtension standardLoanExtension() {
         LoanExtension loanExtension = new LoanExtension();
         loanExtension.setLoanId(LOAN_ID);
         loanExtension.setInterestRate(INTEREST_RATE);
@@ -46,8 +43,7 @@ public class AllLoansFixture
         loanExtension.setSubmissionDate(LOAN_EXTENSION_SUBMISSION_DATE);
         return loanExtension;
     }
-    public static AllLoans standardAllLoans()
-    {
+    public static AllLoans standardAllLoans() {
         AllLoans allLoans = new AllLoans();
         allLoans.setCustomerId(CUSTOMER_ID);
         allLoans.setName(NAME);

@@ -14,12 +14,14 @@ import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
 
-public class LoanRequestRepositoryImplTest extends SpringContextTest
-{
+public class LoanRequestRepositoryImplTest extends SpringContextTest {
+
     @Autowired
     private DBCleaner dbCleaner;
+
     @Autowired
     private LoanRequestRepository loanRequestRepository;
+
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -27,8 +29,7 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
     private Customer customer;
     private String requestIp;
 
-    private void createLoanRequest()
-    {
+    private void createLoanRequest() {
         loanRequest = LoanRequestFixture.standardLoanRequest();
         loanRequest.setCustomer(customer);
         loanRequest.setRequestIp(requestIp);
@@ -36,8 +37,7 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
 
     @Before
     @Transactional
-    public void setUp()
-    {
+    public void setUp() {
         dbCleaner.clear();
         requestIp = RequestIPFixture.IP;
         customer = CustomerFixture.standardCustomer();
@@ -47,16 +47,14 @@ public class LoanRequestRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testCreate()
-    {
+    public void testCreate() {
         loanRequestRepository.create(loanRequest);
         assertNotNull(loanRequest.getId());
     }
 
     @Test
     @Transactional
-    public void testGetByRequestIp()
-    {
+    public void testGetByRequestIp() {
         createLoanRequest();
         loanRequestRepository.create(loanRequest);
         createLoanRequest();

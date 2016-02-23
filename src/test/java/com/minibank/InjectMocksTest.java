@@ -4,11 +4,10 @@ import org.junit.Before;
 import org.mockito.MockitoAnnotations;
 
 
-public class InjectMocksTest
-{
+public class InjectMocksTest {
+
     @Before
-    public void initMocks()
-    {
+    public void initMocks() {
          MockitoAnnotations.initMocks(this);
     }
 }

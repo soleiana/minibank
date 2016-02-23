@@ -18,47 +18,39 @@ import java.sql.Time;
 import java.util.Date;
 
 
-public class RiskConstraintCheckerTest extends SpringContextTest
-{
+public class RiskConstraintCheckerTest extends SpringContextTest {
+
     @Autowired
     private DBCleaner dbCleaner;
+
     @Autowired
     private LoanRequestRepository loanRequestRepository;
+
     @Autowired
     private CustomerRepository customerRepository;
+
     @Autowired
     private BankParamsRepository bankParamsRepository;
+
     @Autowired
     private RiskConstraintChecker checker;
 
     private BankParams bankParams;
     private LoanRequest loanRequest;
 
-    private void createLoanRequest(java.sql.Date submissionDate)
-    {
-        Customer customer = CustomerFixture.standardCustomer();
-        loanRequest = LoanRequestFixture.standardLoanRequest();
-        loanRequest.setSubmissionDate(submissionDate);
-        customerRepository.create(customer);
-        loanRequest.setCustomer(customer);
-        loanRequestRepository.create(loanRequest);
-    }
 
     @Before
     @Transactional
-    public void setUp()
-    {
+    public void setUp() {
         dbCleaner.clear();
         bankParams = BankParamsFixture.standardBankParams();
         bankParamsRepository.create(bankParams);
-
         createLoanRequest(LoanRequestFixture.SUBMISSION_DATE);
     }
 
     @Test
     @Transactional
-    public void testCheckMaxRequestsPerIP()
-    {
+    public void testCheckMaxRequestsPerIP() {
         bankParams.setMaxLoanAttempts(new Byte("3"));
         bankParamsRepository.update(bankParams);
 
@@ -77,8 +69,7 @@ public class RiskConstraintCheckerTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testCheckTimeConstraint_1()
-    {
+    public void testCheckTimeConstraint_1() {
         //check loan requests for risk interval [00:00:00-07:00:00]
 
         Time riskTimeStart = bankParams.getRiskTimeStart();
@@ -105,8 +96,7 @@ public class RiskConstraintCheckerTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testCheckTimeConstraint_2()
-    {
+    public void testCheckTimeConstraint_2() {
         //check loan requests for risk interval [22:00:00-08:00:00]
 
         BankParams newBankParams = BankParamsFixture.newBankParams();
@@ -132,8 +122,7 @@ public class RiskConstraintCheckerTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testIsMaxAmount()
-    {
+    public void testIsMaxAmount() {
         BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
         loanRequest.setAmount(maxLoanAmount);
 
@@ -148,5 +137,14 @@ public class RiskConstraintCheckerTest extends SpringContextTest
         loanRequest.setAmount(loanAmount);
 
         assertTrue(!checker.isMaxAmount(loanRequest));
+    }
+
+    private void createLoanRequest(java.sql.Date submissionDate) {
+        Customer customer = CustomerFixture.standardCustomer();
+        loanRequest = LoanRequestFixture.standardLoanRequest();
+        loanRequest.setSubmissionDate(submissionDate);
+        customerRepository.create(customer);
+        loanRequest.setCustomer(customer);
+        loanRequestRepository.create(loanRequest);
     }
 }

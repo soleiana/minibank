@@ -23,12 +23,14 @@ import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
 
-public class GetAllLoansQueryHandlerTest extends InjectMocksTest
-{
+public class GetAllLoansQueryHandlerTest extends InjectMocksTest {
+
     @InjectMocks
     private GetAllLoansQueryHandler queryHandler;
+
     @Mock
     private AllLoansCoreFactory allLoansCoreFactory;
+
     @Mock
     private AllLoansDetailsFactory allLoansDetailsFactory;
 
@@ -37,8 +39,7 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest
     private Integer customerId;
 
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         customerId = 1;
         allLoans = AllLoansFixture.standardAllLoans();
         allLoansDetails = AllLoanDetailsFixture.standardAllLoansDetails();
@@ -47,8 +48,7 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest
     }
 
     @Test
-    public void testExecute_1()
-    {
+    public void testExecute_1() {
         //Positive path of execution
         //Customer obtains loan history
 
@@ -67,8 +67,7 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest
     }
 
     @Test
-    public void testExecute_2()
-    {
+    public void testExecute_2() {
         //Negative path of execution
         //Customer doesn't obtain loan history because he does not have it
 

@@ -6,8 +6,8 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 
-public class LoanFixture
-{
+public class LoanFixture {
+
     private static final BigDecimal STANDARD_CURRENT_INTEREST_RATE = new BigDecimal("100.00");
     private static final BigDecimal STANDARD_CURRENT_INTEREST = new BigDecimal("200.00");
     private static final Date START_DATE = Date.valueOf("2014-09-01");
@@ -15,8 +15,7 @@ public class LoanFixture
     private static final BigDecimal AMOUNT = new BigDecimal("500.00");
     private static final Integer LOAN_ID = 1;
 
-    public static Loan standardLoan()
-    {
+    public static Loan standardLoan() {
         Loan loan = new Loan();
         loan.setCurrInterest(STANDARD_CURRENT_INTEREST);
         loan.setCurrInterestRate(STANDARD_CURRENT_INTEREST_RATE);

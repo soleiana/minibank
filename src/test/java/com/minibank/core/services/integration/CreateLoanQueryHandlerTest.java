@@ -20,38 +20,33 @@ import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertNull;
 
 
-public class CreateLoanQueryHandlerTest extends SpringContextTest
-{
+public class CreateLoanQueryHandlerTest extends SpringContextTest {
+
     @Autowired
     private DBCleaner dbCleaner;
+
     @Autowired
     private CustomerRepository customerRepository;
+
     @Autowired
     private LoanRequestRepository loanRequestRepository;
+
     @Autowired
     private LoanRepository loanRepository;
+
     @Autowired
     private BankParamsRepository bankParamsRepository;
+
     @Autowired
     private CreateLoanQueryHandler createLoanQueryHandler;
 
     private BankParams bankParams;
     private Customer customer;
 
-    private CreateLoanQuery createCreateLoanQuery()
-    {
-        LoanRequestDetails loanRequestDetails =
-                LoanRequestDetailsFixture.standardLoanRequestDetails();
-        loanRequestDetails.setCustomerId(customer.getId());
-
-        return new CreateLoanQuery(loanRequestDetails);
-    }
 
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         dbCleaner.clear();
-
         bankParams = BankParamsFixture.standardBankParams();
         bankParamsRepository.create(bankParams);
         customer = CustomerFixture.standardCustomer();
@@ -60,12 +55,9 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testExecute()
-    {
+    public void testExecute() {
         CreateLoanQuery createLoanQuery = createCreateLoanQuery();
-        CreateLoanResponse expectedCreateLoanResponse =
-                new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);
-
+        CreateLoanResponse expectedCreateLoanResponse = new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);
         LoanRequest loanRequest1 = loanRequestRepository.getLast();
         Loan loan1 = loanRepository.getLast();
         assertNull(loanRequest1);
@@ -84,4 +76,11 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest
         assertEquals(customer.getId(), loan1.getCustomer().getId());
         assertEquals(customer.getId(), loanRequest1.getCustomer().getId());
     }
+
+    private CreateLoanQuery createCreateLoanQuery() {
+        LoanRequestDetails loanRequestDetails = LoanRequestDetailsFixture.standardLoanRequestDetails();
+        loanRequestDetails.setCustomerId(customer.getId());
+        return new CreateLoanQuery(loanRequestDetails);
+    }
+
 }

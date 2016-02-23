@@ -13,34 +13,32 @@ import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
 
-public class BankParamsRepositoryImplTest extends SpringContextTest
-{
+public class BankParamsRepositoryImplTest extends SpringContextTest {
+
     @Autowired
     private DBCleaner dbCleaner;
+
     @Autowired
     private BankParamsRepository bankParamsRepository;
     private BankParams bankParams;
 
     @Before
     @Transactional
-    public void setUp()
-    {
+    public void setUp() {
         dbCleaner.clear();
         bankParams = BankParamsFixture.standardBankParams();
     }
 
     @Test
     @Transactional
-    public void testCreate()
-    {
+    public void testCreate() {
         bankParamsRepository.create(bankParams);
         assertNotNull(bankParams.getId());
     }
 
     @Test
     @Transactional
-    public void testGetById()
-    {
+    public void testGetById() {
         bankParamsRepository.create(bankParams);
         Integer id = bankParams.getId();
         assertEquals(bankParams, bankParamsRepository.getById(id));
@@ -48,8 +46,7 @@ public class BankParamsRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testUpdate()
-    {
+    public void testUpdate() {
         bankParamsRepository.create(bankParams);
         BankParams newBankParams = BankParamsFixture.newBankParams();
 
@@ -74,8 +71,7 @@ public class BankParamsRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetLast()
-    {
+    public void testGetLast() {
         BankParams bp1 = BankParamsFixture.standardBankParams();
         bp1.setLoanExtensionTerm(BankParamsFixture.NEW_LOAN_EXTENSION_TERM);
         BankParams bp2 = BankParamsFixture.standardBankParams();

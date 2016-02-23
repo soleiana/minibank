@@ -26,22 +26,29 @@ import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
 
-public class CreateLoanQueryHandlerTest extends InjectMocksTest
-{
+public class CreateLoanQueryHandlerTest extends InjectMocksTest {
+
     @InjectMocks
     private CreateLoanQueryHandler queryHandler;
+
     @Mock
     private LoanRequestFactory loanRequestFactory;
+
     @Mock
     private LoanFactory loanFactory;
+
     @Mock
     private CreditExpert creditExpert;
+
     @Mock
     private RiskConstraintChecker riskConstraintChecker;
+
     @Mock
     private InputConstraintChecker inputConstraintChecker;
+
     @Mock
     private LoanRequestRepository loanRequestRepository;
+
     @Mock
     private LoanRepository loanRepository;
 
@@ -50,20 +57,17 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
     private LoanRequestDetails loanRequestDetails;
 
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         loanRequest = LoanRequestFixture.standardLoanRequest();
         loan = LoanFixture.standardLoan();
         loanRequestDetails = LoanRequestDetailsFixture.standardLoanRequestDetails();
 
         when(loanRequestFactory.getNewLoanRequest(any(LoanRequestDetails.class))).thenReturn(loanRequest);
         when(loanFactory.getNewLoan(any(LoanRequest.class))).thenReturn(loan);
-
     }
 
     @Test
-    public void testExecute_1()
-    {
+    public void testExecute_1() {
          //Positive path of execution
         //Customer obtains a loan
 
@@ -86,8 +90,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
     }
 
     @Test
-    public void testExecute_2()
-    {
+    public void testExecute_2() {
         //Negative path of execution
         //Customer is refused a loan because of the risks surrounding the loan request
 
@@ -111,8 +114,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest
     }
 
     @Test
-    public void testExecute_3()
-    {
+    public void testExecute_3() {
         //Negative path of execution
         //Customer is refused a loan because the requested loan amount exceeds the maximum
 

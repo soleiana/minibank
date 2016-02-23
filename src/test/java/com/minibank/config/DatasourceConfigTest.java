@@ -9,14 +9,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import static junit.framework.TestCase.assertNotNull;
 
 
-public class DatasourceConfigTest
-{
+public class DatasourceConfigTest {
 
     @Test
-    public void testDatasourceConfig()
-    {
+    public void testDatasourceConfig() {
         ApplicationContext context = new AnnotationConfigApplicationContext(DatasourceConfig.class);
-
         BankParamsRepository bankParamsRepository = context.getBean(BankParamsRepository.class);
 
         assertNotNull(bankParamsRepository);

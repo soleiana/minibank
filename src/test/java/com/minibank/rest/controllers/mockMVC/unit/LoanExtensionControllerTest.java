@@ -19,8 +19,8 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 import static org.mockito.Mockito.*;
 
 
-public class LoanExtensionControllerTest
-{
+public class LoanExtensionControllerTest {
+
     MockMvc mockMvc;
 
     @InjectMocks
@@ -30,18 +30,15 @@ public class LoanExtensionControllerTest
     QueryExecutor queryExecutor;
 
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
         this.mockMvc = standaloneSetup(loanExtensionController)
                 .setMessageConverters(new MappingJackson2HttpMessageConverter()).build();
     }
 
     @Test
-    public void testThatCreateLoanExtensionUsesHttpCreated() throws Exception
-    {
-        when(queryExecutor.execute(any(CreateLoanExtensionQuery.class)))
-                .thenReturn(new CreateLoanExtensionResponse(true,Message.LOAN_EXTENSION_OBTAINED_MESSAGE));
+    public void testThatCreateLoanExtensionUsesHttpCreated() throws Exception {
+        when(queryExecutor.execute(any(CreateLoanExtensionQuery.class))).thenReturn(new CreateLoanExtensionResponse(true,Message.LOAN_EXTENSION_OBTAINED_MESSAGE));
         this.mockMvc.perform(
                   post("/loans/1/extensions")
                   .contentType(MediaType.APPLICATION_JSON))
@@ -49,8 +46,7 @@ public class LoanExtensionControllerTest
     }
 
     @Test
-    public void testThatCreateLoanExtensionUsesHttpBadRequest_1() throws Exception
-    {
+    public void testThatCreateLoanExtensionUsesHttpBadRequest_1() throws Exception {
         this.mockMvc.perform(
                 post("/loans/null/extensions")
                 .contentType(MediaType.APPLICATION_JSON))
@@ -58,8 +54,7 @@ public class LoanExtensionControllerTest
     }
 
     @Test
-    public void testThatCreateLoanExtensionUsesHttpBadRequest_2() throws Exception
-    {
+    public void testThatCreateLoanExtensionUsesHttpBadRequest_2() throws Exception {
         this.mockMvc.perform(
                 post("/loans/-1/extensions")
                 .contentType(MediaType.APPLICATION_JSON))

@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AllLoansFixture
-{
-    public static AllLoans standardAllLoans()
-    {
+public class AllLoansFixture {
+
+    public static AllLoans standardAllLoans() {
         AllLoans allLoans = new AllLoans();
 
         Loan loan = LoanFixture.standardLoan();

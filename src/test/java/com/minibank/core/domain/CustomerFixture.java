@@ -1,13 +1,12 @@
 package com.minibank.core.domain;
 
 
-public class CustomerFixture
-{
+public class CustomerFixture {
+
     private static final String NAME = "James";
     private static final String SURNAME = "Bond";
 
-    public static Customer standardCustomer()
-    {
+    public static Customer standardCustomer() {
         Customer customer = new Customer();
         customer.setName(NAME);
         customer.setSurname(SURNAME);

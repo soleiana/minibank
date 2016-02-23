@@ -16,46 +16,39 @@ import java.math.BigDecimal;
 import static junit.framework.TestCase.assertTrue;
 
 
-public class InputConstraintCheckerTest extends SpringContextTest
-{
+public class InputConstraintCheckerTest extends SpringContextTest {
+
     @Autowired
     private DBCleaner dbCleaner;
+
     @Autowired
     private LoanRequestRepository loanRequestRepository;
+
     @Autowired
     private CustomerRepository customerRepository;
+
     @Autowired
     private BankParamsRepository bankParamsRepository;
+
     @Autowired
     private InputConstraintChecker checker;
 
     private BankParams bankParams;
     private LoanRequest loanRequest;
 
-    private void createLoanRequest(java.sql.Date submissionDate)
-    {
-        Customer customer = CustomerFixture.standardCustomer();
-        loanRequest = LoanRequestFixture.standardLoanRequest();
-        loanRequest.setSubmissionDate(submissionDate);
-        customerRepository.create(customer);
-        loanRequest.setCustomer(customer);
-        loanRequestRepository.create(loanRequest);
-    }
-
     @Before
     @Transactional
-    public void setUp()
-    {
+    public void setUp() {
         dbCleaner.clear();
         bankParams = BankParamsFixture.standardBankParams();
         bankParamsRepository.create(bankParams);
 
         createLoanRequest(LoanRequestFixture.SUBMISSION_DATE);
     }
+
     @Test
     @Transactional
-    public void testCheckAmountConstraint()
-    {
+    public void testCheckAmountConstraint() {
         BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
         loanRequest.setAmount(maxLoanAmount);
 
@@ -70,5 +63,14 @@ public class InputConstraintCheckerTest extends SpringContextTest
         loanRequest.setAmount(loanAmount);
 
         assertTrue(checker.checkAmountConstraint(loanRequest));
+    }
+
+    private void createLoanRequest(java.sql.Date submissionDate) {
+        Customer customer = CustomerFixture.standardCustomer();
+        loanRequest = LoanRequestFixture.standardLoanRequest();
+        loanRequest.setSubmissionDate(submissionDate);
+        customerRepository.create(customer);
+        loanRequest.setCustomer(customer);
+        loanRequestRepository.create(loanRequest);
     }
 }

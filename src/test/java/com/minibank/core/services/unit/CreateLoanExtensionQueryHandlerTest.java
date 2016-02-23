@@ -23,16 +23,20 @@ import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
 
-public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest
-{
+public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
+
     @InjectMocks
     private CreateLoanExtensionQueryHandler queryHandler;
+
     @Mock
     private LoanExtensionFactory loanExtensionFactory;
+
     @Mock
     private LoanFactory loanFactory;
+
     @Mock
     private LoanRepository loanRepository;
+
     @Mock
     private LoanExtensionRepository loanExtensionRepository;
 
@@ -41,8 +45,7 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest
     private Integer loanId;
 
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         loan = LoanFixture.standardLoan();
         loanExtension = LoanExtensionFixture.standardLoanExtension();
         loanId = 1;
@@ -52,8 +55,7 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest
     }
 
     @Test
-    public void testExecute()
-    {
+    public void testExecute() {
         //Positive path of execution
         //Customer obtains an extension of the loan
 

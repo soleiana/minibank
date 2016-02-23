@@ -14,14 +14,17 @@ import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
 
-public class LoanRepositoryImplTest extends SpringContextTest
-{
+public class LoanRepositoryImplTest extends SpringContextTest {
+
     @Autowired
     private DBCleaner dbCleaner;
+
     @Autowired
     private CustomerRepository customerRepository;
+
     @Autowired
     private LoanRequestRepository loanRequestRepository;
+
     @Autowired
     private LoanRepository loanRepository;
 
@@ -29,27 +32,10 @@ public class LoanRepositoryImplTest extends SpringContextTest
     private LoanRequest loanRequest;
     private Loan loan;
 
-    private void createLoan()
-    {
-        loan = LoanFixture.standardLoan();
-        loan.setCustomer(customer);
-
-        createLoanRequest();
-        loanRequestRepository.create(loanRequest);
-        loan.setLoanRequest(loanRequest);
-    }
-
-    private void createLoanRequest()
-    {
-        loanRequest = LoanRequestFixture.standardLoanRequest();
-        loanRequest.setCustomer(customer);
-
-    }
 
     @Before
     @Transactional
-    public void setUp()
-    {
+    public void setUp() {
         dbCleaner.clear();
 
         customer = CustomerFixture.standardCustomer();
@@ -59,16 +45,14 @@ public class LoanRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testCreate()
-    {
+    public void testCreate() {
         loanRepository.create(loan);
         assertNotNull(loan.getId());
     }
 
     @Test
     @Transactional
-    public void testUpdate()
-    {
+    public void testUpdate() {
         loanRepository.create(loan);
         loan.setCurrInterestRate(LoanFixture.NEW_CURRENT_INTEREST_RATE);
         loan.setCurrInterest(LoanFixture.NEW_CURRENT_INTEREST);
@@ -83,8 +67,7 @@ public class LoanRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetById()
-    {
+    public void testGetById() {
         loanRepository.create(loan);
         Loan ln = loanRepository.getById(loan.getId());
         assertEquals(loan,ln);
@@ -92,13 +75,26 @@ public class LoanRepositoryImplTest extends SpringContextTest
 
     @Test
     @Transactional
-    public void testGetByCustomer()
-    {
+    public void testGetByCustomer() {
         createLoan();
         loanRepository.create(loan);
         createLoan();
         loanRepository.create(loan);
         List<Loan> loans = loanRepository.getByCustomer(customer);
         assertEquals(2, loans.size());
+    }
+
+    private void createLoan() {
+        loan = LoanFixture.standardLoan();
+        loan.setCustomer(customer);
+
+        createLoanRequest();
+        loanRequestRepository.create(loanRequest);
+        loan.setLoanRequest(loanRequest);
+    }
+
+    private void createLoanRequest() {
+        loanRequest = LoanRequestFixture.standardLoanRequest();
+        loanRequest.setCustomer(customer);
     }
 }
