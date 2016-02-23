@@ -4,9 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Time;
 
-/**
- * Created by Ann on 06/09/14.
- */
+
 @Entity
 @Table(name="BANK_PARAMS")
 public class BankParams

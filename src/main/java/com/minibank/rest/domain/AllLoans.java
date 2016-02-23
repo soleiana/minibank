@@ -3,9 +3,6 @@ package com.minibank.rest.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ann on 14/09/14.
- */
 
 public class AllLoans
 {

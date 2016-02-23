@@ -4,9 +4,7 @@ import com.minibank.core.domain.Customer;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by Ann on 10/09/14.
- */
+
 @Component
 public class CustomerRepositoryImpl extends SessionProvider
     implements CustomerRepository

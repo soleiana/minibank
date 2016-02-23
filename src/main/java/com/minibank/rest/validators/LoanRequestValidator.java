@@ -5,9 +5,6 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
-/**
- * Created by Ann on 17/09/14.
- */
 
 @Component
 public class LoanRequestValidator

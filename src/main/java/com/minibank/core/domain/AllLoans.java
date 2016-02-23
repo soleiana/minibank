@@ -2,9 +2,6 @@ package com.minibank.core.domain;
 
 import java.util.List;
 
-/**
- * Created by Ann on 14/09/14.
- */
 
 public class AllLoans
 {

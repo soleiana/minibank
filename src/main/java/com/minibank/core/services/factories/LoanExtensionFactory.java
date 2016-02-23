@@ -11,9 +11,7 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- * Created by Ann on 14/09/14.
- */
+
 @Component
 public class LoanExtensionFactory
 {

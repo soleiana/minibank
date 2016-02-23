@@ -9,9 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ann on 16/09/14.
- */
+
 @Component
 public class AllLoansRestFactory
 {

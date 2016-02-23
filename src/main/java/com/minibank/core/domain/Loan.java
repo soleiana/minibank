@@ -7,9 +7,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ann on 06/09/14.
- */
+
 @Entity
 @Table(name="LOAN")
 public class Loan

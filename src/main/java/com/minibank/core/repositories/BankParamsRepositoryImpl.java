@@ -7,9 +7,7 @@ import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Component;
 
 
-/**
- * Created by Ann on 07/09/14.
- */
+
 @Component
 public class BankParamsRepositoryImpl extends SessionProvider
         implements BankParamsRepository

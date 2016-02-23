@@ -13,9 +13,7 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-/**
- * Created by Ann on 12/09/14.
- */
+
 @Component
 public class LoanFactory
 {

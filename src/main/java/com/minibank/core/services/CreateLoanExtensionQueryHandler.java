@@ -13,9 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
-/**
- * Created by Ann on 02/10/14.
- */
 @Component
 public class CreateLoanExtensionQueryHandler
         implements QueryHandler<CreateLoanExtensionQuery, CreateLoanExtensionResponse>

@@ -12,9 +12,6 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 
-/**
- * Created by Ann on 13/09/14.
- */
 @Component
 public class LoanRequestFactory
 {
@@ -23,7 +20,6 @@ public class LoanRequestFactory
 
     public LoanRequest getNewLoanRequest(LoanRequestDetails loanRequestDetails)
     {
-        //We assume that customer already exists in DB
         Integer id = loanRequestDetails.getCustomerId();
         Customer customer = customerRepository.getById(id);
 

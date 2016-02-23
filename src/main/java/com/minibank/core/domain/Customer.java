@@ -5,9 +5,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ann on 06/09/14.
- */
+
 @Entity
 @Table(name="CUSTOMER")
 public class Customer

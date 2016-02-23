@@ -4,9 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-/**
- * Created by Ann on 06/09/14.
- */
+
 @Entity
 @Table(name="LOAN_EXTENSION")
 public class LoanExtension

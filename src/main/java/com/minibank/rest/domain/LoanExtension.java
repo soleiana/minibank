@@ -3,9 +3,7 @@ package com.minibank.rest.domain;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-/**
- * Created by Ann on 14/09/14.
- */
+
 public class LoanExtension
 {
     private Integer loanId;

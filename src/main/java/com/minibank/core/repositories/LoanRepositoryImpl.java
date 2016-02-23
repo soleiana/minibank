@@ -10,9 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-/**
- * Created by Ann on 10/09/14.
- */
+
 @Component
 public class LoanRepositoryImpl extends SessionProvider
     implements LoanRepository

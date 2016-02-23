@@ -2,9 +2,7 @@ package com.minibank.rest.domain;
 
 import java.math.BigDecimal;
 
-/**
- * Created by Ann on 07/09/14.
- */
+
 public class LoanRequest
 {
     private Integer customerId;

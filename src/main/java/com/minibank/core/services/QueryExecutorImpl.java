@@ -12,9 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Ann on 01/10/14.
- */
+
 @Component
 public class QueryExecutorImpl implements QueryExecutor
 {

@@ -5,9 +5,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ann on 14/09/14.
- */
+
 public class Loan
 {
     private Integer id;

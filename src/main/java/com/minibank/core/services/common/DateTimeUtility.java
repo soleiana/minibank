@@ -5,9 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by Ann on 13/09/14.
- */
+
 public class DateTimeUtility
 {
     private static final String DATE_FORMAT = "yyyy-MM-dd";
