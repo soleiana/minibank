@@ -8,37 +8,33 @@ import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-import org.springframework.orm.hibernate3.HibernateTransactionManager;
-import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import java.util.Properties;
 
-/**
- * Created by Ann on 07/09/14.
- */
+
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:datasource.properties" })
 @ComponentScan(basePackages = {"com.minibank.core.domain", "com.minibank.core.repositories"})
-public class DatasourceConfig
-{
+public class DatasourceConfig {
+
     @Autowired
     private Environment env;
 
     @Bean
-    public DataSource dataSource()
-    {
+    public DataSource dataSource() {
         return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.HSQL)
                 .build();
     }
 
     @Bean(name = "sessionFactory")
-    public AnnotationSessionFactoryBean sessionFactory()
-    {
-        AnnotationSessionFactoryBean sessionFactory = new AnnotationSessionFactoryBean();
+    public LocalSessionFactoryBean sessionFactory() {
+        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan(new String[] { "com.minibank.core.domain" });
         sessionFactory.setHibernateProperties(hibernateProperties());
@@ -47,23 +43,19 @@ public class DatasourceConfig
 
     @Bean(name = "transactionManager")
     @Autowired
-    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory)
-    {
+    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(sessionFactory);
-
         return txManager;
     }
 
     @Bean
-    public PersistenceExceptionTranslationPostProcessor exceptionTranslation()
-    {
+    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
     }
-    Properties hibernateProperties()
-    {
-        return new Properties() {
-            {
+
+    Properties hibernateProperties() {
+        return new Properties() {{
                 setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
                 setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
                 setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
