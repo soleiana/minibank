@@ -51,10 +51,10 @@
         <jackson-databind.version>2.6.3</jackson-databind.version>
 
         <!-- Hibernate dependencies -->
-        <hibernate-core.version>4.3.11.Final</hibernate-core.version>
-        <hibernate-entitymanager.version>4.3.11.Final</hibernate-entitymanager.version>
-        <hibernate-validator.version>4.3.2.Final</hibernate-validator.version>
-        <hibernate-envers.version>4.3.11.Final</hibernate-envers.version>
+        <hibernate-core.version>5.1.0.Final</hibernate-core.version>
+        <hibernate-entitymanager.version>5.1.0.Final</hibernate-entitymanager.version>
+        <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+        <hibernate-envers.version>5.1.0.Final</hibernate-envers.version>
 
         <!-- Logging dependencies -->
         <slf4j-api.version>1.7.13</slf4j-api.version>
