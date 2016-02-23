@@ -17,29 +17,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/customers")
-public class LoanInfoController
-{
+public class LoanInfoController {
+
     @Autowired
     private QueryExecutor queryExecutor;
 
     @Autowired
     private AllLoansRestFactory allLoansRestFactory;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}/loans",
-                    produces = "application/json")
-    public ResponseEntity<AllLoans> requestAllLoans(@PathVariable Integer id)
-    {
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}/loans", produces = "application/json")
+    public ResponseEntity<AllLoans> requestAllLoans(@PathVariable Integer id) {
         GetAllLoansQuery getAllLoansQuery = new GetAllLoansQuery(id);
 
         GetAllLoansResponse getAllLoansResponse = queryExecutor.execute(getAllLoansQuery);
         AllLoans allLoans = null;
-        if(getAllLoansResponse.isEntityFound())
-        {
+        if(getAllLoansResponse.isEntityFound()) {
             AllLoansDetails allLoansDetails = getAllLoansResponse.getAllLoansDetails();
             allLoans = allLoansRestFactory.getNewAllLoans(allLoansDetails);
             return new ResponseEntity<>(allLoans, HttpStatus.OK);
-        }
-        else
+        } else {
             return new ResponseEntity<>(allLoans, HttpStatus.NOT_FOUND);
+        }
     }
 }

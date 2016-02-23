@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/loans")
-public class LoanController
-{
+public class LoanController {
+
     @Autowired
     private LoanRequestValidator loanRequestValidator;
 
@@ -34,11 +34,10 @@ public class LoanController
 
 
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<String> createLoan(@RequestBody LoanRequest loanRequest,
-                                             HttpServletRequest httpServletRequest)
-    {
-        if (!loanRequestValidator.validate(loanRequest))
-            return new ResponseEntity<>(Message.INVALID_INPUT_FORMAT,HttpStatus.BAD_REQUEST);
+    public ResponseEntity<String> createLoan(@RequestBody LoanRequest loanRequest, HttpServletRequest httpServletRequest) {
+        if (!loanRequestValidator.validate(loanRequest)) {
+            return new ResponseEntity<>(Message.INVALID_INPUT_FORMAT, HttpStatus.BAD_REQUEST);
+        }
 
         String ip = httpServletRequest.getRemoteAddr();
         loanRequest.setRequestIp(ip);
@@ -48,10 +47,11 @@ public class LoanController
 
         String message = createLoanResponse.getMessage();
 
-        if(createLoanResponse.isCreated())
-           return  new ResponseEntity<>(message, HttpStatus.CREATED);
-        else
+        if(createLoanResponse.isCreated()) {
+            return new ResponseEntity<>(message, HttpStatus.CREATED);
+        } else {
             return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

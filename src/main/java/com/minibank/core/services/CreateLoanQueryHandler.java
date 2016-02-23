@@ -18,25 +18,28 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class CreateLoanQueryHandler
-        implements QueryHandler<CreateLoanQuery, CreateLoanResponse>
- {
+public class CreateLoanQueryHandler implements QueryHandler<CreateLoanQuery, CreateLoanResponse> {
+
     @Autowired
     private LoanRequestFactory loanRequestFactory;
+
     @Autowired
     private LoanFactory loanFactory;
+
     @Autowired
     private CreditExpert creditExpert;
+
     @Autowired
     private InputConstraintChecker inputConstraintChecker;
+
     @Autowired
     private LoanRequestRepository loanRequestRepository;
+
     @Autowired
     private LoanRepository loanRepository;
 
     @Override
-    public CreateLoanResponse execute(CreateLoanQuery query)
-    {
+    public CreateLoanResponse execute(CreateLoanQuery query) {
         //Precondition: customer already exists in database
 
         Boolean isLoanObtained = false;
@@ -45,25 +48,25 @@ public class CreateLoanQueryHandler
         LoanRequest loanRequest = loanRequestFactory.getNewLoanRequest(requestDetails);
         loanRequestRepository.create(loanRequest);
 
-        if((!inputConstraintChecker.checkAmountConstraint(loanRequest))||
-             creditExpert.hasRisks(loanRequest))
-                loanRequest.setStatus(LoanRequestStatus.REJECTED);
-        else
-          {
+        if((!inputConstraintChecker.checkAmountConstraint(loanRequest))|| creditExpert.hasRisks(loanRequest)) {
+            loanRequest.setStatus(LoanRequestStatus.REJECTED);
+        }
+        else {
              loanRequest.setStatus(LoanRequestStatus.APPROVED);
              Loan loan = loanFactory.getNewLoan(loanRequest);
              loanRepository.create(loan);
              isLoanObtained = true;
-           }
-        if (isLoanObtained)
+        }
+        if (isLoanObtained) {
             return new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);
-        else
+        }
+        else {
             return new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
+        }
     }
 
     @Override
-    public Class getQueryType()
-    {
+    public Class getQueryType() {
         return CreateLoanQuery.class;
     }
 }

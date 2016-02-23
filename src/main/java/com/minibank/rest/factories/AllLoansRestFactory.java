@@ -11,10 +11,9 @@ import java.util.List;
 
 
 @Component
-public class AllLoansRestFactory
-{
-    private Loan convert(com.minibank.core.communications.loans.domain.Loan fromLoan)
-    {
+public class AllLoansRestFactory {
+
+    private Loan convert(com.minibank.core.communications.loans.domain.Loan fromLoan) {
         Loan toLoan = new Loan();
         toLoan.setId(fromLoan.getId());
         toLoan.setCurrInterestRate(fromLoan.getCurrInterestRate());
@@ -25,9 +24,7 @@ public class AllLoansRestFactory
         return toLoan;
     }
 
-    private LoanExtension convert(com.minibank.core.communications.loans.domain.LoanExtension
-                                          fromLoanExtension)
-    {
+    private LoanExtension convert(com.minibank.core.communications.loans.domain.LoanExtension fromLoanExtension) {
         LoanExtension toLoanExtension = new LoanExtension();
         toLoanExtension.setLoanId(fromLoanExtension.getLoanId());
         toLoanExtension.setInterestRate(fromLoanExtension.getInterestRate());
@@ -35,25 +32,21 @@ public class AllLoansRestFactory
         toLoanExtension.setStartDate(fromLoanExtension.getStartDate());
         toLoanExtension.setEndDate(fromLoanExtension.getEndDate());
         toLoanExtension.setSubmissionDate(fromLoanExtension.getSubmissionDate());
-        return  toLoanExtension;
+        return toLoanExtension;
     }
 
-    public  AllLoans getNewAllLoans(AllLoansDetails allLoansDetails)
-    {
+    public  AllLoans getNewAllLoans(AllLoansDetails allLoansDetails) {
         AllLoans allLoans = new AllLoans();
         allLoans.setCustomerId(allLoansDetails.getCustomerId());
         allLoans.setName(allLoansDetails.getName());
         allLoans.setSurname(allLoansDetails.getSurname());
 
         List<Loan> toLoans = new ArrayList<>();
-        for(com.minibank.core.communications.loans.domain.Loan fromLoan: allLoansDetails.getLoans())
-        {
+        for(com.minibank.core.communications.loans.domain.Loan fromLoan: allLoansDetails.getLoans()) {
             Loan toLoan = convert(fromLoan);
             List<LoanExtension> toLoanExtensions = new ArrayList<>();
 
-            for(com.minibank.core.communications.loans.domain.LoanExtension fromLoanExtension:
-                    fromLoan.getLoanExtensions())
-            {
+            for(com.minibank.core.communications.loans.domain.LoanExtension fromLoanExtension: fromLoan.getLoanExtensions()) {
 
                 LoanExtension toLoanExtension = convert(fromLoanExtension);
                 toLoanExtensions.add(toLoanExtension);
@@ -63,7 +56,6 @@ public class AllLoansRestFactory
             toLoans.add(toLoan);
         }
         allLoans.setLoans(toLoans);
-
-        return  allLoans;
+        return allLoans;
     }
 }

@@ -1,12 +1,11 @@
 package com.minibank.core.communications;
 
 
-public class CreateEntityResponse
-{
+public class CreateEntityResponse {
+
     protected boolean created = true;
 
-    public boolean isCreated()
-    {
+    public boolean isCreated() {
         return created;
     }
 }

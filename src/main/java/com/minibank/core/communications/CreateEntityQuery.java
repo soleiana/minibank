@@ -1,5 +1,4 @@
 package com.minibank.core.communications;
 
 
-public class CreateEntityQuery
-{}
+public class CreateEntityQuery {}

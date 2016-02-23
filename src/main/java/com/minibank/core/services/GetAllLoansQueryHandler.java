@@ -12,34 +12,32 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class GetAllLoansQueryHandler
-        implements QueryHandler<GetAllLoansQuery, GetAllLoansResponse>
-{
+public class GetAllLoansQueryHandler implements QueryHandler<GetAllLoansQuery, GetAllLoansResponse> {
 
     @Autowired
     private AllLoansCoreFactory allLoansCoreFactory;
 
-        @Autowired
-        private AllLoansDetailsFactory allLoansDetailsFactory;
+    @Autowired
+    private AllLoansDetailsFactory allLoansDetailsFactory;
 
     @Override
-    public GetAllLoansResponse execute(GetAllLoansQuery query)
-    {
+    public GetAllLoansResponse execute(GetAllLoansQuery query) {
         AllLoans allLoans;
         Integer customerId = query.getCustomerId();
 
         allLoans = allLoansCoreFactory.getNewAllLoans(customerId);
         AllLoansDetails allLoansDetails = allLoansDetailsFactory.getNewAllLoansDetails(allLoans);
 
-        if ((allLoansDetails != null)&&(allLoansDetails.getLoans().size() == 0))
-            return new GetAllLoansResponse(allLoansDetails,false);
-        else
-            return new GetAllLoansResponse(allLoansDetails,true);
+        if ((allLoansDetails != null)&&(allLoansDetails.getLoans().size() == 0)) {
+            return new GetAllLoansResponse(allLoansDetails, false);
+        }
+        else {
+            return new GetAllLoansResponse(allLoansDetails, true);
+        }
     }
 
     @Override
-    public Class getQueryType()
-    {
+    public Class getQueryType() {
         return GetAllLoansQuery.class;
     }
 }

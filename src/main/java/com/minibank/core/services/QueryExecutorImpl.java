@@ -14,8 +14,7 @@ import java.util.Map;
 
 
 @Component
-public class QueryExecutorImpl implements QueryExecutor
-{
+public class QueryExecutorImpl implements QueryExecutor {
     private final static String UNKNOWN_DOMAIN_QUERY = "Unknown domain query!";
 
     @Autowired
@@ -24,27 +23,22 @@ public class QueryExecutorImpl implements QueryExecutor
     private Map<Class, QueryHandler> serviceMap;
 
     @PostConstruct
-    public void init()
-    {
+    public void init() {
         serviceMap = new HashMap<>();
-        if(services != null && !services.isEmpty())
-            for(QueryHandler service: services)
-            {
+        if(services != null && !services.isEmpty()) {
+            for (QueryHandler service : services) {
                 Class queryClass = service.getQueryType();
                 serviceMap.put(queryClass, service);
             }
+        }
     }
 
     @Transactional
-    public <T extends DomainResponse> T execute(DomainQuery<T> query)
-    {
+    public <T extends DomainResponse> T execute(DomainQuery<T> query) {
         QueryHandler service = serviceMap.get(query.getClass());
-        if (service != null)
-        {
+        if (service != null) {
             return (T)service.execute(query);
-        }
-        else
-        {
+        } else {
             throw new IllegalArgumentException(UNKNOWN_DOMAIN_QUERY + query.toString());
         }
     }

@@ -14,21 +14,22 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class CreateLoanExtensionQueryHandler
-        implements QueryHandler<CreateLoanExtensionQuery, CreateLoanExtensionResponse>
-{
+public class CreateLoanExtensionQueryHandler implements QueryHandler<CreateLoanExtensionQuery, CreateLoanExtensionResponse> {
+
     @Autowired
     private LoanFactory loanFactory;
+
     @Autowired
     private LoanExtensionFactory loanExtensionFactory;
+
     @Autowired
     private LoanRepository loanRepository;
+
     @Autowired
     private LoanExtensionRepository loanExtensionRepository;
 
     @Override
-    public CreateLoanExtensionResponse execute(CreateLoanExtensionQuery query)
-    {
+    public CreateLoanExtensionResponse execute(CreateLoanExtensionQuery query) {
         //Precondition: customer already exists in database
         //Precondition: loan, subject to extension, exists in database
 
@@ -42,8 +43,7 @@ public class CreateLoanExtensionQueryHandler
     }
 
     @Override
-    public Class getQueryType()
-    {
+    public Class getQueryType() {
         return CreateLoanExtensionQuery.class;
     }
 }

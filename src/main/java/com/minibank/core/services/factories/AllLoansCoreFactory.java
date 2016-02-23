@@ -14,28 +14,27 @@ import java.util.List;
 
 
 @Component
-public class AllLoansCoreFactory
+public class AllLoansCoreFactory {
 
-{
     @Autowired
     CustomerRepository customerRepository;
+
     @Autowired
     LoanRepository loanRepository;
+
     @Autowired
     LoanExtensionRepository loanExtensionRepository;
 
-    public AllLoans getNewAllLoans(Integer customerId)
-    {
+    public AllLoans getNewAllLoans(Integer customerId) {
         AllLoans allLoans = new AllLoans();
         Customer customer = customerRepository.getById(customerId);
         allLoans.setCustomer(customer);
         List<Loan> loans = loanRepository.getByCustomer(customer);
-        for(Loan loan: loans)
-            {
+        for(Loan loan: loans) {
                 List<LoanExtension> loanExtensions = loanExtensionRepository.getByLoan(loan);
                 loan.setLoanExtensions(loanExtensions);
-            }
+        }
         allLoans.setLoans(loans);
-        return  allLoans;
+        return allLoans;
     }
 }

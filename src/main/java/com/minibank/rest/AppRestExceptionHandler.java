@@ -11,17 +11,15 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class AppRestExceptionHandler  extends ResponseEntityExceptionHandler
-{
+public class AppRestExceptionHandler  extends ResponseEntityExceptionHandler {
+
     private static final Logger log = LoggerFactory.getLogger(AppRestExceptionHandler.class);
 
     @ExceptionHandler({Exception.class})
-    protected ResponseEntity<Object> handleInvalidRequest(RuntimeException e, WebRequest request)
-    {
+    protected ResponseEntity<Object> handleInvalidRequest(RuntimeException e, WebRequest request) {
         log.error("Exception in rest service invocation!", e);
 
         String bodyOfResponse = "Internal server error";
         return handleExceptionInternal(e, bodyOfResponse, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
-
     }
 }

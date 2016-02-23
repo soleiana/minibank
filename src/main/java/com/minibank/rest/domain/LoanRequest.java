@@ -3,43 +3,36 @@ package com.minibank.rest.domain;
 import java.math.BigDecimal;
 
 
-public class LoanRequest
-{
+public class LoanRequest {
+
     private Integer customerId;
     private String requestIp;
     private Integer term;
     private BigDecimal amount;
 
-    public LoanRequest()
-    {}
+    public LoanRequest() {}
 
-    public Integer getCustomerId()
-    {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public String getRequestIp()
-    {
+    public String getRequestIp() {
         return requestIp;
     }
 
-    public Integer getTerm()
-    {
+    public Integer getTerm() {
         return term;
     }
 
-    public BigDecimal getAmount()
-    {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setRequestIp(String requestIp)
-    {
+    public void setRequestIp(String requestIp) {
         this.requestIp = requestIp;
     }
 
-    public void setAmount(BigDecimal amount)
-    {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 }

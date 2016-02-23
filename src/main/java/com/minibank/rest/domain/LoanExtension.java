@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 
-public class LoanExtension
-{
+public class LoanExtension {
+
     private Integer loanId;
     private BigDecimal interestRate;
     private BigDecimal interest;
@@ -13,8 +13,7 @@ public class LoanExtension
     private Date endDate;
     private Date submissionDate;
 
-    public LoanExtension()
-    {}
+    public LoanExtension() {}
 
     public Integer getLoanId() {
         return loanId;
@@ -40,8 +39,7 @@ public class LoanExtension
         return submissionDate;
     }
 
-    public void setLoanId(Integer loanId)
-    {
+    public void setLoanId(Integer loanId) {
         this.loanId = loanId;
     }
 

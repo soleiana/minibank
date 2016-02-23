@@ -15,17 +15,18 @@ import java.sql.Date;
 
 
 @Component
-public class LoanFactory
-{
+public class LoanFactory {
+
     @Autowired
     private CreditCalculator creditCalculator;
+
     @Autowired
     private BankParamsRepository bankParamsRepository;
+
     @Autowired
     private LoanRepository loanRepository;
 
-    public Loan getNewLoan(LoanRequest loanRequest)
-    {
+    public Loan getNewLoan(LoanRequest loanRequest) {
         Loan loan = new Loan();
         loan.setLoanRequest(loanRequest);
         loan.setCustomer(loanRequest.getCustomer());
@@ -41,13 +42,12 @@ public class LoanFactory
         return loan;
     }
 
-    public Loan getExtendedLoan(LoanExtension loanExtension)
-    {
+    public Loan getExtendedLoan(LoanExtension loanExtension) {
         Integer id = loanExtension.getLoan().getId();
         Loan loan = loanRepository.getById(id);
         loan.setCurrInterest(loanExtension.getInterestRate());
         loan.setCurrInterest(loanExtension.getInterest());
         loan.setEndDate(loanExtension.getEndDate());
-        return  loan;
+        return loan;
     }
 }

@@ -15,35 +15,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/loans/{id}/extensions")
-public class LoanExtensionController
-{
+public class LoanExtensionController {
+
     @Autowired
     private QueryExecutor queryExecutor;
 
-    private boolean validate(Integer loanId)
-    {
-        if (loanId == null)
-            return  false;
-        if (loanId <= 0)
-            return  false;
+    private boolean validate(Integer loanId) {
+        if (loanId == null) {
+            return false;
+        } else if (loanId <= 0) {
+            return false;
+        }
         return  true;
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<String> createLoanExtension(@PathVariable Integer id)
-    {
-        if (!validate(id))
-            return new ResponseEntity<>(Message.INVALID_INPUT_FORMAT,
-                    HttpStatus.BAD_REQUEST);
+    public ResponseEntity<String> createLoanExtension(@PathVariable Integer id) {
+        if (!validate(id)) {
+            return new ResponseEntity<>(Message.INVALID_INPUT_FORMAT, HttpStatus.BAD_REQUEST);
+        }
 
-        CreateLoanExtensionQuery createLoanExtensionQuery =
-                new CreateLoanExtensionQuery(id);
+        CreateLoanExtensionQuery createLoanExtensionQuery = new CreateLoanExtensionQuery(id);
 
-        CreateLoanExtensionResponse createLoanExtensionResponse =
-                queryExecutor.execute(createLoanExtensionQuery);
+        CreateLoanExtensionResponse createLoanExtensionResponse = queryExecutor.execute(createLoanExtensionQuery);
         String message = createLoanExtensionResponse.getMessage();
-
         return new ResponseEntity<>(message, HttpStatus.CREATED);
-
     }
 }

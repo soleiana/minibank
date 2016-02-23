@@ -14,30 +14,26 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.minibank"})
-public class Application
-{
-   public static void main(String[] args)
-    {
+public class Application {
+
+   public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
-    }
+   }
 
     @Bean
-    public DispatcherServlet dispatcherServlet()
-    {
+    public DispatcherServlet dispatcherServlet() {
         return new DispatcherServlet();
     }
 
     @Bean
-    public ServletRegistrationBean dispatcherRegistration(DispatcherServlet dispatcherServlet)
-    {
+    public ServletRegistrationBean dispatcherRegistration(DispatcherServlet dispatcherServlet) {
         ServletRegistrationBean registration = new ServletRegistrationBean(dispatcherServlet);
         registration.addUrlMappings("/rest/*");
         return registration;
     }
 
     @Bean
-    public EmbeddedServletContainerFactory servletContainer()
-    {
+    public EmbeddedServletContainerFactory servletContainer() {
         TomcatEmbeddedServletContainerFactory factory = new TomcatEmbeddedServletContainerFactory();
         return factory;
     }

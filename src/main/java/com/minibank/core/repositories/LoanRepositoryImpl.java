@@ -12,46 +12,40 @@ import java.util.List;
 
 
 @Component
-public class LoanRepositoryImpl extends SessionProvider
-    implements LoanRepository
-{
+public class LoanRepositoryImpl extends SessionProvider implements LoanRepository {
+
     @Override
-    public void create(Loan loan)
-    {
+    public void create(Loan loan) {
         getCurrentSession().saveOrUpdate(loan);
     }
 
     @Override
-    public void update(Loan loan)
-    {
+    public void update(Loan loan) {
         getCurrentSession().saveOrUpdate(loan);
     }
 
     @Override
-    public Loan getById(Integer id)
-    {
+    public Loan getById(Integer id) {
         return (Loan) getCurrentSession().get(Loan.class, id);
     }
 
     @Override
-    public List<Loan> getByCustomer(Customer customer)
-    {
+    public List<Loan> getByCustomer(Customer customer) {
         Session session = getCurrentSession();
         Criteria criteria = session.createCriteria(Loan.class);
         criteria.add(Restrictions.eq("customer", customer));
-        return  (List<Loan>)criteria.list();
-
+        return (List<Loan>)criteria.list();
     }
 
     @Override
-    public Loan getLast()
-    {
+    public Loan getLast() {
         Session session = getCurrentSession();
         Criteria criteria = session.createCriteria(Loan.class);
         criteria.addOrder(Order.desc("id"));
-        if(criteria.list().size() != 0)
-            return  (Loan)criteria.list().get(0);
-        else
+        if(criteria.list().size() != 0) {
+            return (Loan) criteria.list().get(0);
+        } else {
             return null;
+        }
     }
 }

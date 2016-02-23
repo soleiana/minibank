@@ -4,15 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AllLoans
-{
+public class AllLoans {
+
     private Integer customerId;
     private String name;
     private String surname;
     private List<Loan> loans = new ArrayList<>();
 
-    public Integer getCustomerId()
-    {
+    public Integer getCustomerId() {
         return customerId;
     }
 
@@ -20,8 +19,7 @@ public class AllLoans
         this.customerId = customerId;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
@@ -29,8 +27,7 @@ public class AllLoans
         this.name = name;
     }
 
-    public String getSurname()
-    {
+    public String getSurname() {
         return surname;
     }
 

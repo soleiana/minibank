@@ -7,8 +7,8 @@ import java.sql.Date;
 
 @Entity
 @Table(name="LOAN_EXTENSION")
-public class LoanExtension
-{
+public class LoanExtension {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID", nullable = false)
@@ -33,21 +33,17 @@ public class LoanExtension
     @Column(name="SUBMISSION_DATE", nullable = false)
     private Date submissionDate;
 
-    public LoanExtension()
-    {}
+    public LoanExtension() {}
 
-    public Integer getId()
-    {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id)
-    {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Loan getLoan()
-    {
+    public Loan getLoan() {
         return loan;
     }
 
@@ -55,8 +51,7 @@ public class LoanExtension
         this.loan = loan;
     }
 
-    public Date getStartDate()
-    {
+    public Date getStartDate() {
         return startDate;
     }
 
@@ -64,49 +59,40 @@ public class LoanExtension
         this.startDate = startDate;
     }
 
-    public Date getEndDate()
-    {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate)
-    {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
-    public BigDecimal getInterestRate()
-    {
+    public BigDecimal getInterestRate() {
         return interestRate;
     }
 
-    public void setInterestRate(BigDecimal interestRate)
-    {
+    public void setInterestRate(BigDecimal interestRate) {
         this.interestRate = interestRate;
     }
 
-    public BigDecimal getInterest()
-    {
+    public BigDecimal getInterest() {
         return interest;
     }
 
-    public void setInterest(BigDecimal interest)
-    {
+    public void setInterest(BigDecimal interest) {
         this.interest = interest;
     }
 
-    public Date getSubmissionDate()
-    {
+    public Date getSubmissionDate() {
         return submissionDate;
     }
 
-    public void setSubmissionDate(Date submissionDate)
-    {
+    public void setSubmissionDate(Date submissionDate) {
         this.submissionDate = submissionDate;
     }
 
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -125,8 +111,7 @@ public class LoanExtension
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (loan != null ? loan.hashCode() : 0);
         result = 31 * result + (startDate != null ? startDate.hashCode() : 0);

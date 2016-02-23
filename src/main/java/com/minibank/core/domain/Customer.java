@@ -8,8 +8,8 @@ import java.util.List;
 
 @Entity
 @Table(name="CUSTOMER")
-public class Customer
-{
+public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID", nullable = false)
@@ -27,57 +27,46 @@ public class Customer
     @Column(name="SURNAME", nullable = false)
     private String surname;
 
-    public Customer()
-    {}
+    public Customer() {}
 
-    public Customer(Integer id)
-    {
+    public Customer(Integer id) {
         this.id = id;
     }
 
-    public Integer getId()
-    {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id)
-    {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getSurname()
-    {
+    public String getSurname() {
         return surname;
     }
 
-    public void setSurname(String surname)
-    {
+    public void setSurname(String surname) {
         this.surname = surname;
     }
 
-    public List<Loan> getLoans()
-    {
+    public List<Loan> getLoans() {
         return loans;
     }
 
-    public void setLoans(List<Loan> loans)
-    {
+    public void setLoans(List<Loan> loans) {
         this.loans = loans;
     }
 
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -87,13 +76,11 @@ public class Customer
         if (loans != null ? !loans.equals(customer.loans) : customer.loans != null) return false;
         if (name != null ? !name.equals(customer.name) : customer.name != null) return false;
         if (surname != null ? !surname.equals(customer.surname) : customer.surname != null) return false;
-
         return true;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (loans != null ? loans.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);

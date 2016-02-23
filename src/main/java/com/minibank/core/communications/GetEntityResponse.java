@@ -1,12 +1,11 @@
 package com.minibank.core.communications;
 
 
-public class GetEntityResponse
-{
+public class GetEntityResponse {
+
     protected boolean entityFound = true;
 
-    public boolean isEntityFound()
-    {
+    public boolean isEntityFound() {
         return entityFound;
     }
 }

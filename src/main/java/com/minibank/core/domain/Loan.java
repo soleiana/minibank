@@ -10,8 +10,8 @@ import java.util.List;
 
 @Entity
 @Table(name="LOAN")
-public class Loan
-{
+public class Loan {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID", nullable = false)
@@ -43,92 +43,74 @@ public class Loan
     @Column(name="END_DATE", nullable = false)
     private Date endDate;
 
-    public Loan()
-    {}
+    public Loan() {}
 
-    public Integer getId()
-    {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id)
-    {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public LoanRequest getLoanRequest()
-    {
+    public LoanRequest getLoanRequest() {
         return loanRequest;
     }
 
-    public void setLoanRequest(LoanRequest loanRequest)
-    {
+    public void setLoanRequest(LoanRequest loanRequest) {
         this.loanRequest = loanRequest;
     }
 
-    public Customer getCustomer()
-    {
+    public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer)
-    {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
-    public BigDecimal getCurrInterestRate()
-    {
+    public BigDecimal getCurrInterestRate() {
         return currInterestRate;
     }
 
-    public void setCurrInterestRate(BigDecimal currInterestRate)
-    {
+    public void setCurrInterestRate(BigDecimal currInterestRate) {
         this.currInterestRate = currInterestRate;
     }
 
-    public BigDecimal getCurrInterest()
-    {
+    public BigDecimal getCurrInterest() {
         return currInterest;
     }
 
-    public void setCurrInterest(BigDecimal currInterest)
-    {
+    public void setCurrInterest(BigDecimal currInterest) {
         this.currInterest = currInterest;
     }
 
-    public Date getStartDate()
-    {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate)
-    {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate()
-    {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate)
-    {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
-    public List<LoanExtension> getLoanExtensions()
-    {
+    public List<LoanExtension> getLoanExtensions() {
         return loanExtensions;
     }
 
-    public void setLoanExtensions(List<LoanExtension> loanExtensions)
-    {
+    public void setLoanExtensions(List<LoanExtension> loanExtensions) {
         this.loanExtensions = loanExtensions;
     }
 
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -149,8 +131,7 @@ public class Loan
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (loanRequest != null ? loanRequest.hashCode() : 0);
         result = 31 * result + (customer != null ? customer.hashCode() : 0);

@@ -7,8 +7,8 @@ import java.sql.Time;
 
 @Entity
 @Table(name="BANK_PARAMS")
-public class BankParams
-{
+public class BankParams {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID", nullable = false)
@@ -35,92 +35,74 @@ public class BankParams
     @Column(name="LOAN_EXTENSION_TERM", nullable = false)
     private Short loanExtensionTerm;
 
-    public BankParams()
-    {}
+    public BankParams() {}
 
-    public Integer getId()
-    {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id)
-    {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public BigDecimal getMaxLoanAmount()
-    {
+    public BigDecimal getMaxLoanAmount() {
         return maxLoanAmount;
     }
 
-    public void setMaxLoanAmount(BigDecimal maxLoanAmount)
-    {
+    public void setMaxLoanAmount(BigDecimal maxLoanAmount) {
         this.maxLoanAmount = maxLoanAmount;
     }
 
-    public BigDecimal getBaseInterestRate()
-    {
+    public BigDecimal getBaseInterestRate() {
         return baseInterestRate;
     }
 
-    public void setBaseInterestRate(BigDecimal baseInterestRate)
-    {
+    public void setBaseInterestRate(BigDecimal baseInterestRate) {
         this.baseInterestRate = baseInterestRate;
     }
 
-    public BigDecimal getInterestRateFactor()
-    {
+    public BigDecimal getInterestRateFactor() {
         return interestRateFactor;
     }
 
-    public void setInterestRateFactor(BigDecimal interestRateFactor)
-    {
+    public void setInterestRateFactor(BigDecimal interestRateFactor) {
         this.interestRateFactor = interestRateFactor;
     }
 
-    public void setMaxLoanAttempts(Byte maxLoanAttempts)
-    {
+    public void setMaxLoanAttempts(Byte maxLoanAttempts) {
         this.maxLoanAttempts = maxLoanAttempts;
     }
 
-    public Byte getMaxLoanAttempts()
-    {
+    public Byte getMaxLoanAttempts() {
         return maxLoanAttempts;
     }
 
-    public Time getRiskTimeStart()
-    {
+    public Time getRiskTimeStart() {
         return riskTimeStart;
     }
 
-    public void setRiskTimeStart(Time riskTimeStart)
-    {
+    public void setRiskTimeStart(Time riskTimeStart) {
         this.riskTimeStart = riskTimeStart;
     }
 
-    public Time getRiskTimeEnd()
-    {
+    public Time getRiskTimeEnd() {
         return riskTimeEnd;
     }
 
-    public void setRiskTimeEnd(Time riskTimeEnd)
-    {
+    public void setRiskTimeEnd(Time riskTimeEnd) {
         this.riskTimeEnd = riskTimeEnd;
     }
 
-    public Short getLoanExtensionTerm()
-    {
+    public Short getLoanExtensionTerm() {
         return loanExtensionTerm;
     }
 
-    public void setLoanExtensionTerm(Short loanExtensionTerm)
-    {
+    public void setLoanExtensionTerm(Short loanExtensionTerm) {
         this.loanExtensionTerm = loanExtensionTerm;
     }
 
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -145,8 +127,7 @@ public class BankParams
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (maxLoanAmount != null ? maxLoanAmount.hashCode() : 0);
         result = 31 * result + (baseInterestRate != null ? baseInterestRate.hashCode() : 0);

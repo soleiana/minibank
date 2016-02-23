@@ -8,14 +8,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SessionProvider
-{
+public class SessionProvider {
+
     @Autowired
     @Qualifier("sessionFactory")
     private SessionFactory sessionFactory;
 
-    protected Session getCurrentSession()
-    {
+    protected Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
 }

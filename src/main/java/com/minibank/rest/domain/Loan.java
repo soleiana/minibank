@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Loan
-{
+public class Loan {
+
     private Integer id;
     private BigDecimal currInterestRate;
     private BigDecimal currInterest;
@@ -16,8 +16,7 @@ public class Loan
     private Date endDate;
     private List<LoanExtension> loanExtensions = new ArrayList<>();
 
-    public Loan()
-    {}
+    public Loan() {}
 
     public BigDecimal getCurrInterestRate() {
         return currInterestRate;

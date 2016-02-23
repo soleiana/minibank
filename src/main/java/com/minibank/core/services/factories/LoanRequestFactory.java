@@ -13,13 +13,13 @@ import java.util.Date;
 
 
 @Component
-public class LoanRequestFactory
-{
+public class LoanRequestFactory {
+
     @Autowired
     CustomerRepository customerRepository;
 
-    public LoanRequest getNewLoanRequest(LoanRequestDetails loanRequestDetails)
-    {
+    public LoanRequest getNewLoanRequest(LoanRequestDetails loanRequestDetails) {
+
         Integer id = loanRequestDetails.getCustomerId();
         Customer customer = customerRepository.getById(id);
 
@@ -38,7 +38,6 @@ public class LoanRequestFactory
 
         loanRequest.setSubmissionDate(submissionDate);
         loanRequest.setSubmissionTime(submissionTime);
-
         return loanRequest;
     }
 }

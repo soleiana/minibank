@@ -1,5 +1,4 @@
 package com.minibank.core.communications;
 
 
-public interface DomainResponse
-{}
+public interface DomainResponse {}

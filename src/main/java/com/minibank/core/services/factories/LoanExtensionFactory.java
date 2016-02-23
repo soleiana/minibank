@@ -13,16 +13,16 @@ import java.util.Date;
 
 
 @Component
-public class LoanExtensionFactory
-{
+public class LoanExtensionFactory {
+
     @Autowired
     private CreditCalculator creditCalculator;
+
     @Autowired
     private LoanRepository loanRepository;
 
 
-    public LoanExtension getNewLoanExtension(Integer loanId)
-    {
+    public LoanExtension getNewLoanExtension(Integer loanId) {
         LoanExtension loanExtension = new LoanExtension();
 
         Loan loan = loanRepository.getById(loanId);
@@ -41,7 +41,6 @@ public class LoanExtensionFactory
         loanExtension.setInterestRate(interestRate);
         BigDecimal interest = creditCalculator.getInterest(loan);
         loanExtension.setInterest(interest);
-
-        return  loanExtension;
+        return loanExtension;
     }
 }

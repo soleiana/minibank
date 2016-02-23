@@ -12,18 +12,14 @@ import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Ann on 13/09/14.
- */
+
 @Component
-public class RiskConstraintChecker extends ConstraintChecker
-{
+public class RiskConstraintChecker extends ConstraintChecker {
 
     @Autowired
     private LoanRequestRepository loanRequestRepository;
 
-    private boolean isBetween(Time start, Time end, Time timeToCheck)
-    {
+    private boolean isBetween(Time start, Time end, Time timeToCheck) {
         if ((timeToCheck.compareTo(start) == 1)&&(end.compareTo(timeToCheck) == 1))
             return true;
 
@@ -31,8 +27,7 @@ public class RiskConstraintChecker extends ConstraintChecker
             return false;
     }
 
-    public boolean checkMaxRequestsPerIP(LoanRequest loanRequest)
-    {
+    public boolean checkMaxRequestsPerIP(LoanRequest loanRequest) {
         BankParams bankParams = getBankParams();
         Byte maxLoanAttempts = bankParams.getMaxLoanAttempts();
 
@@ -54,8 +49,7 @@ public class RiskConstraintChecker extends ConstraintChecker
             return false;
     }
 
-    public boolean checkTimeConstraint(LoanRequest loanRequest)
-    {
+    public boolean checkTimeConstraint(LoanRequest loanRequest) {
         BankParams bankParams = getBankParams();
         Time riskTimeStart = bankParams.getRiskTimeStart();
         Time riskTimeEnd = bankParams.getRiskTimeEnd();
@@ -80,8 +74,7 @@ public class RiskConstraintChecker extends ConstraintChecker
 
     }
 
-    public boolean isMaxAmount(LoanRequest loanRequest)
-    {
+    public boolean isMaxAmount(LoanRequest loanRequest) {
         BankParams bankParams = getBankParams();
         BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
         BigDecimal reqAmount = loanRequest.getAmount();
