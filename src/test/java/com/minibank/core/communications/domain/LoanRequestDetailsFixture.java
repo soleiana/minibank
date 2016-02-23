@@ -3,9 +3,7 @@ package com.minibank.core.communications.domain;
 import com.minibank.core.communications.loans.domain.LoanRequestDetails;
 import java.math.BigDecimal;
 
-/**
- * Created by Ann on 14/09/14.
- */
+
 public class LoanRequestDetailsFixture
 {
     private static final String REQUEST_IP = "127.0.0.1";

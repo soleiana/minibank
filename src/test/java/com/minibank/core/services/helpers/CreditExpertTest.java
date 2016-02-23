@@ -15,9 +15,7 @@ import java.sql.Time;
 import java.util.Date;
 import static junit.framework.TestCase.assertTrue;
 
-/**
- * Created by Ann on 13/09/14.
- */
+
 public class CreditExpertTest extends SpringContextTest
 {
     @Autowired

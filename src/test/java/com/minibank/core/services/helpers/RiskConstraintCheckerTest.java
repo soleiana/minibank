@@ -17,9 +17,7 @@ import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.Date;
 
-/**
- * Created by Ann on 13/09/14.
- */
+
 public class RiskConstraintCheckerTest extends SpringContextTest
 {
     @Autowired

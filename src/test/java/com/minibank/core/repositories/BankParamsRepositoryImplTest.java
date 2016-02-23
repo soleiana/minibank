@@ -12,9 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
-/**
- * Created by Ann on 09/09/14.
- */
+
 public class BankParamsRepositoryImplTest extends SpringContextTest
 {
     @Autowired

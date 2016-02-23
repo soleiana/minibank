@@ -3,9 +3,7 @@ package com.minibank.core.domain;
 import java.math.BigDecimal;
 import  java.sql.Time;
 
-/**
- * Created by Ann on 10/09/14.
- */
+
 public class BankParamsFixture
 {
     private static final BigDecimal STANDARD_MAX_LOAN_AMOUNT = new BigDecimal("4000.00");

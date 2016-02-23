@@ -7,9 +7,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import static junit.framework.TestCase.assertNotNull;
 
-/**
- * Created by Ann on 08/09/14.
- */
+
 public class RestConfigTest
 {
     @Test

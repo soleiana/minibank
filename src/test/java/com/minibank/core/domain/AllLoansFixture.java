@@ -3,9 +3,7 @@ package com.minibank.core.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ann on 02/10/14.
- */
+
 public class AllLoansFixture
 {
     public static AllLoans standardAllLoans()

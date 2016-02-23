@@ -5,9 +5,7 @@ import com.minibank.core.communications.loans.domain.LoanExtension;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-/**
- * Created by Ann on 02/10/14.
- */
+
 public class LoanExtensionFixture
 {
     private static final Date START_DATE = Date.valueOf("2014-09-30");

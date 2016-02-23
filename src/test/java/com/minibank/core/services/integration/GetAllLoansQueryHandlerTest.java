@@ -15,9 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static junit.framework.TestCase.assertEquals;
 
-/**
- * Created by Ann on 02/10/14.
- */
+
 public class GetAllLoansQueryHandlerTest extends SpringContextTest
 {
     @Autowired

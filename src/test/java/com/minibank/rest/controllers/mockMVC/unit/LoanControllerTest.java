@@ -26,9 +26,7 @@ import static org.mockito.Mockito.*;
 import static com.minibank.rest.domain.JsonDataFixture.*;
 
 
-/**
- * Created by Ann on 16/09/14.
- */
+
 public class LoanControllerTest
 {
     MockMvc mockMvc;

@@ -9,9 +9,7 @@ import com.minibank.core.domain.CustomerFixture;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ann on 02/10/14.
- */
+
 public class AllLoanDetailsFixture
 {
     private static final Integer CUSTOMER_ID = 1;

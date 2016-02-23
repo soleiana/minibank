@@ -16,9 +16,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.Date;
 
-/**
- * Created by Ann on 13/09/14.
- */
+
 public class CreditCalculatorTest extends SpringContextTest
 {
     @Autowired

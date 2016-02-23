@@ -5,9 +5,7 @@ import com.minibank.core.communications.loans.domain.Loan;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-/**
- * Created by Ann on 02/10/14.
- */
+
 public class LoanFixture
 {
     private static final BigDecimal STANDARD_CURRENT_INTEREST_RATE = new BigDecimal("100.00");

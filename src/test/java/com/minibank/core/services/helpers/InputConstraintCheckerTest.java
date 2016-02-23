@@ -15,9 +15,7 @@ import java.math.BigDecimal;
 
 import static junit.framework.TestCase.assertTrue;
 
-/**
- * Created by Ann on 08/10/14.
- */
+
 public class InputConstraintCheckerTest extends SpringContextTest
 {
     @Autowired

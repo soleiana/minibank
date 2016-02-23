@@ -1,8 +1,6 @@
 package com.minibank.rest.domain;
 
-/**
- * Created by Ann on 16/09/14.
- */
+
 public class JsonDataFixture
 {
     public static String standardLoanRequestJSON()

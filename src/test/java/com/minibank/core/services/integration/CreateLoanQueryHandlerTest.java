@@ -19,9 +19,7 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertNull;
 
-/**
- * Created by Ann on 02/10/14.
- */
+
 public class CreateLoanQueryHandlerTest extends SpringContextTest
 {
     @Autowired

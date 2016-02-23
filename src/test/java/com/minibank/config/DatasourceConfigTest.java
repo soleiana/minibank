@@ -1,8 +1,5 @@
 package com.minibank.config;
 
-/**
- * Created by Ann on 07/09/14.
- */
 
 import com.minibank.core.repositories.BankParamsRepository;
 import org.junit.Test;

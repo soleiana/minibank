@@ -13,9 +13,7 @@ import static junit.framework.TestCase.assertEquals;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Created by Ann on 10/09/14.
- */
+
 public class CustomerRepositoryImplTest extends SpringContextTest
 {
     @Autowired

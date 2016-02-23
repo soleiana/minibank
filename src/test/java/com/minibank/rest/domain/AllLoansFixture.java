@@ -5,9 +5,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ann on 26/09/14.
- */
+
 public class AllLoansFixture
 {
     private static final String NAME = "James";

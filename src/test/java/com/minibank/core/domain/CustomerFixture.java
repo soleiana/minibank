@@ -1,8 +1,6 @@
 package com.minibank.core.domain;
 
-/**
- * Created by Ann on 10/09/14.
- */
+
 public class CustomerFixture
 {
     private static final String NAME = "James";

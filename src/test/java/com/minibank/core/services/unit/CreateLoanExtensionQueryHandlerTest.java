@@ -22,9 +22,7 @@ import static org.mockito.Mockito.*;
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
-/**
- * Created by Ann on 02/10/14.
- */
+
 public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest
 {
     @InjectMocks

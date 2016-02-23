@@ -4,9 +4,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 
-/**
- * Created by Ann on 10/09/14.
- */
+
 public class LoanRequestFixture
 {
     private static final Time SUBMISSION_TIME = Time.valueOf("14:00:00");

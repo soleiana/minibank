@@ -1,7 +1,5 @@
 package com.minibank;
-/**
- * Created by Ann on 07/09/14.
- */
+
 
 import com.minibank.config.RestConfig;
 import com.minibank.config.DatasourceConfig;

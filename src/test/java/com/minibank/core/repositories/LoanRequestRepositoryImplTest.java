@@ -13,9 +13,7 @@ import java.util.List;
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
-/**
- * Created by Ann on 10/09/14.
- */
+
 public class LoanRequestRepositoryImplTest extends SpringContextTest
 {
     @Autowired
