@@ -22,27 +22,7 @@ public class AllLoansFixture {
     private static final Date LOAN_EXTENSION_END_DATE = LOAN_END_DATE;
     private static final Date LOAN_EXTENSION_SUBMISSION_DATE = LOAN_EXTENSION_START_DATE;
 
-    private static  Loan standardLoan() {
-        Loan loan = new Loan();
-        loan.setId(LOAN_ID);
-        loan.setCurrInterestRate(CURR_INTEREST_RATE);
-        loan.setCurrInterest(CURR_INTEREST);
-        loan.setAmount(AMOUNT);
-        loan.setStartDate(LOAN_START_DATE);
-        loan.setEndDate(LOAN_END_DATE);
-        return  loan;
-    }
 
-    private static LoanExtension standardLoanExtension() {
-        LoanExtension loanExtension = new LoanExtension();
-        loanExtension.setLoanId(LOAN_ID);
-        loanExtension.setInterestRate(INTEREST_RATE);
-        loanExtension.setInterest(INTEREST);
-        loanExtension.setStartDate(LOAN_EXTENSION_START_DATE);
-        loanExtension.setEndDate(LOAN_EXTENSION_END_DATE);
-        loanExtension.setSubmissionDate(LOAN_EXTENSION_SUBMISSION_DATE);
-        return loanExtension;
-    }
     public static AllLoans standardAllLoans() {
         AllLoans allLoans = new AllLoans();
         allLoans.setCustomerId(CUSTOMER_ID);
@@ -58,5 +38,26 @@ public class AllLoansFixture {
         loans.add(loan);
         allLoans.setLoans(loans);
         return allLoans;
+    }
+
+    private static  Loan standardLoan() {
+        Loan loan = new Loan();
+        loan.setId(LOAN_ID);
+        loan.setCurrInterestRate(CURR_INTEREST_RATE);
+        loan.setCurrInterest(CURR_INTEREST);
+        loan.setAmount(AMOUNT);
+        loan.setStartDate(LOAN_START_DATE);
+        loan.setEndDate(LOAN_END_DATE);
+        return  loan;
+    }
+
+    private static LoanExtension standardLoanExtension() {
+        LoanExtension loanExtension = new LoanExtension();
+        loanExtension.setInterestRate(INTEREST_RATE);
+        loanExtension.setInterest(INTEREST);
+        loanExtension.setStartDate(LOAN_EXTENSION_START_DATE);
+        loanExtension.setEndDate(LOAN_EXTENSION_END_DATE);
+        loanExtension.setSubmissionDate(LOAN_EXTENSION_SUBMISSION_DATE);
+        return loanExtension;
     }
 }

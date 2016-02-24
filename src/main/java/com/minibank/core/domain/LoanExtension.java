@@ -14,10 +14,6 @@ public class LoanExtension {
     @Column(name = "ID", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "LOAN_ID", nullable = false)
-    private Loan loan;
-
     @Column(name = "START_DATE", nullable = false)
     private Date startDate;
 
@@ -41,14 +37,6 @@ public class LoanExtension {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Loan getLoan() {
-        return loan;
-    }
-
-    public void setLoan(Loan loan) {
-        this.loan = loan;
     }
 
     public Date getStartDate() {
@@ -102,7 +90,6 @@ public class LoanExtension {
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (interest != null ? !interest.equals(that.interest) : that.interest != null) return false;
         if (interestRate != null ? !interestRate.equals(that.interestRate) : that.interestRate != null) return false;
-        if (loan != null ? !loan.equals(that.loan) : that.loan != null) return false;
         if (startDate != null ? !startDate.equals(that.startDate) : that.startDate != null) return false;
         if (submissionDate != null ? !submissionDate.equals(that.submissionDate) : that.submissionDate != null)
             return false;
@@ -113,7 +100,6 @@ public class LoanExtension {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (loan != null ? loan.hashCode() : 0);
         result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
         result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
         result = 31 * result + (interestRate != null ? interestRate.hashCode() : 0);

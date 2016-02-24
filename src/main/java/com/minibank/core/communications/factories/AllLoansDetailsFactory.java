@@ -23,9 +23,7 @@ public class AllLoansDetailsFactory {
         for(com.minibank.core.domain.Loan fromLoan: allLoans.getLoans()) {
             Loan toLoan = convert(fromLoan);
             List<LoanExtension> toLoanExtensions = new ArrayList<>();
-
             for(com.minibank.core.domain.LoanExtension fromLoanExtension: fromLoan.getLoanExtensions()) {
-
                     LoanExtension toLoanExtension = convert(fromLoanExtension);
                     toLoanExtensions.add(toLoanExtension);
             }
@@ -49,7 +47,6 @@ public class AllLoansDetailsFactory {
 
     private LoanExtension convert(com.minibank.core.domain.LoanExtension fromLoanExtension) {
         LoanExtension toLoanExtension = new LoanExtension();
-        toLoanExtension.setLoanId(fromLoanExtension.getLoan().getId());
         toLoanExtension.setInterestRate(fromLoanExtension.getInterestRate());
         toLoanExtension.setInterest(fromLoanExtension.getInterest());
         toLoanExtension.setStartDate(fromLoanExtension.getStartDate());

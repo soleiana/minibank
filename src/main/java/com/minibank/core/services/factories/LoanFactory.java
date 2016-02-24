@@ -5,7 +5,6 @@ import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanExtension;
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.repositories.BankParametersRepository;
-import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.services.helpers.CreditCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,8 +22,6 @@ public class LoanFactory {
     @Autowired
     private BankParametersRepository bankParametersRepository;
 
-    @Autowired
-    private LoanRepository loanRepository;
 
     public Loan getNewLoan(LoanRequest loanRequest) {
         Loan loan = new Loan();
@@ -42,10 +39,8 @@ public class LoanFactory {
         return loan;
     }
 
-    public Loan getExtendedLoan(LoanExtension loanExtension) {
-        Integer id = loanExtension.getLoan().getId();
-        Loan loan = loanRepository.getById(id);
-        loan.setCurrInterest(loanExtension.getInterestRate());
+    public Loan getExtendedLoan(Loan loan, LoanExtension loanExtension) {
+        loan.setCurrInterestRate(loanExtension.getInterestRate());
         loan.setCurrInterest(loanExtension.getInterest());
         loan.setEndDate(loanExtension.getEndDate());
         return loan;

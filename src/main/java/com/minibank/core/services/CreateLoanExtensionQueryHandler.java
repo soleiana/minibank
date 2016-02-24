@@ -30,14 +30,11 @@ public class CreateLoanExtensionQueryHandler {
 
 
     public CreateLoanExtensionResponse execute(CreateLoanExtensionQuery query) {
-        //Precondition: customer already exists in database
-        //Precondition: loan, subject to extension, exists in database
-
         Integer loanId = query.getLoanId();
-
-        LoanExtension loanExtension = loanExtensionFactory.getNewLoanExtension(loanId);
+        Loan loan = loanRepository.getById(loanId);
+        LoanExtension loanExtension = loanExtensionFactory.getNewLoanExtension(loan);
         loanExtensionRepository.create(loanExtension);
-        Loan extendedLoan = loanFactory.getExtendedLoan(loanExtension);
+        Loan extendedLoan = loanFactory.getExtendedLoan(loan, loanExtension);
         loanRepository.update(extendedLoan);
         return new CreateLoanExtensionResponse(true, Message.LOAN_EXTENSION_OBTAINED_MESSAGE);
     }

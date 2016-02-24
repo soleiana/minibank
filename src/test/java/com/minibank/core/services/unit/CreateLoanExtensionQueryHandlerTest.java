@@ -25,6 +25,8 @@ import static junit.framework.TestCase.assertEquals;
 
 public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
 
+    private static final Integer loanId = 1;
+
     @InjectMocks
     private CreateLoanExtensionQueryHandler queryHandler;
 
@@ -42,25 +44,22 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
 
     private LoanExtension loanExtension;
     private Loan loan;
-    private Integer loanId;
+    private Loan extendedLoan;
+
 
     @Before
     public void setUp() {
         loan = LoanFixture.standardLoan();
+        extendedLoan = LoanFixture.standardLoan();
         loanExtension = LoanExtensionFixture.standardLoanExtension();
-        loanId = 1;
-
-        when(loanExtensionFactory.getNewLoanExtension(loanId)).thenReturn(loanExtension);
-        when(loanFactory.getExtendedLoan(loanExtension)).thenReturn(loan);
+        when(loanRepository.getById(loanId)).thenReturn(loan);
+        when(loanExtensionFactory.getNewLoanExtension(loan)).thenReturn(loanExtension);
+        when(loanFactory.getExtendedLoan(loan, loanExtension)).thenReturn(extendedLoan);
     }
 
     @Test
     public void testExecute() {
-        //Positive path of execution
-        //Customer obtains an extension of the loan
-
-        CreateLoanExtensionResponse expectedResponse =
-                new CreateLoanExtensionResponse(true, Message.LOAN_EXTENSION_OBTAINED_MESSAGE);
+        CreateLoanExtensionResponse expectedResponse = new CreateLoanExtensionResponse(true, Message.LOAN_EXTENSION_OBTAINED_MESSAGE);
         CreateLoanExtensionQuery query = new CreateLoanExtensionQuery(loanId);
 
         CreateLoanExtensionResponse response = queryHandler.execute(query);
@@ -68,9 +67,9 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
         assertNotNull(response);
         assertEquals(expectedResponse.isCreated(), response.isCreated());
         assertEquals(expectedResponse.getMessage(), response.getMessage());
-        verify(loanExtensionFactory, times(1)).getNewLoanExtension(loanId);
+        verify(loanExtensionFactory, times(1)).getNewLoanExtension(loan);
         verify(loanExtensionRepository, times(1)).create(loanExtension);
-        verify(loanFactory, times(1)).getExtendedLoan(loanExtension);
-        verify(loanRepository, times(1)).update(loan);
+        verify(loanFactory, times(1)).getExtendedLoan(loan, loanExtension);
+        verify(loanRepository, times(1)).update(extendedLoan);
     }
 }

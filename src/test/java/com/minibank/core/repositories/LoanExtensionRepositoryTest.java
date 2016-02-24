@@ -8,10 +8,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 import static junit.framework.TestCase.assertNotNull;
-import static junit.framework.TestCase.assertEquals;
+
 
 
 public class LoanExtensionRepositoryTest extends SpringContextTest {
@@ -52,21 +50,6 @@ public class LoanExtensionRepositoryTest extends SpringContextTest {
         assertNotNull(loanExtension.getId());
     }
 
-    @Test
-    @Transactional
-    public void testGetByLoan() {
-        createLoan();
-        LoanExtension loanExtension1 = LoanExtensionFixture.standardLoanExtension();
-        loanExtension1.setLoan(loan);
-        LoanExtension loanExtension2 = LoanExtensionFixture.standardLoanExtension();
-        loanExtension2.setLoan(loan);
-        loanExtensionRepository.create(loanExtension1);
-        loanExtensionRepository.create(loanExtension2);
-
-        List<LoanExtension> loanExtensions = loanExtensionRepository.getByLoan(loan);
-        assertEquals(2, loanExtensions.size());
-    }
-
     private void createLoanRequest() {
         loanRequest = LoanRequestFixture.standardLoanRequest();
         loanRequest.setCustomer(customer);
@@ -84,7 +67,7 @@ public class LoanExtensionRepositoryTest extends SpringContextTest {
     private void createLoanExtension() {
         createLoan();
         loanExtension = LoanExtensionFixture.standardLoanExtension();
-        loanExtension.setLoan(loan);
+        loan.getLoanExtensions().add(loanExtension);
     }
 
 }

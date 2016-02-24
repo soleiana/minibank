@@ -6,7 +6,6 @@ import java.sql.Date;
 
 public class LoanExtension {
 
-    private Integer loanId;
     private BigDecimal interestRate;
     private BigDecimal interest;
     private Date startDate;
@@ -14,10 +13,6 @@ public class LoanExtension {
     private Date submissionDate;
 
     public LoanExtension() {}
-
-    public Integer getLoanId() {
-        return loanId;
-    }
 
     public BigDecimal getInterestRate() {
         return interestRate;
@@ -37,10 +32,6 @@ public class LoanExtension {
 
     public Date getSubmissionDate() {
         return submissionDate;
-    }
-
-    public void setLoanId(Integer loanId) {
-        this.loanId = loanId;
     }
 
     public void setSubmissionDate(Date submissionDate) {

@@ -20,7 +20,6 @@ public class JsonDataFixture {
                        "\"endDate\":\"2014-09-20\"," +
                        "\"loanExtensions\":" +
                                  "[{" +
-                                    "\"loanId\":5," +
                                     "\"interestRate\":150," +
                                     "\"interest\":600," +
                                     "\"startDate\":\"2014-09-10\"," +

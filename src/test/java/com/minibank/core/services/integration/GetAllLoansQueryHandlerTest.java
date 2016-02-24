@@ -117,7 +117,7 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
 
     private void createLoanExtension() {
         loanExtension = LoanExtensionFixture.standardLoanExtension();
-        loanExtension.setLoan(loan);
+        loan.getLoanExtensions().add(loanExtension);
         loanExtensionRepository.create(loanExtension);
     }
 
