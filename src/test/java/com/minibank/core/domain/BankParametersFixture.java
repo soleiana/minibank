@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import  java.sql.Time;
 
 
-public class BankParamsFixture {
+public class BankParametersFixture {
 
     public static final BigDecimal NEW_MAX_LOAN_AMOUNT = new BigDecimal("5000.00");
     public static final BigDecimal NEW_BASE_INTEREST_RATE = new BigDecimal("150.00");
@@ -22,8 +22,8 @@ public class BankParamsFixture {
     private static final Time STANDARD_RISK_TIME_END = Time.valueOf("07:00:00");
     private static final Short STANDARD_lOAN_EXTENSION_TERM = new Short("7");
 
-    public static BankParams standardBankParams() {
-        BankParams bankParams = new BankParams();
+    public static BankParameters standardBankParameters() {
+        BankParameters bankParams = new BankParameters();
         bankParams.setMaxLoanAmount(STANDARD_MAX_LOAN_AMOUNT);
         bankParams.setBaseInterestRate(STANDARD_BASE_INTEREST_RATE);
         bankParams.setInterestRateFactor(STANDARD_INTEREST_RATE_FACTOR);
@@ -34,8 +34,8 @@ public class BankParamsFixture {
         return bankParams;
     }
 
-    public static BankParams newBankParams() {
-        BankParams bankParams = new BankParams();
+    public static BankParameters newBankParameters() {
+        BankParameters bankParams = new BankParameters();
         bankParams.setMaxLoanAmount(NEW_MAX_LOAN_AMOUNT);
         bankParams.setBaseInterestRate(NEW_BASE_INTEREST_RATE);
         bankParams.setInterestRateFactor(NEW_INTEREST_RATE_FACTOR);

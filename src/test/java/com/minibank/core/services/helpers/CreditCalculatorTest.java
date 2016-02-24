@@ -2,7 +2,7 @@ package com.minibank.core.services.helpers;
 
 import com.minibank.SpringContextTest;
 import com.minibank.core.domain.*;
-import com.minibank.core.repositories.BankParamsRepository;
+import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.tools.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,12 +23,12 @@ public class CreditCalculatorTest extends SpringContextTest {
     private DBCleaner dbCleaner;
 
     @Autowired
-    private BankParamsRepository bankParamsRepository;
+    private BankParametersRepository bankParametersRepository;
 
     @Autowired
     private CreditCalculator creditCalculator;
 
-    private BankParams bankParams;
+    private BankParameters bankParameters;
     private LoanRequest loanRequest;
     private Loan loan;
 
@@ -36,8 +36,8 @@ public class CreditCalculatorTest extends SpringContextTest {
     @Transactional
     public void setUp() {
         dbCleaner.clear();
-        bankParams = BankParamsFixture.standardBankParams();
-        bankParamsRepository.create(bankParams);
+        bankParameters = BankParametersFixture.standardBankParameters();
+        bankParametersRepository.create(bankParameters);
         loanRequest = LoanRequestFixture.standardLoanRequest();
         loan = LoanFixture.standardLoan();
         loan.setLoanRequest(loanRequest);
@@ -60,7 +60,7 @@ public class CreditCalculatorTest extends SpringContextTest {
         BigDecimal amount = new BigDecimal("200.00");
         Integer term = 20;
         BigDecimal t = new BigDecimal("20");
-        BigDecimal interestRate = bankParams.getBaseInterestRate();
+        BigDecimal interestRate = bankParameters.getBaseInterestRate();
         BigDecimal expectedInterest = amount.multiply(interestRate)
                                             .multiply(t)
                                             .multiply(creditCalculator.FACTOR);

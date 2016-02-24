@@ -6,36 +6,36 @@ import java.sql.Time;
 
 
 @Entity
-@Table(name="BANK_PARAMS")
-public class BankParams {
+@Table(name = "BANK_PARAMETERS")
+public class BankParameters {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="ID", nullable = false)
+    @Column(name = "ID", nullable = false)
     private Integer id;
 
-    @Column(name="MAX_LOAN_AMOUNT", precision = 10, scale = 2, nullable = false)
+    @Column(name = "MAX_LOAN_AMOUNT", precision = 10, scale = 2, nullable = false)
     private BigDecimal maxLoanAmount;
 
-    @Column(name="BASE_INTEREST_RATE", precision = 10, scale = 2, nullable = false)
+    @Column(name = "BASE_INTEREST_RATE", precision = 10, scale = 2, nullable = false)
     private BigDecimal baseInterestRate;
 
-    @Column(name="INTEREST_RATE_FACTOR", precision = 10, scale = 2, nullable = false)
+    @Column(name = "INTEREST_RATE_FACTOR", precision = 10, scale = 2, nullable = false)
     private BigDecimal interestRateFactor;
 
-    @Column(name="MAX_LOAN_ATTEMPTS", nullable = false)
+    @Column(name = "MAX_LOAN_ATTEMPTS", nullable = false)
     private Byte maxLoanAttempts;
 
-    @Column(name="RISK_TIME_START", nullable = false)
+    @Column(name = "RISK_TIME_START", nullable = false)
     private Time riskTimeStart;
 
-    @Column(name="RISK_TIME_END", nullable = false)
+    @Column(name = "RISK_TIME_END", nullable = false)
     private Time riskTimeEnd;
 
-    @Column(name="LOAN_EXTENSION_TERM", nullable = false)
+    @Column(name = "LOAN_EXTENSION_TERM", nullable = false)
     private Short loanExtensionTerm;
 
-    public BankParams() {}
+    public BankParameters() {}
 
     public Integer getId() {
         return id;
@@ -106,7 +106,7 @@ public class BankParams {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        BankParams that = (BankParams) o;
+        BankParameters that = (BankParameters) o;
 
         if (baseInterestRate != null ? !baseInterestRate.equals(that.baseInterestRate) : that.baseInterestRate != null)
             return false;

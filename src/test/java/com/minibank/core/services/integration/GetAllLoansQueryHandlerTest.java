@@ -31,7 +31,7 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
     private LoanRepository loanRepository;
 
     @Autowired
-    private BankParamsRepository bankParamsRepository;
+    private BankParametersRepository bankParametersRepository;
 
     @Autowired
     private LoanExtensionRepository loanExtensionRepository;
@@ -39,7 +39,7 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
     @Autowired
     private GetAllLoansQueryHandler getAllLoansQueryHandler;
 
-    private BankParams bankParams;
+    private BankParameters bankParameters;
     private Customer customer;
     private LoanRequest loanRequest;
     private Loan loan;
@@ -48,9 +48,9 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
     @Before
     public void setUp() {
         dbCleaner.clear();
-        bankParams = BankParamsFixture.standardBankParams();
+        bankParameters = BankParametersFixture.standardBankParameters();
         customer = CustomerFixture.standardCustomer();
-        bankParamsRepository.create(bankParams);
+        bankParametersRepository.create(bankParameters);
         customerRepository.create(customer);
     }
 

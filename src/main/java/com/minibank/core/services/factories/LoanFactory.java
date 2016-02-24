@@ -1,10 +1,10 @@
 package com.minibank.core.services.factories;
 
-import com.minibank.core.domain.BankParams;
+import com.minibank.core.domain.BankParameters;
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanExtension;
 import com.minibank.core.domain.LoanRequest;
-import com.minibank.core.repositories.BankParamsRepository;
+import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.services.helpers.CreditCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class LoanFactory {
     private CreditCalculator creditCalculator;
 
     @Autowired
-    private BankParamsRepository bankParamsRepository;
+    private BankParametersRepository bankParametersRepository;
 
     @Autowired
     private LoanRepository loanRepository;
@@ -37,7 +37,7 @@ public class LoanFactory {
         BigDecimal interest = creditCalculator.getInterest(loanRequest);
         loan.setCurrInterest(interest);
 
-        BankParams bankParams = bankParamsRepository.getLast();
+        BankParameters bankParams = bankParametersRepository.getLast();
         loan.setCurrInterestRate(bankParams.getBaseInterestRate());
         return loan;
     }

@@ -28,12 +28,12 @@ public class CreditExpertTest extends SpringContextTest {
     private CustomerRepository customerRepository;
 
     @Autowired
-    private BankParamsRepository bankParamsRepository;
+    private BankParametersRepository bankParametersRepository;
 
     @Autowired
     private CreditExpert expert;
 
-    private BankParams bankParams;
+    private BankParameters bankParameters;
     private LoanRequest loanRequest;
 
 
@@ -41,8 +41,8 @@ public class CreditExpertTest extends SpringContextTest {
     @Transactional
     public void setUp() {
         dbCleaner.clear();
-        bankParams = BankParamsFixture.standardBankParams();
-        bankParamsRepository.create(bankParams);
+        bankParameters = BankParametersFixture.standardBankParameters();
+        bankParametersRepository.create(bankParameters);
     }
 
     @Test
@@ -51,8 +51,8 @@ public class CreditExpertTest extends SpringContextTest {
         //negative loan request scenario with max loan amount in risk time
         //loan request gets rejected
 
-        BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
-        Time riskTimeStart = bankParams.getRiskTimeStart();
+        BigDecimal maxLoanAmount = bankParameters.getMaxLoanAmount();
+        Time riskTimeStart = bankParameters.getRiskTimeStart();
         Time submissionTime = DateTimeUtility.increaseTime(riskTimeStart,1);
 
         createLoanRequest();
@@ -72,7 +72,7 @@ public class CreditExpertTest extends SpringContextTest {
         Date now = new Date();
         java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);
 
-        for(int i = 0; i < bankParams.getMaxLoanAttempts(); i++) {
+        for(int i = 0; i < bankParameters.getMaxLoanAttempts(); i++) {
             createLoanRequest();
             loanRequest.setSubmissionDate(sqlNow);
             loanRequestRepository.create(loanRequest);
@@ -100,7 +100,7 @@ public class CreditExpertTest extends SpringContextTest {
         Date now = new Date();
         java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);
 
-        for(int i = 0; i < bankParams.getMaxLoanAttempts()-1; i++) {
+        for(int i = 0; i < bankParameters.getMaxLoanAttempts()-1; i++) {
             createLoanRequest();
             loanRequest.setSubmissionDate(sqlNow);
             loanRequestRepository.create(loanRequest);

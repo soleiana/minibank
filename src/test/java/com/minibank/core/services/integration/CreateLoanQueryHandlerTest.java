@@ -35,20 +35,20 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest {
     private LoanRepository loanRepository;
 
     @Autowired
-    private BankParamsRepository bankParamsRepository;
+    private BankParametersRepository bankParametersRepository;
 
     @Autowired
     private CreateLoanQueryHandler createLoanQueryHandler;
 
-    private BankParams bankParams;
+    private BankParameters bankParameters;
     private Customer customer;
 
 
     @Before
     public void setUp() {
         dbCleaner.clear();
-        bankParams = BankParamsFixture.standardBankParams();
-        bankParamsRepository.create(bankParams);
+        bankParameters = BankParametersFixture.standardBankParameters();
+        bankParametersRepository.create(bankParameters);
         customer = CustomerFixture.standardCustomer();
         customerRepository.create(customer);
     }

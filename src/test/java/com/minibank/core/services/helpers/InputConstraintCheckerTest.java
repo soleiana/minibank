@@ -2,7 +2,7 @@ package com.minibank.core.services.helpers;
 
 import com.minibank.SpringContextTest;
 import com.minibank.core.domain.*;
-import com.minibank.core.repositories.BankParamsRepository;
+import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.CustomerRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.repositories.tools.DBCleaner;
@@ -28,20 +28,20 @@ public class InputConstraintCheckerTest extends SpringContextTest {
     private CustomerRepository customerRepository;
 
     @Autowired
-    private BankParamsRepository bankParamsRepository;
+    private BankParametersRepository bankParametersRepository;
 
     @Autowired
     private InputConstraintChecker checker;
 
-    private BankParams bankParams;
+    private BankParameters bankParameters;
     private LoanRequest loanRequest;
 
     @Before
     @Transactional
     public void setUp() {
         dbCleaner.clear();
-        bankParams = BankParamsFixture.standardBankParams();
-        bankParamsRepository.create(bankParams);
+        bankParameters = BankParametersFixture.standardBankParameters();
+        bankParametersRepository.create(bankParameters);
 
         createLoanRequest(LoanRequestFixture.SUBMISSION_DATE);
     }
@@ -49,7 +49,7 @@ public class InputConstraintCheckerTest extends SpringContextTest {
     @Test
     @Transactional
     public void testCheckAmountConstraint() {
-        BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
+        BigDecimal maxLoanAmount = bankParameters.getMaxLoanAmount();
         loanRequest.setAmount(maxLoanAmount);
 
         assertTrue(checker.checkAmountConstraint(loanRequest));

@@ -1,7 +1,7 @@
 package com.minibank.core.services.helpers;
 
-import com.minibank.core.domain.BankParams;
-import com.minibank.core.repositories.BankParamsRepository;
+import com.minibank.core.domain.BankParameters;
+import com.minibank.core.repositories.BankParametersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 public abstract class ConstraintChecker {
 
     @Autowired
-    private BankParamsRepository bankParamsRepository;
+    private BankParametersRepository bankParametersRepository;
 
-    protected BankParams getBankParams() {
-        return bankParamsRepository.getLast();
+    protected BankParameters getBankParameters() {
+        return bankParametersRepository.getLast();
     }
 }

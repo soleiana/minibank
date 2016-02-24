@@ -1,6 +1,6 @@
 package com.minibank.core.services.helpers;
 
-import com.minibank.core.domain.BankParams;
+import com.minibank.core.domain.BankParameters;
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.services.common.DateTimeUtility;
@@ -28,7 +28,7 @@ public class RiskConstraintChecker extends ConstraintChecker {
     }
 
     public boolean checkMaxRequestsPerIP(LoanRequest loanRequest) {
-        BankParams bankParams = getBankParams();
+        BankParameters bankParams = getBankParameters();
         Byte maxLoanAttempts = bankParams.getMaxLoanAttempts();
 
         String requestIp = loanRequest.getRequestIp();
@@ -50,7 +50,7 @@ public class RiskConstraintChecker extends ConstraintChecker {
     }
 
     public boolean checkTimeConstraint(LoanRequest loanRequest) {
-        BankParams bankParams = getBankParams();
+        BankParameters bankParams = getBankParameters();
         Time riskTimeStart = bankParams.getRiskTimeStart();
         Time riskTimeEnd = bankParams.getRiskTimeEnd();
 
@@ -75,7 +75,7 @@ public class RiskConstraintChecker extends ConstraintChecker {
     }
 
     public boolean isMaxAmount(LoanRequest loanRequest) {
-        BankParams bankParams = getBankParams();
+        BankParameters bankParams = getBankParameters();
         BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
         BigDecimal reqAmount = loanRequest.getAmount();
 
