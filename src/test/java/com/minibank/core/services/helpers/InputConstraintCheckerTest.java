@@ -48,21 +48,15 @@ public class InputConstraintCheckerTest extends SpringContextTest {
 
     @Test
     @Transactional
-    public void testCheckAmountConstraint() {
+    public void testIsEqualOrLessThanMaxLoanAmount() {
         BigDecimal maxLoanAmount = bankParameters.getMaxLoanAmount();
-        loanRequest.setAmount(maxLoanAmount);
-
-        assertTrue(checker.checkAmountConstraint(loanRequest));
+        assertTrue(checker.isEqualOrLessThanMaxLoanAmount(maxLoanAmount));
 
         BigDecimal loanAmount = maxLoanAmount.add(new BigDecimal(1.00));
-        loanRequest.setAmount(loanAmount);
-
-        assertTrue(!checker.checkAmountConstraint(loanRequest));
+        assertTrue(!checker.isEqualOrLessThanMaxLoanAmount(loanAmount));
 
         loanAmount = maxLoanAmount.subtract(new BigDecimal(1.00));
-        loanRequest.setAmount(loanAmount);
-
-        assertTrue(checker.checkAmountConstraint(loanRequest));
+        assertTrue(checker.isEqualOrLessThanMaxLoanAmount(loanAmount));
     }
 
     private void createLoanRequest(java.sql.Date submissionDate) {

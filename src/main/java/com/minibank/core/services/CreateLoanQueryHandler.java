@@ -40,7 +40,6 @@ public class CreateLoanQueryHandler {
 
 
     public CreateLoanResponse execute(CreateLoanQuery query) {
-        //Precondition: customer already exists in database
 
         Boolean isLoanObtained = false;
         LoanRequestDetails requestDetails = query.getLoanRequestDetails();
@@ -48,7 +47,7 @@ public class CreateLoanQueryHandler {
         LoanRequest loanRequest = loanRequestFactory.getNewLoanRequest(requestDetails);
         loanRequestRepository.create(loanRequest);
 
-        if((!inputConstraintChecker.checkAmountConstraint(loanRequest))|| creditExpert.hasRisks(loanRequest)) {
+        if((!inputConstraintChecker.isEqualOrLessThanMaxLoanAmount(loanRequest.getAmount())) || creditExpert.hasRisks(loanRequest)) {
             loanRequest.setStatus(LoanRequestStatus.REJECTED);
         }
         else {

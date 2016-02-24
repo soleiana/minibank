@@ -10,10 +10,9 @@ import java.math.BigDecimal;
 @Component
 public class InputConstraintChecker extends ConstraintChecker {
 
-    public boolean checkAmountConstraint(LoanRequest loanRequest) {
+    public boolean isEqualOrLessThanMaxLoanAmount(BigDecimal loanRequestAmount) {
         BankParameters bankParams = getBankParameters();
         BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
-        BigDecimal loanRequestAmount = loanRequest.getAmount();
         return loanRequestAmount.compareTo(maxLoanAmount) != 1;
     }
 }
