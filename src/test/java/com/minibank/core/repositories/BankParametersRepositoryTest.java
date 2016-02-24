@@ -13,7 +13,7 @@ import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
 
-public class BankParametersRepositoryImplTest extends SpringContextTest {
+public class BankParametersRepositoryTest extends SpringContextTest {
 
     @Autowired
     private DBCleaner dbCleaner;

@@ -14,7 +14,7 @@ import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
 
-public class LoanRepositoryImplTest extends SpringContextTest {
+public class LoanRepositoryTest extends SpringContextTest {
 
     @Autowired
     private DBCleaner dbCleaner;
