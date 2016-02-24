@@ -72,7 +72,7 @@ public class CreditExpertTest extends SpringContextTest {
         Date now = new Date();
         java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);
 
-        for(int i = 0; i < bankParameters.getMaxLoanAttempts(); i++) {
+        for(int i = 0; i <= bankParameters.getMaxLoanAttempts(); i++) {
             createLoanRequest();
             loanRequest.setSubmissionDate(sqlNow);
             loanRequestRepository.create(loanRequest);

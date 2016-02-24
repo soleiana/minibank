@@ -19,14 +19,6 @@ public class RiskConstraintChecker extends ConstraintChecker {
     @Autowired
     private LoanRequestRepository loanRequestRepository;
 
-    private boolean isBetween(Time start, Time end, Time timeToCheck) {
-        if ((timeToCheck.compareTo(start) == 1)&&(end.compareTo(timeToCheck) == 1))
-            return true;
-
-        else
-            return false;
-    }
-
     public boolean checkMaxRequestsPerIP(LoanRequest loanRequest) {
         BankParameters bankParams = getBankParameters();
         Byte maxLoanAttempts = bankParams.getMaxLoanAttempts();
@@ -37,16 +29,14 @@ public class RiskConstraintChecker extends ConstraintChecker {
         Date now = new Date();
         java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);
 
-        int requestNum = 0;
+        int numberOfRequests = 0;
 
         for(LoanRequest req: loanRequests)
             if (req.getSubmissionDate().equals(sqlNow))
-                requestNum++;
+                numberOfRequests++;
 
-        if (requestNum < maxLoanAttempts)
-            return true;
-        else
-            return false;
+        return numberOfRequests <= maxLoanAttempts;
+
     }
 
     public boolean checkTimeConstraint(LoanRequest loanRequest) {
@@ -83,5 +73,10 @@ public class RiskConstraintChecker extends ConstraintChecker {
             return true;
         else
             return false;
+    }
+
+    private boolean isBetween(Time start, Time end, Time timeToCheck) {
+        return timeToCheck.compareTo(start) == 1 && end.compareTo(timeToCheck) == 1;
+
     }
 }
