@@ -13,7 +13,7 @@ public class InputConstraintChecker extends ConstraintChecker {
     public boolean checkAmountConstraint(LoanRequest loanRequest) {
         BankParameters bankParams = getBankParameters();
         BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
-        BigDecimal reqAmount = loanRequest.getAmount();
-        return reqAmount.compareTo(maxLoanAmount) != 1;
+        BigDecimal loanRequestAmount = loanRequest.getAmount();
+        return loanRequestAmount.compareTo(maxLoanAmount) != 1;
     }
 }
