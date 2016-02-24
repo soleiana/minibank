@@ -2,7 +2,7 @@ package com.minibank.rest.controllers;
 
 import com.minibank.core.communications.loans.CreateLoanExtensionQuery;
 import com.minibank.core.communications.loans.CreateLoanExtensionResponse;
-import com.minibank.core.services.QueryExecutor;
+import com.minibank.core.services.CreateLoanExtensionQueryHandler;
 import com.minibank.rest.common.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoanExtensionController {
 
     @Autowired
-    private QueryExecutor queryExecutor;
+    private CreateLoanExtensionQueryHandler createLoanExtensionQueryHandler;
 
     private boolean validate(Integer loanId) {
         if (loanId == null) {
@@ -37,7 +37,7 @@ public class LoanExtensionController {
 
         CreateLoanExtensionQuery createLoanExtensionQuery = new CreateLoanExtensionQuery(id);
 
-        CreateLoanExtensionResponse createLoanExtensionResponse = queryExecutor.execute(createLoanExtensionQuery);
+        CreateLoanExtensionResponse createLoanExtensionResponse = createLoanExtensionQueryHandler.execute(createLoanExtensionQuery);
         String message = createLoanExtensionResponse.getMessage();
         return new ResponseEntity<>(message, HttpStatus.CREATED);
     }

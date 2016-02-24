@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class CreateLoanQueryHandler implements QueryHandler<CreateLoanQuery, CreateLoanResponse> {
+public class CreateLoanQueryHandler {
 
     @Autowired
     private LoanRequestFactory loanRequestFactory;
@@ -38,7 +38,7 @@ public class CreateLoanQueryHandler implements QueryHandler<CreateLoanQuery, Cre
     @Autowired
     private LoanRepository loanRepository;
 
-    @Override
+
     public CreateLoanResponse execute(CreateLoanQuery query) {
         //Precondition: customer already exists in database
 
@@ -65,8 +65,4 @@ public class CreateLoanQueryHandler implements QueryHandler<CreateLoanQuery, Cre
         }
     }
 
-    @Override
-    public Class getQueryType() {
-        return CreateLoanQuery.class;
-    }
 }

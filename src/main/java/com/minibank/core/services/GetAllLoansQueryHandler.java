@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class GetAllLoansQueryHandler implements QueryHandler<GetAllLoansQuery, GetAllLoansResponse> {
+public class GetAllLoansQueryHandler {
 
     @Autowired
     private AllLoansCoreFactory allLoansCoreFactory;
@@ -20,7 +20,6 @@ public class GetAllLoansQueryHandler implements QueryHandler<GetAllLoansQuery, G
     @Autowired
     private AllLoansDetailsFactory allLoansDetailsFactory;
 
-    @Override
     public GetAllLoansResponse execute(GetAllLoansQuery query) {
         AllLoans allLoans;
         Integer customerId = query.getCustomerId();
@@ -36,8 +35,4 @@ public class GetAllLoansQueryHandler implements QueryHandler<GetAllLoansQuery, G
         }
     }
 
-    @Override
-    public Class getQueryType() {
-        return GetAllLoansQuery.class;
-    }
 }

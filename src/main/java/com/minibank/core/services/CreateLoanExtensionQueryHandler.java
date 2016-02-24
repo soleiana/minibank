@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class CreateLoanExtensionQueryHandler implements QueryHandler<CreateLoanExtensionQuery, CreateLoanExtensionResponse> {
+public class CreateLoanExtensionQueryHandler {
 
     @Autowired
     private LoanFactory loanFactory;
@@ -28,7 +28,7 @@ public class CreateLoanExtensionQueryHandler implements QueryHandler<CreateLoanE
     @Autowired
     private LoanExtensionRepository loanExtensionRepository;
 
-    @Override
+
     public CreateLoanExtensionResponse execute(CreateLoanExtensionQuery query) {
         //Precondition: customer already exists in database
         //Precondition: loan, subject to extension, exists in database
@@ -42,8 +42,4 @@ public class CreateLoanExtensionQueryHandler implements QueryHandler<CreateLoanE
         return new CreateLoanExtensionResponse(true, Message.LOAN_EXTENSION_OBTAINED_MESSAGE);
     }
 
-    @Override
-    public Class getQueryType() {
-        return CreateLoanExtensionQuery.class;
-    }
 }

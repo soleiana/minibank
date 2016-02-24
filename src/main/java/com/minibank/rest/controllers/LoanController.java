@@ -4,7 +4,7 @@ import com.minibank.core.communications.loans.CreateLoanQuery;
 import com.minibank.core.communications.loans.CreateLoanResponse;
 import com.minibank.core.communications.loans.domain.LoanRequestDetails;
 import com.minibank.core.communications.loans.factories.LoanRequestDetailsFactory;
-import com.minibank.core.services.QueryExecutor;
+import com.minibank.core.services.CreateLoanQueryHandler;
 import com.minibank.rest.common.Message;
 import com.minibank.rest.domain.LoanRequest;
 import com.minibank.rest.validators.LoanRequestValidator;
@@ -27,7 +27,7 @@ public class LoanController {
     private LoanRequestValidator loanRequestValidator;
 
     @Autowired
-    private QueryExecutor queryExecutor;
+    private CreateLoanQueryHandler createLoanQueryHandler;
 
     @Autowired
     private LoanRequestDetailsFactory loanRequestDetailsFactory;
@@ -43,7 +43,7 @@ public class LoanController {
         loanRequest.setRequestIp(ip);
         LoanRequestDetails loanRequestDetails = loanRequestDetailsFactory.getNewLoanRequestDetails(loanRequest);
 
-        CreateLoanResponse createLoanResponse = queryExecutor.execute(new CreateLoanQuery(loanRequestDetails));
+        CreateLoanResponse createLoanResponse = createLoanQueryHandler.execute(new CreateLoanQuery(loanRequestDetails));
 
         String message = createLoanResponse.getMessage();
 

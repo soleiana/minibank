@@ -3,7 +3,7 @@ package com.minibank.rest.controllers.mockMVC.unit;
 import com.minibank.core.communications.loans.GetAllLoansQuery;
 import com.minibank.core.communications.loans.GetAllLoansResponse;
 import com.minibank.core.communications.loans.domain.AllLoansDetails;
-import com.minibank.core.services.QueryExecutor;
+import com.minibank.core.services.GetAllLoansQueryHandler;
 import com.minibank.rest.controllers.LoanInfoController;
 import com.minibank.rest.domain.AllLoans;
 import com.minibank.rest.factories.AllLoansRestFactory;
@@ -32,7 +32,7 @@ public class LoanInfoControllerTest {
     LoanInfoController loanInfoController;
 
     @Mock
-    QueryExecutor queryExecutor;
+    GetAllLoansQueryHandler getAllLoansQueryHandler;
 
     @Mock
     AllLoansRestFactory allLoansRestFactory;
@@ -46,7 +46,7 @@ public class LoanInfoControllerTest {
 
     @Test
     public void testThatLoanInfoControllerUsesHttpOkOnSuccess() throws Exception {
-        when(queryExecutor.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
+        when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
         when(allLoansRestFactory.getNewAllLoans(any(AllLoansDetails.class))).thenReturn(new AllLoans());
 
         this.mockMvc.perform(
@@ -56,7 +56,7 @@ public class LoanInfoControllerTest {
 
     @Test
     public void testThatLoanInfoControllerRendersCorrectly() throws Exception {
-        when(queryExecutor.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
+        when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
         when(allLoansRestFactory.getNewAllLoans(any(AllLoansDetails.class))).thenReturn(standardAllLoans());
 
         this.mockMvc.perform(
@@ -69,7 +69,7 @@ public class LoanInfoControllerTest {
 
     @Test
     public void testThatLoanInfoControllerUsesHttpNotFoundOnFailure() throws Exception {
-        when(queryExecutor.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), false));
+        when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), false));
         when(allLoansRestFactory.getNewAllLoans(any(AllLoansDetails.class))).thenReturn(new AllLoans());
 
         this.mockMvc.perform(

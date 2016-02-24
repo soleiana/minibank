@@ -7,7 +7,7 @@ import com.minibank.core.communications.loans.domain.AllLoansDetails;
 import com.minibank.core.domain.*;
 import com.minibank.core.repositories.*;
 import com.minibank.core.repositories.tools.DBCleaner;
-import com.minibank.core.services.QueryExecutor;
+import com.minibank.core.services.GetAllLoansQueryHandler;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
     private LoanExtensionRepository loanExtensionRepository;
 
     @Autowired
-    private QueryExecutor queryExecutor;
+    private GetAllLoansQueryHandler getAllLoansQueryHandler;
 
     private BankParams bankParams;
     private Customer customer;
@@ -60,7 +60,7 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
         //customer has no loans
         GetAllLoansQuery getAllLoansQuery = createGetAllLoansQuery();
 
-        GetAllLoansResponse getAllLoansResponse = queryExecutor.execute(getAllLoansQuery);
+        GetAllLoansResponse getAllLoansResponse = getAllLoansQueryHandler.execute(getAllLoansQuery);
 
         AllLoansDetails allLoansDetails = getAllLoansResponse.getAllLoansDetails();
 
@@ -79,7 +79,7 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
         prepareTestData_1();
         GetAllLoansQuery getAllLoansQuery = createGetAllLoansQuery();
 
-        GetAllLoansResponse getAllLoansResponse = queryExecutor.execute(getAllLoansQuery);
+        GetAllLoansResponse getAllLoansResponse = getAllLoansQueryHandler.execute(getAllLoansQuery);
 
         AllLoansDetails allLoansDetails = getAllLoansResponse.getAllLoansDetails();
 
@@ -95,7 +95,7 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
         prepareTestData_2();
         GetAllLoansQuery getAllLoansQuery = createGetAllLoansQuery();
 
-        GetAllLoansResponse getAllLoansResponse = queryExecutor.execute(getAllLoansQuery);
+        GetAllLoansResponse getAllLoansResponse = getAllLoansQueryHandler.execute(getAllLoansQuery);
 
         AllLoansDetails allLoansDetails = getAllLoansResponse.getAllLoansDetails();
 
