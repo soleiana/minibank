@@ -1,7 +1,4 @@
-package com.minibank.core.communications.loans;
-
-
-import com.minibank.core.communications.GetEntityQuery;
+package com.minibank.core.communications;
 
 
 public class GetAllLoansQuery extends GetEntityQuery {

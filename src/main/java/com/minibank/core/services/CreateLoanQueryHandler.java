@@ -1,8 +1,8 @@
 package com.minibank.core.services;
 
-import com.minibank.core.communications.loans.CreateLoanQuery;
-import com.minibank.core.communications.loans.CreateLoanResponse;
-import com.minibank.core.communications.loans.domain.LoanRequestDetails;
+import com.minibank.core.communications.CreateLoanQuery;
+import com.minibank.core.communications.CreateLoanResponse;
+import com.minibank.core.communications.domain.LoanRequestDetails;
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.domain.LoanRequestStatus;

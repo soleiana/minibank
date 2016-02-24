@@ -1,8 +1,7 @@
-package com.minibank.core.communications.loans;
+package com.minibank.core.communications;
 
 
-import com.minibank.core.communications.GetEntityResponse;
-import com.minibank.core.communications.loans.domain.AllLoansDetails;
+import com.minibank.core.communications.domain.AllLoansDetails;
 
 
 public class GetAllLoansResponse extends GetEntityResponse {

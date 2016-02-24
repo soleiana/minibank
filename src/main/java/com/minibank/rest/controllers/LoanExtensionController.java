@@ -1,7 +1,7 @@
 package com.minibank.rest.controllers;
 
-import com.minibank.core.communications.loans.CreateLoanExtensionQuery;
-import com.minibank.core.communications.loans.CreateLoanExtensionResponse;
+import com.minibank.core.communications.CreateLoanExtensionQuery;
+import com.minibank.core.communications.CreateLoanExtensionResponse;
 import com.minibank.core.services.CreateLoanExtensionQueryHandler;
 import com.minibank.rest.common.Message;
 import org.springframework.beans.factory.annotation.Autowired;

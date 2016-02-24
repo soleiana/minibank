@@ -3,7 +3,7 @@ package com.minibank.core.services.factories;
 import com.minibank.core.domain.Customer;
 import com.minibank.core.domain.LoanRequest;
 import com.minibank.core.domain.LoanRequestStatus;
-import com.minibank.core.communications.loans.domain.LoanRequestDetails;
+import com.minibank.core.communications.domain.LoanRequestDetails;
 import com.minibank.core.repositories.CustomerRepository;
 import com.minibank.core.services.common.DateTimeUtility;
 import org.springframework.beans.factory.annotation.Autowired;

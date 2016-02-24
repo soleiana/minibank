@@ -2,11 +2,12 @@ package com.minibank.core.services.unit;
 
 import com.minibank.InjectMocksTest;
 import com.minibank.core.communications.domain.LoanRequestDetailsFixture;
-import com.minibank.core.communications.loans.CreateLoanQuery;
-import com.minibank.core.communications.loans.CreateLoanResponse;
-import com.minibank.core.communications.loans.domain.*;
+import com.minibank.core.communications.CreateLoanQuery;
+import com.minibank.core.communications.CreateLoanResponse;
+import com.minibank.core.communications.domain.*;
 import com.minibank.core.domain.*;
 import com.minibank.core.domain.Loan;
+import com.minibank.core.domain.LoanFixture;
 import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.services.CreateLoanQueryHandler;

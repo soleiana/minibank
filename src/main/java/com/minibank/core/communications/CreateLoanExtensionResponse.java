@@ -1,6 +1,4 @@
-package com.minibank.core.communications.loans;
-
-import com.minibank.core.communications.CreateEntityResponse;
+package com.minibank.core.communications;
 
 
 public class CreateLoanExtensionResponse extends CreateEntityResponse {

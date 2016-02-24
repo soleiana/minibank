@@ -1,15 +1,13 @@
-package com.minibank.core.communications.loans.domain;
+package com.minibank.core.communications.domain;
 
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ann on 06/09/14.
- */
-public class Loan
-{
+
+public class Loan {
+
     private Integer id;
     private BigDecimal currInterestRate;
     private BigDecimal currInterest;
@@ -18,76 +16,61 @@ public class Loan
     private Date endDate;
     private List<LoanExtension> loanExtensions = new ArrayList<>();
 
-    public Loan()
-    {}
+    public Loan() {}
 
-    public BigDecimal getCurrInterestRate()
-    {
+    public BigDecimal getCurrInterestRate() {
         return currInterestRate;
     }
 
-    public BigDecimal getCurrInterest()
-    {
+    public BigDecimal getCurrInterest() {
         return currInterest;
     }
 
-    public BigDecimal getAmount()
-    {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public Date getStartDate()
-    {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public Date getEndDate()
-    {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public Integer getId()
-    {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id)
-    {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public List<LoanExtension> getLoanExtensions()
-    {
+    public List<LoanExtension> getLoanExtensions() {
         return loanExtensions;
     }
 
-    public void setLoanExtensions(List<LoanExtension> loanExtensions)
-    {
+    public void setLoanExtensions(List<LoanExtension> loanExtensions) {
         this.loanExtensions = loanExtensions;
     }
 
-    public void setCurrInterestRate(BigDecimal currInterestRate)
-    {
+    public void setCurrInterestRate(BigDecimal currInterestRate) {
         this.currInterestRate = currInterestRate;
     }
 
-    public void setEndDate(Date endDate)
-    {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
-    public void setStartDate(Date startDate)
-    {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public void setAmount(BigDecimal amount)
-    {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
-    public void setCurrInterest(BigDecimal currInterest)
-    {
+    public void setCurrInterest(BigDecimal currInterest) {
         this.currInterest = currInterest;
     }
 }

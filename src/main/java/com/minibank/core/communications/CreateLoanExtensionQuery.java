@@ -1,6 +1,4 @@
-package com.minibank.core.communications.loans;
-
-import com.minibank.core.communications.CreateEntityQuery;
+package com.minibank.core.communications;
 
 
 public class CreateLoanExtensionQuery extends CreateEntityQuery {

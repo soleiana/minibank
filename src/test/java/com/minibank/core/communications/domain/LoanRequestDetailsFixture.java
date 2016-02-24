@@ -1,6 +1,5 @@
 package com.minibank.core.communications.domain;
 
-import com.minibank.core.communications.loans.domain.LoanRequestDetails;
 import java.math.BigDecimal;
 
 

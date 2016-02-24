@@ -1,7 +1,5 @@
 package com.minibank.core.communications.domain;
 
-import com.minibank.core.communications.loans.domain.Loan;
-
 import java.math.BigDecimal;
 import java.sql.Date;
 

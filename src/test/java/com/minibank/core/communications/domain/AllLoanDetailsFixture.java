@@ -1,8 +1,5 @@
 package com.minibank.core.communications.domain;
 
-import com.minibank.core.communications.loans.domain.AllLoansDetails;
-import com.minibank.core.communications.loans.domain.Loan;
-import com.minibank.core.communications.loans.domain.LoanExtension;
 import com.minibank.core.domain.Customer;
 import com.minibank.core.domain.CustomerFixture;
 
