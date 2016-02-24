@@ -1,7 +1,7 @@
 package com.minibank.core.communications;
 
 
-public class GetEntityResponse {
+public abstract class GetEntityResponse {
 
     protected boolean entityFound = true;
 
