@@ -19,7 +19,7 @@ public class RiskConstraintChecker extends ConstraintChecker {
     @Autowired
     private LoanRequestRepository loanRequestRepository;
 
-    public boolean checkMaxRequestsPerIP(LoanRequest loanRequest) {
+    public boolean isMaxRequestsPerIPExceeded(LoanRequest loanRequest) {
         BankParameters bankParams = getBankParameters();
         Byte maxLoanAttempts = bankParams.getMaxLoanAttempts();
 
@@ -35,44 +35,33 @@ public class RiskConstraintChecker extends ConstraintChecker {
             if (req.getSubmissionDate().equals(sqlNow))
                 numberOfRequests++;
 
-        return numberOfRequests <= maxLoanAttempts;
+        return numberOfRequests > maxLoanAttempts;
 
     }
 
-    public boolean checkTimeConstraint(LoanRequest loanRequest) {
+    public boolean isRiskTime(LoanRequest loanRequest) {
         BankParameters bankParams = getBankParameters();
         Time riskTimeStart = bankParams.getRiskTimeStart();
         Time riskTimeEnd = bankParams.getRiskTimeEnd();
 
         Time submissionTime = loanRequest.getSubmissionTime();
 
-        if (riskTimeStart.compareTo(riskTimeEnd) == 1)
+        if (riskTimeStart.compareTo(riskTimeEnd) == 1) {
             //check two time intervals: [riskTimeStart, 24:00:00]
             //and [00:00:00, riskTimeEnd]
-            if ( isBetween(riskTimeStart, DateTimeUtility.MAX_TIME, submissionTime) ||
-                    isBetween(DateTimeUtility.MIN_TIME, riskTimeEnd, submissionTime)
-                    )
-                return false;
-            else
-                return true;
-        else
+            return isBetween(riskTimeStart, DateTimeUtility.MAX_TIME, submissionTime) || isBetween(DateTimeUtility.MIN_TIME, riskTimeEnd, submissionTime);
+        } else {
             //check one time interval: [riskTimeStart, riskTimeEnd]
-            if (isBetween(riskTimeStart, riskTimeEnd, submissionTime))
-                return false;
-            else
-                return  true;
+            return isBetween(riskTimeStart, riskTimeEnd, submissionTime);
+        }
 
     }
 
     public boolean isMaxAmount(LoanRequest loanRequest) {
         BankParameters bankParams = getBankParameters();
         BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
-        BigDecimal reqAmount = loanRequest.getAmount();
-
-        if(reqAmount.compareTo(maxLoanAmount) == 0)
-            return true;
-        else
-            return false;
+        BigDecimal loanRequestAmount = loanRequest.getAmount();
+        return loanRequestAmount.compareTo(maxLoanAmount) == 0;
     }
 
     private boolean isBetween(Time start, Time end, Time timeToCheck) {

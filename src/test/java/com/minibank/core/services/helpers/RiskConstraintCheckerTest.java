@@ -10,8 +10,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import static junit.framework.TestCase.assertTrue;
-import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.*;
 
 import java.math.BigDecimal;
 import java.sql.Time;
@@ -50,7 +49,7 @@ public class RiskConstraintCheckerTest extends SpringContextTest {
 
     @Test
     @Transactional
-    public void testCheckMaxRequestsPerIP() {
+    public void testIsMaxRequestsPerIPExceeded() {
         bankParameters.setMaxLoanAttempts(new Byte("2"));
         bankParametersRepository.update(bankParameters);
 
@@ -60,16 +59,16 @@ public class RiskConstraintCheckerTest extends SpringContextTest {
         assertNotNull(sqlNow);
 
         createLoanRequest(sqlNow);
-        assertTrue(checker.checkMaxRequestsPerIP(loanRequest));
+        assertFalse(checker.isMaxRequestsPerIPExceeded(loanRequest));
         createLoanRequest(sqlNow);
-        assertTrue(checker.checkMaxRequestsPerIP(loanRequest));
+        assertFalse(checker.isMaxRequestsPerIPExceeded(loanRequest));
         createLoanRequest(sqlNow);
-        assertTrue(!checker.checkMaxRequestsPerIP(loanRequest));
+        assertTrue(checker.isMaxRequestsPerIPExceeded(loanRequest));
     }
 
     @Test
     @Transactional
-    public void testCheckTimeConstraint_1() {
+    public void testIsRiskTimeIfRiskTimeStartIsLessThanRiskTimeEnd() {
         //check loan requests for risk interval [00:00:00-07:00:00]
 
         Time riskTimeStart = bankParameters.getRiskTimeStart();
@@ -78,25 +77,25 @@ public class RiskConstraintCheckerTest extends SpringContextTest {
         //loan request in risk interval
         Time submissionTime = DateTimeUtility.increaseTime(riskTimeStart,1);
         loanRequest.setSubmissionTime(submissionTime);
-        assertTrue(!checker.checkTimeConstraint(loanRequest));
+        assertTrue(checker.isRiskTime(loanRequest));
 
         submissionTime = DateTimeUtility.increaseTime(riskTimeEnd,-1);
         loanRequest.setSubmissionTime(submissionTime);
-        assertTrue(!checker.checkTimeConstraint(loanRequest));
+        assertTrue(checker.isRiskTime(loanRequest));
 
         //loan request not in risk interval
         submissionTime = DateTimeUtility.increaseTime(riskTimeStart,-1);
         loanRequest.setSubmissionTime(submissionTime);
-        assertTrue(checker.checkTimeConstraint(loanRequest));
+        assertFalse(checker.isRiskTime(loanRequest));
 
         submissionTime = DateTimeUtility.increaseTime(riskTimeEnd,1);
         loanRequest.setSubmissionTime(submissionTime);
-        assertTrue(checker.checkTimeConstraint(loanRequest));
+        assertFalse(checker.isRiskTime(loanRequest));
     }
 
     @Test
     @Transactional
-    public void testCheckTimeConstraint_2() {
+    public void testIsRiskTimeIfRiskTimeStartIsGraterThanRiskTimeEnd() {
         //check loan requests for risk interval [22:00:00-08:00:00]
 
         BankParameters newBankParams = BankParametersFixture.newBankParameters();
@@ -108,16 +107,16 @@ public class RiskConstraintCheckerTest extends SpringContextTest {
         //loan request in risk interval
         Time submissionTime = DateTimeUtility.increaseTime(riskTimeStart,1);
         loanRequest.setSubmissionTime(submissionTime);
-        assertTrue(!checker.checkTimeConstraint(loanRequest));
+        assertTrue(checker.isRiskTime(loanRequest));
 
         //loan request not in risk interval
         submissionTime = DateTimeUtility.increaseTime(riskTimeEnd,1);
         loanRequest.setSubmissionTime(submissionTime);
-        assertTrue(checker.checkTimeConstraint(loanRequest));
+        assertFalse(checker.isRiskTime(loanRequest));
 
         submissionTime = DateTimeUtility.increaseTime(riskTimeStart,-1);
         loanRequest.setSubmissionTime(submissionTime);
-        assertTrue(checker.checkTimeConstraint(loanRequest));
+        assertFalse(checker.isRiskTime(loanRequest));
     }
 
     @Test
