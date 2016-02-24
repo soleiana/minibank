@@ -40,28 +40,24 @@ public class CreateLoanQueryHandler {
 
 
     public CreateLoanResponse execute(CreateLoanQuery query) {
-
-        Boolean isLoanObtained = false;
         LoanRequestDetails requestDetails = query.getLoanRequestDetails();
 
         LoanRequest loanRequest = loanRequestFactory.getNewLoanRequest(requestDetails);
         loanRequestRepository.create(loanRequest);
 
-        if((!inputConstraintChecker.isEqualOrLessThanMaxLoanAmount(loanRequest.getAmount())) || creditExpert.hasRisks(loanRequest)) {
+        if (isNegativeCreditDecision(loanRequest)) {
             loanRequest.setStatus(LoanRequestStatus.REJECTED);
-        }
-        else {
+            return new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
+        } else {
              loanRequest.setStatus(LoanRequestStatus.APPROVED);
              Loan loan = loanFactory.getNewLoan(loanRequest);
              loanRepository.create(loan);
-             isLoanObtained = true;
+             return new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);
         }
-        if (isLoanObtained) {
-            return new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);
-        }
-        else {
-            return new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
-        }
+    }
+
+    private boolean isNegativeCreditDecision(LoanRequest loanRequest) {
+        return !inputConstraintChecker.isEqualOrLessThanMaxLoanAmount(loanRequest.getAmount()) || creditExpert.hasRisks(loanRequest);
     }
 
 }
