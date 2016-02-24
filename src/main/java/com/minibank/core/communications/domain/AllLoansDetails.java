@@ -42,4 +42,8 @@ public class AllLoansDetails {
     public void setLoans(List<Loan> loans) {
         this.loans = loans;
     }
+
+    public boolean isEmpty() {
+        return loans.isEmpty();
+    }
 }

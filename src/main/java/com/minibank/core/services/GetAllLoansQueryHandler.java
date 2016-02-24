@@ -27,7 +27,7 @@ public class GetAllLoansQueryHandler {
         allLoans = allLoansCoreFactory.getNewAllLoans(customerId);
         AllLoansDetails allLoansDetails = allLoansDetailsFactory.getNewAllLoansDetails(allLoans);
 
-        if ((allLoansDetails != null)&&(allLoansDetails.getLoans().size() == 0)) {
+        if (allLoansDetails.isEmpty()) {
             return new GetAllLoansResponse(allLoansDetails, false);
         }
         else {
