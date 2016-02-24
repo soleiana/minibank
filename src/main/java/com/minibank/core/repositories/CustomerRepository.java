@@ -1,13 +1,19 @@
 package com.minibank.core.repositories;
 
 import com.minibank.core.domain.Customer;
+import org.hibernate.Session;
+import org.springframework.stereotype.Component;
 
-/**
- * Created by Ann on 06/09/14.
- */
-public interface CustomerRepository
-{
-    void create(Customer customer);
 
-    Customer getById(Integer id);
+@Component
+public class CustomerRepository extends SessionProvider {
+
+    public void create(Customer customer) {
+        getCurrentSession().saveOrUpdate(customer);
+    }
+
+    public Customer getById(Integer id) {
+        Session session = getCurrentSession();
+        return (Customer) session.get(Customer.class, id);
+    }
 }
