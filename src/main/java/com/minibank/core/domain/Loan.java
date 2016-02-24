@@ -9,38 +9,37 @@ import java.util.List;
 
 
 @Entity
-@Table(name="LOAN")
+@Table(name = "LOAN")
 public class Loan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="ID", nullable = false)
+    @Column(name = "ID", nullable = false)
     private Integer id;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="LOAN_REQUEST_ID", unique = true, nullable = false)
+    @JoinColumn(name = "LOAN_REQUEST_ID", unique = true, nullable = false)
     private LoanRequest loanRequest;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="CUSTOMER_ID", nullable = false)
+    @JoinColumn(name = "CUSTOMER_ID", nullable = false)
     private Customer customer;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name= "LOAN_ID")
-    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
-            org.hibernate.annotations.CascadeType.REMOVE})
+    @JoinColumn(name = "LOAN_ID")
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
     private List<LoanExtension> loanExtensions = new ArrayList<>();
 
-    @Column(name="CURRENT_INTEREST_RATE", precision = 10, scale = 2, nullable = false)
+    @Column(name = "CURRENT_INTEREST_RATE", precision = 10, scale = 2, nullable = false)
     private BigDecimal currInterestRate;
 
-    @Column(name="CURRENT_INTEREST", precision = 10, scale = 2, nullable = false)
+    @Column(name = "CURRENT_INTEREST", precision = 10, scale = 2, nullable = false)
     private BigDecimal currInterest;
 
-    @Column(name="START_DATE", nullable = false)
+    @Column(name = "START_DATE", nullable = false)
     private Date startDate;
 
-    @Column(name="END_DATE", nullable = false)
+    @Column(name = "END_DATE", nullable = false)
     private Date endDate;
 
     public Loan() {}

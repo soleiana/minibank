@@ -7,34 +7,34 @@ import java.sql.Time;
 
 
 @Entity
-@Table(name="LOAN_REQUEST")
+@Table(name = "LOAN_REQUEST")
 public class LoanRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="ID", nullable = false)
+    @Column(name = "ID", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="CUSTOMER_ID", nullable = false)
+    @JoinColumn(name = "CUSTOMER_ID", nullable = false)
     private Customer customer;
 
-    @Column(name="REQUEST_IP",  nullable = false)
+    @Column(name = "REQUEST_IP", nullable = false)
     private String requestIp;
 
-    @Column(name="SUBMISSION_DATE", nullable = false)
+    @Column(name = "SUBMISSION_DATE", nullable = false)
     private Date submissionDate;
 
-    @Column(name="SUBMISSION_TIME", nullable = false)
+    @Column(name = "SUBMISSION_TIME", nullable = false)
     private Time submissionTime;
 
-    @Column(name="TERM", nullable = false)
+    @Column(name = "TERM", nullable = false)
     private Integer term;
 
-    @Column(name="AMOUNT", precision = 10, scale = 2, nullable = false)
+    @Column(name = "AMOUNT", precision = 10, scale = 2, nullable = false)
     private BigDecimal amount;
 
-    @Column(name="STATUS", nullable = false)
+    @Column(name = "STATUS", nullable = false)
     @Enumerated (EnumType.STRING)
     private LoanRequestStatus status;
 

@@ -7,24 +7,23 @@ import java.util.List;
 
 
 @Entity
-@Table(name="CUSTOMER")
+@Table(name = "CUSTOMER")
 public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="ID", nullable = false)
+    @Column(name = "ID", nullable = false)
     private Integer id;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name= "CUSTOMER_ID")
-    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
-            org.hibernate.annotations.CascadeType.REMOVE})
+    @JoinColumn(name = "CUSTOMER_ID")
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
     private List<Loan> loans = new ArrayList<>();
 
-    @Column(name="NAME", nullable = false)
+    @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name="SURNAME", nullable = false)
+    @Column(name = "SURNAME", nullable = false)
     private String surname;
 
     public Customer() {}

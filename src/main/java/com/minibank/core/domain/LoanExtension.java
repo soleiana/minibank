@@ -6,31 +6,31 @@ import java.sql.Date;
 
 
 @Entity
-@Table(name="LOAN_EXTENSION")
+@Table(name = "LOAN_EXTENSION")
 public class LoanExtension {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="ID", nullable = false)
+    @Column(name = "ID", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="LOAN_ID", nullable = false)
+    @JoinColumn(name = "LOAN_ID", nullable = false)
     private Loan loan;
 
-    @Column(name="START_DATE", nullable = false)
+    @Column(name = "START_DATE", nullable = false)
     private Date startDate;
 
-    @Column(name="END_DATE", nullable = false)
+    @Column(name = "END_DATE", nullable = false)
     private Date endDate;
 
-    @Column(name="INTEREST_RATE", precision = 10, scale = 2, nullable = false)
+    @Column(name = "INTEREST_RATE", precision = 10, scale = 2, nullable = false)
     private BigDecimal interestRate;
 
-    @Column(name="INTEREST", precision = 10, scale = 2, nullable = false)
+    @Column(name = "INTEREST", precision = 10, scale = 2, nullable = false)
     private BigDecimal interest;
 
-    @Column(name="SUBMISSION_DATE", nullable = false)
+    @Column(name = "SUBMISSION_DATE", nullable = false)
     private Date submissionDate;
 
     public LoanExtension() {}
