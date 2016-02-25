@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class TestLoanRepositoryTest extends SpringContextTest {
 
@@ -35,11 +36,17 @@ public class TestLoanRepositoryTest extends SpringContextTest {
         customer = CustomerFixture.standardCustomer();
         testCustomerRepository.create(customer);
         loan = LoanFixture.standardLoan();
-        loanRepository.create(loan);
     }
 
     @Test
-    public void testGetLast() {
+    public void testGetLastIfLoanDoesNotExist() {
+        Loan retrievedLoan = testLoanRepository.getLast();
+        assertNull(retrievedLoan);
+    }
+
+    @Test
+    public void testGetLastIfLoanExists() {
+        loanRepository.create(loan);
         Loan retrievedLoan = testLoanRepository.getLast();
         assertEquals(loan, retrievedLoan);
     }

@@ -21,6 +21,6 @@ public class LoanRequestFixture {
         loanRequest.setTerm(TERM);
         loanRequest.setAmount(AMOUNT);
         loanRequest.setRequestIp(REQUEST_IP);
-        return  loanRequest;
+        return loanRequest;
     }
 }

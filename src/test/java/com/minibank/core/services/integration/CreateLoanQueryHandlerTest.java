@@ -7,9 +7,9 @@ import com.minibank.communications.model.LoanRequestDetails;
 import com.minibank.communications.model.LoanRequestDetailsFixture;
 import com.minibank.core.model.*;
 import com.minibank.core.repositories.BankParametersRepository;
-import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.repositories.TestCustomerRepository;
 import com.minibank.core.repositories.TestLoanRepository;
+import com.minibank.core.repositories.TestLoanRequestRepository;
 import com.minibank.core.repositories.tools.DBCleaner;
 import com.minibank.core.services.CreateLoanQueryHandler;
 import com.minibank.core.services.common.Message;
@@ -29,7 +29,7 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest {
     private TestCustomerRepository testCustomerRepository;
 
     @Autowired
-    private LoanRequestRepository loanRequestRepository;
+    private TestLoanRequestRepository testLoanRequestRepository;
 
     @Autowired
     private TestLoanRepository testLoanRepository;
@@ -57,7 +57,7 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest {
     public void testExecute() {
         CreateLoanQuery createLoanQuery = createCreateLoanQuery();
         CreateLoanResponse expectedCreateLoanResponse = new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);
-        LoanRequest loanRequest1 = loanRequestRepository.getLast();
+        LoanRequest loanRequest1 = testLoanRequestRepository.getLast();
         Loan loan1 = testLoanRepository.getLast();
         assertNull(loanRequest1);
         assertNull(loan1);
@@ -67,7 +67,7 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest {
         assertEquals(expectedCreateLoanResponse.getMessage(), createLoanResponse.getMessage());
         assertEquals(expectedCreateLoanResponse.isCreated(), createLoanResponse.isCreated());
 
-        loanRequest1 = loanRequestRepository.getLast();
+        loanRequest1 = testLoanRequestRepository.getLast();
         loan1 = testLoanRepository.getLast();
 
         assertNotNull(loanRequest1);

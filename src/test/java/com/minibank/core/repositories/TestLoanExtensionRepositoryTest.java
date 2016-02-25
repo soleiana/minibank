@@ -7,8 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class TestLoanExtensionRepositoryTest extends SpringContextTest {
 
@@ -41,12 +41,17 @@ public class TestLoanExtensionRepositoryTest extends SpringContextTest {
         dbCleaner.clear();
         customer = CustomerFixture.standardCustomer();
         testCustomerRepository.create(customer);
-        createLoanExtension();
-        loanExtensionRepository.create(loanExtension);
     }
 
     @Test
-    public void testGetLast() {
+    public void testGetLastIfLoanExtensionDoesNotExist() {
+        LoanExtension retrievedLoanExtension = testLoanExtensionRepository.getLast();
+        assertNull(retrievedLoanExtension);
+    }
+
+    @Test
+    public void testGetLastIfLoanExtensionExists() {
+        createLoanExtension();
         LoanExtension retrievedLoanExtension = testLoanExtensionRepository.getLast();
         assertEquals(loanExtension, retrievedLoanExtension);
     }
@@ -68,6 +73,5 @@ public class TestLoanExtensionRepositoryTest extends SpringContextTest {
         loanExtension = LoanExtensionFixture.standardLoanExtension();
         loan.addLoanExtension(loanExtension);
     }
-
 
 }
