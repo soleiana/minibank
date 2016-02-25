@@ -5,7 +5,6 @@ import com.minibank.core.communications.CreateLoanResponse;
 import com.minibank.core.communications.domain.LoanRequestDetails;
 import com.minibank.core.domain.Loan;
 import com.minibank.core.domain.LoanRequest;
-import com.minibank.core.domain.LoanRequestStatus;
 import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.services.common.Message;
@@ -46,10 +45,8 @@ public class CreateLoanQueryHandler {
         loanRequestRepository.create(loanRequest);
 
         if (isNegativeCreditDecision(loanRequest)) {
-            loanRequest.setStatus(LoanRequestStatus.REJECTED);
             return new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
         } else {
-             loanRequest.setStatus(LoanRequestStatus.APPROVED);
              Loan loan = loanFactory.getNewLoan(loanRequest);
              loanRepository.create(loan);
              return new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);

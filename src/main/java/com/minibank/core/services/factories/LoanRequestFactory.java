@@ -2,7 +2,6 @@ package com.minibank.core.services.factories;
 
 import com.minibank.core.domain.Customer;
 import com.minibank.core.domain.LoanRequest;
-import com.minibank.core.domain.LoanRequestStatus;
 import com.minibank.core.communications.domain.LoanRequestDetails;
 import com.minibank.core.repositories.CustomerRepository;
 import com.minibank.core.services.common.DateTimeUtility;
@@ -29,8 +28,6 @@ public class LoanRequestFactory {
         loanRequest.setCustomer(customer);
         loanRequest.setAmount(loanRequestDetails.getAmount());
         loanRequest.setTerm(loanRequestDetails.getTerm());
-        loanRequest.setStatus(LoanRequestStatus.NEW);
-
         Date dNow = new Date();
 
         java.sql.Date submissionDate = DateTimeUtility.getSqlDate(dNow);

@@ -34,10 +34,6 @@ public class LoanRequest {
     @Column(name = "AMOUNT", precision = 10, scale = 2, nullable = false)
     private BigDecimal amount;
 
-    @Column(name = "STATUS", nullable = false)
-    @Enumerated (EnumType.STRING)
-    private LoanRequestStatus status;
-
     public LoanRequest() {}
 
     public Integer getId() {
@@ -96,13 +92,6 @@ public class LoanRequest {
         this.amount = amount;
     }
 
-    public LoanRequestStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(LoanRequestStatus status) {
-        this.status = status;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -114,7 +103,6 @@ public class LoanRequest {
         if (amount != null ? !amount.equals(that.amount) : that.amount != null) return false;
         if (customer != null ? !customer.equals(that.customer) : that.customer != null) return false;
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (status != that.status) return false;
         if (submissionDate != null ? !submissionDate.equals(that.submissionDate) : that.submissionDate != null)
             return false;
         if (submissionTime != null ? !submissionTime.equals(that.submissionTime) : that.submissionTime != null)
@@ -132,7 +120,6 @@ public class LoanRequest {
         result = 31 * result + (submissionTime != null ? submissionTime.hashCode() : 0);
         result = 31 * result + (term != null ? term.hashCode() : 0);
         result = 31 * result + (amount != null ? amount.hashCode() : 0);
-        result = 31 * result + (status != null ? status.hashCode() : 0);
         return result;
     }
 }
