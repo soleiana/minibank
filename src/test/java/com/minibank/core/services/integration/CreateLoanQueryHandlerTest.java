@@ -15,9 +15,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNotNull;
-import static junit.framework.TestCase.assertNull;
+import static junit.framework.TestCase.*;
 
 
 public class CreateLoanQueryHandlerTest extends SpringContextTest {
@@ -73,8 +71,9 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest {
 
         assertNotNull(loanRequest1);
         assertNotNull(loan1);
-        assertEquals(customer.getId(), loan1.getCustomer().getId());
-        assertEquals(customer.getId(), loanRequest1.getCustomer().getId());
+        assertEquals(customer, loanRequest1.getCustomer());
+        assertEquals(1, customer.getLoans().size());
+        assertTrue(customer.getLoans().contains(loan1));
     }
 
     private CreateLoanQuery createCreateLoanQuery() {

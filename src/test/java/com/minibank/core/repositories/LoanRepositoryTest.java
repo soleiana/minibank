@@ -75,8 +75,6 @@ public class LoanRepositoryTest extends SpringContextTest {
 
     private void createLoan() {
         loan = LoanFixture.standardLoan();
-        loan.setCustomer(customer);
-
         createLoanRequest();
         loanRequestRepository.create(loanRequest);
         loan.setLoanRequest(loanRequest);

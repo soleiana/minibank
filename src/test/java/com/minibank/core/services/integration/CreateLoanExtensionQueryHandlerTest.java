@@ -82,7 +82,6 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest {
         loan = LoanFixture.standardLoan();
         loanRequest.setCustomer(customer);
         loanRequestRepository.create(loanRequest);
-        loan.setCustomer(customer);
         loan.setLoanRequest(loanRequest);
         loanRepository.create(loan);
         return new CreateLoanExtensionQuery(loan.getId());

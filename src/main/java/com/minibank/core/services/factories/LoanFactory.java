@@ -25,7 +25,6 @@ public class LoanFactory {
         Customer customer = loanRequest.getCustomer();
 
         loan.setLoanRequest(loanRequest);
-        loan.setCustomer(customer);
         loan.setStartDate(loanRequest.getSubmissionDate());
 
         Date endDate = creditCalculator.getLoanEndDate(loanRequest);

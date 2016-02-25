@@ -21,10 +21,6 @@ public class Loan {
     @JoinColumn(name = "LOAN_REQUEST_ID", unique = true, nullable = false)
     private LoanRequest loanRequest;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "CUSTOMER_ID", nullable = false)
-    private Customer customer;
-
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "LOAN_ID")
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
@@ -54,14 +50,6 @@ public class Loan {
 
     public void setLoanRequest(LoanRequest loanRequest) {
         this.loanRequest = loanRequest;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 
     public BigDecimal getCurrInterestRate() {
@@ -115,7 +103,6 @@ public class Loan {
         if (!currInterest.equals(loan.currInterest)) return false;
         if (!startDate.equals(loan.startDate)) return false;
         return endDate.equals(loan.endDate);
-
     }
 
     @Override
