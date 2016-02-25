@@ -30,7 +30,7 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest {
     private BankParametersRepository bankParametersRepository;
 
     @Autowired
-    private LoanExtensionRepository loanExtensionRepository;
+    private TestLoanExtensionRepository testLoanExtensionRepository;
 
     @Autowired
     private CreateLoanExtensionQueryHandler createLoanExtensionQueryHandler;
@@ -52,7 +52,7 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest {
         CreateLoanExtensionQuery createLoanExtensionQuery = createCreateLoanExtensionQuery();
         CreateLoanExtensionResponse expectedResponse = new CreateLoanExtensionResponse(true, Message.LOAN_EXTENSION_OBTAINED_MESSAGE);
 
-        LoanExtension loanExtension = loanExtensionRepository.getLast();
+        LoanExtension loanExtension = testLoanExtensionRepository.getLast();
         assertNull(loanExtension);
 
         CreateLoanExtensionResponse createLoanExtensionResponse = createLoanExtensionQueryHandler.execute(createLoanExtensionQuery);
@@ -60,7 +60,7 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest {
         assertEquals(expectedResponse.isCreated(), createLoanExtensionResponse.isCreated());
         assertEquals(expectedResponse.getMessage(), createLoanExtensionResponse.getMessage());
 
-        loanExtension = loanExtensionRepository.getLast();
+        loanExtension = testLoanExtensionRepository.getLast();
         assertNotNull(loanExtension);
         assertEquals(loanExtension.getInterest(), loan.getCurrInterest());
         assertEquals(loanExtension.getInterestRate(), loan.getCurrInterestRate());
