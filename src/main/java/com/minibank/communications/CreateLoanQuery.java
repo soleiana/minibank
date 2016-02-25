@@ -1,7 +1,7 @@
 package com.minibank.communications;
 
 
-import com.minibank.communications.domain.LoanRequestDetails;
+import com.minibank.communications.model.LoanRequestDetails;
 
 
 public class CreateLoanQuery extends CreateEntityQuery {

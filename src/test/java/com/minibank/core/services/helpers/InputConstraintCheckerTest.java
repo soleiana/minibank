@@ -1,7 +1,7 @@
 package com.minibank.core.services.helpers;
 
 import com.minibank.SpringContextTest;
-import com.minibank.core.domain.*;
+import com.minibank.core.model.*;
 import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.CustomerRepository;
 import com.minibank.core.repositories.LoanRequestRepository;

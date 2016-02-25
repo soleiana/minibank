@@ -1,7 +1,7 @@
 package com.minibank.core.repositories;
 
 
-import com.minibank.core.domain.Loan;
+import com.minibank.core.model.Loan;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;

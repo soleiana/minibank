@@ -1,7 +1,6 @@
 package com.minibank.core.services.helpers;
 
-import com.minibank.core.domain.BankParameters;
-import com.minibank.core.domain.LoanRequest;
+import com.minibank.core.model.BankParameters;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;

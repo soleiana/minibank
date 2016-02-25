@@ -1,7 +1,7 @@
 package com.minibank.core.services.factories;
 
-import com.minibank.core.domain.Loan;
-import com.minibank.core.domain.LoanExtension;
+import com.minibank.core.model.Loan;
+import com.minibank.core.model.LoanExtension;
 import com.minibank.core.services.common.DateTimeUtility;
 import com.minibank.core.services.helpers.CreditCalculator;
 import org.springframework.beans.factory.annotation.Autowired;

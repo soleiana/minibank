@@ -1,9 +1,9 @@
 package com.minibank.communications.factories;
 
-import com.minibank.core.domain.AllLoans;
-import com.minibank.communications.domain.LoanExtension;
-import com.minibank.communications.domain.AllLoansDetails;
-import com.minibank.communications.domain.Loan;
+import com.minibank.core.model.AllLoans;
+import com.minibank.communications.model.LoanExtension;
+import com.minibank.communications.model.AllLoansDetails;
+import com.minibank.communications.model.Loan;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -20,10 +20,10 @@ public class AllLoansDetailsFactory {
         allLoansDetails.setSurname(allLoans.getCustomer().getSurname());
 
         List<Loan> toLoans = new ArrayList<>();
-        for(com.minibank.core.domain.Loan fromLoan: allLoans.getLoans()) {
+        for(com.minibank.core.model.Loan fromLoan: allLoans.getLoans()) {
             Loan toLoan = convert(fromLoan);
             List<LoanExtension> toLoanExtensions = new ArrayList<>();
-            for(com.minibank.core.domain.LoanExtension fromLoanExtension: fromLoan.getLoanExtensions()) {
+            for(com.minibank.core.model.LoanExtension fromLoanExtension: fromLoan.getLoanExtensions()) {
                     LoanExtension toLoanExtension = convert(fromLoanExtension);
                     toLoanExtensions.add(toLoanExtension);
             }
@@ -34,7 +34,7 @@ public class AllLoansDetailsFactory {
         return allLoansDetails;
     }
 
-    private Loan convert(com.minibank.core.domain.Loan fromLoan) {
+    private Loan convert(com.minibank.core.model.Loan fromLoan) {
         Loan toLoan = new Loan();
         toLoan.setId(fromLoan.getId());
         toLoan.setCurrInterestRate(fromLoan.getCurrInterestRate());
@@ -45,7 +45,7 @@ public class AllLoansDetailsFactory {
         return toLoan;
     }
 
-    private LoanExtension convert(com.minibank.core.domain.LoanExtension fromLoanExtension) {
+    private LoanExtension convert(com.minibank.core.model.LoanExtension fromLoanExtension) {
         LoanExtension toLoanExtension = new LoanExtension();
         toLoanExtension.setInterestRate(fromLoanExtension.getInterestRate());
         toLoanExtension.setInterest(fromLoanExtension.getInterest());

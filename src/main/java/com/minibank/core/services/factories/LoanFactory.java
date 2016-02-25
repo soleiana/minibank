@@ -1,6 +1,6 @@
 package com.minibank.core.services.factories;
 
-import com.minibank.core.domain.*;
+import com.minibank.core.model.*;
 import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.services.helpers.CreditCalculator;
 import org.springframework.beans.factory.annotation.Autowired;

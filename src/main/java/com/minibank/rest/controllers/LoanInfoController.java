@@ -2,9 +2,9 @@ package com.minibank.rest.controllers;
 
 import com.minibank.communications.GetAllLoansQuery;
 import com.minibank.communications.GetAllLoansResponse;
-import com.minibank.communications.domain.AllLoansDetails;
+import com.minibank.communications.model.AllLoansDetails;
 import com.minibank.core.services.GetAllLoansQueryHandler;
-import com.minibank.rest.domain.AllLoans;
+import com.minibank.rest.model.AllLoans;
 import com.minibank.rest.factories.AllLoansRestFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

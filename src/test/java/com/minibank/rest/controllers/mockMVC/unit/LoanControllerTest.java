@@ -2,12 +2,12 @@ package com.minibank.rest.controllers.mockMVC.unit;
 
 import com.minibank.communications.CreateLoanQuery;
 import com.minibank.communications.CreateLoanResponse;
-import com.minibank.communications.domain.LoanRequestDetails;
+import com.minibank.communications.model.LoanRequestDetails;
 import com.minibank.communications.factories.LoanRequestDetailsFactory;
 import com.minibank.core.services.CreateLoanQueryHandler;
 import com.minibank.core.services.common.Message;
 import com.minibank.rest.controllers.LoanController;
-import com.minibank.rest.domain.LoanRequest;
+import com.minibank.rest.model.LoanRequest;
 import com.minibank.rest.validators.LoanRequestValidator;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 import static org.mockito.Mockito.*;
 
-import static com.minibank.rest.domain.JsonDataFixture.*;
+import static com.minibank.rest.model.JsonDataFixture.*;
 
 
 public class LoanControllerTest {

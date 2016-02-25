@@ -2,10 +2,10 @@ package com.minibank.rest.controllers.mockMVC.unit;
 
 import com.minibank.communications.GetAllLoansQuery;
 import com.minibank.communications.GetAllLoansResponse;
-import com.minibank.communications.domain.AllLoansDetails;
+import com.minibank.communications.model.AllLoansDetails;
 import com.minibank.core.services.GetAllLoansQueryHandler;
 import com.minibank.rest.controllers.LoanInfoController;
-import com.minibank.rest.domain.AllLoans;
+import com.minibank.rest.model.AllLoans;
 import com.minibank.rest.factories.AllLoansRestFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,8 +20,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 import static org.mockito.Mockito.*;
 
-import static com.minibank.rest.domain.JsonDataFixture.*;
-import static com.minibank.rest.domain.AllLoansFixture.*;
+import static com.minibank.rest.model.JsonDataFixture.*;
+import static com.minibank.rest.model.AllLoansFixture.*;
 
 
 public class LoanInfoControllerTest {

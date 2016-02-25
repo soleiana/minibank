@@ -1,8 +1,8 @@
 package com.minibank.core.services.helpers;
 
-import com.minibank.core.domain.BankParameters;
-import com.minibank.core.domain.Loan;
-import com.minibank.core.domain.LoanRequest;
+import com.minibank.core.model.BankParameters;
+import com.minibank.core.model.Loan;
+import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.services.common.*;
 import org.springframework.beans.factory.annotation.Autowired;

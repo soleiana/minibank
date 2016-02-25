@@ -2,11 +2,11 @@ package com.minibank.rest.controllers;
 
 import com.minibank.communications.CreateLoanQuery;
 import com.minibank.communications.CreateLoanResponse;
-import com.minibank.communications.domain.LoanRequestDetails;
+import com.minibank.communications.model.LoanRequestDetails;
 import com.minibank.communications.factories.LoanRequestDetailsFactory;
 import com.minibank.core.services.CreateLoanQueryHandler;
 import com.minibank.rest.common.Message;
-import com.minibank.rest.domain.LoanRequest;
+import com.minibank.rest.model.LoanRequest;
 import com.minibank.rest.validators.LoanRequestValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

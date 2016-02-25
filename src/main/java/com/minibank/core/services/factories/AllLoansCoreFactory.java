@@ -1,7 +1,7 @@
 package com.minibank.core.services.factories;
 
-import com.minibank.core.domain.AllLoans;
-import com.minibank.core.domain.Customer;
+import com.minibank.core.model.AllLoans;
+import com.minibank.core.model.Customer;
 import com.minibank.core.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

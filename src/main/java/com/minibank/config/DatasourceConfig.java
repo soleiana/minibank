@@ -19,7 +19,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:datasource.properties" })
-@ComponentScan(basePackages = {"com.minibank.core.domain", "com.minibank.core.repositories"})
+@ComponentScan(basePackages = {"com.minibank.core.model", "com.minibank.core.repositories"})
 public class DatasourceConfig {
 
     @Autowired
@@ -36,7 +36,7 @@ public class DatasourceConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.minibank.core.domain" });
+        sessionFactory.setPackagesToScan(new String[] { "com.minibank.core.model" });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }

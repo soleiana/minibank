@@ -1,8 +1,8 @@
 package com.minibank.core.repositories;
 
 import com.minibank.SpringContextTest;
-import com.minibank.core.domain.BankParameters;
-import com.minibank.core.domain.BankParametersFixture;
+import com.minibank.core.model.BankParameters;
+import com.minibank.core.model.BankParametersFixture;
 import com.minibank.core.repositories.tools.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;

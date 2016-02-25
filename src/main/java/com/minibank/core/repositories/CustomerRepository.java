@@ -1,6 +1,6 @@
 package com.minibank.core.repositories;
 
-import com.minibank.core.domain.Customer;
+import com.minibank.core.model.Customer;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 

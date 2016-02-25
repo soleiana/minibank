@@ -1,7 +1,7 @@
 package com.minibank.core.services.helpers;
 
-import com.minibank.core.domain.BankParameters;
-import com.minibank.core.domain.LoanRequest;
+import com.minibank.core.model.BankParameters;
+import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.services.common.DateTimeUtility;
 import org.springframework.beans.factory.annotation.Autowired;

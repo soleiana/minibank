@@ -1,6 +1,6 @@
 package com.minibank.rest.validators;
 
-import com.minibank.rest.domain.LoanRequest;
+import com.minibank.rest.model.LoanRequest;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;

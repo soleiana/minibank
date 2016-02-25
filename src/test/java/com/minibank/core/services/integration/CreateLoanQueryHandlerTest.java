@@ -1,11 +1,11 @@
 package com.minibank.core.services.integration;
 
 import com.minibank.SpringContextTest;
-import com.minibank.communications.domain.LoanRequestDetailsFixture;
+import com.minibank.communications.model.LoanRequestDetailsFixture;
 import com.minibank.communications.CreateLoanQuery;
 import com.minibank.communications.CreateLoanResponse;
-import com.minibank.communications.domain.LoanRequestDetails;
-import com.minibank.core.domain.*;
+import com.minibank.communications.model.LoanRequestDetails;
+import com.minibank.core.model.*;
 import com.minibank.core.repositories.*;
 import com.minibank.core.repositories.tools.DBCleaner;
 import com.minibank.core.services.CreateLoanQueryHandler;
