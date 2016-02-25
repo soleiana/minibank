@@ -21,7 +21,7 @@ public class AllLoansCoreFactory {
     LoanRepository loanRepository;
 
 
-    public AllLoans getNewAllLoans(Integer customerId) {
+    public AllLoans getAllLoans(Integer customerId) {
         AllLoans allLoans = new AllLoans();
         Customer customer = customerRepository.getById(customerId);
         allLoans.setCustomer(customer);

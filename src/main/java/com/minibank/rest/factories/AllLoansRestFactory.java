@@ -13,7 +13,7 @@ import java.util.List;
 @Component
 public class AllLoansRestFactory {
 
-    public  AllLoans getNewAllLoans(AllLoansDetails allLoansDetails) {
+    public  AllLoans getAllLoans(AllLoansDetails allLoansDetails) {
         AllLoans allLoans = new AllLoans();
         allLoans.setCustomerId(allLoansDetails.getCustomerId());
         allLoans.setName(allLoansDetails.getName());

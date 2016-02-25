@@ -53,7 +53,7 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
         extendedLoan = LoanFixture.standardLoan();
         loanExtension = LoanExtensionFixture.standardLoanExtension();
         when(loanRepository.getById(loanId)).thenReturn(loan);
-        when(loanExtensionFactory.getNewLoanExtension(loan)).thenReturn(loanExtension);
+        when(loanExtensionFactory.getLoanExtension(loan)).thenReturn(loanExtension);
         when(loanFactory.getExtendedLoan(loan, loanExtension)).thenReturn(extendedLoan);
     }
 
@@ -67,7 +67,7 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
         assertNotNull(response);
         assertEquals(expectedResponse.isCreated(), response.isCreated());
         assertEquals(expectedResponse.getMessage(), response.getMessage());
-        verify(loanExtensionFactory, times(1)).getNewLoanExtension(loan);
+        verify(loanExtensionFactory, times(1)).getLoanExtension(loan);
         verify(loanExtensionRepository, times(1)).create(loanExtension);
         verify(loanFactory, times(1)).getExtendedLoan(loan, loanExtension);
         verify(loanRepository, times(1)).update(extendedLoan);

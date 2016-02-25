@@ -17,7 +17,7 @@ public class LoanRequestFactory {
     @Autowired
     CustomerRepository customerRepository;
 
-    public LoanRequest getNewLoanRequest(LoanRequestDetails loanRequestDetails) {
+    public LoanRequest getLoanRequest(LoanRequestDetails loanRequestDetails) {
 
         Integer id = loanRequestDetails.getCustomerId();
         Customer customer = customerRepository.getById(id);

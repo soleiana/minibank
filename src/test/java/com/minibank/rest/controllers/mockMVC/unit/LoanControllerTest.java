@@ -53,7 +53,7 @@ public class LoanControllerTest {
     @Test
     public void testThatCreateLoanUsesHttpCreatedOnSuccess() throws Exception {
         when(loanRequestValidator.validate(any(LoanRequest.class))).thenReturn(true);
-        when(loanRequestDetailsFactory.getNewLoanRequestDetails(any(LoanRequest.class))).thenReturn(new LoanRequestDetails());
+        when(loanRequestDetailsFactory.getLoanRequestDetails(any(LoanRequest.class))).thenReturn(new LoanRequestDetails());
         when(createLoanQueryHandler.execute(any(CreateLoanQuery.class))).thenReturn(new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE));
 
         this.mockMvc.perform(
@@ -66,7 +66,7 @@ public class LoanControllerTest {
     @Test
     public void testThatCreateLoanUsesHttpInternalServerErrorOnFailureToGetLoan() throws Exception {
         when(loanRequestValidator.validate(any(LoanRequest.class))).thenReturn(true);
-        when(loanRequestDetailsFactory.getNewLoanRequestDetails(any(LoanRequest.class))).thenReturn(new LoanRequestDetails());
+        when(loanRequestDetailsFactory.getLoanRequestDetails(any(LoanRequest.class))).thenReturn(new LoanRequestDetails());
         when(createLoanQueryHandler.execute(any(CreateLoanQuery.class))).thenReturn(new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE));
 
         this.mockMvc.perform(

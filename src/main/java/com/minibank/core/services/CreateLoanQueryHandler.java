@@ -41,7 +41,7 @@ public class CreateLoanQueryHandler {
     public CreateLoanResponse execute(CreateLoanQuery query) {
         LoanRequestDetails requestDetails = query.getLoanRequestDetails();
 
-        LoanRequest loanRequest = loanRequestFactory.getNewLoanRequest(requestDetails);
+        LoanRequest loanRequest = loanRequestFactory.getLoanRequest(requestDetails);
         loanRequestRepository.create(loanRequest);
 
         if (isNegativeCreditDecision(loanRequest)) {

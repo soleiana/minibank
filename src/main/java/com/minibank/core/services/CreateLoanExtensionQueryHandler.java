@@ -32,7 +32,7 @@ public class CreateLoanExtensionQueryHandler {
     public CreateLoanExtensionResponse execute(CreateLoanExtensionQuery query) {
         Integer loanId = query.getLoanId();
         Loan loan = loanRepository.getById(loanId);
-        LoanExtension loanExtension = loanExtensionFactory.getNewLoanExtension(loan);
+        LoanExtension loanExtension = loanExtensionFactory.getLoanExtension(loan);
         loanExtensionRepository.create(loanExtension);
         Loan extendedLoan = loanFactory.getExtendedLoan(loan, loanExtension);
         loanRepository.update(extendedLoan);

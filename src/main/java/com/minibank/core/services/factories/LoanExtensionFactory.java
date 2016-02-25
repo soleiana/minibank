@@ -18,7 +18,7 @@ public class LoanExtensionFactory {
     private CreditCalculator creditCalculator;
 
 
-    public LoanExtension getNewLoanExtension(Loan loan) {
+    public LoanExtension getLoanExtension(Loan loan) {
         LoanExtension loanExtension = new LoanExtension();
         Date dNow = new Date();
         java.sql.Date submissionDate = DateTimeUtility.getSqlDate(dNow);

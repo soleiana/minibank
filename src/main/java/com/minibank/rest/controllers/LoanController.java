@@ -41,7 +41,7 @@ public class LoanController {
 
         String ip = httpServletRequest.getRemoteAddr();
         loanRequest.setRequestIp(ip);
-        LoanRequestDetails loanRequestDetails = loanRequestDetailsFactory.getNewLoanRequestDetails(loanRequest);
+        LoanRequestDetails loanRequestDetails = loanRequestDetailsFactory.getLoanRequestDetails(loanRequest);
 
         CreateLoanResponse createLoanResponse = createLoanQueryHandler.execute(new CreateLoanQuery(loanRequestDetails));
 

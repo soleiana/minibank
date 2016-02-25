@@ -65,7 +65,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
         loan = LoanFixture.standardLoan();
         loanRequestDetails = LoanRequestDetailsFixture.standardLoanRequestDetails();
 
-        when(loanRequestFactory.getNewLoanRequest(any(LoanRequestDetails.class))).thenReturn(loanRequest);
+        when(loanRequestFactory.getLoanRequest(any(LoanRequestDetails.class))).thenReturn(loanRequest);
         when(loanFactory.getNewLoan(any(LoanRequest.class))).thenReturn(loan);
     }
 
@@ -84,7 +84,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
         assertNotNull(response);
         assertEquals(expectedResponse.getMessage(), response.getMessage());
         assertEquals(expectedResponse.isCreated(), response.isCreated());
-        verify(loanRequestFactory, times(1)).getNewLoanRequest(loanRequestDetails);
+        verify(loanRequestFactory, times(1)).getLoanRequest(loanRequestDetails);
         verify(loanRequestRepository, times(1)).create(loanRequest);
         verify(inputConstraintChecker, times(1)).isEqualOrLessThanMaxLoanAmount(any(BigDecimal.class));
         verify(creditExpert, times(1)).hasRisks(loanRequest);
@@ -108,7 +108,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
         assertNotNull(response);
         assertEquals(expectedResponse.getMessage(), response.getMessage());
         assertEquals(expectedResponse.isCreated(), response.isCreated());
-        verify(loanRequestFactory, times(1)).getNewLoanRequest(loanRequestDetails);
+        verify(loanRequestFactory, times(1)).getLoanRequest(loanRequestDetails);
         verify(loanRequestRepository, times(1)).create(loanRequest);
         verify(inputConstraintChecker, times(1)).isEqualOrLessThanMaxLoanAmount(any(BigDecimal.class));
         verify(creditExpert, times(1)).hasRisks(loanRequest);
@@ -132,7 +132,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
         assertNotNull(response);
         assertEquals(expectedResponse.getMessage(), response.getMessage());
         assertEquals(expectedResponse.isCreated(), response.isCreated());
-        verify(loanRequestFactory, times(1)).getNewLoanRequest(loanRequestDetails);
+        verify(loanRequestFactory, times(1)).getLoanRequest(loanRequestDetails);
         verify(loanRequestRepository, times(1)).create(loanRequest);
         verify(inputConstraintChecker, times(1)).isEqualOrLessThanMaxLoanAmount(any(BigDecimal.class));
         verify(creditExpert, times(0)).hasRisks(loanRequest);

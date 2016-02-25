@@ -44,7 +44,7 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest {
         allLoans = AllLoansFixture.standardAllLoans();
         allLoansDetails = AllLoanDetailsFixture.standardAllLoansDetails();
 
-        when(allLoansCoreFactory.getNewAllLoans(customerId)).thenReturn(allLoans);
+        when(allLoansCoreFactory.getAllLoans(customerId)).thenReturn(allLoans);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest {
         //Positive path of execution
         //Customer obtains loan history
 
-        when(allLoansDetailsFactory.getNewAllLoansDetails(allLoans)).thenReturn(allLoansDetails);
+        when(allLoansDetailsFactory.getAllLoansDetails(allLoans)).thenReturn(allLoansDetails);
 
         GetAllLoansQuery query = new GetAllLoansQuery(customerId);
         GetAllLoansResponse expectedResponse = new GetAllLoansResponse(allLoansDetails,true);
@@ -62,8 +62,8 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest {
         assertNotNull(response);
         assertEquals(expectedResponse.getAllLoansDetails(), response.getAllLoansDetails());
         assertEquals(expectedResponse.isEntityFound(), response.isEntityFound());
-        verify(allLoansCoreFactory,times(1)).getNewAllLoans(customerId);
-        verify(allLoansDetailsFactory,times(1)).getNewAllLoansDetails(allLoans);
+        verify(allLoansCoreFactory,times(1)).getAllLoans(customerId);
+        verify(allLoansDetailsFactory,times(1)).getAllLoansDetails(allLoans);
     }
 
     @Test
@@ -75,7 +75,7 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest {
         List<com.minibank.core.communications.domain.Loan> emptyLoans = new ArrayList<>();
         emptyAllLoansDetails.setLoans(emptyLoans);
 
-        when(allLoansDetailsFactory.getNewAllLoansDetails(allLoans)).thenReturn(emptyAllLoansDetails);
+        when(allLoansDetailsFactory.getAllLoansDetails(allLoans)).thenReturn(emptyAllLoansDetails);
 
         GetAllLoansQuery query = new GetAllLoansQuery(customerId);
         GetAllLoansResponse expectedResponse = new GetAllLoansResponse(emptyAllLoansDetails,false);
@@ -85,8 +85,8 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest {
         assertNotNull(response);
         assertEquals(expectedResponse.getAllLoansDetails(), response.getAllLoansDetails());
         assertEquals(expectedResponse.isEntityFound(), response.isEntityFound());
-        verify(allLoansCoreFactory,times(1)).getNewAllLoans(customerId);
-        verify(allLoansDetailsFactory,times(1)).getNewAllLoansDetails(allLoans);
+        verify(allLoansCoreFactory,times(1)).getAllLoans(customerId);
+        verify(allLoansDetailsFactory,times(1)).getAllLoansDetails(allLoans);
     }
 
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoanRequestDetailsFactory {
 
-    public LoanRequestDetails getNewLoanRequestDetails(LoanRequest loanRequest) {
+    public LoanRequestDetails getLoanRequestDetails(LoanRequest loanRequest) {
         LoanRequestDetails loanRequestDetails = new LoanRequestDetails();
         loanRequestDetails.setCustomerId(loanRequest.getCustomerId());
         loanRequestDetails.setRequestIp(loanRequest.getRequestIp());

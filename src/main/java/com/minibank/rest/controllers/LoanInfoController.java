@@ -33,7 +33,7 @@ public class LoanInfoController {
         AllLoans allLoans = null;
         if(getAllLoansResponse.isEntityFound()) {
             AllLoansDetails allLoansDetails = getAllLoansResponse.getAllLoansDetails();
-            allLoans = allLoansRestFactory.getNewAllLoans(allLoansDetails);
+            allLoans = allLoansRestFactory.getAllLoans(allLoansDetails);
             return new ResponseEntity<>(allLoans, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(allLoans, HttpStatus.NOT_FOUND);

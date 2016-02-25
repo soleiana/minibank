@@ -47,7 +47,7 @@ public class LoanInfoControllerTest {
     @Test
     public void testThatLoanInfoControllerUsesHttpOkOnSuccess() throws Exception {
         when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
-        when(allLoansRestFactory.getNewAllLoans(any(AllLoansDetails.class))).thenReturn(new AllLoans());
+        when(allLoansRestFactory.getAllLoans(any(AllLoansDetails.class))).thenReturn(new AllLoans());
 
         this.mockMvc.perform(
                 get("/customers/{id}/loans", 1))
@@ -57,7 +57,7 @@ public class LoanInfoControllerTest {
     @Test
     public void testThatLoanInfoControllerRendersCorrectly() throws Exception {
         when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
-        when(allLoansRestFactory.getNewAllLoans(any(AllLoansDetails.class))).thenReturn(standardAllLoans());
+        when(allLoansRestFactory.getAllLoans(any(AllLoansDetails.class))).thenReturn(standardAllLoans());
 
         this.mockMvc.perform(
                 get("/customers/{id}/loans", 2))
@@ -70,7 +70,7 @@ public class LoanInfoControllerTest {
     @Test
     public void testThatLoanInfoControllerUsesHttpNotFoundOnFailure() throws Exception {
         when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), false));
-        when(allLoansRestFactory.getNewAllLoans(any(AllLoansDetails.class))).thenReturn(new AllLoans());
+        when(allLoansRestFactory.getAllLoans(any(AllLoansDetails.class))).thenReturn(new AllLoans());
 
         this.mockMvc.perform(
                 get("/customers/{id}/loans", 1))
