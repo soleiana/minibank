@@ -20,6 +20,7 @@ public class BankParametersRepositoryTest extends SpringContextTest {
 
     @Autowired
     private BankParametersRepository bankParametersRepository;
+
     private BankParameters bankParameters;
 
     @Before
@@ -38,31 +39,6 @@ public class BankParametersRepositoryTest extends SpringContextTest {
 
     @Test
     @Transactional
-    public void testUpdate() {
-        bankParametersRepository.create(bankParameters);
-        BankParameters newBankParams = BankParametersFixture.newBankParameters();
-
-        bankParameters.setMaxLoanAmount(newBankParams.getMaxLoanAmount());
-        bankParameters.setBaseInterestRate(newBankParams.getBaseInterestRate());
-        bankParameters.setInterestRateFactor(newBankParams.getInterestRateFactor());
-        bankParameters.setMaxLoanAttempts(newBankParams.getMaxLoanAttempts());
-        bankParameters.setRiskTimeStart(newBankParams.getRiskTimeStart());
-        bankParameters.setRiskTimeEnd(newBankParams.getRiskTimeEnd());
-        bankParameters.setLoanExtensionTerm(newBankParams.getLoanExtensionTerm());
-
-        bankParametersRepository.update(bankParameters);
-
-        assertEquals(newBankParams.getMaxLoanAmount(), bankParameters.getMaxLoanAmount());
-        assertEquals(newBankParams.getBaseInterestRate(), bankParameters.getBaseInterestRate());
-        assertEquals(newBankParams.getInterestRateFactor(), bankParameters.getInterestRateFactor());
-        assertEquals(newBankParams.getMaxLoanAttempts(), bankParameters.getMaxLoanAttempts());
-        assertEquals(newBankParams.getRiskTimeStart(), bankParameters.getRiskTimeStart());
-        assertEquals(newBankParams.getRiskTimeEnd(), bankParameters.getRiskTimeEnd());
-        assertEquals(newBankParams.getLoanExtensionTerm(), bankParameters.getLoanExtensionTerm());
-    }
-
-    @Test
-    @Transactional
     public void testGetLast() {
         BankParameters bp1 = BankParametersFixture.standardBankParameters();
         bp1.setLoanExtensionTerm(BankParametersFixture.NEW_LOAN_EXTENSION_TERM);
@@ -73,7 +49,7 @@ public class BankParametersRepositoryTest extends SpringContextTest {
         bankParametersRepository.create(bp1);
         bankParametersRepository.create(bp2);
 
-        BankParameters bp = bankParametersRepository.getLast();
-        assertEquals(bp2,bp);
+        BankParameters bp = bankParametersRepository.getCurrentBankParameters();
+        assertEquals(bp2, bp);
     }
 }

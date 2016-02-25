@@ -51,7 +51,7 @@ public class RiskConstraintCheckerTest extends SpringContextTest {
     @Transactional
     public void testIsMaxRequestsPerIPExceeded() {
         bankParameters.setMaxLoanAttempts(new Byte("2"));
-        bankParametersRepository.update(bankParameters);
+        bankParametersRepository.create(bankParameters);
 
         Date now = new Date();
         java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);

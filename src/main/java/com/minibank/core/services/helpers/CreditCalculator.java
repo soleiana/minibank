@@ -38,13 +38,13 @@ public class CreditCalculator {
 
     public Date getLoanExtensionEndDate(Loan loan) {
         Date startDate = loan.getEndDate();
-        short loanExtensionTerm = bankParametersRepository.getLast().getLoanExtensionTerm();
+        short loanExtensionTerm = bankParametersRepository.getCurrentBankParameters().getLoanExtensionTerm();
         Date endDate = DateTimeUtility.increaseDate(startDate, (int)loanExtensionTerm);
         return endDate;
     }
 
     public BigDecimal getInterest(LoanRequest loanRequest) {
-        BankParameters bankParams = bankParametersRepository.getLast();
+        BankParameters bankParams = bankParametersRepository.getCurrentBankParameters();
         BigDecimal baseInterestRate = bankParams.getBaseInterestRate();
         BigDecimal amount = loanRequest.getAmount();
         BigDecimal term = new BigDecimal(loanRequest.getTerm());
@@ -55,14 +55,14 @@ public class CreditCalculator {
        BigDecimal amount = loan.getAmount();
        BigDecimal currInterestRate = getNewInterestRate(loan);
 
-       short loanExtensionTerm = bankParametersRepository.getLast().getLoanExtensionTerm();
+       short loanExtensionTerm = bankParametersRepository.getCurrentBankParameters().getLoanExtensionTerm();
        int term = loan.getTerm();
        term += loanExtensionTerm;
-       return interestFormula(amount, new BigDecimal(term),currInterestRate);
+       return interestFormula(amount, new BigDecimal(term), currInterestRate);
     }
 
     public BigDecimal getNewInterestRate(Loan loan) {
-        BankParameters bankParams = bankParametersRepository.getLast();
+        BankParameters bankParams = bankParametersRepository.getCurrentBankParameters();
         BigDecimal interestRateFactor = bankParams.getInterestRateFactor();
         BigDecimal currInterestRate = loan.getCurrInterestRate();
         currInterestRate = currInterestRate.multiply(interestRateFactor);

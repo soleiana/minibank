@@ -33,7 +33,7 @@ public class LoanFactory {
         BigDecimal interest = creditCalculator.getInterest(loanRequest);
         loan.setCurrInterest(interest);
 
-        BankParameters bankParams = bankParametersRepository.getLast();
+        BankParameters bankParams = bankParametersRepository.getCurrentBankParameters();
         loan.setCurrInterestRate(bankParams.getBaseInterestRate());
 
         customer.addLoan(loan);

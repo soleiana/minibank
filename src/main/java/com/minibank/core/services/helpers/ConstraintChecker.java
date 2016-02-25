@@ -13,6 +13,6 @@ public abstract class ConstraintChecker {
     private BankParametersRepository bankParametersRepository;
 
     protected BankParameters getBankParameters() {
-        return bankParametersRepository.getLast();
+        return bankParametersRepository.getCurrentBankParameters();
     }
 }

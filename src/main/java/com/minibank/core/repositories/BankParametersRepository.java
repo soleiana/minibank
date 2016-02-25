@@ -14,16 +14,11 @@ public class BankParametersRepository extends SessionProvider {
         getCurrentSession().saveOrUpdate(bankParameters);
     }
 
-    public void update(BankParameters bankParameters) {
-        Session session = getCurrentSession();
-        session.saveOrUpdate(bankParameters);
-    }
-
-    public BankParameters getLast() {
+    public BankParameters getCurrentBankParameters() {
         Session session = getCurrentSession();
         Criteria criteria = session.createCriteria(BankParameters.class);
         criteria.addOrder(Order.desc("id"));
-        if(criteria.list().size() != 0) {
+        if(!criteria.list().isEmpty()) {
             return (BankParameters) criteria.list().get(0);
         } else {
             return null;

@@ -34,7 +34,7 @@ public class BankConfiguratorTest extends SpringContextTest {
     @Test
     public void testSetParameters() {
         bankConfigurator.setParameters();
-        BankParameters bankParameters = bankParametersRepository.getLast();
+        BankParameters bankParameters = bankParametersRepository.getCurrentBankParameters();
         assertNotNull(bankParameters);
         assertEquals(new BigDecimal("4000.00"), bankParameters.getMaxLoanAmount());
         assertEquals(new Byte("3"), bankParameters.getMaxLoanAttempts());
