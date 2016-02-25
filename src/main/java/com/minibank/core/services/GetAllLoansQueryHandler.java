@@ -9,6 +9,7 @@ import com.minibank.core.model.AllLoans;
 import com.minibank.core.services.factories.AllLoansCoreFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Component
@@ -20,6 +21,8 @@ public class GetAllLoansQueryHandler {
     @Autowired
     private AllLoansDetailsFactory allLoansDetailsFactory;
 
+
+    @Transactional
     public GetAllLoansResponse execute(GetAllLoansQuery query) {
         AllLoans allLoans;
         Integer customerId = query.getCustomerId();

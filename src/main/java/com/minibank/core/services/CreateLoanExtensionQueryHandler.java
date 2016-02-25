@@ -11,6 +11,7 @@ import com.minibank.core.services.factories.LoanExtensionFactory;
 import com.minibank.core.services.factories.LoanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Component
@@ -29,6 +30,7 @@ public class CreateLoanExtensionQueryHandler {
     private LoanExtensionRepository loanExtensionRepository;
 
 
+    @Transactional
     public CreateLoanExtensionResponse execute(CreateLoanExtensionQuery query) {
         Integer loanId = query.getLoanId();
         Loan loan = loanRepository.getById(loanId);

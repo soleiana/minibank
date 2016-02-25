@@ -14,6 +14,7 @@ import com.minibank.core.services.helpers.InputConstraintChecker;
 import com.minibank.core.services.helpers.CreditExpert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Component
@@ -38,6 +39,7 @@ public class CreateLoanQueryHandler {
     private LoanRepository loanRepository;
 
 
+    @Transactional
     public CreateLoanResponse execute(CreateLoanQuery query) {
         LoanRequestDetails requestDetails = query.getLoanRequestDetails();
 
