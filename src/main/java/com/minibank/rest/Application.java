@@ -38,8 +38,7 @@ public class Application {
 
     @Bean
     public EmbeddedServletContainerFactory servletContainer() {
-        TomcatEmbeddedServletContainerFactory factory = new TomcatEmbeddedServletContainerFactory();
-        return factory;
+        return new TomcatEmbeddedServletContainerFactory();
     }
 
 }
