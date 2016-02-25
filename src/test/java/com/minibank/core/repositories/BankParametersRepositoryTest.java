@@ -38,14 +38,6 @@ public class BankParametersRepositoryTest extends SpringContextTest {
 
     @Test
     @Transactional
-    public void testGetById() {
-        bankParametersRepository.create(bankParameters);
-        Integer id = bankParameters.getId();
-        assertEquals(bankParameters, bankParametersRepository.getById(id));
-    }
-
-    @Test
-    @Transactional
     public void testUpdate() {
         bankParametersRepository.create(bankParameters);
         BankParameters newBankParams = BankParametersFixture.newBankParameters();

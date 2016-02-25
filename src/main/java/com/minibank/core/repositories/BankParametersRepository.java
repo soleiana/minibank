@@ -7,18 +7,11 @@ import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Component;
 
 
-
 @Component
 public class BankParametersRepository extends SessionProvider {
 
-
     public void create(BankParameters bankParameters) {
         getCurrentSession().saveOrUpdate(bankParameters);
-    }
-
-    public BankParameters getById(Integer id) {
-        Session session = getCurrentSession();
-        return (BankParameters) session.get(BankParameters.class, id);
     }
 
     public void update(BankParameters bankParameters) {
