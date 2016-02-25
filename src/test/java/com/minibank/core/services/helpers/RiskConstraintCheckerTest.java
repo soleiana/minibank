@@ -26,7 +26,7 @@ public class RiskConstraintCheckerTest extends SpringContextTest {
     private LoanRequestRepository loanRequestRepository;
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private TestCustomerRepository testCustomerRepository;
 
     @Autowired
     private BankParametersRepository bankParametersRepository;
@@ -142,7 +142,7 @@ public class RiskConstraintCheckerTest extends SpringContextTest {
         Customer customer = CustomerFixture.standardCustomer();
         loanRequest = LoanRequestFixture.standardLoanRequest();
         loanRequest.setSubmissionDate(submissionDate);
-        customerRepository.create(customer);
+        testCustomerRepository.create(customer);
         loanRequest.setCustomer(customer);
         loanRequestRepository.create(loanRequest);
     }

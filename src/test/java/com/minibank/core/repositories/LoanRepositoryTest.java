@@ -19,7 +19,7 @@ public class LoanRepositoryTest extends SpringContextTest {
     private DBCleaner dbCleaner;
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private TestCustomerRepository testCustomerRepository;
 
     @Autowired
     private LoanRepository loanRepository;
@@ -34,7 +34,7 @@ public class LoanRepositoryTest extends SpringContextTest {
         dbCleaner.clear();
 
         customer = CustomerFixture.standardCustomer();
-        customerRepository.create(customer);
+        testCustomerRepository.create(customer);
         createLoan();
     }
 

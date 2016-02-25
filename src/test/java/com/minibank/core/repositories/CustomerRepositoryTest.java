@@ -22,6 +22,9 @@ public class CustomerRepositoryTest extends SpringContextTest {
     @Autowired
     private CustomerRepository customerRepository;
 
+    @Autowired
+    private TestCustomerRepository testCustomerRepository;
+
     private Customer customer;
 
     @Before
@@ -32,15 +35,8 @@ public class CustomerRepositoryTest extends SpringContextTest {
 
     @Test
     @Transactional
-    public void testCreate() {
-        customerRepository.create(customer);
-        assertNotNull(customer.getId());
-    }
-
-    @Test
-    @Transactional
     public void testGetById() {
-        customerRepository.create(customer);
+        testCustomerRepository.create(customer);
         Integer id = customer.getId();
         assertEquals(customer, customerRepository.getById(id));
     }

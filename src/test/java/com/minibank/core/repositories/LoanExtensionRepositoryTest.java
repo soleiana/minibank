@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import static junit.framework.TestCase.assertNotNull;
 
 
-
 public class LoanExtensionRepositoryTest extends SpringContextTest {
 
     @Autowired
@@ -21,7 +20,7 @@ public class LoanExtensionRepositoryTest extends SpringContextTest {
     private LoanExtensionRepository loanExtensionRepository;
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private TestCustomerRepository testCustomerRepository;
 
     @Autowired
     private LoanRequestRepository loanRequestRepository;
@@ -39,7 +38,7 @@ public class LoanExtensionRepositoryTest extends SpringContextTest {
     public void setUp() {
         dbCleaner.clear();
         customer = CustomerFixture.standardCustomer();
-        customerRepository.create(customer);
+        testCustomerRepository.create(customer);
         createLoanExtension();
     }
 

@@ -25,7 +25,7 @@ public class CreditExpertTest extends SpringContextTest {
     private LoanRequestRepository loanRequestRepository;
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private TestCustomerRepository testCustomerRepository;
 
     @Autowired
     private BankParametersRepository bankParametersRepository;
@@ -111,7 +111,7 @@ public class CreditExpertTest extends SpringContextTest {
     private void createLoanRequest() {
         Customer customer = CustomerFixture.standardCustomer();
         loanRequest = LoanRequestFixture.standardLoanRequest();
-        customerRepository.create(customer);
+        testCustomerRepository.create(customer);
         loanRequest.setCustomer(customer);
     }
 
