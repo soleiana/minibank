@@ -46,7 +46,6 @@ public class Loan {
         return id;
     }
 
-
     public BigDecimal getAmount() {
         return amount;
     }
@@ -99,8 +98,8 @@ public class Loan {
         return loanExtensions;
     }
 
-    public void setLoanExtensions(List<LoanExtension> loanExtensions) {
-        this.loanExtensions = loanExtensions;
+    public void addLoanExtension(LoanExtension loanExtension) {
+        getLoanExtensions().add(loanExtension);
     }
 
     @Override

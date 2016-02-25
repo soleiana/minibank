@@ -56,10 +56,6 @@ public class Customer {
         return loans;
     }
 
-    public void setLoans(List<Loan> loans) {
-        this.loans = loans;
-    }
-
     public void addLoan(Loan loan) {
         getLoans().add(loan);
     }

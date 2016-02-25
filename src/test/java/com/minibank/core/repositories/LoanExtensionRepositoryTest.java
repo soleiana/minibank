@@ -65,7 +65,7 @@ public class LoanExtensionRepositoryTest extends SpringContextTest {
     private void createLoanExtension() {
         createLoan();
         loanExtension = LoanExtensionFixture.standardLoanExtension();
-        loan.getLoanExtensions().add(loanExtension);
+        loan.addLoanExtension(loanExtension);
     }
 
 }

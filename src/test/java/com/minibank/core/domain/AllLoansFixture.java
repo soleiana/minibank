@@ -12,10 +12,7 @@ public class AllLoansFixture {
         Loan loan = LoanFixture.standardLoan();
         LoanExtension loanExtension = LoanExtensionFixture.standardLoanExtension();
         Customer customer = CustomerFixture.standardCustomer();
-
-        List<LoanExtension> loanExtensions = new ArrayList<>();
-        loanExtensions.add(loanExtension);
-        loan.setLoanExtensions(loanExtensions);
+        loan.addLoanExtension(loanExtension);
         List<Loan> loans = new ArrayList<>();
         loans.add(loan);
         allLoans.setLoans(loans);
