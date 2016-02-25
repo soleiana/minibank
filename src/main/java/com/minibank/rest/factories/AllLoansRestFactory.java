@@ -1,6 +1,6 @@
 package com.minibank.rest.factories;
 
-import com.minibank.core.communications.domain.AllLoansDetails;
+import com.minibank.communications.domain.AllLoansDetails;
 import com.minibank.rest.domain.AllLoans;
 import com.minibank.rest.domain.Loan;
 import com.minibank.rest.domain.LoanExtension;
@@ -20,10 +20,10 @@ public class AllLoansRestFactory {
         allLoans.setSurname(allLoansDetails.getSurname());
 
         List<Loan> toLoans = new ArrayList<>();
-        for(com.minibank.core.communications.domain.Loan fromLoan: allLoansDetails.getLoans()) {
+        for(com.minibank.communications.domain.Loan fromLoan: allLoansDetails.getLoans()) {
             Loan toLoan = convert(fromLoan);
             List<LoanExtension> toLoanExtensions = new ArrayList<>();
-            for(com.minibank.core.communications.domain.LoanExtension fromLoanExtension: fromLoan.getLoanExtensions()) {
+            for(com.minibank.communications.domain.LoanExtension fromLoanExtension: fromLoan.getLoanExtensions()) {
                 LoanExtension toLoanExtension = convert(fromLoanExtension);
                 toLoanExtensions.add(toLoanExtension);
             }
@@ -34,7 +34,7 @@ public class AllLoansRestFactory {
         return allLoans;
     }
 
-    private Loan convert(com.minibank.core.communications.domain.Loan fromLoan) {
+    private Loan convert(com.minibank.communications.domain.Loan fromLoan) {
         Loan toLoan = new Loan();
         toLoan.setId(fromLoan.getId());
         toLoan.setCurrInterestRate(fromLoan.getCurrInterestRate());
@@ -45,7 +45,7 @@ public class AllLoansRestFactory {
         return toLoan;
     }
 
-    private LoanExtension convert(com.minibank.core.communications.domain.LoanExtension fromLoanExtension) {
+    private LoanExtension convert(com.minibank.communications.domain.LoanExtension fromLoanExtension) {
         LoanExtension toLoanExtension = new LoanExtension();
         toLoanExtension.setInterestRate(fromLoanExtension.getInterestRate());
         toLoanExtension.setInterest(fromLoanExtension.getInterest());

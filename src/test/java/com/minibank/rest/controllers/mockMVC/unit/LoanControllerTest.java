@@ -1,9 +1,9 @@
 package com.minibank.rest.controllers.mockMVC.unit;
 
-import com.minibank.core.communications.CreateLoanQuery;
-import com.minibank.core.communications.CreateLoanResponse;
-import com.minibank.core.communications.domain.LoanRequestDetails;
-import com.minibank.core.communications.factories.LoanRequestDetailsFactory;
+import com.minibank.communications.CreateLoanQuery;
+import com.minibank.communications.CreateLoanResponse;
+import com.minibank.communications.domain.LoanRequestDetails;
+import com.minibank.communications.factories.LoanRequestDetailsFactory;
 import com.minibank.core.services.CreateLoanQueryHandler;
 import com.minibank.core.services.common.Message;
 import com.minibank.rest.controllers.LoanController;

@@ -1,11 +1,11 @@
 package com.minibank.core.services.unit;
 
 import com.minibank.InjectMocksTest;
-import com.minibank.core.communications.domain.AllLoanDetailsFixture;
-import com.minibank.core.communications.GetAllLoansQuery;
-import com.minibank.core.communications.GetAllLoansResponse;
-import com.minibank.core.communications.domain.AllLoansDetails;
-import com.minibank.core.communications.factories.AllLoansDetailsFactory;
+import com.minibank.communications.domain.AllLoanDetailsFixture;
+import com.minibank.communications.GetAllLoansQuery;
+import com.minibank.communications.GetAllLoansResponse;
+import com.minibank.communications.domain.AllLoansDetails;
+import com.minibank.communications.factories.AllLoansDetailsFactory;
 import com.minibank.core.domain.AllLoans;
 import com.minibank.core.domain.AllLoansFixture;
 import com.minibank.core.services.GetAllLoansQueryHandler;
@@ -72,7 +72,7 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest {
         //Customer doesn't obtain loan history because he does not have it
 
         AllLoansDetails emptyAllLoansDetails = new AllLoansDetails();
-        List<com.minibank.core.communications.domain.Loan> emptyLoans = new ArrayList<>();
+        List<com.minibank.communications.domain.Loan> emptyLoans = new ArrayList<>();
         emptyAllLoansDetails.setLoans(emptyLoans);
 
         when(allLoansDetailsFactory.getAllLoansDetails(allLoans)).thenReturn(emptyAllLoansDetails);

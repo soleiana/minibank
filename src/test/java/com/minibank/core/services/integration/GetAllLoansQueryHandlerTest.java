@@ -1,9 +1,9 @@
 package com.minibank.core.services.integration;
 
 import com.minibank.SpringContextTest;
-import com.minibank.core.communications.GetAllLoansQuery;
-import com.minibank.core.communications.GetAllLoansResponse;
-import com.minibank.core.communications.domain.AllLoansDetails;
+import com.minibank.communications.GetAllLoansQuery;
+import com.minibank.communications.GetAllLoansResponse;
+import com.minibank.communications.domain.AllLoansDetails;
 import com.minibank.core.domain.*;
 import com.minibank.core.repositories.*;
 import com.minibank.core.repositories.tools.DBCleaner;

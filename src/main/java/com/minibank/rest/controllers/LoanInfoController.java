@@ -1,8 +1,8 @@
 package com.minibank.rest.controllers;
 
-import com.minibank.core.communications.GetAllLoansQuery;
-import com.minibank.core.communications.GetAllLoansResponse;
-import com.minibank.core.communications.domain.AllLoansDetails;
+import com.minibank.communications.GetAllLoansQuery;
+import com.minibank.communications.GetAllLoansResponse;
+import com.minibank.communications.domain.AllLoansDetails;
 import com.minibank.core.services.GetAllLoansQueryHandler;
 import com.minibank.rest.domain.AllLoans;
 import com.minibank.rest.factories.AllLoansRestFactory;

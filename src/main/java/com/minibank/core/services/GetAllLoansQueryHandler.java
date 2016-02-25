@@ -1,10 +1,10 @@
 package com.minibank.core.services;
 
 
-import com.minibank.core.communications.GetAllLoansQuery;
-import com.minibank.core.communications.GetAllLoansResponse;
-import com.minibank.core.communications.domain.AllLoansDetails;
-import com.minibank.core.communications.factories.AllLoansDetailsFactory;
+import com.minibank.communications.GetAllLoansQuery;
+import com.minibank.communications.GetAllLoansResponse;
+import com.minibank.communications.domain.AllLoansDetails;
+import com.minibank.communications.factories.AllLoansDetailsFactory;
 import com.minibank.core.domain.AllLoans;
 import com.minibank.core.services.factories.AllLoansCoreFactory;
 import org.springframework.beans.factory.annotation.Autowired;

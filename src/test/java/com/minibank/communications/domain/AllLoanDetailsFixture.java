@@ -1,4 +1,4 @@
-package com.minibank.core.communications.domain;
+package com.minibank.communications.domain;
 
 import com.minibank.core.domain.Customer;
 import com.minibank.core.domain.CustomerFixture;

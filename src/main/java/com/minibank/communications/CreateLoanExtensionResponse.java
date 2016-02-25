@@ -1,4 +1,4 @@
-package com.minibank.core.communications;
+package com.minibank.communications;
 
 
 public class CreateLoanExtensionResponse extends CreateEntityResponse {

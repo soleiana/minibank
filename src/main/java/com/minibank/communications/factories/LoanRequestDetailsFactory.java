@@ -1,6 +1,6 @@
-package com.minibank.core.communications.factories;
+package com.minibank.communications.factories;
 
-import com.minibank.core.communications.domain.LoanRequestDetails;
+import com.minibank.communications.domain.LoanRequestDetails;
 import com.minibank.rest.domain.LoanRequest;
 import org.springframework.stereotype.Component;
 

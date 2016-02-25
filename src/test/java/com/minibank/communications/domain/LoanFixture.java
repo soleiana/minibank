@@ -1,4 +1,4 @@
-package com.minibank.core.communications.domain;
+package com.minibank.communications.domain;
 
 import java.math.BigDecimal;
 import java.sql.Date;

@@ -1,9 +1,9 @@
-package com.minibank.core.communications.factories;
+package com.minibank.communications.factories;
 
 import com.minibank.core.domain.AllLoans;
-import com.minibank.core.communications.domain.LoanExtension;
-import com.minibank.core.communications.domain.AllLoansDetails;
-import com.minibank.core.communications.domain.Loan;
+import com.minibank.communications.domain.LoanExtension;
+import com.minibank.communications.domain.AllLoansDetails;
+import com.minibank.communications.domain.Loan;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

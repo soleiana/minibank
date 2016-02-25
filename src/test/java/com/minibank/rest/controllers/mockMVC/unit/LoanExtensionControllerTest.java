@@ -1,7 +1,7 @@
 package com.minibank.rest.controllers.mockMVC.unit;
 
-import com.minibank.core.communications.CreateLoanExtensionQuery;
-import com.minibank.core.communications.CreateLoanExtensionResponse;
+import com.minibank.communications.CreateLoanExtensionQuery;
+import com.minibank.communications.CreateLoanExtensionResponse;
 import com.minibank.core.services.CreateLoanExtensionQueryHandler;
 import com.minibank.rest.controllers.LoanExtensionController;
 import org.junit.Before;

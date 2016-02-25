@@ -1,4 +1,4 @@
-package com.minibank.core.communications.domain;
+package com.minibank.communications.domain;
 
 import java.util.ArrayList;
 import java.util.List;
