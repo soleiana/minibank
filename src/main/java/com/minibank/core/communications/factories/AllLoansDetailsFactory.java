@@ -39,7 +39,7 @@ public class AllLoansDetailsFactory {
         toLoan.setId(fromLoan.getId());
         toLoan.setCurrInterestRate(fromLoan.getCurrInterestRate());
         toLoan.setCurrInterest(fromLoan.getCurrInterest());
-        toLoan.setAmount(fromLoan.getLoanRequest().getAmount());
+        toLoan.setAmount(fromLoan.getAmount());
         toLoan.setStartDate(fromLoan.getStartDate());
         toLoan.setEndDate(fromLoan.getEndDate());
         return toLoan;

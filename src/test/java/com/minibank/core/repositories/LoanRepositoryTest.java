@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
@@ -23,13 +22,9 @@ public class LoanRepositoryTest extends SpringContextTest {
     private CustomerRepository customerRepository;
 
     @Autowired
-    private LoanRequestRepository loanRequestRepository;
-
-    @Autowired
     private LoanRepository loanRepository;
 
     private Customer customer;
-    private LoanRequest loanRequest;
     private Loan loan;
 
 
@@ -75,13 +70,6 @@ public class LoanRepositoryTest extends SpringContextTest {
 
     private void createLoan() {
         loan = LoanFixture.standardLoan();
-        createLoanRequest();
-        loanRequestRepository.create(loanRequest);
-        loan.setLoanRequest(loanRequest);
     }
 
-    private void createLoanRequest() {
-        loanRequest = LoanRequestFixture.standardLoanRequest();
-        loanRequest.setCustomer(customer);
-    }
 }

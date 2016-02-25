@@ -40,7 +40,6 @@ public class CreditCalculatorTest extends SpringContextTest {
         bankParametersRepository.create(bankParameters);
         loanRequest = LoanRequestFixture.standardLoanRequest();
         loan = LoanFixture.standardLoan();
-        loan.setLoanRequest(loanRequest);
     }
 
     @Test
@@ -78,8 +77,8 @@ public class CreditCalculatorTest extends SpringContextTest {
         BigDecimal amount = new BigDecimal("200.00");
         Integer term = 20;
         BigDecimal interestRate = new BigDecimal("100.00");
-        loan.getLoanRequest().setAmount(amount);
-        loan.getLoanRequest().setTerm(term);
+        loan.setAmount(amount);
+        loan.setTerm(term);
         loan.setCurrInterestRate(interestRate);
 
         BigDecimal interest = creditCalculator.getInterest(loan);

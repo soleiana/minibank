@@ -17,14 +17,16 @@ public class Loan {
     @Column(name = "ID", nullable = false)
     private Integer id;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "LOAN_REQUEST_ID", unique = true, nullable = false)
-    private LoanRequest loanRequest;
-
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "LOAN_ID")
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
     private List<LoanExtension> loanExtensions = new ArrayList<>();
+
+    @Column(name = "AMOUNT", precision = 10, scale = 2, nullable = false)
+    private BigDecimal amount;
+
+    @Column(name = "TERM", nullable = false)
+    private Integer term;
 
     @Column(name = "CURRENT_INTEREST_RATE", precision = 10, scale = 2, nullable = false)
     private BigDecimal currInterestRate;
@@ -44,12 +46,21 @@ public class Loan {
         return id;
     }
 
-    public LoanRequest getLoanRequest() {
-        return loanRequest;
+
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setLoanRequest(LoanRequest loanRequest) {
-        this.loanRequest = loanRequest;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public Integer getTerm() {
+        return term;
+    }
+
+    public void setTerm(Integer term) {
+        this.term = term;
     }
 
     public BigDecimal getCurrInterestRate() {
@@ -99,6 +110,8 @@ public class Loan {
 
         Loan loan = (Loan) o;
 
+        if (!amount.equals(loan.amount)) return false;
+        if (!term.equals(loan.term)) return false;
         if (!currInterestRate.equals(loan.currInterestRate)) return false;
         if (!currInterest.equals(loan.currInterest)) return false;
         if (!startDate.equals(loan.startDate)) return false;
@@ -107,7 +120,9 @@ public class Loan {
 
     @Override
     public int hashCode() {
-        int result = currInterestRate.hashCode();
+        int result = amount.hashCode();
+        result = 31 * result + term.hashCode();
+        result = 31 * result + currInterestRate.hashCode();
         result = 31 * result + currInterest.hashCode();
         result = 31 * result + startDate.hashCode();
         result = 31 * result + endDate.hashCode();

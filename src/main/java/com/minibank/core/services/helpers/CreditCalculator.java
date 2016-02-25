@@ -52,11 +52,11 @@ public class CreditCalculator {
     }
 
     public BigDecimal getInterest(Loan loan) {
-       BigDecimal amount = loan.getLoanRequest().getAmount();
+       BigDecimal amount = loan.getAmount();
        BigDecimal currInterestRate = getNewInterestRate(loan);
 
        short loanExtensionTerm = bankParametersRepository.getLast().getLoanExtensionTerm();
-       int term = loan.getLoanRequest().getTerm();
+       int term = loan.getTerm();
        term += loanExtensionTerm;
        return interestFormula(amount, new BigDecimal(term),currInterestRate);
     }

@@ -110,7 +110,6 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
         loanRequest.setCustomer(customer);
         loanRequestRepository.create(loanRequest);
         loan = LoanFixture.standardLoan();
-        loan.setLoanRequest(loanRequest);
         customer.addLoan(loan);
         loanRepository.create(loan);
     }

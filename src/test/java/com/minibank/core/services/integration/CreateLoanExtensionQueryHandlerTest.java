@@ -42,19 +42,14 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest {
     private CreateLoanExtensionQueryHandler createLoanExtensionQueryHandler;
 
     private BankParameters bankParameters;
-    private Customer customer;
-    private LoanRequest loanRequest;
     private Loan loan;
 
 
     @Before
     public void setUp() {
         dbCleaner.clear();
-
         bankParameters = BankParametersFixture.standardBankParameters();
         bankParametersRepository.create(bankParameters);
-        customer = CustomerFixture.standardCustomer();
-        customerRepository.create(customer);
     }
 
     @Test
@@ -78,11 +73,7 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest {
     }
 
     private CreateLoanExtensionQuery createCreateLoanExtensionQuery() {
-        loanRequest = LoanRequestFixture.standardLoanRequest();
         loan = LoanFixture.standardLoan();
-        loanRequest.setCustomer(customer);
-        loanRequestRepository.create(loanRequest);
-        loan.setLoanRequest(loanRequest);
         loanRepository.create(loan);
         return new CreateLoanExtensionQuery(loan.getId());
     }
