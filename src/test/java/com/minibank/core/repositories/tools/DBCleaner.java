@@ -15,9 +15,9 @@ public class DBCleaner extends SessionProvider {
         hqlTruncate("Customer");
     }
 
-    public int hqlTruncate(String myTable){
+    private void hqlTruncate(String myTable){
         String hql = String.format("delete from %s",myTable);
         Query query = getCurrentSession().createQuery(hql);
-        return query.executeUpdate();
+        query.executeUpdate();
     }
 }
