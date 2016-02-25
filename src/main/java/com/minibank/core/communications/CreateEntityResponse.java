@@ -4,7 +4,12 @@ package com.minibank.core.communications;
 public abstract class CreateEntityResponse {
 
     protected boolean created = true;
-    protected String message;
+    protected final String message;
+
+    protected CreateEntityResponse(final boolean created, final String message) {
+        this.created = created;
+        this.message = message;
+    }
 
     public boolean isCreated() {
         return created;
