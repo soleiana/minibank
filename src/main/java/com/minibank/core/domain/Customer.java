@@ -36,10 +36,6 @@ public class Customer {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -71,19 +67,14 @@ public class Customer {
 
         Customer customer = (Customer) o;
 
-        if (id != null ? !id.equals(customer.id) : customer.id != null) return false;
-        if (loans != null ? !loans.equals(customer.loans) : customer.loans != null) return false;
-        if (name != null ? !name.equals(customer.name) : customer.name != null) return false;
-        if (surname != null ? !surname.equals(customer.surname) : customer.surname != null) return false;
-        return true;
+        if (!name.equals(customer.name)) return false;
+        return surname.equals(customer.surname);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (loans != null ? loans.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        int result = name.hashCode();
+        result = 31 * result + surname.hashCode();
         return result;
     }
 }

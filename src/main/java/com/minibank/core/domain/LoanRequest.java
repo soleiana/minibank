@@ -40,10 +40,6 @@ public class LoanRequest {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public Customer getCustomer() {
         return customer;
     }
@@ -100,26 +96,21 @@ public class LoanRequest {
 
         LoanRequest that = (LoanRequest) o;
 
-        if (amount != null ? !amount.equals(that.amount) : that.amount != null) return false;
-        if (customer != null ? !customer.equals(that.customer) : that.customer != null) return false;
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (submissionDate != null ? !submissionDate.equals(that.submissionDate) : that.submissionDate != null)
-            return false;
-        if (submissionTime != null ? !submissionTime.equals(that.submissionTime) : that.submissionTime != null)
-            return false;
-        if (term != null ? !term.equals(that.term) : that.term != null) return false;
+        if (!requestIp.equals(that.requestIp)) return false;
+        if (!submissionDate.equals(that.submissionDate)) return false;
+        if (!submissionTime.equals(that.submissionTime)) return false;
+        if (!term.equals(that.term)) return false;
+        return amount.equals(that.amount);
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (customer != null ? customer.hashCode() : 0);
-        result = 31 * result + (submissionDate != null ? submissionDate.hashCode() : 0);
-        result = 31 * result + (submissionTime != null ? submissionTime.hashCode() : 0);
-        result = 31 * result + (term != null ? term.hashCode() : 0);
-        result = 31 * result + (amount != null ? amount.hashCode() : 0);
+        int result = requestIp.hashCode();
+        result = 31 * result + submissionDate.hashCode();
+        result = 31 * result + submissionTime.hashCode();
+        result = 31 * result + term.hashCode();
+        result = 31 * result + amount.hashCode();
         return result;
     }
 }

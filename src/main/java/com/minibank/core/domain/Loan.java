@@ -48,10 +48,6 @@ public class Loan {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public LoanRequest getLoanRequest() {
         return loanRequest;
     }
@@ -115,30 +111,19 @@ public class Loan {
 
         Loan loan = (Loan) o;
 
-        if (currInterest != null ? !currInterest.equals(loan.currInterest) : loan.currInterest != null) return false;
-        if (currInterestRate != null ? !currInterestRate.equals(loan.currInterestRate) : loan.currInterestRate != null)
-            return false;
-        if (customer != null ? !customer.equals(loan.customer) : loan.customer != null) return false;
-        if (endDate != null ? !endDate.equals(loan.endDate) : loan.endDate != null) return false;
-        if (id != null ? !id.equals(loan.id) : loan.id != null) return false;
-        if (loanExtensions != null ? !loanExtensions.equals(loan.loanExtensions) : loan.loanExtensions != null)
-            return false;
-        if (loanRequest != null ? !loanRequest.equals(loan.loanRequest) : loan.loanRequest != null) return false;
-        if (startDate != null ? !startDate.equals(loan.startDate) : loan.startDate != null) return false;
+        if (!currInterestRate.equals(loan.currInterestRate)) return false;
+        if (!currInterest.equals(loan.currInterest)) return false;
+        if (!startDate.equals(loan.startDate)) return false;
+        return endDate.equals(loan.endDate);
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (loanRequest != null ? loanRequest.hashCode() : 0);
-        result = 31 * result + (customer != null ? customer.hashCode() : 0);
-        result = 31 * result + (loanExtensions != null ? loanExtensions.hashCode() : 0);
-        result = 31 * result + (currInterestRate != null ? currInterestRate.hashCode() : 0);
-        result = 31 * result + (currInterest != null ? currInterest.hashCode() : 0);
-        result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
-        result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
+        int result = currInterestRate.hashCode();
+        result = 31 * result + currInterest.hashCode();
+        result = 31 * result + startDate.hashCode();
+        result = 31 * result + endDate.hashCode();
         return result;
     }
 }

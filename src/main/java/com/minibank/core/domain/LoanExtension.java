@@ -35,10 +35,6 @@ public class LoanExtension {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public Date getStartDate() {
         return startDate;
     }
@@ -86,25 +82,21 @@ public class LoanExtension {
 
         LoanExtension that = (LoanExtension) o;
 
-        if (endDate != null ? !endDate.equals(that.endDate) : that.endDate != null) return false;
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (interest != null ? !interest.equals(that.interest) : that.interest != null) return false;
-        if (interestRate != null ? !interestRate.equals(that.interestRate) : that.interestRate != null) return false;
-        if (startDate != null ? !startDate.equals(that.startDate) : that.startDate != null) return false;
-        if (submissionDate != null ? !submissionDate.equals(that.submissionDate) : that.submissionDate != null)
-            return false;
+        if (!startDate.equals(that.startDate)) return false;
+        if (!endDate.equals(that.endDate)) return false;
+        if (!interestRate.equals(that.interestRate)) return false;
+        if (!interest.equals(that.interest)) return false;
+        return submissionDate.equals(that.submissionDate);
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
-        result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
-        result = 31 * result + (interestRate != null ? interestRate.hashCode() : 0);
-        result = 31 * result + (interest != null ? interest.hashCode() : 0);
-        result = 31 * result + (submissionDate != null ? submissionDate.hashCode() : 0);
+        int result = startDate.hashCode();
+        result = 31 * result + endDate.hashCode();
+        result = 31 * result + interestRate.hashCode();
+        result = 31 * result + interest.hashCode();
+        result = 31 * result + submissionDate.hashCode();
         return result;
     }
 }

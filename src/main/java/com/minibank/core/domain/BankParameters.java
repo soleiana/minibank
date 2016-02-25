@@ -41,10 +41,6 @@ public class BankParameters {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public BigDecimal getMaxLoanAmount() {
         return maxLoanAmount;
     }
@@ -108,34 +104,25 @@ public class BankParameters {
 
         BankParameters that = (BankParameters) o;
 
-        if (baseInterestRate != null ? !baseInterestRate.equals(that.baseInterestRate) : that.baseInterestRate != null)
-            return false;
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (interestRateFactor != null ? !interestRateFactor.equals(that.interestRateFactor) : that.interestRateFactor != null)
-            return false;
-        if (loanExtensionTerm != null ? !loanExtensionTerm.equals(that.loanExtensionTerm) : that.loanExtensionTerm != null)
-            return false;
-        if (maxLoanAmount != null ? !maxLoanAmount.equals(that.maxLoanAmount) : that.maxLoanAmount != null)
-            return false;
-        if (maxLoanAttempts != null ? !maxLoanAttempts.equals(that.maxLoanAttempts) : that.maxLoanAttempts != null)
-            return false;
-        if (riskTimeEnd != null ? !riskTimeEnd.equals(that.riskTimeEnd) : that.riskTimeEnd != null) return false;
-        if (riskTimeStart != null ? !riskTimeStart.equals(that.riskTimeStart) : that.riskTimeStart != null)
-            return false;
+        if (!maxLoanAmount.equals(that.maxLoanAmount)) return false;
+        if (!baseInterestRate.equals(that.baseInterestRate)) return false;
+        if (!interestRateFactor.equals(that.interestRateFactor)) return false;
+        if (!maxLoanAttempts.equals(that.maxLoanAttempts)) return false;
+        if (!riskTimeStart.equals(that.riskTimeStart)) return false;
+        if (!riskTimeEnd.equals(that.riskTimeEnd)) return false;
+        return loanExtensionTerm.equals(that.loanExtensionTerm);
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (maxLoanAmount != null ? maxLoanAmount.hashCode() : 0);
-        result = 31 * result + (baseInterestRate != null ? baseInterestRate.hashCode() : 0);
-        result = 31 * result + (interestRateFactor != null ? interestRateFactor.hashCode() : 0);
-        result = 31 * result + (maxLoanAttempts != null ? maxLoanAttempts.hashCode() : 0);
-        result = 31 * result + (riskTimeStart != null ? riskTimeStart.hashCode() : 0);
-        result = 31 * result + (riskTimeEnd != null ? riskTimeEnd.hashCode() : 0);
-        result = 31 * result + (loanExtensionTerm != null ? loanExtensionTerm.hashCode() : 0);
+        int result = maxLoanAmount.hashCode();
+        result = 31 * result + baseInterestRate.hashCode();
+        result = 31 * result + interestRateFactor.hashCode();
+        result = 31 * result + maxLoanAttempts.hashCode();
+        result = 31 * result + riskTimeStart.hashCode();
+        result = 31 * result + riskTimeEnd.hashCode();
+        result = 31 * result + loanExtensionTerm.hashCode();
         return result;
     }
 }
