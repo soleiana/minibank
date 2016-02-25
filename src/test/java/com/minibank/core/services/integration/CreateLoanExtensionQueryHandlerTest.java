@@ -24,12 +24,6 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest {
     private DBCleaner dbCleaner;
 
     @Autowired
-    private CustomerRepository customerRepository;
-
-    @Autowired
-    private LoanRequestRepository loanRequestRepository;
-
-    @Autowired
     private LoanRepository loanRepository;
 
     @Autowired
