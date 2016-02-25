@@ -7,9 +7,9 @@ import com.minibank.communications.model.LoanRequestDetails;
 import com.minibank.communications.model.LoanRequestDetailsFixture;
 import com.minibank.core.model.*;
 import com.minibank.core.repositories.BankParametersRepository;
-import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.repositories.TestCustomerRepository;
+import com.minibank.core.repositories.TestLoanRepository;
 import com.minibank.core.repositories.tools.DBCleaner;
 import com.minibank.core.services.CreateLoanQueryHandler;
 import com.minibank.core.services.common.Message;
@@ -32,7 +32,7 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest {
     private LoanRequestRepository loanRequestRepository;
 
     @Autowired
-    private LoanRepository loanRepository;
+    private TestLoanRepository testLoanRepository;
 
     @Autowired
     private BankParametersRepository bankParametersRepository;
@@ -58,7 +58,7 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest {
         CreateLoanQuery createLoanQuery = createCreateLoanQuery();
         CreateLoanResponse expectedCreateLoanResponse = new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);
         LoanRequest loanRequest1 = loanRequestRepository.getLast();
-        Loan loan1 = loanRepository.getLast();
+        Loan loan1 = testLoanRepository.getLast();
         assertNull(loanRequest1);
         assertNull(loan1);
 
@@ -68,7 +68,7 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest {
         assertEquals(expectedCreateLoanResponse.isCreated(), createLoanResponse.isCreated());
 
         loanRequest1 = loanRequestRepository.getLast();
-        loan1 = loanRepository.getLast();
+        loan1 = testLoanRepository.getLast();
 
         assertNotNull(loanRequest1);
         assertNotNull(loan1);
