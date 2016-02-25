@@ -60,6 +60,10 @@ public class Customer {
         this.loans = loans;
     }
 
+    public void addLoan(Loan loan) {
+        getLoans().add(loan);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

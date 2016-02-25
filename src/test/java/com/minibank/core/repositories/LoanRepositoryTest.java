@@ -73,17 +73,6 @@ public class LoanRepositoryTest extends SpringContextTest {
         assertEquals(loan,ln);
     }
 
-    @Test
-    @Transactional
-    public void testGetByCustomer() {
-        createLoan();
-        loanRepository.create(loan);
-        createLoan();
-        loanRepository.create(loan);
-        List<Loan> loans = loanRepository.getByCustomer(customer);
-        assertEquals(2, loans.size());
-    }
-
     private void createLoan() {
         loan = LoanFixture.standardLoan();
         loan.setCustomer(customer);
