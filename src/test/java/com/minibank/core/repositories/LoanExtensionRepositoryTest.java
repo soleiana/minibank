@@ -6,7 +6,7 @@ import com.minibank.core.repositories.tools.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import static junit.framework.TestCase.assertNotNull;
 
@@ -34,7 +34,6 @@ public class LoanExtensionRepositoryTest extends SpringContextTest {
     private Loan loan;
 
     @Before
-    @Transactional
     public void setUp() {
         dbCleaner.clear();
         customer = CustomerFixture.standardCustomer();
@@ -43,7 +42,6 @@ public class LoanExtensionRepositoryTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testCreate() {
         loanExtensionRepository.create(loanExtension);
         assertNotNull(loanExtension.getId());

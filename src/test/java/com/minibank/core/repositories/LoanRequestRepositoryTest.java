@@ -6,7 +6,6 @@ import com.minibank.core.repositories.tools.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -36,7 +35,6 @@ public class LoanRequestRepositoryTest extends SpringContextTest {
     }
 
     @Before
-    @Transactional
     public void setUp() {
         dbCleaner.clear();
         requestIp = RequestIPFixture.IP;
@@ -46,14 +44,12 @@ public class LoanRequestRepositoryTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testCreate() {
         loanRequestRepository.create(loanRequest);
         assertNotNull(loanRequest.getId());
     }
 
     @Test
-    @Transactional
     public void testGetByRequestIp() {
         createLoanRequest();
         loanRequestRepository.create(loanRequest);

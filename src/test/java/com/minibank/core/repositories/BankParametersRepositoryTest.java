@@ -7,7 +7,7 @@ import com.minibank.core.repositories.tools.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
@@ -24,21 +24,18 @@ public class BankParametersRepositoryTest extends SpringContextTest {
     private BankParameters bankParameters;
 
     @Before
-    @Transactional
     public void setUp() {
         dbCleaner.clear();
         bankParameters = BankParametersFixture.standardBankParameters();
     }
 
     @Test
-    @Transactional
     public void testCreate() {
         bankParametersRepository.create(bankParameters);
         assertNotNull(bankParameters.getId());
     }
 
     @Test
-    @Transactional
     public void testGetLast() {
         BankParameters bp1 = BankParametersFixture.standardBankParameters();
         bp1.setLoanExtensionTerm(BankParametersFixture.NEW_LOAN_EXTENSION_TERM);

@@ -7,7 +7,6 @@ import com.minibank.core.repositories.tools.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 
 import static org.junit.Assert.*;
@@ -29,7 +28,6 @@ public class TestCustomerRepositoryTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testCreate() {
         testCustomerRepository.create(customer);
         assertNotNull(customer.getId());

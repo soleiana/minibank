@@ -7,11 +7,9 @@ import com.minibank.core.model.CustomerFixture;
 import com.minibank.core.repositories.tools.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
-import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 
 public class CustomerRepositoryTest extends SpringContextTest {
@@ -34,7 +32,6 @@ public class CustomerRepositoryTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testGetById() {
         testCustomerRepository.create(customer);
         Integer id = customer.getId();
