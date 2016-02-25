@@ -11,7 +11,6 @@ import com.minibank.core.services.GetAllLoansQueryHandler;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -55,7 +54,6 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testExecute_1() {
         //customer has no loans
         GetAllLoansQuery getAllLoansQuery = createGetAllLoansQuery();
@@ -72,7 +70,6 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testExecute_2() {
         //customer has 2 loans
         //customer has no loan extensions
@@ -88,7 +85,6 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testExecute_3() {
         //customer has 2 loans
         //customer has 2 extensions of a loan

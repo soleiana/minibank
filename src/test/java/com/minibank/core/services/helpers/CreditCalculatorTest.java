@@ -7,14 +7,13 @@ import com.minibank.core.repositories.tools.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.Date;
+
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
 
 public class CreditCalculatorTest extends SpringContextTest {
@@ -33,7 +32,6 @@ public class CreditCalculatorTest extends SpringContextTest {
     private Loan loan;
 
     @Before
-    @Transactional
     public void setUp() {
         dbCleaner.clear();
         bankParameters = BankParametersFixture.standardBankParameters();
@@ -43,7 +41,6 @@ public class CreditCalculatorTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testGetLoanEndDate() {
         Date submissionDate = Date.valueOf("2014-09-01");
         loanRequest.setSubmissionDate(submissionDate);
@@ -54,7 +51,6 @@ public class CreditCalculatorTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testGetInterest_1() {
         BigDecimal amount = new BigDecimal("200.00");
         Integer term = 20;
@@ -72,7 +68,6 @@ public class CreditCalculatorTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testGetInterest_2() {
         BigDecimal amount = new BigDecimal("200.00");
         Integer term = 20;
@@ -86,7 +81,6 @@ public class CreditCalculatorTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testGetLoanExtensionEndDate() {
         Date loanEndDate = Date.valueOf("2014-09-01");
         loan.setEndDate(loanEndDate);

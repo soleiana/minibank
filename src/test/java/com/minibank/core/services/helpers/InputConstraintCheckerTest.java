@@ -9,7 +9,6 @@ import com.minibank.core.repositories.tools.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -37,7 +36,6 @@ public class InputConstraintCheckerTest extends SpringContextTest {
     private LoanRequest loanRequest;
 
     @Before
-    @Transactional
     public void setUp() {
         dbCleaner.clear();
         bankParameters = BankParametersFixture.standardBankParameters();
@@ -47,7 +45,6 @@ public class InputConstraintCheckerTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testIsEqualOrLessThanMaxLoanAmount() {
         BigDecimal maxLoanAmount = bankParameters.getMaxLoanAmount();
         assertTrue(checker.isEqualOrLessThanMaxLoanAmount(maxLoanAmount));

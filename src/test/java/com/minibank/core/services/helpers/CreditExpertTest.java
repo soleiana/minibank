@@ -2,17 +2,19 @@ package com.minibank.core.services.helpers;
 
 import com.minibank.SpringContextTest;
 import com.minibank.core.model.*;
-import com.minibank.core.repositories.*;
+import com.minibank.core.repositories.BankParametersRepository;
+import com.minibank.core.repositories.LoanRequestRepository;
+import com.minibank.core.repositories.TestCustomerRepository;
 import com.minibank.core.repositories.tools.DBCleaner;
 import com.minibank.core.services.common.DateTimeUtility;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.Date;
+
 import static junit.framework.TestCase.assertTrue;
 
 
@@ -38,7 +40,6 @@ public class CreditExpertTest extends SpringContextTest {
 
 
     @Before
-    @Transactional
     public void setUp() {
         dbCleaner.clear();
         bankParameters = BankParametersFixture.standardBankParameters();
@@ -46,7 +47,6 @@ public class CreditExpertTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testHasRisks_1() {
         //negative loan request scenario with max loan amount in risk time
         //loan request gets rejected
@@ -64,7 +64,6 @@ public class CreditExpertTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testHasRisks_2() {
         //negative loan request scenario with max number of loan requests (attempts)
         //during one day
@@ -81,7 +80,6 @@ public class CreditExpertTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testHasRisks_3() {
         //positive loan request scenario with loan amount below maximum in no risk time
         //loan request gets accepted
@@ -92,7 +90,6 @@ public class CreditExpertTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testHasRisks_4() {
         //positive loan request scenario with loan amount below maximum in no risk time
         //loan requests get accepted (maxLoanAttempts - 1) times

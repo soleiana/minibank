@@ -2,19 +2,20 @@ package com.minibank.core.services.helpers;
 
 import com.minibank.SpringContextTest;
 import com.minibank.core.model.*;
-import com.minibank.core.repositories.*;
+import com.minibank.core.repositories.BankParametersRepository;
+import com.minibank.core.repositories.LoanRequestRepository;
+import com.minibank.core.repositories.TestCustomerRepository;
 import com.minibank.core.repositories.tools.DBCleaner;
 import com.minibank.core.services.common.DateTimeUtility;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-
-import static junit.framework.TestCase.*;
 
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.Date;
+
+import static junit.framework.TestCase.*;
 
 
 public class RiskConstraintCheckerTest extends SpringContextTest {
@@ -39,7 +40,6 @@ public class RiskConstraintCheckerTest extends SpringContextTest {
 
 
     @Before
-    @Transactional
     public void setUp() {
         dbCleaner.clear();
         bankParameters = BankParametersFixture.standardBankParameters();
@@ -48,7 +48,6 @@ public class RiskConstraintCheckerTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testIsMaxRequestsPerIPExceeded() {
         bankParameters.setMaxLoanAttempts(new Byte("2"));
         bankParametersRepository.create(bankParameters);
@@ -67,7 +66,6 @@ public class RiskConstraintCheckerTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testIsRiskTimeIfRiskTimeStartIsLessThanRiskTimeEnd() {
         //check loan requests for risk interval [00:00:00-07:00:00]
 
@@ -94,7 +92,6 @@ public class RiskConstraintCheckerTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testIsRiskTimeIfRiskTimeStartIsGraterThanRiskTimeEnd() {
         //check loan requests for risk interval [22:00:00-08:00:00]
 
@@ -120,7 +117,6 @@ public class RiskConstraintCheckerTest extends SpringContextTest {
     }
 
     @Test
-    @Transactional
     public void testIsMaxAmount() {
         BigDecimal maxLoanAmount = bankParameters.getMaxLoanAmount();
         loanRequest.setAmount(maxLoanAmount);
