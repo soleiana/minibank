@@ -4,7 +4,7 @@ import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
-import com.minibank.core.services.common.DateTimeUtility;
+import com.minibank.core.services.common.DateTimeParameters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -42,9 +42,9 @@ public class RiskConstraintChecker {
         if (riskTimeStart.isAfter(riskTimeEnd)) {
             //check two time intervals: [riskTimeStart, 23:00:00]
             //and [00:00:00, riskTimeEnd]
-            return isBetween(riskTimeStart, DateTimeUtility.MAX_TIME, submissionTime)
-                    || submissionTime.equals(DateTimeUtility.MAX_TIME)
-                    || isBetween(DateTimeUtility.MIN_TIME, riskTimeEnd, submissionTime);
+            return isBetween(riskTimeStart, DateTimeParameters.MAX_TIME, submissionTime)
+                    || submissionTime.equals(DateTimeParameters.MAX_TIME)
+                    || isBetween(DateTimeParameters.MIN_TIME, riskTimeEnd, submissionTime);
 
         } else {
             //check one time interval: [riskTimeStart, riskTimeEnd]

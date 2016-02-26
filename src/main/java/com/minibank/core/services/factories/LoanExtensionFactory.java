@@ -2,7 +2,7 @@ package com.minibank.core.services.factories;
 
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanExtension;
-import com.minibank.core.services.common.DateTimeUtility;
+import com.minibank.core.services.common.DateTimeParameters;
 import com.minibank.core.services.helpers.CreditCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,7 +21,7 @@ public class LoanExtensionFactory {
     public LoanExtension getLoanExtension(Loan loan) {
         LoanExtension loanExtension = new LoanExtension();
         Date dNow = new Date();
-        java.sql.Date submissionDate = DateTimeUtility.getSqlDate(dNow);
+        java.sql.Date submissionDate = DateTimeParameters.getSqlDate(dNow);
         loanExtension.setSubmissionDate(submissionDate);
 
         loanExtension.setStartDate(java.sql.Date.valueOf(loan.getEndDate()));

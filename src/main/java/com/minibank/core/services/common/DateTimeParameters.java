@@ -7,9 +7,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class DateTimeUtility {
+public class DateTimeParameters {
 
-    private static final String DATE_FORMAT = "yyyy-MM-dd";
+    public static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final String TIME_FORMAT = "HH:mm:ss";
 
     public static final LocalTime MIN_TIME = LocalTime.of(0, 0, 0);
