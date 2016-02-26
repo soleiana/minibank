@@ -3,6 +3,7 @@ package com.minibank.core.model;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalDate;
 
 
 @Entity
@@ -27,7 +28,7 @@ public class LoanExtension {
     private BigDecimal interest;
 
     @Column(name = "SUBMISSION_DATE", nullable = false)
-    private Date submissionDate;
+    private LocalDate submissionDate;
 
     public LoanExtension() {}
 
@@ -67,11 +68,11 @@ public class LoanExtension {
         this.interest = interest;
     }
 
-    public Date getSubmissionDate() {
+    public LocalDate getSubmissionDate() {
         return submissionDate;
     }
 
-    public void setSubmissionDate(Date submissionDate) {
+    public void setSubmissionDate(LocalDate submissionDate) {
         this.submissionDate = submissionDate;
     }
 

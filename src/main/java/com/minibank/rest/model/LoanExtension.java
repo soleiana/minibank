@@ -1,7 +1,11 @@
 package com.minibank.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.minibank.core.services.common.DateTimeParameters;
+
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalDate;
 
 
 public class LoanExtension {
@@ -10,7 +14,9 @@ public class LoanExtension {
     private BigDecimal interest;
     private Date startDate;
     private Date endDate;
-    private Date submissionDate;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateTimeParameters.DATE_FORMAT)
+    private LocalDate submissionDate;
 
     public LoanExtension() {}
 
@@ -30,11 +36,11 @@ public class LoanExtension {
         return endDate;
     }
 
-    public Date getSubmissionDate() {
+    public LocalDate getSubmissionDate() {
         return submissionDate;
     }
 
-    public void setSubmissionDate(Date submissionDate) {
+    public void setSubmissionDate(LocalDate submissionDate) {
         this.submissionDate = submissionDate;
     }
 

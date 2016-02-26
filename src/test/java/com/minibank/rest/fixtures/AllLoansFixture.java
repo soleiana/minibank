@@ -25,7 +25,7 @@ public class AllLoansFixture {
     private static final LocalDate LOAN_END_DATE = LocalDate.of(2014, 9, 20);
     private static final Date LOAN_EXTENSION_START_DATE = Date.valueOf("2014-09-10");
     private static final Date LOAN_EXTENSION_END_DATE = Date.valueOf(LOAN_END_DATE);
-    private static final Date LOAN_EXTENSION_SUBMISSION_DATE = LOAN_EXTENSION_START_DATE;
+    private static final LocalDate LOAN_EXTENSION_SUBMISSION_DATE = LOAN_EXTENSION_START_DATE.toLocalDate();
 
 
     public static AllLoans standardAllLoans() {
