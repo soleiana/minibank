@@ -22,8 +22,8 @@ public class LoanExtensionFactory {
         LocalDate now = LocalDate.now();
         loanExtension.setSubmissionDate(now);
 
-        loanExtension.setStartDate(java.sql.Date.valueOf(loan.getEndDate()));
-        java.sql.Date endDate = creditCalculator.getLoanExtensionEndDate(loan);
+        loanExtension.setStartDate(loan.getEndDate());
+        LocalDate endDate = creditCalculator.getLoanExtensionEndDate(loan);
         loanExtension.setEndDate(endDate);
 
         BigDecimal interestRate = creditCalculator.getNewInterestRate(loan);

@@ -2,7 +2,6 @@ package com.minibank.core.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.time.LocalDate;
 
 
@@ -16,10 +15,10 @@ public class LoanExtension {
     private Integer id;
 
     @Column(name = "START_DATE", nullable = false)
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name = "END_DATE", nullable = false)
-    private Date endDate;
+    private LocalDate endDate;
 
     @Column(name = "INTEREST_RATE", precision = 10, scale = 2, nullable = false)
     private BigDecimal interestRate;
@@ -36,19 +35,19 @@ public class LoanExtension {
         return id;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

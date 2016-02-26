@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.sql.Date;
 import java.time.LocalDate;
 
 import static junit.framework.TestCase.assertEquals;
@@ -91,7 +90,7 @@ public class CreditCalculatorTest extends SpringContextTest {
         LocalDate loanEndDate = LocalDate.of(2014, 9, 1);
         loan.setEndDate(loanEndDate);
 
-        Date loanExtensionEndDate = creditCalculator.getLoanExtensionEndDate(loan);
-        assertEquals(Date.valueOf("2014-09-08"),loanExtensionEndDate);
+        LocalDate loanExtensionEndDate = creditCalculator.getLoanExtensionEndDate(loan);
+        assertEquals(LocalDate.of(2014, 9, 8),loanExtensionEndDate);
     }
 }

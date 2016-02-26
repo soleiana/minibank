@@ -43,7 +43,7 @@ public class LoanFactory {
     public Loan getExtendedLoan(Loan loan, LoanExtension loanExtension) {
         loan.setCurrInterestRate(loanExtension.getInterestRate());
         loan.setCurrInterest(loanExtension.getInterest());
-        loan.setEndDate(loanExtension.getEndDate().toLocalDate());
+        loan.setEndDate(loanExtension.getEndDate());
         return loan;
     }
 }

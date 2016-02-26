@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.sql.Date;
 import java.time.LocalDate;
 
 
@@ -34,11 +33,10 @@ public class CreditCalculator {
         return startDate.plusDays(term);
     }
 
-    public Date getLoanExtensionEndDate(Loan loan) {
+    public LocalDate getLoanExtensionEndDate(Loan loan) {
         LocalDate startDate = loan.getEndDate();
         short loanExtensionTerm = getBankParameters().getLoanExtensionTerm();
-        LocalDate endDate = startDate.plusDays(loanExtensionTerm);
-        return Date.valueOf(endDate);
+        return startDate.plusDays(loanExtensionTerm);
     }
 
     public BigDecimal getInterest(LoanRequest loanRequest) {
