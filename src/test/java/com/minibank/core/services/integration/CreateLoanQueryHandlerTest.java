@@ -10,7 +10,7 @@ import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.TestCustomerRepository;
 import com.minibank.core.repositories.TestLoanRepository;
 import com.minibank.core.repositories.TestLoanRequestRepository;
-import com.minibank.core.repositories.tools.DBCleaner;
+import com.minibank.core.repositories.helpers.DBCleaner;
 import com.minibank.core.services.CreateLoanQueryHandler;
 import com.minibank.core.services.common.Message;
 import org.junit.Before;

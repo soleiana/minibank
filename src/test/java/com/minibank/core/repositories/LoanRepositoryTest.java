@@ -1,15 +1,17 @@
 package com.minibank.core.repositories;
 
 import com.minibank.SpringContextTest;
-import com.minibank.core.model.*;
-import com.minibank.core.repositories.tools.DBCleaner;
+import com.minibank.core.model.Customer;
+import com.minibank.core.model.CustomerFixture;
+import com.minibank.core.model.Loan;
+import com.minibank.core.model.LoanFixture;
+import com.minibank.core.repositories.helpers.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
-import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
 
 
 public class LoanRepositoryTest extends SpringContextTest {

@@ -3,7 +3,7 @@ package com.minibank.core.services.integration;
 import com.minibank.SpringContextTest;
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.repositories.BankParametersRepository;
-import com.minibank.core.repositories.tools.DBCleaner;
+import com.minibank.core.repositories.helpers.DBCleaner;
 import com.minibank.core.services.BankConfigurator;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.math.BigDecimal;
 import java.sql.Time;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class BankConfiguratorTest extends SpringContextTest {
 

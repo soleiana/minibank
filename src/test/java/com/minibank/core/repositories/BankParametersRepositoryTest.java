@@ -3,14 +3,13 @@ package com.minibank.core.repositories;
 import com.minibank.SpringContextTest;
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.BankParametersFixture;
-import com.minibank.core.repositories.tools.DBCleaner;
+import com.minibank.core.repositories.helpers.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
-import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
 
 
 public class BankParametersRepositoryTest extends SpringContextTest {

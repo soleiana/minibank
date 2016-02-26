@@ -5,7 +5,7 @@ import com.minibank.core.model.*;
 import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.repositories.TestCustomerRepository;
-import com.minibank.core.repositories.tools.DBCleaner;
+import com.minibank.core.repositories.helpers.DBCleaner;
 import com.minibank.core.services.common.DateTimeUtility;
 import org.junit.Before;
 import org.junit.Test;

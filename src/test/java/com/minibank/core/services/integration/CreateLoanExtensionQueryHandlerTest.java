@@ -7,7 +7,7 @@ import com.minibank.core.model.*;
 import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.repositories.TestLoanExtensionRepository;
-import com.minibank.core.repositories.tools.DBCleaner;
+import com.minibank.core.repositories.helpers.DBCleaner;
 import com.minibank.core.services.CreateLoanExtensionQueryHandler;
 import com.minibank.core.services.common.Message;
 import org.junit.Before;

@@ -5,7 +5,7 @@ import com.minibank.core.model.Customer;
 import com.minibank.core.model.CustomerFixture;
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanFixture;
-import com.minibank.core.repositories.tools.DBCleaner;
+import com.minibank.core.repositories.helpers.DBCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

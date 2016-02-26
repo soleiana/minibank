@@ -6,7 +6,7 @@ import com.minibank.communications.GetAllLoansResponse;
 import com.minibank.communications.model.AllLoansDetails;
 import com.minibank.core.model.*;
 import com.minibank.core.repositories.*;
-import com.minibank.core.repositories.tools.DBCleaner;
+import com.minibank.core.repositories.helpers.DBCleaner;
 import com.minibank.core.services.GetAllLoansQueryHandler;
 import org.junit.Before;
 import org.junit.Test;
