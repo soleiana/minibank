@@ -32,15 +32,13 @@ public class CreditCalculator {
     public Date getLoanEndDate(LoanRequest loanRequest) {
         Date startDate = loanRequest.getSubmissionDate();
         Integer term = loanRequest.getTerm();
-        Date endDate = DateTimeUtility.increaseDate(startDate,term);
-        return endDate;
+        return DateTimeUtility.increaseDate(startDate,term);
     }
 
     public Date getLoanExtensionEndDate(Loan loan) {
         Date startDate = loan.getEndDate();
         short loanExtensionTerm = getBankParameters().getLoanExtensionTerm();
-        Date endDate = DateTimeUtility.increaseDate(startDate, (int)loanExtensionTerm);
-        return endDate;
+        return DateTimeUtility.increaseDate(startDate, (int)loanExtensionTerm);
     }
 
     public BigDecimal getInterest(LoanRequest loanRequest) {
