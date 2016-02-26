@@ -2,6 +2,7 @@ package com.minibank.core.services.helpers;
 
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.LoanRequest;
+import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.services.common.DateTimeUtility;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,13 @@ import java.util.List;
 
 
 @Component
-public class RiskConstraintChecker extends ConstraintChecker {
+public class RiskConstraintChecker {
 
     @Autowired
     private LoanRequestRepository loanRequestRepository;
+
+    @Autowired
+    private BankParametersRepository bankParametersRepository;
 
     public boolean isMaxRequestsPerIPExceeded(LoanRequest loanRequest) {
         BankParameters bankParams = getBankParameters();
@@ -66,6 +70,9 @@ public class RiskConstraintChecker extends ConstraintChecker {
 
     private boolean isBetween(Time start, Time end, Time timeToCheck) {
         return timeToCheck.compareTo(start) == 1 && end.compareTo(timeToCheck) == 1;
+    }
 
+    private BankParameters getBankParameters() {
+        return bankParametersRepository.getCurrentBankParameters();
     }
 }
