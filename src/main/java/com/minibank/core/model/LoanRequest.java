@@ -2,8 +2,8 @@ package com.minibank.core.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
 
 
 @Entity
@@ -23,7 +23,7 @@ public class LoanRequest {
     private String requestIp;
 
     @Column(name = "SUBMISSION_DATE", nullable = false)
-    private Date submissionDate;
+    private LocalDate submissionDate;
 
     @Column(name = "SUBMISSION_TIME", nullable = false)
     private Time submissionTime;
@@ -56,11 +56,11 @@ public class LoanRequest {
         this.requestIp = requestIp;
     }
 
-    public Date getSubmissionDate() {
+    public LocalDate getSubmissionDate() {
         return submissionDate;
     }
 
-    public void setSubmissionDate(Date submissionDate) {
+    public void setSubmissionDate(LocalDate submissionDate) {
         this.submissionDate = submissionDate;
     }
 

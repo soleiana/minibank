@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
 
 import static junit.framework.TestCase.assertTrue;
 
@@ -73,12 +73,10 @@ public class CreditExpertTest extends SpringContextTest {
         //negative loan request scenario with max number of loan requests (attempts)
         //during one day
 
-        Date now = new Date();
-        java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);
-
+        LocalDate now = LocalDate.now();
         for(int i = 0; i <= bankParameters.getMaxLoanAttempts(); i++) {
             createLoanRequest();
-            loanRequest.setSubmissionDate(sqlNow);
+            loanRequest.setSubmissionDate(now);
             loanRequestRepository.create(loanRequest);
         }
         assertTrue(expert.hasRisks(loanRequest));
@@ -99,12 +97,11 @@ public class CreditExpertTest extends SpringContextTest {
         //positive loan request scenario with loan amount below maximum in no risk time
         //loan requests get accepted (maxLoanAttempts - 1) times
 
-        Date now = new Date();
-        java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);
+        LocalDate now = LocalDate.now();
 
         for(int i = 0; i < bankParameters.getMaxLoanAttempts()-1; i++) {
             createLoanRequest();
-            loanRequest.setSubmissionDate(sqlNow);
+            loanRequest.setSubmissionDate(now);
             loanRequestRepository.create(loanRequest);
         }
         assertTrue(!expert.hasRisks(loanRequest));

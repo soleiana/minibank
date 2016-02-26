@@ -18,9 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
 
-import static junit.framework.TestCase.*;
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
 
 
 public class RiskConstraintCheckerTest extends SpringContextTest {
@@ -57,16 +58,13 @@ public class RiskConstraintCheckerTest extends SpringContextTest {
         bankParameters.setMaxLoanAttempts(new Byte("2"));
         bankParametersRepository.create(bankParameters);
 
-        Date now = new Date();
-        java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);
+        LocalDate now = LocalDate.now();
 
-        assertNotNull(sqlNow);
-
-        createLoanRequest(sqlNow);
+        createLoanRequest(now);
         assertFalse(checker.isMaxRequestsPerIpExceeded(loanRequest));
-        createLoanRequest(sqlNow);
+        createLoanRequest(now);
         assertFalse(checker.isMaxRequestsPerIpExceeded(loanRequest));
-        createLoanRequest(sqlNow);
+        createLoanRequest(now);
         assertTrue(checker.isMaxRequestsPerIpExceeded(loanRequest));
     }
 
@@ -139,7 +137,7 @@ public class RiskConstraintCheckerTest extends SpringContextTest {
         assertTrue(!checker.isMaxAmount(loanRequest));
     }
 
-    private void createLoanRequest(java.sql.Date submissionDate) {
+    private void createLoanRequest(LocalDate submissionDate) {
         Customer customer = CustomerFixture.standardCustomer();
         loanRequest = LoanRequestFixture.standardLoanRequest();
         loanRequest.setSubmissionDate(submissionDate);

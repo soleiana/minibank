@@ -3,13 +3,13 @@ package com.minibank.core.fixtures;
 import com.minibank.core.model.LoanRequest;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
 
 
 public class LoanRequestFixture {
 
-    public static final Date SUBMISSION_DATE = Date.valueOf("2014-09-01");
+    public static final LocalDate SUBMISSION_DATE = LocalDate.of(2014, 9, 1);
 
     private static final Time SUBMISSION_TIME = Time.valueOf("14:00:00");
     private static final Integer TERM = 30;

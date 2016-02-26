@@ -26,7 +26,7 @@ public class LoanFactory {
 
         loan.setAmount(loanRequest.getAmount());
         loan.setTerm(loanRequest.getTerm());
-        loan.setStartDate(loanRequest.getSubmissionDate());
+        loan.setStartDate(Date.valueOf(loanRequest.getSubmissionDate()));
 
         Date endDate = creditCalculator.getLoanEndDate(loanRequest);
         loan.setEndDate(endDate);

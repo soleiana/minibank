@@ -16,6 +16,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import static junit.framework.TestCase.assertTrue;
 
@@ -61,7 +62,7 @@ public class InputConstraintCheckerTest extends SpringContextTest {
         assertTrue(checker.isEqualOrLessThanMaxLoanAmount(loanAmount));
     }
 
-    private void createLoanRequest(java.sql.Date submissionDate) {
+    private void createLoanRequest(LocalDate submissionDate) {
         Customer customer = CustomerFixture.standardCustomer();
         loanRequest = LoanRequestFixture.standardLoanRequest();
         loanRequest.setSubmissionDate(submissionDate);

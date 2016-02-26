@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -64,15 +64,10 @@ public class RiskConstraintChecker {
         return bankParametersRepository.getCurrentBankParameters();
     }
 
-    private int countNumberOfLoanRequestsToday(List<LoanRequest> loanRequests) {
-        Date now = new Date();
-        java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);
-        int numberOfRequests = 0;
-        for(LoanRequest req: loanRequests) {
-            if (req.getSubmissionDate().equals(sqlNow)) {
-                numberOfRequests++;
-            }
-        }
-        return numberOfRequests;
+    private long countNumberOfLoanRequestsToday(List<LoanRequest> loanRequests) {
+        LocalDate now = LocalDate.now();
+        return loanRequests.stream()
+                .filter(loanRequest -> loanRequest.getSubmissionDate().isEqual(now))
+                .count();
     }
 }

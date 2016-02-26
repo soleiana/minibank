@@ -30,7 +30,7 @@ public class CreditCalculator {
     }
 
     public Date getLoanEndDate(LoanRequest loanRequest) {
-        Date startDate = loanRequest.getSubmissionDate();
+        Date startDate = Date.valueOf(loanRequest.getSubmissionDate());
         Integer term = loanRequest.getTerm();
         return DateTimeUtility.increaseDate(startDate,term);
     }
