@@ -1,7 +1,9 @@
 package com.minibank.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +14,13 @@ public class Loan {
     private BigDecimal currInterestRate;
     private BigDecimal currInterest;
     private BigDecimal amount;
-    private Date startDate;
-    private Date endDate;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate startDate;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate endDate;
+
     private List<LoanExtension> loanExtensions = new ArrayList<>();
 
     public Loan() {}
@@ -30,11 +37,11 @@ public class Loan {
         return amount;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
@@ -58,11 +65,11 @@ public class Loan {
         this.currInterestRate = currInterestRate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 

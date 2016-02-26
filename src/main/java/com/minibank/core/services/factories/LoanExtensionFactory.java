@@ -24,7 +24,7 @@ public class LoanExtensionFactory {
         java.sql.Date submissionDate = DateTimeUtility.getSqlDate(dNow);
         loanExtension.setSubmissionDate(submissionDate);
 
-        loanExtension.setStartDate(loan.getEndDate());
+        loanExtension.setStartDate(java.sql.Date.valueOf(loan.getEndDate()));
         java.sql.Date endDate = creditCalculator.getLoanExtensionEndDate(loan);
         loanExtension.setEndDate(endDate);
 

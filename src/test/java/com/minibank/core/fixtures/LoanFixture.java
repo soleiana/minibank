@@ -3,21 +3,21 @@ package com.minibank.core.fixtures;
 import com.minibank.core.model.Loan;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.time.LocalDate;
 
 
 public class LoanFixture {
 
     public static final BigDecimal NEW_CURRENT_INTEREST_RATE = new BigDecimal("150.00");
     public static final BigDecimal NEW_CURRENT_INTEREST = new BigDecimal("300.00");
-    public static final Date NEW_END_DATE = Date.valueOf("2014-10-06");
+    public static final LocalDate NEW_END_DATE = LocalDate.of(2014, 10, 6);
 
     private static final Integer STANDARD_TERM = 30;
     private static final BigDecimal STANDARD_AMOUNT = new BigDecimal("200.00");
     private static final BigDecimal STANDARD_CURRENT_INTEREST_RATE = new BigDecimal("100.00");
     private static final BigDecimal STANDARD_CURRENT_INTEREST = new BigDecimal("200.00");
-    private static final Date START_DATE = Date.valueOf("2014-09-01");
-    private static final Date STANDARD_END_DATE = Date.valueOf("2014-09-30");
+    private static final LocalDate START_DATE = LocalDate.of(2014, 9, 1);
+    private static final LocalDate STANDARD_END_DATE = LocalDate.of(2014, 9, 30);
 
     public static Loan standardLoan() {
         Loan loan = new Loan();

@@ -4,14 +4,13 @@ import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.BankParametersRepository;
-import com.minibank.core.services.common.DateTimeUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.Date;
-
+import java.time.LocalDate;
 
 
 @Component
@@ -29,16 +28,17 @@ public class CreditCalculator {
         return interest;
     }
 
-    public Date getLoanEndDate(LoanRequest loanRequest) {
-        Date startDate = Date.valueOf(loanRequest.getSubmissionDate());
+    public LocalDate getLoanEndDate(LoanRequest loanRequest) {
+        LocalDate startDate = loanRequest.getSubmissionDate();
         Integer term = loanRequest.getTerm();
-        return DateTimeUtility.increaseDate(startDate,term);
+        return startDate.plusDays(term);
     }
 
     public Date getLoanExtensionEndDate(Loan loan) {
-        Date startDate = loan.getEndDate();
+        LocalDate startDate = loan.getEndDate();
         short loanExtensionTerm = getBankParameters().getLoanExtensionTerm();
-        return DateTimeUtility.increaseDate(startDate, (int)loanExtensionTerm);
+        LocalDate endDate = startDate.plusDays(loanExtensionTerm);
+        return Date.valueOf(endDate);
     }
 
     public BigDecimal getInterest(LoanRequest loanRequest) {

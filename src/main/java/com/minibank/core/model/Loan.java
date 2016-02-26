@@ -1,9 +1,10 @@
 package com.minibank.core.model;
 
 import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,10 +36,10 @@ public class Loan {
     private BigDecimal currInterest;
 
     @Column(name = "START_DATE", nullable = false)
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name = "END_DATE", nullable = false)
-    private Date endDate;
+    private LocalDate endDate;
 
     public Loan() {}
 
@@ -78,19 +79,19 @@ public class Loan {
         this.currInterest = currInterest;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

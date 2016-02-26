@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.time.LocalDate;
 
 
 @Component
@@ -26,9 +26,9 @@ public class LoanFactory {
 
         loan.setAmount(loanRequest.getAmount());
         loan.setTerm(loanRequest.getTerm());
-        loan.setStartDate(Date.valueOf(loanRequest.getSubmissionDate()));
+        loan.setStartDate(loanRequest.getSubmissionDate());
 
-        Date endDate = creditCalculator.getLoanEndDate(loanRequest);
+        LocalDate endDate = creditCalculator.getLoanEndDate(loanRequest);
         loan.setEndDate(endDate);
         BigDecimal interest = creditCalculator.getInterest(loanRequest);
         loan.setCurrInterest(interest);
@@ -43,7 +43,7 @@ public class LoanFactory {
     public Loan getExtendedLoan(Loan loan, LoanExtension loanExtension) {
         loan.setCurrInterestRate(loanExtension.getInterestRate());
         loan.setCurrInterest(loanExtension.getInterest());
-        loan.setEndDate(loanExtension.getEndDate());
+        loan.setEndDate(loanExtension.getEndDate().toLocalDate());
         return loan;
     }
 }

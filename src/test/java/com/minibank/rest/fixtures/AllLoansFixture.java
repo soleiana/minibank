@@ -6,6 +6,7 @@ import com.minibank.rest.model.LoanExtension;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +21,10 @@ public class AllLoansFixture {
     private static final BigDecimal INTEREST_RATE = CURR_INTEREST_RATE;
     private static final BigDecimal INTEREST = CURR_INTEREST;
     private static final BigDecimal AMOUNT = new BigDecimal("500");
-    private static final Date LOAN_START_DATE = Date.valueOf("2014-09-01");
-    private static final Date LOAN_END_DATE = Date.valueOf("2014-09-20");
+    private static final LocalDate LOAN_START_DATE = LocalDate.of(2014, 9, 1);
+    private static final LocalDate LOAN_END_DATE = LocalDate.of(2014, 9, 20);
     private static final Date LOAN_EXTENSION_START_DATE = Date.valueOf("2014-09-10");
-    private static final Date LOAN_EXTENSION_END_DATE = LOAN_END_DATE;
+    private static final Date LOAN_EXTENSION_END_DATE = Date.valueOf(LOAN_END_DATE);
     private static final Date LOAN_EXTENSION_SUBMISSION_DATE = LOAN_EXTENSION_START_DATE;
 
 

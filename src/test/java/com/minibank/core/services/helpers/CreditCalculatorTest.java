@@ -52,8 +52,8 @@ public class CreditCalculatorTest extends SpringContextTest {
         loanRequest.setSubmissionDate(submissionDate);
         loanRequest.setTerm(20);
 
-        Date endDate = creditCalculator.getLoanEndDate(loanRequest);
-        assertEquals(Date.valueOf("2014-09-21"),endDate);
+        LocalDate endDate = creditCalculator.getLoanEndDate(loanRequest);
+        assertEquals(LocalDate.of(2014, 9, 21), endDate);
     }
 
     @Test
@@ -88,7 +88,7 @@ public class CreditCalculatorTest extends SpringContextTest {
 
     @Test
     public void testGetLoanExtensionEndDate() {
-        Date loanEndDate = Date.valueOf("2014-09-01");
+        LocalDate loanEndDate = LocalDate.of(2014, 9, 1);
         loan.setEndDate(loanEndDate);
 
         Date loanExtensionEndDate = creditCalculator.getLoanExtensionEndDate(loan);
