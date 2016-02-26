@@ -1,7 +1,7 @@
 package com.minibank.core.repositories;
 
 import com.minibank.core.model.LoanExtension;
-import com.minibank.core.repositories.helpers.TestRepositoryTemplateMethod;
+import com.minibank.core.repositories.helpers.RepositoryTemplateMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 public class TestLoanExtensionRepository {
 
     @Autowired
-    private TestRepositoryTemplateMethod<LoanExtension> testRepositoryTemplateMethod;
+    private RepositoryTemplateMethod<LoanExtension> repositoryTemplateMethod;
 
     public LoanExtension getLast() {
-       return testRepositoryTemplateMethod.getLast(LoanExtension.class);
+       return repositoryTemplateMethod.getLast(LoanExtension.class);
     }
 }

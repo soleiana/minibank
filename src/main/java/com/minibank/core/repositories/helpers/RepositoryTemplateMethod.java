@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class TestRepositoryTemplateMethod<T> extends SessionProvider {
+public class RepositoryTemplateMethod<T> extends SessionProvider {
 
     public T getLast(Class clazz) {
         Session session = getCurrentSession();

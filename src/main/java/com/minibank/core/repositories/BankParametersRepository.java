@@ -1,27 +1,22 @@
 package com.minibank.core.repositories;
 
 import com.minibank.core.model.BankParameters;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.criterion.Order;
+import com.minibank.core.repositories.helpers.RepositoryTemplateMethod;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
 @Component
 public class BankParametersRepository extends SessionProvider {
 
+    @Autowired
+    private RepositoryTemplateMethod<BankParameters> repositoryTemplateMethod;
+
     public void create(BankParameters bankParameters) {
         getCurrentSession().saveOrUpdate(bankParameters);
     }
 
     public BankParameters getCurrentBankParameters() {
-        Session session = getCurrentSession();
-        Criteria criteria = session.createCriteria(BankParameters.class);
-        criteria.addOrder(Order.desc("id"));
-        if(!criteria.list().isEmpty()) {
-            return (BankParameters) criteria.list().get(0);
-        } else {
-            return null;
-        }
+        return repositoryTemplateMethod.getLast(BankParameters.class);
     }
 }
