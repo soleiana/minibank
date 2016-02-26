@@ -4,7 +4,7 @@ import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.BankParametersRepository;
-import com.minibank.core.services.common.*;
+import com.minibank.core.services.common.DateTimeUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -38,13 +38,13 @@ public class CreditCalculator {
 
     public Date getLoanExtensionEndDate(Loan loan) {
         Date startDate = loan.getEndDate();
-        short loanExtensionTerm = bankParametersRepository.getCurrentBankParameters().getLoanExtensionTerm();
+        short loanExtensionTerm = getBankParameters().getLoanExtensionTerm();
         Date endDate = DateTimeUtility.increaseDate(startDate, (int)loanExtensionTerm);
         return endDate;
     }
 
     public BigDecimal getInterest(LoanRequest loanRequest) {
-        BankParameters bankParams = bankParametersRepository.getCurrentBankParameters();
+        BankParameters bankParams = getBankParameters();
         BigDecimal baseInterestRate = bankParams.getBaseInterestRate();
         BigDecimal amount = loanRequest.getAmount();
         BigDecimal term = new BigDecimal(loanRequest.getTerm());
@@ -55,7 +55,7 @@ public class CreditCalculator {
        BigDecimal amount = loan.getAmount();
        BigDecimal currInterestRate = getNewInterestRate(loan);
 
-       short loanExtensionTerm = bankParametersRepository.getCurrentBankParameters().getLoanExtensionTerm();
+       short loanExtensionTerm = getBankParameters().getLoanExtensionTerm();
        int term = loan.getTerm();
        term += loanExtensionTerm;
        return interestFormula(amount, new BigDecimal(term), currInterestRate);
@@ -68,5 +68,9 @@ public class CreditCalculator {
         currInterestRate = currInterestRate.multiply(interestRateFactor);
         currInterestRate = currInterestRate.setScale(2, RoundingMode.HALF_EVEN);
         return currInterestRate;
+    }
+
+    private BankParameters getBankParameters() {
+        return bankParametersRepository.getCurrentBankParameters();
     }
 }
