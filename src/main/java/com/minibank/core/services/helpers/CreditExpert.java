@@ -12,6 +12,6 @@ public class CreditExpert {
     private RiskConstraintChecker checker;
 
     public boolean hasRisks(LoanRequest loanRequest) {
-        return checker.isMaxRequestsPerIPExceeded(loanRequest) || checker.isMaxAmount(loanRequest) && checker.isRiskTime(loanRequest);
+        return checker.isMaxRequestsPerIpExceeded(loanRequest) || checker.isMaxAmount(loanRequest) && checker.isRiskTime(loanRequest);
     }
 }

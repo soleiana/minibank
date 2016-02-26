@@ -63,11 +63,11 @@ public class RiskConstraintCheckerTest extends SpringContextTest {
         assertNotNull(sqlNow);
 
         createLoanRequest(sqlNow);
-        assertFalse(checker.isMaxRequestsPerIPExceeded(loanRequest));
+        assertFalse(checker.isMaxRequestsPerIpExceeded(loanRequest));
         createLoanRequest(sqlNow);
-        assertFalse(checker.isMaxRequestsPerIPExceeded(loanRequest));
+        assertFalse(checker.isMaxRequestsPerIpExceeded(loanRequest));
         createLoanRequest(sqlNow);
-        assertTrue(checker.isMaxRequestsPerIPExceeded(loanRequest));
+        assertTrue(checker.isMaxRequestsPerIpExceeded(loanRequest));
     }
 
     @Test

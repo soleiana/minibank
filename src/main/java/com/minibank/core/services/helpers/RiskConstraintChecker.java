@@ -23,24 +23,13 @@ public class RiskConstraintChecker {
     @Autowired
     private BankParametersRepository bankParametersRepository;
 
-    public boolean isMaxRequestsPerIPExceeded(LoanRequest loanRequest) {
+    public boolean isMaxRequestsPerIpExceeded(LoanRequest loanRequest) {
         BankParameters bankParams = getBankParameters();
         Byte maxLoanAttempts = bankParams.getMaxLoanAttempts();
 
         String requestIp = loanRequest.getRequestIp();
-        List<LoanRequest> loanRequests = loanRequestRepository.getByRequestIp(requestIp);
-
-        Date now = new Date();
-        java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);
-
-        int numberOfRequests = 0;
-
-        for(LoanRequest req: loanRequests)
-            if (req.getSubmissionDate().equals(sqlNow))
-                numberOfRequests++;
-
-        return numberOfRequests > maxLoanAttempts;
-
+        List<LoanRequest> loanRequestsPerIp = loanRequestRepository.getByRequestIp(requestIp);
+        return countNumberOfLoanRequestsToday(loanRequestsPerIp) > maxLoanAttempts;
     }
 
     public boolean isRiskTime(LoanRequest loanRequest) {
@@ -58,7 +47,6 @@ public class RiskConstraintChecker {
             //check one time interval: [riskTimeStart, riskTimeEnd]
             return isBetween(riskTimeStart, riskTimeEnd, submissionTime);
         }
-
     }
 
     public boolean isMaxAmount(LoanRequest loanRequest) {
@@ -74,5 +62,17 @@ public class RiskConstraintChecker {
 
     private BankParameters getBankParameters() {
         return bankParametersRepository.getCurrentBankParameters();
+    }
+
+    private int countNumberOfLoanRequestsToday(List<LoanRequest> loanRequests) {
+        Date now = new Date();
+        java.sql.Date sqlNow = DateTimeUtility.getSqlDate(now);
+        int numberOfRequests = 0;
+        for(LoanRequest req: loanRequests) {
+            if (req.getSubmissionDate().equals(sqlNow)) {
+                numberOfRequests++;
+            }
+        }
+        return numberOfRequests;
     }
 }
