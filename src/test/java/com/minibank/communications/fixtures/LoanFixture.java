@@ -1,4 +1,6 @@
-package com.minibank.core.model;
+package com.minibank.communications.fixtures;
+
+import com.minibank.communications.model.Loan;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -6,25 +8,21 @@ import java.sql.Date;
 
 public class LoanFixture {
 
-    public static final BigDecimal NEW_CURRENT_INTEREST_RATE = new BigDecimal("150.00");
-    public static final BigDecimal NEW_CURRENT_INTEREST = new BigDecimal("300.00");
-    public static final Date NEW_END_DATE = Date.valueOf("2014-10-06");
-
-    private static final Integer STANDARD_TERM = 30;
-    private static final BigDecimal STANDARD_AMOUNT = new BigDecimal("200.00");
     private static final BigDecimal STANDARD_CURRENT_INTEREST_RATE = new BigDecimal("100.00");
     private static final BigDecimal STANDARD_CURRENT_INTEREST = new BigDecimal("200.00");
     private static final Date START_DATE = Date.valueOf("2014-09-01");
     private static final Date STANDARD_END_DATE = Date.valueOf("2014-09-30");
+    private static final BigDecimal AMOUNT = new BigDecimal("500.00");
+    private static final Integer LOAN_ID = 1;
 
     public static Loan standardLoan() {
         Loan loan = new Loan();
-        loan.setAmount(STANDARD_AMOUNT);
-        loan.setTerm(STANDARD_TERM);
         loan.setCurrInterest(STANDARD_CURRENT_INTEREST);
         loan.setCurrInterestRate(STANDARD_CURRENT_INTEREST_RATE);
         loan.setStartDate(START_DATE);
         loan.setEndDate(STANDARD_END_DATE);
+        loan.setId(LOAN_ID);
+        loan.setAmount(AMOUNT);
         return loan;
     }
 }

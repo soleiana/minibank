@@ -1,7 +1,9 @@
-package com.minibank.core.model;
+package com.minibank.core.fixtures;
+
+import com.minibank.core.model.BankParameters;
 
 import java.math.BigDecimal;
-import  java.sql.Time;
+import java.sql.Time;
 
 
 public class BankParametersFixture {

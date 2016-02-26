@@ -1,4 +1,6 @@
-package com.minibank.core.model;
+package com.minibank.core.fixtures;
+
+import com.minibank.core.model.LoanRequest;
 
 import java.math.BigDecimal;
 import java.sql.Date;

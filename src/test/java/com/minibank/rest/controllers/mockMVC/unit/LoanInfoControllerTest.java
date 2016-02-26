@@ -5,8 +5,8 @@ import com.minibank.communications.GetAllLoansResponse;
 import com.minibank.communications.model.AllLoansDetails;
 import com.minibank.core.services.GetAllLoansQueryHandler;
 import com.minibank.rest.controllers.LoanInfoController;
-import com.minibank.rest.model.AllLoans;
 import com.minibank.rest.factories.AllLoansRestFactory;
+import com.minibank.rest.model.AllLoans;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -15,13 +15,15 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
-import static org.mockito.Mockito.*;
 
-import static com.minibank.rest.model.JsonDataFixture.*;
-import static com.minibank.rest.model.AllLoansFixture.*;
+import static com.minibank.rest.fixtures.AllLoansFixture.standardAllLoans;
+import static com.minibank.rest.fixtures.JsonDataFixture.standardAllLoansResponseJSON;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 
 public class LoanInfoControllerTest {

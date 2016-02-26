@@ -1,7 +1,10 @@
-package com.minibank.communications.model;
+package com.minibank.communications.fixtures;
 
+import com.minibank.communications.model.AllLoansDetails;
+import com.minibank.communications.model.Loan;
+import com.minibank.communications.model.LoanExtension;
+import com.minibank.core.fixtures.CustomerFixture;
 import com.minibank.core.model.Customer;
-import com.minibank.core.model.CustomerFixture;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,6 @@ public class AllLoanDetailsFixture {
         allLoansDetails.setCustomerId(CUSTOMER_ID);
         allLoansDetails.setName(customer.getName());
         allLoansDetails.setSurname(customer.getSurname());
-        return  allLoansDetails;
+        return allLoansDetails;
     }
 }

@@ -2,8 +2,8 @@ package com.minibank.rest.controllers.mockMVC.unit;
 
 import com.minibank.communications.CreateLoanQuery;
 import com.minibank.communications.CreateLoanResponse;
-import com.minibank.communications.model.LoanRequestDetails;
 import com.minibank.communications.factories.LoanRequestDetailsFactory;
+import com.minibank.communications.model.LoanRequestDetails;
 import com.minibank.core.services.CreateLoanQueryHandler;
 import com.minibank.core.services.common.Message;
 import com.minibank.rest.controllers.LoanController;
@@ -18,12 +18,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
-import static org.mockito.Mockito.*;
-
-import static com.minibank.rest.model.JsonDataFixture.*;
+import static com.minibank.rest.fixtures.JsonDataFixture.standardLoanRequestJSON;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 
 public class LoanControllerTest {

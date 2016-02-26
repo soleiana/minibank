@@ -1,5 +1,7 @@
-package com.minibank.core.model;
+package com.minibank.core.fixtures;
 
+
+import com.minibank.core.model.Customer;
 
 public class CustomerFixture {
 

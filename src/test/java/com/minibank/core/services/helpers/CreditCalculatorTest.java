@@ -1,7 +1,12 @@
 package com.minibank.core.services.helpers;
 
 import com.minibank.SpringContextTest;
-import com.minibank.core.model.*;
+import com.minibank.core.fixtures.BankParametersFixture;
+import com.minibank.core.fixtures.LoanFixture;
+import com.minibank.core.fixtures.LoanRequestFixture;
+import com.minibank.core.model.BankParameters;
+import com.minibank.core.model.Loan;
+import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.helpers.DBCleaner;
 import org.junit.Before;

@@ -1,4 +1,8 @@
-package com.minibank.rest.model;
+package com.minibank.rest.fixtures;
+
+import com.minibank.rest.model.AllLoans;
+import com.minibank.rest.model.Loan;
+import com.minibank.rest.model.LoanExtension;
 
 import java.math.BigDecimal;
 import java.sql.Date;

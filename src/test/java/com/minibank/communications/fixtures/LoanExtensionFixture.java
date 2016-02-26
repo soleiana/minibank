@@ -1,4 +1,6 @@
-package com.minibank.communications.model;
+package com.minibank.communications.fixtures;
+
+import com.minibank.communications.model.LoanExtension;
 
 import java.math.BigDecimal;
 import java.sql.Date;

@@ -1,4 +1,4 @@
-package com.minibank.rest.model;
+package com.minibank.rest.fixtures;
 
 
 public class JsonDataFixture {

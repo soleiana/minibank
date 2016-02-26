@@ -1,4 +1,9 @@
-package com.minibank.core.model;
+package com.minibank.core.fixtures;
+
+import com.minibank.core.model.AllLoans;
+import com.minibank.core.model.Customer;
+import com.minibank.core.model.Loan;
+import com.minibank.core.model.LoanExtension;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,10 +3,10 @@ package com.minibank.core.services.unit;
 import com.minibank.InjectMocksTest;
 import com.minibank.communications.CreateLoanExtensionQuery;
 import com.minibank.communications.CreateLoanExtensionResponse;
+import com.minibank.core.fixtures.LoanExtensionFixture;
+import com.minibank.core.fixtures.LoanFixture;
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanExtension;
-import com.minibank.core.model.LoanExtensionFixture;
-import com.minibank.core.model.LoanFixture;
 import com.minibank.core.repositories.LoanExtensionRepository;
 import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.services.CreateLoanExtensionQueryHandler;
@@ -18,9 +18,9 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-import static org.mockito.Mockito.*;
-import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
+import static org.mockito.Mockito.*;
 
 
 public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {

@@ -1,7 +1,9 @@
-package com.minibank.core.model;
+package com.minibank.core.fixtures;
+
+import com.minibank.core.model.LoanExtension;
 
 import java.math.BigDecimal;
-import  java.sql.Date;
+import java.sql.Date;
 
 
 public class LoanExtensionFixture {

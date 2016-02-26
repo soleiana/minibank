@@ -1,4 +1,4 @@
-package com.minibank.core.model;
+package com.minibank.core.fixtures;
 
 
 public class RequestIPFixture {

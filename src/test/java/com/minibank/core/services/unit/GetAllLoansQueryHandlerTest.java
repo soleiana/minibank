@@ -1,13 +1,13 @@
 package com.minibank.core.services.unit;
 
 import com.minibank.InjectMocksTest;
-import com.minibank.communications.model.AllLoanDetailsFixture;
 import com.minibank.communications.GetAllLoansQuery;
 import com.minibank.communications.GetAllLoansResponse;
-import com.minibank.communications.model.AllLoansDetails;
 import com.minibank.communications.factories.AllLoansDetailsFactory;
+import com.minibank.communications.fixtures.AllLoanDetailsFixture;
+import com.minibank.communications.model.AllLoansDetails;
+import com.minibank.core.fixtures.AllLoansFixture;
 import com.minibank.core.model.AllLoans;
-import com.minibank.core.model.AllLoansFixture;
 import com.minibank.core.services.GetAllLoansQueryHandler;
 import com.minibank.core.services.factories.AllLoansCoreFactory;
 import org.junit.Before;
@@ -18,9 +18,9 @@ import org.mockito.Mock;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.Mockito.*;
-import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
+import static org.mockito.Mockito.*;
 
 
 public class GetAllLoansQueryHandlerTest extends InjectMocksTest {

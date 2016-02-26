@@ -1,22 +1,23 @@
 package com.minibank.core.services.unit;
 
 import com.minibank.InjectMocksTest;
-import com.minibank.communications.model.LoanRequestDetailsFixture;
 import com.minibank.communications.CreateLoanQuery;
 import com.minibank.communications.CreateLoanResponse;
-import com.minibank.communications.model.*;
-import com.minibank.core.model.*;
+import com.minibank.communications.fixtures.LoanRequestDetailsFixture;
+import com.minibank.communications.model.LoanRequestDetails;
+import com.minibank.core.fixtures.LoanFixture;
+import com.minibank.core.fixtures.LoanRequestFixture;
 import com.minibank.core.model.Loan;
-import com.minibank.core.model.LoanFixture;
+import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.services.CreateLoanQueryHandler;
 import com.minibank.core.services.common.Message;
 import com.minibank.core.services.factories.LoanFactory;
 import com.minibank.core.services.factories.LoanRequestFactory;
+import com.minibank.core.services.helpers.CreditExpert;
 import com.minibank.core.services.helpers.InputConstraintChecker;
 import com.minibank.core.services.helpers.RiskConstraintChecker;
-import com.minibank.core.services.helpers.CreditExpert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -24,9 +25,9 @@ import org.mockito.Mock;
 
 import java.math.BigDecimal;
 
-import static org.mockito.Mockito.*;
-import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
+import static org.mockito.Mockito.*;
 
 
 public class CreateLoanQueryHandlerTest extends InjectMocksTest {

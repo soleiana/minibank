@@ -4,6 +4,7 @@ import com.minibank.SpringContextTest;
 import com.minibank.communications.GetAllLoansQuery;
 import com.minibank.communications.GetAllLoansResponse;
 import com.minibank.communications.model.AllLoansDetails;
+import com.minibank.core.fixtures.*;
 import com.minibank.core.model.*;
 import com.minibank.core.repositories.*;
 import com.minibank.core.repositories.helpers.DBCleaner;
