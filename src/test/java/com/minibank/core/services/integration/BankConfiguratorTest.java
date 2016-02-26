@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
-import java.sql.Time;
+import java.time.LocalTime;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -41,8 +41,8 @@ public class BankConfiguratorTest extends SpringContextTest {
         assertEquals(new Byte("3"), bankParameters.getMaxLoanAttempts());
         assertEquals(new BigDecimal("100.00"), bankParameters.getBaseInterestRate());
         assertEquals(new BigDecimal("1.50"), bankParameters.getInterestRateFactor());
-        assertEquals(Time.valueOf("00:00:00"), bankParameters.getRiskTimeStart());
-        assertEquals(Time.valueOf("07:00:00"), bankParameters.getRiskTimeEnd());
+        assertEquals(LocalTime.of(0, 0, 0), bankParameters.getRiskTimeStart());
+        assertEquals(LocalTime.of(7, 0, 0), bankParameters.getRiskTimeEnd());
         assertEquals(new Short("7"), bankParameters.getLoanExtensionTerm());
     }
 }

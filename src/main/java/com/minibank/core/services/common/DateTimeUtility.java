@@ -2,6 +2,7 @@ package com.minibank.core.services.common;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -11,8 +12,8 @@ public class DateTimeUtility {
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final String TIME_FORMAT = "HH:mm:ss";
 
-    public static final Time MIN_TIME = Time.valueOf("00:00:00");
-    public static final Time MAX_TIME = Time.valueOf("24:00:00");
+    public static final LocalTime MIN_TIME = LocalTime.of(0, 0, 0);
+    public static final LocalTime MAX_TIME = LocalTime.of(23, 0, 0);
 
     public static java.sql.Date getSqlDate(Date utilDate) {
         SimpleDateFormat ft = new SimpleDateFormat(DATE_FORMAT);

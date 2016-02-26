@@ -11,14 +11,13 @@ import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.repositories.TestCustomerRepository;
 import com.minibank.core.repositories.helpers.DBCleaner;
-import com.minibank.core.services.common.DateTimeUtility;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
-import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import static junit.framework.TestCase.assertTrue;
 
@@ -57,8 +56,8 @@ public class CreditExpertTest extends SpringContextTest {
         //loan request gets rejected
 
         BigDecimal maxLoanAmount = bankParameters.getMaxLoanAmount();
-        Time riskTimeStart = bankParameters.getRiskTimeStart();
-        Time submissionTime = DateTimeUtility.increaseTime(riskTimeStart,1);
+        LocalTime riskTimeStart = bankParameters.getRiskTimeStart();
+        LocalTime submissionTime = riskTimeStart.plusHours(1);
 
         createLoanRequest();
         loanRequest.setAmount(maxLoanAmount);

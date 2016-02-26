@@ -2,7 +2,7 @@ package com.minibank.core.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Time;
+import java.time.LocalTime;
 
 
 @Entity
@@ -27,10 +27,10 @@ public class BankParameters {
     private Byte maxLoanAttempts;
 
     @Column(name = "RISK_TIME_START", nullable = false)
-    private Time riskTimeStart;
+    private LocalTime riskTimeStart;
 
     @Column(name = "RISK_TIME_END", nullable = false)
-    private Time riskTimeEnd;
+    private LocalTime riskTimeEnd;
 
     @Column(name = "LOAN_EXTENSION_TERM", nullable = false)
     private Short loanExtensionTerm;
@@ -73,19 +73,19 @@ public class BankParameters {
         return maxLoanAttempts;
     }
 
-    public Time getRiskTimeStart() {
+    public LocalTime getRiskTimeStart() {
         return riskTimeStart;
     }
 
-    public void setRiskTimeStart(Time riskTimeStart) {
+    public void setRiskTimeStart(LocalTime riskTimeStart) {
         this.riskTimeStart = riskTimeStart;
     }
 
-    public Time getRiskTimeEnd() {
+    public LocalTime getRiskTimeEnd() {
         return riskTimeEnd;
     }
 
-    public void setRiskTimeEnd(Time riskTimeEnd) {
+    public void setRiskTimeEnd(LocalTime riskTimeEnd) {
         this.riskTimeEnd = riskTimeEnd;
     }
 

@@ -37,8 +37,10 @@ public class BankConfigurator {
         bankParameters.setMaxLoanAttempts(env.getProperty("maxLoanAttempts", Byte.class));
         bankParameters.setBaseInterestRate(env.getProperty("baseInterestRate", BigDecimal.class));
         bankParameters.setInterestRateFactor(env.getProperty("interestRateFactor", BigDecimal.class));
-        bankParameters.setRiskTimeStart(env.getProperty("riskTimeStart", Time.class));
-        bankParameters.setRiskTimeEnd(env.getProperty("riskTimeEnd", Time.class));
+        Time sqlRiskTimeStart = env.getProperty("riskTimeStart", Time.class);
+        bankParameters.setRiskTimeStart(sqlRiskTimeStart.toLocalTime());
+        Time sqlRiskTimeEnd = env.getProperty("riskTimeEnd", Time.class);
+        bankParameters.setRiskTimeEnd(sqlRiskTimeEnd.toLocalTime());
         bankParameters.setLoanExtensionTerm(env.getProperty("loanExtensionTerm", Short.class));
         return bankParameters;
     }

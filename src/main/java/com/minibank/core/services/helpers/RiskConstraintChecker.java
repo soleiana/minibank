@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 
@@ -34,15 +34,18 @@ public class RiskConstraintChecker {
 
     public boolean isRiskTime(LoanRequest loanRequest) {
         BankParameters bankParams = getBankParameters();
-        Time riskTimeStart = bankParams.getRiskTimeStart();
-        Time riskTimeEnd = bankParams.getRiskTimeEnd();
+        LocalTime riskTimeStart = bankParams.getRiskTimeStart();
+        LocalTime riskTimeEnd = bankParams.getRiskTimeEnd();
 
-        Time submissionTime = loanRequest.getSubmissionTime();
+        LocalTime submissionTime = loanRequest.getSubmissionTime();
 
-        if (riskTimeStart.compareTo(riskTimeEnd) == 1) {
-            //check two time intervals: [riskTimeStart, 24:00:00]
+        if (riskTimeStart.isAfter(riskTimeEnd)) {
+            //check two time intervals: [riskTimeStart, 23:00:00]
             //and [00:00:00, riskTimeEnd]
-            return isBetween(riskTimeStart, DateTimeUtility.MAX_TIME, submissionTime) || isBetween(DateTimeUtility.MIN_TIME, riskTimeEnd, submissionTime);
+            return isBetween(riskTimeStart, DateTimeUtility.MAX_TIME, submissionTime)
+                    || submissionTime.equals(DateTimeUtility.MAX_TIME)
+                    || isBetween(DateTimeUtility.MIN_TIME, riskTimeEnd, submissionTime);
+
         } else {
             //check one time interval: [riskTimeStart, riskTimeEnd]
             return isBetween(riskTimeStart, riskTimeEnd, submissionTime);
@@ -56,8 +59,8 @@ public class RiskConstraintChecker {
         return loanRequestAmount.compareTo(maxLoanAmount) == 0;
     }
 
-    private boolean isBetween(Time start, Time end, Time timeToCheck) {
-        return timeToCheck.compareTo(start) == 1 && end.compareTo(timeToCheck) == 1;
+    private boolean isBetween(LocalTime start, LocalTime end, LocalTime timeToCheck) {
+        return timeToCheck.isAfter(start) && timeToCheck.isBefore(end);
     }
 
     private BankParameters getBankParameters() {
