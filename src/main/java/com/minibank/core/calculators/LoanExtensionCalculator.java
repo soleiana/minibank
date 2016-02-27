@@ -1,7 +1,6 @@
 package com.minibank.core.calculators;
 
 import com.minibank.core.common.AppParametersProvider;
-import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,20 +26,17 @@ public class LoanExtensionCalculator {
 
     public BigDecimal getInterest(Loan loan) {
         BigDecimal amount = loan.getAmount();
-        BigDecimal currInterestRate = getNewInterestRate(loan);
+        BigDecimal currInterestRate = getNewInterestRate(loan.getCurrInterestRate());
         short loanExtensionTerm = parametersProvider.getBankParameters().getLoanExtensionTerm();
         int term = loan.getTerm();
         term += loanExtensionTerm;
         return calculationUtility.interestFormula(amount, new BigDecimal(term), currInterestRate);
     }
 
-    public BigDecimal getNewInterestRate(Loan loan) {
-        BankParameters bankParams = parametersProvider.getBankParameters();
-        BigDecimal interestRateFactor = bankParams.getInterestRateFactor();
-        BigDecimal currInterestRate = loan.getCurrInterestRate();
-        currInterestRate = currInterestRate.multiply(interestRateFactor);
-        currInterestRate = currInterestRate.setScale(2, RoundingMode.HALF_EVEN);
-        return currInterestRate;
+    public BigDecimal getNewInterestRate(BigDecimal currentInterestRate) {
+        BigDecimal interestRateFactor = parametersProvider.getBankParameters().getInterestRateFactor();
+        currentInterestRate = currentInterestRate.multiply(interestRateFactor);
+        return currentInterestRate.setScale(2, RoundingMode.HALF_EVEN);
     }
 
 }

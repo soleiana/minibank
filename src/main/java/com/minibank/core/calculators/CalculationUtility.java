@@ -10,7 +10,8 @@ public class CalculationUtility {
 
     private static final BigDecimal FACTOR = new BigDecimal("0.0000277777");
 
-    BigDecimal interestFormula(BigDecimal amount, BigDecimal term, BigDecimal interestRate) {
+
+    public BigDecimal interestFormula(BigDecimal amount, BigDecimal term, BigDecimal interestRate) {
         BigDecimal factor = amount.multiply(interestRate).multiply(term);
         BigDecimal interest = factor.multiply(FACTOR);
         interest = interest.setScale(2, RoundingMode.HALF_EVEN);

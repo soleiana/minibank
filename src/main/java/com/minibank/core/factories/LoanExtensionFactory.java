@@ -26,7 +26,7 @@ public class LoanExtensionFactory {
         LocalDate endDate = loanExtensionCalculator.getLoanExtensionEndDate(loan);
         loanExtension.setEndDate(endDate);
 
-        BigDecimal interestRate = loanExtensionCalculator.getNewInterestRate(loan);
+        BigDecimal interestRate = loanExtensionCalculator.getNewInterestRate(loan.getCurrInterestRate());
         loanExtension.setInterestRate(interestRate);
         BigDecimal interest = loanExtensionCalculator.getInterest(loan);
         loanExtension.setInterest(interest);
