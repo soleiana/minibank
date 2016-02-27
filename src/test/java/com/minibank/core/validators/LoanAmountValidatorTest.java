@@ -1,9 +1,9 @@
 package com.minibank.core.validators;
 
 import com.minibank.InjectMocksTest;
+import com.minibank.core.common.AppParametersProvider;
 import com.minibank.core.fixtures.BankParametersFixture;
 import com.minibank.core.model.BankParameters;
-import com.minibank.core.repositories.BankParametersRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -23,14 +23,14 @@ public class LoanAmountValidatorTest extends InjectMocksTest {
     private LoanAmountValidator validator;
 
     @Mock
-    private BankParametersRepository bankParametersRepository;
+    private AppParametersProvider parametersProvider;
 
     @Mock
     private BankParameters bankParameters;
 
     @Before
     public void setUp() {
-        when(bankParametersRepository.getCurrentBankParameters()).thenReturn(bankParameters);
+        when(parametersProvider.getBankParameters()).thenReturn(bankParameters);
         when(bankParameters.getMaxLoanAmount()).thenReturn(MAX_LOAN_AMOUNT);
     }
 

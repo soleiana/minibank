@@ -1,7 +1,7 @@
 package com.minibank.core.validators;
 
+import com.minibank.core.common.AppParametersProvider;
 import com.minibank.core.model.BankParameters;
-import com.minibank.core.repositories.BankParametersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,10 +11,10 @@ import java.math.BigDecimal;
 public class LoanAmountValidator {
 
     @Autowired
-    private BankParametersRepository bankParametersRepository;
+    private AppParametersProvider parametersProvider;
 
     public boolean isValid(BigDecimal loanRequestAmount) {
-        BankParameters bankParams = bankParametersRepository.getCurrentBankParameters();
+        BankParameters bankParams = parametersProvider.getBankParameters();
         BigDecimal maxLoanAmount = bankParams.getMaxLoanAmount();
         return loanRequestAmount.compareTo(maxLoanAmount) != 1;
     }

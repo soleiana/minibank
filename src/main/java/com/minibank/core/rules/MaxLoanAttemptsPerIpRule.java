@@ -1,5 +1,6 @@
 package com.minibank.core.rules;
 
+import com.minibank.core.common.AppParametersProvider;
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.LoanRequestRepository;
@@ -10,14 +11,17 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Component
-public class MaxLoanAttemptsPerIpRule extends Rule {
+public class MaxLoanAttemptsPerIpRule {
 
     @Autowired
     private LoanRequestRepository loanRequestRepository;
 
-    @Override
+    @Autowired
+    private AppParametersProvider parametersProvider;
+
+
     public boolean holdsTrue(LoanRequest loanRequest) {
-        BankParameters bankParams = getBankParameters();
+        BankParameters bankParams = parametersProvider.getBankParameters();
         Byte maxLoanAttempts = bankParams.getMaxLoanAttempts();
         String requestIp = loanRequest.getRequestIp();
         List<LoanRequest> loanRequestsPerIp = loanRequestRepository.getByRequestIp(requestIp);

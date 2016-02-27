@@ -1,9 +1,9 @@
 package com.minibank.core.calculators;
 
+import com.minibank.core.common.AppParametersProvider;
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanRequest;
-import com.minibank.core.repositories.BankParametersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,12 +13,15 @@ import java.time.LocalDate;
 
 
 @Component
-public class CreditCalculator {
+public class LoanCalculator {
 
     public static final BigDecimal FACTOR = new BigDecimal("0.0000277777");
 
     @Autowired
-    private BankParametersRepository bankParametersRepository;
+    private AppParametersProvider parametersProvider;
+
+    @Autowired
+    private CalculationUtility calculationUtility;
 
 
     public LocalDate getLoanEndDate(LoanRequest loanRequest) {
@@ -29,30 +32,30 @@ public class CreditCalculator {
 
     public LocalDate getLoanExtensionEndDate(Loan loan) {
         LocalDate startDate = loan.getEndDate();
-        short loanExtensionTerm = getBankParameters().getLoanExtensionTerm();
+        short loanExtensionTerm = parametersProvider.getBankParameters().getLoanExtensionTerm();
         return startDate.plusDays(loanExtensionTerm);
     }
 
     public BigDecimal getInterest(LoanRequest loanRequest) {
-        BankParameters bankParams = getBankParameters();
+        BankParameters bankParams = parametersProvider.getBankParameters();
         BigDecimal baseInterestRate = bankParams.getBaseInterestRate();
         BigDecimal amount = loanRequest.getAmount();
         BigDecimal term = new BigDecimal(loanRequest.getTerm());
-        return interestFormula(amount,term,baseInterestRate);
+        return calculationUtility.interestFormula(amount,term,baseInterestRate);
     }
 
     public BigDecimal getInterest(Loan loan) {
        BigDecimal amount = loan.getAmount();
        BigDecimal currInterestRate = getNewInterestRate(loan);
 
-       short loanExtensionTerm = getBankParameters().getLoanExtensionTerm();
+       short loanExtensionTerm = parametersProvider.getBankParameters().getLoanExtensionTerm();
        int term = loan.getTerm();
        term += loanExtensionTerm;
-       return interestFormula(amount, new BigDecimal(term), currInterestRate);
+       return calculationUtility.interestFormula(amount, new BigDecimal(term), currInterestRate);
     }
 
     public BigDecimal getNewInterestRate(Loan loan) {
-        BankParameters bankParams = bankParametersRepository.getCurrentBankParameters();
+        BankParameters bankParams = parametersProvider.getBankParameters();
         BigDecimal interestRateFactor = bankParams.getInterestRateFactor();
         BigDecimal currInterestRate = loan.getCurrInterestRate();
         currInterestRate = currInterestRate.multiply(interestRateFactor);
@@ -60,14 +63,4 @@ public class CreditCalculator {
         return currInterestRate;
     }
 
-    private BigDecimal interestFormula(BigDecimal amount, BigDecimal term, BigDecimal interestRate) {
-        BigDecimal factor = amount.multiply(interestRate).multiply(term);
-        BigDecimal interest = factor.multiply(FACTOR);
-        interest = interest.setScale(2, RoundingMode.HALF_EVEN);
-        return interest;
-    }
-
-    private BankParameters getBankParameters() {
-        return bankParametersRepository.getCurrentBankParameters();
-    }
 }

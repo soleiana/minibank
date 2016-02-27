@@ -1,7 +1,7 @@
-package com.minibank.core.services.helpers;
+package com.minibank.core.calculators.integration;
 
 import com.minibank.SpringContextTest;
-import com.minibank.core.calculators.CreditCalculator;
+import com.minibank.core.calculators.LoanCalculator;
 import com.minibank.core.fixtures.BankParametersFixture;
 import com.minibank.core.fixtures.LoanFixture;
 import com.minibank.core.fixtures.LoanRequestFixture;
@@ -22,7 +22,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
-public class CreditCalculatorTest extends SpringContextTest {
+public class LoanCalculatorTest extends SpringContextTest {
+
+    private static final BigDecimal FACTOR = new BigDecimal("0.0000277777");
 
     @Autowired
     private DBCleaner dbCleaner;
@@ -31,7 +33,7 @@ public class CreditCalculatorTest extends SpringContextTest {
     private BankParametersRepository bankParametersRepository;
 
     @Autowired
-    private CreditCalculator creditCalculator;
+    private LoanCalculator loanCalculator;
 
     private BankParameters bankParameters;
     private LoanRequest loanRequest;
@@ -52,7 +54,7 @@ public class CreditCalculatorTest extends SpringContextTest {
         loanRequest.setSubmissionDate(submissionDate);
         loanRequest.setTerm(20);
 
-        LocalDate endDate = creditCalculator.getLoanEndDate(loanRequest);
+        LocalDate endDate = loanCalculator.getLoanEndDate(loanRequest);
         assertEquals(LocalDate.of(2014, 9, 21), endDate);
     }
 
@@ -64,12 +66,12 @@ public class CreditCalculatorTest extends SpringContextTest {
         BigDecimal interestRate = bankParameters.getBaseInterestRate();
         BigDecimal expectedInterest = amount.multiply(interestRate)
                                             .multiply(t)
-                                            .multiply(creditCalculator.FACTOR);
+                                            .multiply(FACTOR);
         expectedInterest = expectedInterest.setScale(2, RoundingMode.HALF_EVEN);
         loanRequest.setAmount(amount);
         loanRequest.setTerm(term);
 
-        BigDecimal interest = creditCalculator.getInterest(loanRequest);
+        BigDecimal interest = loanCalculator.getInterest(loanRequest);
         assertTrue(interest.compareTo(expectedInterest) == 0);
     }
 
@@ -82,7 +84,7 @@ public class CreditCalculatorTest extends SpringContextTest {
         loan.setTerm(term);
         loan.setCurrInterestRate(interestRate);
 
-        BigDecimal interest = creditCalculator.getInterest(loan);
+        BigDecimal interest = loanCalculator.getInterest(loan);
         assertTrue(interest.compareTo(new BigDecimal("22.50")) == 0);
     }
 
@@ -91,7 +93,7 @@ public class CreditCalculatorTest extends SpringContextTest {
         LocalDate loanEndDate = LocalDate.of(2014, 9, 1);
         loan.setEndDate(loanEndDate);
 
-        LocalDate loanExtensionEndDate = creditCalculator.getLoanExtensionEndDate(loan);
+        LocalDate loanExtensionEndDate = loanCalculator.getLoanExtensionEndDate(loan);
         assertEquals(LocalDate.of(2014, 9, 8),loanExtensionEndDate);
     }
 }

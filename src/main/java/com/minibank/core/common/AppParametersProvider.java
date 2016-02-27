@@ -1,21 +1,17 @@
-package com.minibank.core.rules;
+package com.minibank.core.common;
 
 import com.minibank.core.model.BankParameters;
-import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.BankParametersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public abstract class Rule {
+public class AppParametersProvider {
 
     @Autowired
     private BankParametersRepository bankParametersRepository;
 
-    public abstract boolean holdsTrue(LoanRequest loanRequest);
-
-    protected BankParameters getBankParameters() {
+    public BankParameters getBankParameters() {
         return bankParametersRepository.getCurrentBankParameters();
     }
-
 }

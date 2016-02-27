@@ -1,11 +1,11 @@
 package com.minibank.core.factories;
 
-import com.minibank.core.calculators.CreditCalculator;
+import com.minibank.core.calculators.LoanCalculator;
+import com.minibank.core.common.AppParametersProvider;
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanExtension;
 import com.minibank.core.model.LoanRequest;
-import com.minibank.core.repositories.BankParametersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,10 +17,10 @@ import java.time.LocalDate;
 public class LoanFactory {
 
     @Autowired
-    private CreditCalculator creditCalculator;
+    private LoanCalculator loanCalculator;
 
     @Autowired
-    private BankParametersRepository bankParametersRepository;
+    private AppParametersProvider parametersProvider;
 
 
     public Loan getNewLoan(LoanRequest loanRequest) {
@@ -29,12 +29,12 @@ public class LoanFactory {
         loan.setTerm(loanRequest.getTerm());
         loan.setStartDate(loanRequest.getSubmissionDate());
 
-        LocalDate endDate = creditCalculator.getLoanEndDate(loanRequest);
+        LocalDate endDate = loanCalculator.getLoanEndDate(loanRequest);
         loan.setEndDate(endDate);
-        BigDecimal interest = creditCalculator.getInterest(loanRequest);
+        BigDecimal interest = loanCalculator.getInterest(loanRequest);
         loan.setCurrInterest(interest);
 
-        BankParameters bankParams = bankParametersRepository.getCurrentBankParameters();
+        BankParameters bankParams = parametersProvider.getBankParameters();
         loan.setCurrInterestRate(bankParams.getBaseInterestRate());
         return loan;
     }

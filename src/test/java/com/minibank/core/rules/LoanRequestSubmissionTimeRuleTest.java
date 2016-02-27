@@ -2,11 +2,11 @@ package com.minibank.core.rules;
 
 import com.minibank.InjectMocksTest;
 import com.minibank.common.DateTimeParameters;
+import com.minibank.core.common.AppParametersProvider;
 import com.minibank.core.fixtures.BankParametersFixture;
 import com.minibank.core.fixtures.LoanRequestFixture;
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.LoanRequest;
-import com.minibank.core.repositories.BankParametersRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -30,14 +30,14 @@ public class LoanRequestSubmissionTimeRuleTest extends InjectMocksTest {
     private LoanRequestSubmissionTimeRule rule;
 
     @Mock
-    private BankParametersRepository bankParametersRepository;
+    private AppParametersProvider parametersProvider;
 
     @Mock
     private BankParameters bankParameters;
 
     @Before
     public void setUp() {
-        when(bankParametersRepository.getCurrentBankParameters()).thenReturn(bankParameters);
+        when(parametersProvider.getBankParameters()).thenReturn(bankParameters);
     }
 
     @Test

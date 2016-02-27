@@ -1,11 +1,11 @@
 package com.minibank.core.rules;
 
 import com.minibank.InjectMocksTest;
+import com.minibank.core.common.AppParametersProvider;
 import com.minibank.core.fixtures.BankParametersFixture;
 import com.minibank.core.fixtures.LoanRequestFixture;
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.LoanRequest;
-import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +29,7 @@ public class MaxLoanAttemptsPerIpRuleTest extends InjectMocksTest {
     private MaxLoanAttemptsPerIpRule rule;
 
     @Mock
-    private BankParametersRepository bankParametersRepository;
+    private AppParametersProvider parametersProvider;
 
     @Mock
     private LoanRequestRepository loanRequestRepository;
@@ -43,7 +43,7 @@ public class MaxLoanAttemptsPerIpRuleTest extends InjectMocksTest {
 
     @Before
     public void setUp() {
-        when(bankParametersRepository.getCurrentBankParameters()).thenReturn(bankParameters);
+        when(parametersProvider.getBankParameters()).thenReturn(bankParameters);
         when(bankParameters.getMaxLoanAttempts()).thenReturn(MAX_LOAN_ATTEMPTS);
     }
 
