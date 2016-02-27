@@ -15,7 +15,6 @@ import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.services.CreateLoanQueryHandler;
 import com.minibank.core.services.InputConstraintChecker;
 import com.minibank.core.services.LoanExpert;
-import com.minibank.core.services.RiskConstraintChecker;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -41,9 +40,6 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
 
     @Mock
     private LoanExpert loanExpert;
-
-    @Mock
-    private RiskConstraintChecker riskConstraintChecker;
 
     @Mock
     private InputConstraintChecker inputConstraintChecker;
