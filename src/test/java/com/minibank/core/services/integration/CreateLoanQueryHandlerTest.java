@@ -62,24 +62,24 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest {
     public void testExecute() {
         CreateLoanQuery createLoanQuery = createCreateLoanQuery();
         CreateLoanResponse expectedCreateLoanResponse = new CreateLoanResponse(true, Messages.LOAN_OBTAINED_MESSAGE);
-        LoanRequest loanRequest1 = testLoanRequestRepository.getLast();
-        Loan loan1 = testLoanRepository.getLast();
-        assertNull(loanRequest1);
-        assertNull(loan1);
+        LoanRequest loanRequest = testLoanRequestRepository.getLast();
+        Loan loan = testLoanRepository.getLast();
+        assertNull(loanRequest);
+        assertNull(loan);
 
         CreateLoanResponse createLoanResponse = createLoanQueryHandler.execute(createLoanQuery);
 
         assertEquals(expectedCreateLoanResponse.getMessage(), createLoanResponse.getMessage());
         assertEquals(expectedCreateLoanResponse.isCreated(), createLoanResponse.isCreated());
 
-        loanRequest1 = testLoanRequestRepository.getLast();
-        loan1 = testLoanRepository.getLast();
+        loanRequest = testLoanRequestRepository.getLast();
+        loan = testLoanRepository.getLast();
 
-        assertNotNull(loanRequest1);
-        assertNotNull(loan1);
-        assertEquals(customer, loanRequest1.getCustomer());
+        assertNotNull(loanRequest);
+        assertNotNull(loan);
+        assertEquals(customer, loanRequest.getCustomer());
         assertEquals(1, customer.getLoans().size());
-        assertTrue(customer.getLoans().contains(loan1));
+        assertTrue(customer.getLoans().contains(loan));
     }
 
     private CreateLoanQuery createCreateLoanQuery() {

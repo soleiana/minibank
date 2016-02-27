@@ -41,7 +41,6 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest {
     private BankParameters bankParameters;
     private Loan loan;
 
-
     @Before
     public void setUp() {
         dbCleaner.clear();
@@ -64,8 +63,9 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest {
 
         loanExtension = testLoanExtensionRepository.getLast();
         assertNotNull(loanExtension);
-        assertEquals(loanExtension.getInterest(), loan.getCurrInterest());
-        assertEquals(loanExtension.getInterestRate(), loan.getCurrInterestRate());
+        assertEquals(loan.getCurrInterest(), loanExtension.getInterest());
+        assertEquals(loan.getCurrInterestRate(), loanExtension.getInterestRate());
+        assertEquals(loan.getEndDate(), loanExtension.getEndDate());
     }
 
     private CreateLoanExtensionQuery createCreateLoanExtensionQuery() {

@@ -13,6 +13,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -41,9 +44,6 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
 
     private BankParameters bankParameters;
     private Customer customer;
-    private LoanRequest loanRequest;
-    private Loan loan;
-    private LoanExtension loanExtension;
 
     @Before
     public void setUp() {
@@ -55,8 +55,7 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
     }
 
     @Test
-    public void testExecute_1() {
-        //customer has no loans
+    public void testExecuteCustomerHasNoLoans() {
         GetAllLoansQuery getAllLoansQuery = createGetAllLoansQuery();
 
         GetAllLoansResponse getAllLoansResponse = getAllLoansQueryHandler.execute(getAllLoansQuery);
@@ -71,65 +70,66 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
     }
 
     @Test
-    public void testExecute_2() {
-        //customer has 2 loans
-        //customer has no loan extensions
-        prepareTestData_1();
+    public void testExecuteCustomerHasLoansWithoutExtensions() {
+        final int NUMBER_OF_LOANS = 2;
+
+        createLoans(NUMBER_OF_LOANS);
         GetAllLoansQuery getAllLoansQuery = createGetAllLoansQuery();
 
         GetAllLoansResponse getAllLoansResponse = getAllLoansQueryHandler.execute(getAllLoansQuery);
 
         AllLoansDetails allLoansDetails = getAllLoansResponse.getAllLoansDetails();
-
-        assertEquals(2, allLoansDetails.getLoans().size());
+        assertEquals(NUMBER_OF_LOANS, allLoansDetails.getLoans().size());
         assertEquals(true, getAllLoansResponse.isEntityFound());
     }
 
     @Test
-    public void testExecute_3() {
-        //customer has 2 loans
-        //customer has 2 extensions of a loan
-        prepareTestData_2();
+    public void testExecuteCusterHasLoansAndOneLoanHasExtensions() {
+        final int NUMBER_OF_LOANS = 2;
+        final int NUMBER_OF_EXTENSIONS = 2;
+
+        List<Loan> loans = createLoans(NUMBER_OF_LOANS);
+        createLoanExtensions(loans.get(0), NUMBER_OF_EXTENSIONS);
         GetAllLoansQuery getAllLoansQuery = createGetAllLoansQuery();
 
         GetAllLoansResponse getAllLoansResponse = getAllLoansQueryHandler.execute(getAllLoansQuery);
 
         AllLoansDetails allLoansDetails = getAllLoansResponse.getAllLoansDetails();
 
-        assertEquals(2, allLoansDetails.getLoans().size());
-        assertEquals(2, allLoansDetails.getLoans().get(0).getLoanExtensions().size());
+        assertEquals(NUMBER_OF_LOANS, allLoansDetails.getLoans().size());
+        assertEquals(NUMBER_OF_EXTENSIONS, allLoansDetails.getLoans().get(0).getLoanExtensions().size());
         assertEquals(0, allLoansDetails.getLoans().get(1).getLoanExtensions().size());
         assertEquals(true, getAllLoansResponse.isEntityFound());
     }
 
-    private void createLoan() {
-        loanRequest = LoanRequestFixture.standardLoanRequest();
+    private Loan createLoan() {
+        LoanRequest loanRequest = LoanRequestFixture.standardLoanRequest();
         loanRequest.setCustomer(customer);
         loanRequestRepository.create(loanRequest);
-        loan = LoanFixture.standardLoan();
+        Loan loan = LoanFixture.standardLoan();
         customer.addLoan(loan);
         loanRepository.create(loan);
-    }
-
-    private void createLoanExtension() {
-        loanExtension = LoanExtensionFixture.standardLoanExtension();
-        loan.addLoanExtension(loanExtension);
-        loanExtensionRepository.create(loanExtension);
+        return loan;
     }
 
     private GetAllLoansQuery createGetAllLoansQuery() {
         return new GetAllLoansQuery(customer.getId());
     }
 
-    private void prepareTestData_1() {
-        createLoan();
-        createLoan();
+    private List<Loan> createLoans(int numberOfLoans) {
+       List<Loan> loans = new ArrayList<>();
+       for (int i = 1; i <= numberOfLoans; i++) {
+           loans.add(createLoan());
+       }
+        return loans;
     }
 
-    private void prepareTestData_2() {
-        createLoan();
-        createLoanExtension();
-        createLoanExtension();
-        createLoan();
+    private void createLoanExtensions(Loan loan, int numberOfExtensions) {
+        for (int i = 1; i <= numberOfExtensions; i++) {
+            LoanExtension loanExtension = LoanExtensionFixture.standardLoanExtension();
+            loan.addLoanExtension(loanExtension);
+            loanExtensionRepository.create(loanExtension);
+        }
     }
+
 }

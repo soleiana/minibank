@@ -22,8 +22,6 @@ import org.mockito.Mock;
 
 import java.math.BigDecimal;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.*;
 
 
@@ -76,7 +74,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
         CreateLoanQuery query = new CreateLoanQuery(loanRequestDetails);
 
         CreateLoanResponse response = queryHandler.execute(query);
-        assertResponse(expectedResponse, response);
+        TestUtility.assertResponse(expectedResponse, response);
         verify(loanRequestFactory, times(1)).getLoanRequest(loanRequestDetails);
         verify(loanRequestRepository, times(1)).create(loanRequest);
         verify(loanAmountValidator, times(1)).isValid(any(BigDecimal.class));
@@ -96,7 +94,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
 
         CreateLoanResponse response = queryHandler.execute(query);
 
-        assertResponse(expectedResponse, response);
+        TestUtility.assertResponse(expectedResponse, response);
         verify(loanRequestFactory, times(1)).getLoanRequest(loanRequestDetails);
         verify(loanRequestRepository, times(1)).create(loanRequest);
         verify(loanAmountValidator, times(1)).isValid(any(BigDecimal.class));
@@ -115,7 +113,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
 
         CreateLoanResponse response = queryHandler.execute(query);
 
-        assertResponse(expectedResponse, response);
+        TestUtility.assertResponse(expectedResponse, response);
         verify(loanRequestFactory, times(1)).getLoanRequest(loanRequestDetails);
         verify(loanRequestRepository, times(1)).create(loanRequest);
         verify(loanAmountValidator, times(1)).isValid(any(BigDecimal.class));
@@ -124,9 +122,4 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
         verify(loanRepository, times(0)).create(loan);
     }
 
-    private void assertResponse(CreateLoanResponse expectedResponse, CreateLoanResponse actualResponse) {
-        assertNotNull(actualResponse);
-        assertEquals(expectedResponse.getMessage(), actualResponse.getMessage());
-        assertEquals(expectedResponse.isCreated(), actualResponse.isCreated());
-    }
 }

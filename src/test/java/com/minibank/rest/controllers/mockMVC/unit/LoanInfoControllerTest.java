@@ -47,7 +47,7 @@ public class LoanInfoControllerTest {
     }
 
     @Test
-    public void testThatLoanInfoControllerUsesHttpOkOnSuccess() throws Exception {
+    public void testLoanInfoControllerUsesHttpOkOnSuccess() throws Exception {
         when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
         when(allLoansRestFactory.getAllLoans(any(AllLoansDetails.class))).thenReturn(new AllLoans());
 
@@ -57,7 +57,7 @@ public class LoanInfoControllerTest {
     }
 
     @Test
-    public void testThatLoanInfoControllerRendersCorrectly() throws Exception {
+    public void testLoanInfoControllerRendersResponseCorrectly() throws Exception {
         when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
         when(allLoansRestFactory.getAllLoans(any(AllLoansDetails.class))).thenReturn(standardAllLoans());
 
@@ -70,7 +70,7 @@ public class LoanInfoControllerTest {
     }
 
     @Test
-    public void testThatLoanInfoControllerUsesHttpNotFoundOnFailure() throws Exception {
+    public void testLoanInfoControllerUsesHttpNotFoundOnFailure() throws Exception {
         when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), false));
         when(allLoansRestFactory.getAllLoans(any(AllLoansDetails.class))).thenReturn(new AllLoans());
 

@@ -16,8 +16,6 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.*;
 
 
@@ -63,9 +61,7 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
 
         CreateLoanExtensionResponse response = queryHandler.execute(query);
 
-        assertNotNull(response);
-        assertEquals(expectedResponse.isCreated(), response.isCreated());
-        assertEquals(expectedResponse.getMessage(), response.getMessage());
+        TestUtility.assertResponse(expectedResponse, response);
         verify(loanExtensionFactory, times(1)).getLoanExtension(loan);
         verify(loanExtensionRepository, times(1)).create(loanExtension);
         verify(loanFactory, times(1)).getExtendedLoan(loan, loanExtension);
