@@ -25,7 +25,7 @@ public class GetAllLoansQueryHandler {
     @Transactional
     public GetAllLoansResponse execute(GetAllLoansQuery query) {
         AllLoans allLoans;
-        Integer customerId = query.getCustomerId();
+        int customerId = query.getCustomerId();
 
         allLoans = allLoansCoreFactory.getAllLoans(customerId);
         AllLoansDetails allLoansDetails = allLoansDetailsFactory.getAllLoansDetails(allLoans);

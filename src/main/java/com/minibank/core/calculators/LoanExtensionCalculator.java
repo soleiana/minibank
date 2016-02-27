@@ -28,7 +28,6 @@ public class LoanExtensionCalculator {
     public BigDecimal getInterest(Loan loan) {
         BigDecimal amount = loan.getAmount();
         BigDecimal currInterestRate = getNewInterestRate(loan);
-
         short loanExtensionTerm = parametersProvider.getBankParameters().getLoanExtensionTerm();
         int term = loan.getTerm();
         term += loanExtensionTerm;
