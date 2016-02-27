@@ -10,6 +10,7 @@ import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
+import com.minibank.core.validators.LoanAmountValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +29,7 @@ public class CreateLoanQueryHandler {
     private LoanExpert loanExpert;
 
     @Autowired
-    private InputConstraintChecker inputConstraintChecker;
+    private LoanAmountValidator loanAmountValidator;
 
     @Autowired
     private LoanRequestRepository loanRequestRepository;
@@ -55,7 +56,7 @@ public class CreateLoanQueryHandler {
     }
 
     private boolean isNegativeCreditDecision(LoanRequest loanRequest) {
-        return !inputConstraintChecker.isEqualOrLessThanMaxLoanAmount(loanRequest.getAmount()) || loanExpert.riskSurroundsLoan(loanRequest);
+        return !loanAmountValidator.isValid(loanRequest.getAmount()) || loanExpert.riskSurroundsLoan(loanRequest);
     }
 
 }
