@@ -16,7 +16,7 @@ public class RepositoryTemplateMethod<T> extends SessionProvider {
         Criteria criteria = session.createCriteria(clazz);
         criteria.addOrder(Order.desc("id"));
         if(!criteria.list().isEmpty()) {
-            return (T) criteria.list().get(0);
+            return (T)criteria.list().get(0);
         } else {
             return null;
         }

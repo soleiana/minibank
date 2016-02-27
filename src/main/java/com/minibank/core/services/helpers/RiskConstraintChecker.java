@@ -1,10 +1,10 @@
 package com.minibank.core.services.helpers;
 
+import com.minibank.common.DateTimeParameters;
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
-import com.minibank.core.services.common.DateTimeParameters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,10 +23,10 @@ public class RiskConstraintChecker {
     @Autowired
     private BankParametersRepository bankParametersRepository;
 
+
     public boolean isMaxRequestsPerIpExceeded(LoanRequest loanRequest) {
         BankParameters bankParams = getBankParameters();
         Byte maxLoanAttempts = bankParams.getMaxLoanAttempts();
-
         String requestIp = loanRequest.getRequestIp();
         List<LoanRequest> loanRequestsPerIp = loanRequestRepository.getByRequestIp(requestIp);
         return countNumberOfLoanRequestsToday(loanRequestsPerIp) > maxLoanAttempts;
@@ -40,14 +40,11 @@ public class RiskConstraintChecker {
         LocalTime submissionTime = loanRequest.getSubmissionTime();
 
         if (riskTimeStart.isAfter(riskTimeEnd)) {
-            //check two time intervals: [riskTimeStart, 23:00:00]
-            //and [00:00:00, riskTimeEnd]
             return isBetween(riskTimeStart, DateTimeParameters.MAX_TIME, submissionTime)
                     || submissionTime.equals(DateTimeParameters.MAX_TIME)
                     || isBetween(DateTimeParameters.MIN_TIME, riskTimeEnd, submissionTime);
 
         } else {
-            //check one time interval: [riskTimeStart, riskTimeEnd]
             return isBetween(riskTimeStart, riskTimeEnd, submissionTime);
         }
     }

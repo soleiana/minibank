@@ -2,7 +2,7 @@ package com.minibank.core.services.factories;
 
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanExtension;
-import com.minibank.core.services.helpers.CreditCalculator;
+import com.minibank.core.services.factories.calculators.CreditCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

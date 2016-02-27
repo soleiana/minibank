@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Date;
 
 
 @Component
@@ -19,23 +19,26 @@ public class LoanRequestFactory {
     CustomerRepository customerRepository;
 
     public LoanRequest getLoanRequest(LoanRequestDetails loanRequestDetails) {
-
-        Integer id = loanRequestDetails.getCustomerId();
-        Customer customer = customerRepository.getById(id);
-
         LoanRequest loanRequest = new LoanRequest();
 
         loanRequest.setRequestIp(loanRequestDetails.getRequestIp());
-        loanRequest.setCustomer(customer);
         loanRequest.setAmount(loanRequestDetails.getAmount());
         loanRequest.setTerm(loanRequestDetails.getTerm());
-        Date dNow = new Date();
 
-        LocalDate submissionDate = LocalDate.now();
-        LocalTime submissionTime = LocalTime.now();
+        LocalDateTime now = LocalDateTime.now();
+        LocalDate submissionDate = now.toLocalDate();
+        LocalTime submissionTime = now.toLocalTime();
 
         loanRequest.setSubmissionDate(submissionDate);
         loanRequest.setSubmissionTime(submissionTime);
+
+        Customer customer = getCustomer(loanRequestDetails.getCustomerId());
+        loanRequest.setCustomer(customer);
+
         return loanRequest;
+    }
+
+    private Customer getCustomer(int customerId) {
+        return customerRepository.getById(customerId);
     }
 }

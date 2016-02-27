@@ -37,7 +37,7 @@ public class CreditExpertTest extends SpringContextTest {
     private BankParametersRepository bankParametersRepository;
 
     @Autowired
-    private CreditExpert expert;
+    private LoanExpert expert;
 
     private BankParameters bankParameters;
     private LoanRequest loanRequest;

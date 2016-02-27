@@ -1,4 +1,4 @@
-package com.minibank.config;
+package com.minibank.configuration;
 
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,10 +9,9 @@ import org.springframework.context.annotation.*;
 
 
 @Configuration
-@ComponentScan(basePackages = {"com.minibank"},
-               excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = {Application.class})})
-@Import({DatasourceConfig.class})
-public class RestConfig {
+@ComponentScan(basePackages = {"com.minibank"}, excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = {Application.class})})
+@Import({DatasourceConfiguration.class})
+public class RestConfiguration {
 
     @Bean
     public Module javaTimeModule() {

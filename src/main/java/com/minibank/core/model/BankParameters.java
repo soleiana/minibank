@@ -111,7 +111,6 @@ public class BankParameters {
         if (!riskTimeStart.equals(that.riskTimeStart)) return false;
         if (!riskTimeEnd.equals(that.riskTimeEnd)) return false;
         return loanExtensionTerm.equals(that.loanExtensionTerm);
-
     }
 
     @Override

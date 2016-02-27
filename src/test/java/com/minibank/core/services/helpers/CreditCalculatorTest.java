@@ -9,6 +9,7 @@ import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.helpers.DBCleaner;
+import com.minibank.core.services.factories.calculators.CreditCalculator;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

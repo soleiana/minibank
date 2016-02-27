@@ -1,22 +1,20 @@
 package com.minibank.core.services.unit;
 
 import com.minibank.InjectMocksTest;
+import com.minibank.common.Messages;
 import com.minibank.communications.CreateLoanQuery;
 import com.minibank.communications.CreateLoanResponse;
-import com.minibank.communications.fixtures.LoanRequestDetailsFixture;
 import com.minibank.communications.model.LoanRequestDetails;
-import com.minibank.core.fixtures.LoanFixture;
-import com.minibank.core.fixtures.LoanRequestFixture;
+import com.minibank.core.model.Customer;
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.services.CreateLoanQueryHandler;
-import com.minibank.core.services.common.Message;
 import com.minibank.core.services.factories.LoanFactory;
 import com.minibank.core.services.factories.LoanRequestFactory;
-import com.minibank.core.services.helpers.CreditExpert;
 import com.minibank.core.services.helpers.InputConstraintChecker;
+import com.minibank.core.services.helpers.LoanExpert;
 import com.minibank.core.services.helpers.RiskConstraintChecker;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,7 +40,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
     private LoanFactory loanFactory;
 
     @Mock
-    private CreditExpert creditExpert;
+    private LoanExpert loanExpert;
 
     @Mock
     private RiskConstraintChecker riskConstraintChecker;
@@ -56,17 +54,20 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
     @Mock
     private LoanRepository loanRepository;
 
+    private Customer customer;
     private LoanRequest loanRequest;
     private Loan loan;
     private LoanRequestDetails loanRequestDetails;
 
     @Before
     public void setUp() {
-        loanRequest = LoanRequestFixture.standardLoanRequest();
-        loan = LoanFixture.standardLoan();
-        loanRequestDetails = LoanRequestDetailsFixture.standardLoanRequestDetails();
+        customer = mock(Customer.class);
+        loanRequest = mock(LoanRequest.class);
+        loan = mock(Loan.class);
+        loanRequestDetails = mock(LoanRequestDetails.class);
 
         when(loanRequestFactory.getLoanRequest(any(LoanRequestDetails.class))).thenReturn(loanRequest);
+        when(loanRequest.getCustomer()).thenReturn(customer);
         when(loanFactory.getNewLoan(any(LoanRequest.class))).thenReturn(loan);
     }
 
@@ -75,10 +76,10 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
          //Positive path of execution
         //Customer obtains a loan
 
-        when(creditExpert.hasRisks(any(LoanRequest.class))).thenReturn(false);
+        when(loanExpert.hasRisks(any(LoanRequest.class))).thenReturn(false);
         when(inputConstraintChecker.isEqualOrLessThanMaxLoanAmount(any(BigDecimal.class))).thenReturn(true);
 
-        CreateLoanResponse expectedResponse = new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);
+        CreateLoanResponse expectedResponse = new CreateLoanResponse(true, Messages.LOAN_OBTAINED_MESSAGE);
         CreateLoanQuery query = new CreateLoanQuery(loanRequestDetails);
 
         CreateLoanResponse response = queryHandler.execute(query);
@@ -88,8 +89,9 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
         verify(loanRequestFactory, times(1)).getLoanRequest(loanRequestDetails);
         verify(loanRequestRepository, times(1)).create(loanRequest);
         verify(inputConstraintChecker, times(1)).isEqualOrLessThanMaxLoanAmount(any(BigDecimal.class));
-        verify(creditExpert, times(1)).hasRisks(loanRequest);
+        verify(loanExpert, times(1)).hasRisks(loanRequest);
         verify(loanFactory, times(1)).getNewLoan(loanRequest);
+        verify(loanRequest, times(1)).getCustomer();
         verify(loanRepository, times(1)).create(loan);
     }
 
@@ -98,10 +100,10 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
         //Negative path of execution
         //Customer is refused a loan because of the risks surrounding the loan request
 
-        when(creditExpert.hasRisks(any(LoanRequest.class))).thenReturn(true);
+        when(loanExpert.hasRisks(any(LoanRequest.class))).thenReturn(true);
         when(inputConstraintChecker.isEqualOrLessThanMaxLoanAmount(any(BigDecimal.class))).thenReturn(true);
 
-        CreateLoanResponse expectedResponse = new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
+        CreateLoanResponse expectedResponse = new CreateLoanResponse(false, Messages.LOAN_ERROR_MESSAGE);
         CreateLoanQuery query =  new CreateLoanQuery(loanRequestDetails);
 
         CreateLoanResponse response = queryHandler.execute(query);
@@ -112,7 +114,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
         verify(loanRequestFactory, times(1)).getLoanRequest(loanRequestDetails);
         verify(loanRequestRepository, times(1)).create(loanRequest);
         verify(inputConstraintChecker, times(1)).isEqualOrLessThanMaxLoanAmount(any(BigDecimal.class));
-        verify(creditExpert, times(1)).hasRisks(loanRequest);
+        verify(loanExpert, times(1)).hasRisks(loanRequest);
         verify(loanFactory, times(0)).getNewLoan(loanRequest);
         verify(loanRepository, times(0)).create(loan);
     }
@@ -122,10 +124,10 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
         //Negative path of execution
         //Customer is refused a loan because the requested loan amount exceeds the maximum
 
-        when(creditExpert.hasRisks(any(LoanRequest.class))).thenReturn(false);
+        when(loanExpert.hasRisks(any(LoanRequest.class))).thenReturn(false);
         when(inputConstraintChecker.isEqualOrLessThanMaxLoanAmount(any(BigDecimal.class))).thenReturn(false);
 
-        CreateLoanResponse expectedResponse = new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
+        CreateLoanResponse expectedResponse = new CreateLoanResponse(false, Messages.LOAN_ERROR_MESSAGE);
         CreateLoanQuery query =  new CreateLoanQuery(loanRequestDetails);
 
         CreateLoanResponse response = queryHandler.execute(query);
@@ -136,7 +138,7 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
         verify(loanRequestFactory, times(1)).getLoanRequest(loanRequestDetails);
         verify(loanRequestRepository, times(1)).create(loanRequest);
         verify(inputConstraintChecker, times(1)).isEqualOrLessThanMaxLoanAmount(any(BigDecimal.class));
-        verify(creditExpert, times(0)).hasRisks(loanRequest);
+        verify(loanExpert, times(0)).hasRisks(loanRequest);
         verify(loanFactory, times(0)).getNewLoan(loanRequest);
         verify(loanRepository, times(0)).create(loan);
     }

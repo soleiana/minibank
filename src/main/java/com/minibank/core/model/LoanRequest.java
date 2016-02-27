@@ -101,7 +101,6 @@ public class LoanRequest {
         if (!submissionTime.equals(that.submissionTime)) return false;
         if (!term.equals(that.term)) return false;
         return amount.equals(that.amount);
-
     }
 
     @Override

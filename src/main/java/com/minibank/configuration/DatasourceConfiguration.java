@@ -1,9 +1,12 @@
-package com.minibank.config;
+package com.minibank.configuration;
 
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -20,7 +23,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @PropertySource({ "classpath:datasource.properties" })
 @ComponentScan(basePackages = {"com.minibank.core.model", "com.minibank.core.repositories"})
-public class DatasourceConfig {
+public class DatasourceConfiguration {
 
     @Autowired
     private Environment env;
@@ -54,7 +57,7 @@ public class DatasourceConfig {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
-    Properties hibernateProperties() {
+    private Properties hibernateProperties() {
         return new Properties() {{
                 setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
                 setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));

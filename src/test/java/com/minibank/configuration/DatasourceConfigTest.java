@@ -1,4 +1,4 @@
-package com.minibank.config;
+package com.minibank.configuration;
 
 
 import com.minibank.core.repositories.BankParametersRepository;
@@ -13,7 +13,7 @@ public class DatasourceConfigTest {
 
     @Test
     public void testDatasourceConfig() {
-        ApplicationContext context = new AnnotationConfigApplicationContext(DatasourceConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(DatasourceConfiguration.class);
         BankParametersRepository bankParametersRepository = context.getBean(BankParametersRepository.class);
         assertNotNull(bankParametersRepository);
     }

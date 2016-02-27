@@ -1,4 +1,4 @@
-package com.minibank.core.services;
+package com.minibank.configuration;
 
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.repositories.BankParametersRepository;

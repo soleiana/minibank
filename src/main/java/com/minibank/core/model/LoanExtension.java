@@ -87,7 +87,6 @@ public class LoanExtension {
         if (!interestRate.equals(that.interestRate)) return false;
         if (!interest.equals(that.interest)) return false;
         return submissionDate.equals(that.submissionDate);
-
     }
 
     @Override

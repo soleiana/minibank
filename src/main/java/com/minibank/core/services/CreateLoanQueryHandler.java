@@ -1,5 +1,6 @@
 package com.minibank.core.services;
 
+import com.minibank.common.Messages;
 import com.minibank.communications.CreateLoanQuery;
 import com.minibank.communications.CreateLoanResponse;
 import com.minibank.communications.model.LoanRequestDetails;
@@ -7,11 +8,10 @@ import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
-import com.minibank.core.services.common.Message;
 import com.minibank.core.services.factories.LoanFactory;
 import com.minibank.core.services.factories.LoanRequestFactory;
 import com.minibank.core.services.helpers.InputConstraintChecker;
-import com.minibank.core.services.helpers.CreditExpert;
+import com.minibank.core.services.helpers.LoanExpert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +27,7 @@ public class CreateLoanQueryHandler {
     private LoanFactory loanFactory;
 
     @Autowired
-    private CreditExpert creditExpert;
+    private LoanExpert loanExpert;
 
     @Autowired
     private InputConstraintChecker inputConstraintChecker;
@@ -47,16 +47,17 @@ public class CreateLoanQueryHandler {
         loanRequestRepository.create(loanRequest);
 
         if (isNegativeCreditDecision(loanRequest)) {
-            return new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE);
+            return new CreateLoanResponse(false, Messages.LOAN_ERROR_MESSAGE);
         } else {
              Loan loan = loanFactory.getNewLoan(loanRequest);
+             loanRequest.getCustomer().addLoan(loan);
              loanRepository.create(loan);
-             return new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);
+             return new CreateLoanResponse(true, Messages.LOAN_OBTAINED_MESSAGE);
         }
     }
 
     private boolean isNegativeCreditDecision(LoanRequest loanRequest) {
-        return !inputConstraintChecker.isEqualOrLessThanMaxLoanAmount(loanRequest.getAmount()) || creditExpert.hasRisks(loanRequest);
+        return !inputConstraintChecker.isEqualOrLessThanMaxLoanAmount(loanRequest.getAmount()) || loanExpert.hasRisks(loanRequest);
     }
 
 }

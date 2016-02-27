@@ -1,7 +1,7 @@
 package com.minibank.rest.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.minibank.core.services.common.DateTimeParameters;
+import com.minibank.common.DateTimeParameters;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

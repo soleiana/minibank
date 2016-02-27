@@ -1,6 +1,7 @@
 package com.minibank.core.services.integration;
 
 import com.minibank.SpringContextTest;
+import com.minibank.common.Messages;
 import com.minibank.communications.CreateLoanQuery;
 import com.minibank.communications.CreateLoanResponse;
 import com.minibank.communications.fixtures.LoanRequestDetailsFixture;
@@ -17,7 +18,6 @@ import com.minibank.core.repositories.TestLoanRepository;
 import com.minibank.core.repositories.TestLoanRequestRepository;
 import com.minibank.core.repositories.helpers.DBCleaner;
 import com.minibank.core.services.CreateLoanQueryHandler;
-import com.minibank.core.services.common.Message;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +61,7 @@ public class CreateLoanQueryHandlerTest extends SpringContextTest {
     @Test
     public void testExecute() {
         CreateLoanQuery createLoanQuery = createCreateLoanQuery();
-        CreateLoanResponse expectedCreateLoanResponse = new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE);
+        CreateLoanResponse expectedCreateLoanResponse = new CreateLoanResponse(true, Messages.LOAN_OBTAINED_MESSAGE);
         LoanRequest loanRequest1 = testLoanRequestRepository.getLast();
         Loan loan1 = testLoanRepository.getLast();
         assertNull(loanRequest1);

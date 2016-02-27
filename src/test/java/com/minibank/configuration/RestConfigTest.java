@@ -1,4 +1,4 @@
-package com.minibank.config;
+package com.minibank.configuration;
 
 
 import com.minibank.core.services.CreateLoanQueryHandler;
@@ -13,7 +13,7 @@ public class RestConfigTest {
 
     @Test
     public void testCoreConfig() {
-        ApplicationContext context = new AnnotationConfigApplicationContext(RestConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(RestConfiguration.class);
         CreateLoanQueryHandler queryHandler = context.getBean(CreateLoanQueryHandler.class);
         assertNotNull(queryHandler);
     }

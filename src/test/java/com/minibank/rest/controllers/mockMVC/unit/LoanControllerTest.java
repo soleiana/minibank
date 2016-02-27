@@ -1,11 +1,11 @@
 package com.minibank.rest.controllers.mockMVC.unit;
 
+import com.minibank.common.Messages;
 import com.minibank.communications.CreateLoanQuery;
 import com.minibank.communications.CreateLoanResponse;
 import com.minibank.communications.factories.LoanRequestDetailsFactory;
 import com.minibank.communications.model.LoanRequestDetails;
 import com.minibank.core.services.CreateLoanQueryHandler;
-import com.minibank.core.services.common.Message;
 import com.minibank.rest.controllers.LoanController;
 import com.minibank.rest.model.LoanRequest;
 import com.minibank.rest.validators.LoanRequestValidator;
@@ -54,7 +54,7 @@ public class LoanControllerTest {
     public void testThatCreateLoanUsesHttpCreatedOnSuccess() throws Exception {
         when(loanRequestValidator.validate(any(LoanRequest.class))).thenReturn(true);
         when(loanRequestDetailsFactory.getLoanRequestDetails(any(LoanRequest.class))).thenReturn(new LoanRequestDetails());
-        when(createLoanQueryHandler.execute(any(CreateLoanQuery.class))).thenReturn(new CreateLoanResponse(true, Message.LOAN_OBTAINED_MESSAGE));
+        when(createLoanQueryHandler.execute(any(CreateLoanQuery.class))).thenReturn(new CreateLoanResponse(true, Messages.LOAN_OBTAINED_MESSAGE));
 
         this.mockMvc.perform(
               post("/loans")
@@ -67,7 +67,7 @@ public class LoanControllerTest {
     public void testThatCreateLoanUsesHttpInternalServerErrorOnFailureToGetLoan() throws Exception {
         when(loanRequestValidator.validate(any(LoanRequest.class))).thenReturn(true);
         when(loanRequestDetailsFactory.getLoanRequestDetails(any(LoanRequest.class))).thenReturn(new LoanRequestDetails());
-        when(createLoanQueryHandler.execute(any(CreateLoanQuery.class))).thenReturn(new CreateLoanResponse(false, Message.LOAN_ERROR_MESSAGE));
+        when(createLoanQueryHandler.execute(any(CreateLoanQuery.class))).thenReturn(new CreateLoanResponse(false, Messages.LOAN_ERROR_MESSAGE));
 
         this.mockMvc.perform(
                 post("/loans")

@@ -1,6 +1,7 @@
 package com.minibank.core.services.integration;
 
 import com.minibank.SpringContextTest;
+import com.minibank.common.Messages;
 import com.minibank.communications.CreateLoanExtensionQuery;
 import com.minibank.communications.CreateLoanExtensionResponse;
 import com.minibank.core.fixtures.BankParametersFixture;
@@ -13,7 +14,6 @@ import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.repositories.TestLoanExtensionRepository;
 import com.minibank.core.repositories.helpers.DBCleaner;
 import com.minibank.core.services.CreateLoanExtensionQueryHandler;
-import com.minibank.core.services.common.Message;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +52,7 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest {
     @Test
     public void testExecute() {
         CreateLoanExtensionQuery createLoanExtensionQuery = createCreateLoanExtensionQuery();
-        CreateLoanExtensionResponse expectedResponse = new CreateLoanExtensionResponse(true, Message.LOAN_EXTENSION_OBTAINED_MESSAGE);
+        CreateLoanExtensionResponse expectedResponse = new CreateLoanExtensionResponse(true, Messages.LOAN_EXTENSION_OBTAINED_MESSAGE);
 
         LoanExtension loanExtension = testLoanExtensionRepository.getLast();
         assertNull(loanExtension);

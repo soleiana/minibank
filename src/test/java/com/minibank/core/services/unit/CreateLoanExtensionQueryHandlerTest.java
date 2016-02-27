@@ -1,16 +1,14 @@
 package com.minibank.core.services.unit;
 
 import com.minibank.InjectMocksTest;
+import com.minibank.common.Messages;
 import com.minibank.communications.CreateLoanExtensionQuery;
 import com.minibank.communications.CreateLoanExtensionResponse;
-import com.minibank.core.fixtures.LoanExtensionFixture;
-import com.minibank.core.fixtures.LoanFixture;
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanExtension;
 import com.minibank.core.repositories.LoanExtensionRepository;
 import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.services.CreateLoanExtensionQueryHandler;
-import com.minibank.core.services.common.Message;
 import com.minibank.core.services.factories.LoanExtensionFactory;
 import com.minibank.core.services.factories.LoanFactory;
 import org.junit.Before;
@@ -49,9 +47,10 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
 
     @Before
     public void setUp() {
-        loan = LoanFixture.standardLoan();
-        extendedLoan = LoanFixture.standardLoan();
-        loanExtension = LoanExtensionFixture.standardLoanExtension();
+        loan = mock(Loan.class);
+        extendedLoan = mock(Loan.class);
+        loanExtension = mock(LoanExtension.class);
+
         when(loanRepository.getById(loanId)).thenReturn(loan);
         when(loanExtensionFactory.getLoanExtension(loan)).thenReturn(loanExtension);
         when(loanFactory.getExtendedLoan(loan, loanExtension)).thenReturn(extendedLoan);
@@ -59,7 +58,7 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
 
     @Test
     public void testExecute() {
-        CreateLoanExtensionResponse expectedResponse = new CreateLoanExtensionResponse(true, Message.LOAN_EXTENSION_OBTAINED_MESSAGE);
+        CreateLoanExtensionResponse expectedResponse = new CreateLoanExtensionResponse(true, Messages.LOAN_EXTENSION_OBTAINED_MESSAGE);
         CreateLoanExtensionQuery query = new CreateLoanExtensionQuery(loanId);
 
         CreateLoanExtensionResponse response = queryHandler.execute(query);

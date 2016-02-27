@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class CreditExpert {
+public class LoanExpert {
 
     @Autowired
     private RiskConstraintChecker checker;

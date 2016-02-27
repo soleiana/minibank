@@ -4,9 +4,7 @@ import com.minibank.InjectMocksTest;
 import com.minibank.communications.GetAllLoansQuery;
 import com.minibank.communications.GetAllLoansResponse;
 import com.minibank.communications.factories.AllLoansDetailsFactory;
-import com.minibank.communications.fixtures.AllLoanDetailsFixture;
 import com.minibank.communications.model.AllLoansDetails;
-import com.minibank.core.fixtures.AllLoansFixture;
 import com.minibank.core.model.AllLoans;
 import com.minibank.core.services.GetAllLoansQueryHandler;
 import com.minibank.core.services.factories.AllLoansCoreFactory;
@@ -41,8 +39,8 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest {
     @Before
     public void setUp() {
         customerId = 1;
-        allLoans = AllLoansFixture.standardAllLoans();
-        allLoansDetails = AllLoanDetailsFixture.standardAllLoansDetails();
+        allLoans = mock(AllLoans.class);
+        allLoansDetails = mock(AllLoansDetails.class);
 
         when(allLoansCoreFactory.getAllLoans(customerId)).thenReturn(allLoans);
     }

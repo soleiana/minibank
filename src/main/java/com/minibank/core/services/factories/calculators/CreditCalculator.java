@@ -1,4 +1,4 @@
-package com.minibank.core.services.helpers;
+package com.minibank.core.services.factories.calculators;
 
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.Loan;
@@ -20,12 +20,6 @@ public class CreditCalculator {
     @Autowired
     private BankParametersRepository bankParametersRepository;
 
-    private BigDecimal interestFormula(BigDecimal amount, BigDecimal term, BigDecimal interestRate) {
-        BigDecimal factor = amount.multiply(interestRate).multiply(term);
-        BigDecimal interest = factor.multiply(FACTOR);
-        interest = interest.setScale(2, RoundingMode.HALF_EVEN);
-        return interest;
-    }
 
     public LocalDate getLoanEndDate(LoanRequest loanRequest) {
         LocalDate startDate = loanRequest.getSubmissionDate();
@@ -64,6 +58,13 @@ public class CreditCalculator {
         currInterestRate = currInterestRate.multiply(interestRateFactor);
         currInterestRate = currInterestRate.setScale(2, RoundingMode.HALF_EVEN);
         return currInterestRate;
+    }
+
+    private BigDecimal interestFormula(BigDecimal amount, BigDecimal term, BigDecimal interestRate) {
+        BigDecimal factor = amount.multiply(interestRate).multiply(term);
+        BigDecimal interest = factor.multiply(FACTOR);
+        interest = interest.setScale(2, RoundingMode.HALF_EVEN);
+        return interest;
     }
 
     private BankParameters getBankParameters() {

@@ -1,13 +1,13 @@
 package com.minibank.communications.factories;
 
-import com.minibank.core.model.AllLoans;
-import com.minibank.communications.model.LoanExtension;
 import com.minibank.communications.model.AllLoansDetails;
 import com.minibank.communications.model.Loan;
+import com.minibank.communications.model.LoanExtension;
+import com.minibank.core.model.AllLoans;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Component
@@ -19,19 +19,15 @@ public class AllLoansDetailsFactory {
         allLoansDetails.setName(allLoans.getCustomer().getName());
         allLoansDetails.setSurname(allLoans.getCustomer().getSurname());
 
-        List<Loan> toLoans = new ArrayList<>();
-        for(com.minibank.core.model.Loan fromLoan: allLoans.getLoans()) {
-            Loan toLoan = convert(fromLoan);
-            List<LoanExtension> toLoanExtensions = new ArrayList<>();
-            for(com.minibank.core.model.LoanExtension fromLoanExtension: fromLoan.getLoanExtensions()) {
-                    LoanExtension toLoanExtension = convert(fromLoanExtension);
-                    toLoanExtensions.add(toLoanExtension);
-            }
-            toLoan.setLoanExtensions(toLoanExtensions);
-            toLoans.add(toLoan);
-        }
+        List<Loan> toLoans = getLoans(allLoans.getLoans());
         allLoansDetails.setLoans(toLoans);
         return allLoansDetails;
+    }
+
+    private List<Loan> getLoans(List<com.minibank.core.model.Loan> fromLoans) {
+        return fromLoans.stream()
+                .map(this::convert)
+                .collect(Collectors.toList());
     }
 
     private Loan convert(com.minibank.core.model.Loan fromLoan) {
@@ -42,7 +38,15 @@ public class AllLoansDetailsFactory {
         toLoan.setAmount(fromLoan.getAmount());
         toLoan.setStartDate(fromLoan.getStartDate());
         toLoan.setEndDate(fromLoan.getEndDate());
+        List<LoanExtension> loanExtensions = getLoanExtensions(fromLoan.getLoanExtensions());
+        toLoan.setLoanExtensions(loanExtensions);
         return toLoan;
+    }
+
+    private List<LoanExtension> getLoanExtensions(List<com.minibank.core.model.LoanExtension> fromLoanExtensions) {
+        return fromLoanExtensions.stream()
+                .map(this::convert)
+                .collect(Collectors.toList());
     }
 
     private LoanExtension convert(com.minibank.core.model.LoanExtension fromLoanExtension) {
