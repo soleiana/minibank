@@ -11,6 +11,7 @@ import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.repositories.TestCustomerRepository;
 import com.minibank.core.repositories.helpers.DBCleaner;
+import com.minibank.core.services.RiskConstraintChecker;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import static junit.framework.TestCase.assertFalse;
-import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 
 public class RiskConstraintCheckerTest extends SpringContextTest {

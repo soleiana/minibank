@@ -1,4 +1,4 @@
-package com.minibank.core.services.helpers;
+package com.minibank.core.services;
 
 import com.minibank.common.DateTimeParameters;
 import com.minibank.core.model.BankParameters;

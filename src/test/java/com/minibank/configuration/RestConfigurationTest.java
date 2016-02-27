@@ -6,13 +6,13 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import static junit.framework.TestCase.assertNotNull;
+import static org.junit.Assert.assertNotNull;
 
 
-public class RestConfigTest {
+public class RestConfigurationTest {
 
     @Test
-    public void testCoreConfig() {
+    public void testRestConfiguration() {
         ApplicationContext context = new AnnotationConfigApplicationContext(RestConfiguration.class);
         CreateLoanQueryHandler queryHandler = context.getBean(CreateLoanQueryHandler.class);
         assertNotNull(queryHandler);

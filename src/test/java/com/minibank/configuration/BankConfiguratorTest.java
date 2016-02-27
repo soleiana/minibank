@@ -1,7 +1,6 @@
-package com.minibank.core.services.integration;
+package com.minibank.configuration;
 
 import com.minibank.SpringContextTest;
-import com.minibank.configuration.BankConfigurator;
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.helpers.DBCleaner;

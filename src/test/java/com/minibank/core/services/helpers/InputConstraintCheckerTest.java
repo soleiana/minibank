@@ -11,6 +11,7 @@ import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.repositories.TestCustomerRepository;
 import com.minibank.core.repositories.helpers.DBCleaner;
+import com.minibank.core.services.InputConstraintChecker;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertTrue;
 
 
 public class InputConstraintCheckerTest extends SpringContextTest {
