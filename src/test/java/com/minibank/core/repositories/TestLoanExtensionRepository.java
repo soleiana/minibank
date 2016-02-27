@@ -1,7 +1,6 @@
 package com.minibank.core.repositories;
 
 import com.minibank.core.model.LoanExtension;
-import com.minibank.core.repositories.helpers.RepositoryTemplateMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

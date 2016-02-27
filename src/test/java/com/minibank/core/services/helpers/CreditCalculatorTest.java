@@ -1,6 +1,7 @@
 package com.minibank.core.services.helpers;
 
 import com.minibank.SpringContextTest;
+import com.minibank.core.calculators.CreditCalculator;
 import com.minibank.core.fixtures.BankParametersFixture;
 import com.minibank.core.fixtures.LoanFixture;
 import com.minibank.core.fixtures.LoanRequestFixture;
@@ -9,7 +10,6 @@ import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.helpers.DBCleaner;
-import com.minibank.core.services.factories.calculators.CreditCalculator;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

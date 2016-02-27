@@ -1,4 +1,4 @@
-package com.minibank.core.services.factories;
+package com.minibank.core.factories;
 
 import com.minibank.communications.model.LoanRequestDetails;
 import com.minibank.core.model.Customer;

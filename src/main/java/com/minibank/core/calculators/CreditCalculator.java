@@ -1,4 +1,4 @@
-package com.minibank.core.services.factories.calculators;
+package com.minibank.core.calculators;
 
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.Loan;

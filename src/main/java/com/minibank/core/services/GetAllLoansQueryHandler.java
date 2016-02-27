@@ -3,10 +3,10 @@ package com.minibank.core.services;
 
 import com.minibank.communications.GetAllLoansQuery;
 import com.minibank.communications.GetAllLoansResponse;
-import com.minibank.communications.model.AllLoansDetails;
 import com.minibank.communications.factories.AllLoansDetailsFactory;
+import com.minibank.communications.model.AllLoansDetails;
+import com.minibank.core.factories.AllLoansCoreFactory;
 import com.minibank.core.model.AllLoans;
-import com.minibank.core.services.factories.AllLoansCoreFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

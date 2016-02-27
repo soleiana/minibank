@@ -1,4 +1,4 @@
-package com.minibank.core.services.helpers.rules;
+package com.minibank.core.rules;
 
 import org.springframework.stereotype.Component;
 
