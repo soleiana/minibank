@@ -4,8 +4,8 @@ import com.minibank.communications.GetAllLoansQuery;
 import com.minibank.communications.GetAllLoansResponse;
 import com.minibank.communications.model.AllLoansDetails;
 import com.minibank.core.services.GetAllLoansQueryHandler;
-import com.minibank.rest.model.AllLoans;
 import com.minibank.rest.factories.AllLoansRestFactory;
+import com.minibank.rest.model.AllLoans;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,14 +27,18 @@ public class LoanInfoController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/loans", produces = "application/json")
     public ResponseEntity<AllLoans> requestAllLoans(@PathVariable Integer id) {
+        AllLoans allLoans = new AllLoans();
         GetAllLoansQuery getAllLoansQuery = new GetAllLoansQuery(id);
 
         GetAllLoansResponse getAllLoansResponse = getAllLoansQueryHandler.execute(getAllLoansQuery);
-        AllLoans allLoans = null;
+
         if(getAllLoansResponse.isEntityFound()) {
             AllLoansDetails allLoansDetails = getAllLoansResponse.getAllLoansDetails();
             allLoans = allLoansRestFactory.getAllLoans(allLoansDetails);
             return new ResponseEntity<>(allLoans, HttpStatus.OK);
+
+        } else if (getAllLoansResponse.isErrorResponse()){
+            return new ResponseEntity<>(allLoans, HttpStatus.INTERNAL_SERVER_ERROR);
         } else {
             return new ResponseEntity<>(allLoans, HttpStatus.NOT_FOUND);
         }

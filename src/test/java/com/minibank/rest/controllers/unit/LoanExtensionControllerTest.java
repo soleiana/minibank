@@ -49,7 +49,7 @@ public class LoanExtensionControllerTest {
     }
 
     @Test
-    public void testCreateLoanExtensionUsesHttpHttpInternalServerErrorOnFailureToGetLoanExtension() throws Exception {
+    public void testCreateLoanExtensionUsesHttpHttpInternalServerErrorOnFailureToExtendLoan() throws Exception {
         when(createLoanExtensionQueryHandler.execute(any(CreateLoanExtensionQuery.class)))
                 .thenReturn(new CreateLoanExtensionResponse(false, Messages.LOAN_EXTENSION_ERROR_MESSAGE));
         this.mockMvc.perform(

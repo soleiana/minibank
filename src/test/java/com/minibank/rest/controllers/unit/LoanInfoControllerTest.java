@@ -66,16 +66,26 @@ public class LoanInfoControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(content().string(standardAllLoansResponse()));
-
     }
 
     @Test
-    public void testLoanInfoControllerUsesHttpNotFoundOnFailure() throws Exception {
+    public void testLoanInfoControllerUsesHttpNotFoundIfNoLoansFound() throws Exception {
         when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), false));
         when(allLoansRestFactory.getAllLoans(any(AllLoansDetails.class))).thenReturn(new AllLoans());
 
         this.mockMvc.perform(
                 get("/customers/{id}/loans", 1))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isNotFound())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+    }
+
+    @Test
+    public void testLoanInfoControllerUsesHttpInternalServerErrorOnFailureToGetLoans() throws Exception {
+        when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(true));
+
+        this.mockMvc.perform(
+                get("/customers/{id}/loans", 1))
+                .andExpect(status().isInternalServerError())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 }
