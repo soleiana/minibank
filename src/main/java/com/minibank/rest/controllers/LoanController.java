@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 
 @Controller
@@ -29,7 +30,7 @@ public class LoanController {
 
 
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<String> createLoan(@RequestBody LoanRequest loanRequest, HttpServletRequest httpServletRequest) {
+    public ResponseEntity<String> createLoan(@RequestBody @Valid LoanRequest loanRequest, HttpServletRequest httpServletRequest) {
 
         String ip = httpServletRequest.getRemoteAddr();
         loanRequest.setRequestIp(ip);

@@ -17,7 +17,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static com.minibank.rest.fixtures.JsonLoanRequestFixture.standardLoanRequest;
+import static com.minibank.rest.fixtures.JsonLoanRequestFixture.*;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -69,6 +69,60 @@ public class LoanControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isInternalServerError());
 
+    }
+
+    @Test
+    public void testCreateLoanUsesHttpBadRequestOnFailureToValidateNullCustomerId() throws Exception {
+        this.mockMvc.perform(
+                post("/loans")
+                        .content(loanRequestWithNullCustomerId())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void testCreateLoanUsesHttpBadRequestOnFailureToValidateNegativeCustomerId() throws Exception {
+        this.mockMvc.perform(
+                post("/loans")
+                        .content(loanRequestWithNegativeCustomerId())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void testCreateLoanUsesHttpBadRequestOnFailureToValidateTermLessThanMin() throws Exception {
+        this.mockMvc.perform(
+                post("/loans")
+                        .content(loanRequestWithTermLessThanMin())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void testCreateLoanUsesHttpBadRequestOnFailureToValidateTermMoreThanMax() throws Exception {
+        this.mockMvc.perform(
+                post("/loans")
+                        .content(loanRequestWithTermMoreThanMax())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void testCreateLoanUsesHttpBadRequestOnFailureToValidateAmountLessThanMin() throws Exception {
+        this.mockMvc.perform(
+                post("/loans")
+                        .content(loanRequestWithAmountLessThanMin())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void testCreateLoanUsesHttpBadRequestOnFailureToValidateAmountMoreThanMax() throws Exception {
+        this.mockMvc.perform(
+                post("/loans")
+                        .content(loanRequestWithAmountMoreThanMax())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
     }
 
 }

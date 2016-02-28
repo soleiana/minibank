@@ -17,7 +17,7 @@ public class LoanRequest {
     private String requestIp;
 
     @NotNull
-    @Min(1)
+    @Min(7)
     @Max(360)
     private Integer term;
 
