@@ -1,5 +1,6 @@
 package com.minibank.rest.controllers.unit;
 
+import com.minibank.InjectMocksTest;
 import com.minibank.common.Messages;
 import com.minibank.communications.CreateLoanQuery;
 import com.minibank.communications.CreateLoanResponse;
@@ -12,7 +13,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
@@ -25,22 +25,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 
-public class LoanControllerTest {
+public class LoanControllerTest extends InjectMocksTest {
 
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @InjectMocks
-    LoanController loanController;
+    private LoanController loanController;
 
     @Mock
-    CreateLoanQueryHandler createLoanQueryHandler;
+    private CreateLoanQueryHandler createLoanQueryHandler;
 
     @Mock
-    LoanRequestDetailsFactory loanRequestDetailsFactory;
+    private LoanRequestDetailsFactory loanRequestDetailsFactory;
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
         this.mockMvc = standaloneSetup(loanController)
               .setMessageConverters(new MappingJackson2HttpMessageConverter())
               .build();

@@ -29,9 +29,8 @@ public class LoanController {
     private LoanRequestDetailsFactory loanRequestDetailsFactory;
 
 
-    @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> createLoan(@RequestBody @Valid LoanRequest loanRequest, HttpServletRequest httpServletRequest) {
-
         String ip = httpServletRequest.getRemoteAddr();
         loanRequest.setRequestIp(ip);
         LoanRequestDetails loanRequestDetails = loanRequestDetailsFactory.getLoanRequestDetails(loanRequest);

@@ -1,5 +1,6 @@
 package com.minibank.rest.controllers.unit;
 
+import com.minibank.InjectMocksTest;
 import com.minibank.common.Messages;
 import com.minibank.communications.CreateLoanExtensionQuery;
 import com.minibank.communications.CreateLoanExtensionResponse;
@@ -9,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
@@ -17,23 +17,23 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 
-public class LoanExtensionControllerTest {
+public class LoanExtensionControllerTest extends InjectMocksTest {
 
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @InjectMocks
-    LoanExtensionController loanExtensionController;
+    private LoanExtensionController loanExtensionController;
 
     @Mock
-    CreateLoanExtensionQueryHandler createLoanExtensionQueryHandler;
+    private CreateLoanExtensionQueryHandler createLoanExtensionQueryHandler;
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
         this.mockMvc = standaloneSetup(loanExtensionController)
                 .setMessageConverters(new MappingJackson2HttpMessageConverter()).build();
     }
@@ -45,7 +45,8 @@ public class LoanExtensionControllerTest {
         this.mockMvc.perform(
                   post("/loans/1/extensions")
                   .contentType(MediaType.APPLICATION_JSON))
-                  .andExpect(status().isCreated());
+                  .andExpect(status().isCreated())
+                  .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 
     @Test
@@ -55,21 +56,14 @@ public class LoanExtensionControllerTest {
         this.mockMvc.perform(
                 post("/loans/1/extensions")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isInternalServerError());
+                .andExpect(status().isInternalServerError())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 
     @Test
-    public void testCreateLoanExtensionUsesHttpBadRequestIfLoanIdIsNull() throws Exception {
+    public void testCreateLoanExtensionUsesHttpBadRequestIfLoanIdIsNotInteger() throws Exception {
         this.mockMvc.perform(
-                post("/loans/null/extensions")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isBadRequest());
-    }
-
-    @Test
-    public void testCreateLoanExtensionUsesHttpBadRequestIfLoanIdIsNegative() throws Exception {
-        this.mockMvc.perform(
-                post("/loans/-1/extensions")
+                post("/loans/1a/extensions")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
     }
