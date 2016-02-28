@@ -2,16 +2,16 @@ package com.minibank.rest.model;
 
 public class Customer {
 
-    private Integer customerId;
+    private Integer id;
     private String name;
     private String surname;
 
-    public Integer getCustomerId() {
-        return customerId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

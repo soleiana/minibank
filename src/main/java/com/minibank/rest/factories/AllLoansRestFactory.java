@@ -1,13 +1,13 @@
 package com.minibank.rest.factories;
 
 import com.minibank.communications.model.AllLoansDetails;
+import com.minibank.communications.model.Customer;
 import com.minibank.rest.model.AllLoans;
 import com.minibank.rest.model.Loan;
 import com.minibank.rest.model.LoanExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,17 +27,10 @@ public class AllLoansRestFactory {
         allLoans.setName(allLoansDetails.getName());
         allLoans.setSurname(allLoansDetails.getSurname());
 
-        List<Loan> toLoans = new ArrayList<>();
-        for(com.minibank.communications.model.Loan fromLoan: allLoansDetails.getLoans()) {
-            Loan toLoan = convert(fromLoan);
-            List<LoanExtension> toLoanExtensions = new ArrayList<>();
-            for(com.minibank.communications.model.LoanExtension fromLoanExtension: fromLoan.getLoanExtensions()) {
-                LoanExtension toLoanExtension = convert(fromLoanExtension);
-                toLoanExtensions.add(toLoanExtension);
-            }
-            toLoan.setLoanExtensions(toLoanExtensions);
-            toLoans.add(toLoan);
-        }
+        Customer customer = allLoansDetails.getCustomer();
+        allLoans.setCustomer(customerRestFactory.getCustomer(customer));
+
+        List<Loan> toLoans = loanRestFactory.getLoans(allLoansDetails.getLoans());
         allLoans.setLoans(toLoans);
         return allLoans;
     }

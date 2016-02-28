@@ -8,7 +8,7 @@ public class CustomerFactory {
 
     public Customer getCustomer(com.minibank.core.model.Customer fromCustomer) {
         Customer toCustomer = new Customer();
-        toCustomer.setCustomerId(fromCustomer.getId());
+        toCustomer.setId(fromCustomer.getId());
         toCustomer.setName(fromCustomer.getName());
         toCustomer.setSurname(fromCustomer.getSurname());
         return toCustomer;

@@ -1,6 +1,7 @@
 package com.minibank.rest.fixtures;
 
 import com.minibank.rest.model.AllLoans;
+import com.minibank.rest.model.Customer;
 import com.minibank.rest.model.Loan;
 import com.minibank.rest.model.LoanExtension;
 
@@ -33,6 +34,9 @@ public class AllLoansFixture {
         allLoans.setName(NAME);
         allLoans.setSurname(SURNAME);
 
+        Customer customer = standardCustomer();
+        allLoans.setCustomer(customer);
+
         Loan loan = standardLoan();
         List<LoanExtension> loanExtensions = new ArrayList<>();
         loanExtensions.add(standardLoanExtension());
@@ -42,6 +46,14 @@ public class AllLoansFixture {
         loans.add(loan);
         allLoans.setLoans(loans);
         return allLoans;
+    }
+
+    private static Customer standardCustomer() {
+        Customer customer = new Customer();
+        customer.setId(CUSTOMER_ID);
+        customer.setName(NAME);
+        customer.setSurname(SURNAME);
+        return customer;
     }
 
     private static  Loan standardLoan() {
