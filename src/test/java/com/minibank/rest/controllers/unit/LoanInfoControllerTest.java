@@ -56,6 +56,13 @@ public class LoanInfoControllerTest extends InjectMocksTest {
     }
 
     @Test
+    public void testLoanInfoControllerUsesHttpBadRequestIfCustomerIdIsNotInteger() throws Exception {
+        this.mockMvc.perform(
+                get("/customers/{id}/loans", "1a"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
     public void testLoanInfoControllerRendersResponseCorrectly() throws Exception {
         when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
         when(allLoansRestFactory.getAllLoans(any(AllLoansDetails.class))).thenReturn(standardAllLoans());
