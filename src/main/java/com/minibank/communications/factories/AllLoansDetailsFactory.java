@@ -21,12 +21,8 @@ public class AllLoansDetailsFactory {
 
     public AllLoansDetails getAllLoansDetails(AllLoans allLoans) {
         AllLoansDetails allLoansDetails = new AllLoansDetails();
-        allLoansDetails.setCustomerId(allLoans.getCustomer().getId());
-        allLoansDetails.setName(allLoans.getCustomer().getName());
-        allLoansDetails.setSurname(allLoans.getCustomer().getSurname());
         Customer customer = customerFactory.getCustomer(allLoans.getCustomer());
         allLoansDetails.setCustomer(customer);
-
         List<Loan> toLoans = loanFactory.getLoans(allLoans.getLoans());
         allLoansDetails.setLoans(toLoans);
         return allLoansDetails;

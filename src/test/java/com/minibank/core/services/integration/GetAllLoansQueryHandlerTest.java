@@ -61,10 +61,11 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
         GetAllLoansResponse getAllLoansResponse = getAllLoansQueryHandler.execute(getAllLoansQuery);
 
         AllLoansDetails allLoansDetails = getAllLoansResponse.getAllLoansDetails();
+        com.minibank.communications.model.Customer resultCustomer = allLoansDetails.getCustomer();
 
-        assertEquals(customer.getId(), allLoansDetails.getCustomerId());
-        assertEquals(customer.getName(), allLoansDetails.getName());
-        assertEquals(customer.getSurname(), allLoansDetails.getSurname());
+        assertEquals(customer.getId(), resultCustomer.getId());
+        assertEquals(customer.getName(), resultCustomer.getName());
+        assertEquals(customer.getSurname(), resultCustomer.getSurname());
         assertEquals(0, allLoansDetails.getLoans().size());
         assertEquals(false, getAllLoansResponse.isEntityFound());
     }

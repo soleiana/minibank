@@ -12,6 +12,7 @@ import java.util.List;
 
 
 public class AllLoansFixture {
+
     private static final String NAME = "James";
     private static final String SURNAME = "Bond";
     private static final Integer CUSTOMER_ID = 2;
@@ -30,10 +31,6 @@ public class AllLoansFixture {
 
     public static AllLoans standardAllLoans() {
         AllLoans allLoans = new AllLoans();
-        allLoans.setCustomerId(CUSTOMER_ID);
-        allLoans.setName(NAME);
-        allLoans.setSurname(SURNAME);
-
         Customer customer = standardCustomer();
         allLoans.setCustomer(customer);
 
