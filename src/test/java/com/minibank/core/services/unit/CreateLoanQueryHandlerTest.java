@@ -16,7 +16,9 @@ import com.minibank.core.services.CreateLoanQueryHandler;
 import com.minibank.core.services.LoanExpert;
 import com.minibank.core.validators.LoanAmountValidator;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
@@ -59,6 +61,9 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
 
     @Mock
     private LoanRequestDetails loanRequestDetails;
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Before
     public void setUp() {
@@ -120,6 +125,17 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
         verify(loanExpert, times(0)).riskSurroundsLoan(loanRequest);
         verify(loanCoreFactory, times(0)).getNewLoan(loanRequest);
         verify(loanRepository, times(0)).create(loan);
+    }
+
+    @Test
+    public void testExecuteCustomerDoesNotObtainLoanBecauseInternalException() {
+        doThrow(new RuntimeException()).when(loanRequestRepository).create(loanRequest);
+        CreateLoanResponse expectedResponse = new CreateLoanResponse(false, Messages.LOAN_ERROR_MESSAGE);
+        CreateLoanQuery query = new CreateLoanQuery(loanRequestDetails);
+
+        CreateLoanResponse response = queryHandler.execute(query);
+
+        TestUtility.assertResponse(expectedResponse, response);
     }
 
 }

@@ -42,16 +42,21 @@ public class CreateLoanQueryHandler {
     public CreateLoanResponse execute(CreateLoanQuery query) {
         LoanRequestDetails requestDetails = query.getLoanRequestDetails();
 
-        LoanRequest loanRequest = loanRequestCoreFactory.getLoanRequest(requestDetails);
-        loanRequestRepository.create(loanRequest);
+        try {
+            LoanRequest loanRequest = loanRequestCoreFactory.getLoanRequest(requestDetails);
+            loanRequestRepository.create(loanRequest);
 
-        if (isNegativeCreditDecision(loanRequest)) {
+            if (isNegativeCreditDecision(loanRequest)) {
+                return new CreateLoanResponse(false, Messages.LOAN_ERROR_MESSAGE);
+            } else {
+                Loan loan = loanCoreFactory.getNewLoan(loanRequest);
+                loanRequest.getCustomer().addLoan(loan);
+                loanRepository.create(loan);
+                return new CreateLoanResponse(true, Messages.LOAN_OBTAINED_MESSAGE);
+            }
+
+        } catch (Exception exception) {
             return new CreateLoanResponse(false, Messages.LOAN_ERROR_MESSAGE);
-        } else {
-             Loan loan = loanCoreFactory.getNewLoan(loanRequest);
-             loanRequest.getCustomer().addLoan(loan);
-             loanRepository.create(loan);
-             return new CreateLoanResponse(true, Messages.LOAN_OBTAINED_MESSAGE);
         }
     }
 
