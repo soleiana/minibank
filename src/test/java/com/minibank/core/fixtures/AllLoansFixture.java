@@ -13,7 +13,6 @@ public class AllLoansFixture {
 
     public static AllLoans standardAllLoans() {
         AllLoans allLoans = new AllLoans();
-
         Loan loan = LoanFixture.standardLoan();
         LoanExtension loanExtension = LoanExtensionFixture.standardLoanExtension();
         Customer customer = CustomerFixture.standardCustomer();
