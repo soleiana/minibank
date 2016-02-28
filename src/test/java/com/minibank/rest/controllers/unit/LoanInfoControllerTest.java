@@ -1,4 +1,4 @@
-package com.minibank.rest.controllers.mockMVC.unit;
+package com.minibank.rest.controllers.unit;
 
 import com.minibank.communications.GetAllLoansQuery;
 import com.minibank.communications.GetAllLoansResponse;
@@ -17,7 +17,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.test.web.servlet.MockMvc;
 
 import static com.minibank.rest.fixtures.AllLoansFixture.standardAllLoans;
-import static com.minibank.rest.fixtures.JsonDataFixture.standardAllLoansResponseJSON;
+import static com.minibank.rest.fixtures.JsonAllLoansFixture.standardAllLoansResponse;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -65,7 +65,7 @@ public class LoanInfoControllerTest {
                 get("/customers/{id}/loans", 2))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(content().string(standardAllLoansResponseJSON()));
+                .andExpect(content().string(standardAllLoansResponse()));
 
     }
 

@@ -1,13 +1,9 @@
 package com.minibank.rest.fixtures;
 
 
-public class JsonDataFixture {
+public class JsonAllLoansFixture {
 
-    public static String standardLoanRequestJSON() {
-        return "{\"customerId\": 2, \"requestIp\": null, \"term\": 30, \"amount\" : 200}";
-    }
-
-    public static String standardAllLoansResponseJSON() {
+    public static String standardAllLoansResponse() {
         return "{\"customer\":{\"id\":2,\"name\":\"James\",\"surname\":\"Bond\"}," +
                 "\"loans\":" +
                     "[{\"id\":5," +
