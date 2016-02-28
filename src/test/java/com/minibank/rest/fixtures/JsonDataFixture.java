@@ -10,6 +10,7 @@ public class JsonDataFixture {
     public static String standardAllLoansResponseJSON() {
        String result =
                "{\"customerId\":2,\"name\":\"James\",\"surname\":\"Bond\","+
+                       "\"customer\":null,"+
                  "\"loans\":" +
                        "[{" +
                        "\"id\":5," +

@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 
 @Component
-public class LoanExtensionFactory {
+public class LoanExtensionCoreFactory {
 
     @Autowired
     private LoanExtensionCalculator loanExtensionCalculator;

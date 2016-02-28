@@ -4,6 +4,7 @@ import com.minibank.communications.model.AllLoansDetails;
 import com.minibank.rest.model.AllLoans;
 import com.minibank.rest.model.Loan;
 import com.minibank.rest.model.LoanExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -12,6 +13,13 @@ import java.util.List;
 
 @Component
 public class AllLoansRestFactory {
+
+    @Autowired
+    private LoanRestFactory loanRestFactory;
+
+    @Autowired
+    private CustomerRestFactory customerRestFactory;
+
 
     public  AllLoans getAllLoans(AllLoansDetails allLoansDetails) {
         AllLoans allLoans = new AllLoans();

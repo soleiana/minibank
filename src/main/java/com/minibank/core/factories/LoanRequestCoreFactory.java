@@ -13,7 +13,7 @@ import java.time.LocalTime;
 
 
 @Component
-public class LoanRequestFactory {
+public class LoanRequestCoreFactory {
 
     @Autowired
     CustomerRepository customerRepository;

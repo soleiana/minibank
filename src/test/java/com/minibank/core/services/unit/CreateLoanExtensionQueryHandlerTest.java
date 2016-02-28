@@ -4,8 +4,8 @@ import com.minibank.InjectMocksTest;
 import com.minibank.common.Messages;
 import com.minibank.communications.CreateLoanExtensionQuery;
 import com.minibank.communications.CreateLoanExtensionResponse;
-import com.minibank.core.factories.LoanExtensionFactory;
-import com.minibank.core.factories.LoanFactory;
+import com.minibank.core.factories.LoanCoreFactory;
+import com.minibank.core.factories.LoanExtensionCoreFactory;
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanExtension;
 import com.minibank.core.repositories.LoanRepository;
@@ -26,10 +26,10 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
     private CreateLoanExtensionQueryHandler queryHandler;
 
     @Mock
-    private LoanExtensionFactory loanExtensionFactory;
+    private LoanExtensionCoreFactory loanExtensionCoreFactory;
 
     @Mock
-    private LoanFactory loanFactory;
+    private LoanCoreFactory loanCoreFactory;
 
     @Mock
     private LoanRepository loanRepository;
@@ -46,8 +46,8 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
         loanExtension = mock(LoanExtension.class);
 
         when(loanRepository.getById(loanId)).thenReturn(loan);
-        when(loanExtensionFactory.getLoanExtension(loan)).thenReturn(loanExtension);
-        when(loanFactory.getExtendedLoan(loan, loanExtension)).thenReturn(extendedLoan);
+        when(loanExtensionCoreFactory.getLoanExtension(loan)).thenReturn(loanExtension);
+        when(loanCoreFactory.getExtendedLoan(loan, loanExtension)).thenReturn(extendedLoan);
     }
 
     @Test
@@ -58,9 +58,9 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
         CreateLoanExtensionResponse response = queryHandler.execute(query);
 
         TestUtility.assertResponse(expectedResponse, response);
-        verify(loanExtensionFactory, times(1)).getLoanExtension(loan);
+        verify(loanExtensionCoreFactory, times(1)).getLoanExtension(loan);
         verify(extendedLoan, times(1)). addLoanExtension(loanExtension);
-        verify(loanFactory, times(1)).getExtendedLoan(loan, loanExtension);
+        verify(loanCoreFactory, times(1)).getExtendedLoan(loan, loanExtension);
         verify(loanRepository, times(1)).update(extendedLoan);
     }
 }

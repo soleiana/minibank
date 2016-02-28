@@ -14,7 +14,7 @@ import java.time.LocalDate;
 
 
 @Component
-public class LoanFactory {
+public class LoanCoreFactory {
 
     @Autowired
     private LoanCalculator loanCalculator;

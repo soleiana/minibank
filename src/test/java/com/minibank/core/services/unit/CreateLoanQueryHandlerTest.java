@@ -5,8 +5,8 @@ import com.minibank.common.Messages;
 import com.minibank.communications.CreateLoanQuery;
 import com.minibank.communications.CreateLoanResponse;
 import com.minibank.communications.model.LoanRequestDetails;
-import com.minibank.core.factories.LoanFactory;
-import com.minibank.core.factories.LoanRequestFactory;
+import com.minibank.core.factories.LoanCoreFactory;
+import com.minibank.core.factories.LoanRequestCoreFactory;
 import com.minibank.core.model.Customer;
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanRequest;
@@ -31,10 +31,10 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
     private CreateLoanQueryHandler queryHandler;
 
     @Mock
-    private LoanRequestFactory loanRequestFactory;
+    private LoanRequestCoreFactory loanRequestCoreFactory;
 
     @Mock
-    private LoanFactory loanFactory;
+    private LoanCoreFactory loanCoreFactory;
 
     @Mock
     private LoanExpert loanExpert;
@@ -60,9 +60,9 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
         loan = mock(Loan.class);
         loanRequestDetails = mock(LoanRequestDetails.class);
 
-        when(loanRequestFactory.getLoanRequest(any(LoanRequestDetails.class))).thenReturn(loanRequest);
+        when(loanRequestCoreFactory.getLoanRequest(any(LoanRequestDetails.class))).thenReturn(loanRequest);
         when(loanRequest.getCustomer()).thenReturn(customer);
-        when(loanFactory.getNewLoan(any(LoanRequest.class))).thenReturn(loan);
+        when(loanCoreFactory.getNewLoan(any(LoanRequest.class))).thenReturn(loan);
     }
 
     @Test
@@ -75,11 +75,11 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
 
         CreateLoanResponse response = queryHandler.execute(query);
         TestUtility.assertResponse(expectedResponse, response);
-        verify(loanRequestFactory, times(1)).getLoanRequest(loanRequestDetails);
+        verify(loanRequestCoreFactory, times(1)).getLoanRequest(loanRequestDetails);
         verify(loanRequestRepository, times(1)).create(loanRequest);
         verify(loanAmountValidator, times(1)).isValid(any(BigDecimal.class));
         verify(loanExpert, times(1)).riskSurroundsLoan(loanRequest);
-        verify(loanFactory, times(1)).getNewLoan(loanRequest);
+        verify(loanCoreFactory, times(1)).getNewLoan(loanRequest);
         verify(loanRequest, times(1)).getCustomer();
         verify(loanRepository, times(1)).create(loan);
     }
@@ -95,11 +95,11 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
         CreateLoanResponse response = queryHandler.execute(query);
 
         TestUtility.assertResponse(expectedResponse, response);
-        verify(loanRequestFactory, times(1)).getLoanRequest(loanRequestDetails);
+        verify(loanRequestCoreFactory, times(1)).getLoanRequest(loanRequestDetails);
         verify(loanRequestRepository, times(1)).create(loanRequest);
         verify(loanAmountValidator, times(1)).isValid(any(BigDecimal.class));
         verify(loanExpert, times(1)).riskSurroundsLoan(loanRequest);
-        verify(loanFactory, times(0)).getNewLoan(loanRequest);
+        verify(loanCoreFactory, times(0)).getNewLoan(loanRequest);
         verify(loanRepository, times(0)).create(loan);
     }
 
@@ -114,11 +114,11 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
         CreateLoanResponse response = queryHandler.execute(query);
 
         TestUtility.assertResponse(expectedResponse, response);
-        verify(loanRequestFactory, times(1)).getLoanRequest(loanRequestDetails);
+        verify(loanRequestCoreFactory, times(1)).getLoanRequest(loanRequestDetails);
         verify(loanRequestRepository, times(1)).create(loanRequest);
         verify(loanAmountValidator, times(1)).isValid(any(BigDecimal.class));
         verify(loanExpert, times(0)).riskSurroundsLoan(loanRequest);
-        verify(loanFactory, times(0)).getNewLoan(loanRequest);
+        verify(loanCoreFactory, times(0)).getNewLoan(loanRequest);
         verify(loanRepository, times(0)).create(loan);
     }
 

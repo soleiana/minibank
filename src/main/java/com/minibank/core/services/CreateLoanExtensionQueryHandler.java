@@ -3,8 +3,8 @@ package com.minibank.core.services;
 import com.minibank.common.Messages;
 import com.minibank.communications.CreateLoanExtensionQuery;
 import com.minibank.communications.CreateLoanExtensionResponse;
-import com.minibank.core.factories.LoanExtensionFactory;
-import com.minibank.core.factories.LoanFactory;
+import com.minibank.core.factories.LoanCoreFactory;
+import com.minibank.core.factories.LoanExtensionCoreFactory;
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanExtension;
 import com.minibank.core.repositories.LoanRepository;
@@ -17,10 +17,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class CreateLoanExtensionQueryHandler {
 
     @Autowired
-    private LoanFactory loanFactory;
+    private LoanCoreFactory loanCoreFactory;
 
     @Autowired
-    private LoanExtensionFactory loanExtensionFactory;
+    private LoanExtensionCoreFactory loanExtensionCoreFactory;
 
     @Autowired
     private LoanRepository loanRepository;
@@ -30,8 +30,8 @@ public class CreateLoanExtensionQueryHandler {
     public CreateLoanExtensionResponse execute(CreateLoanExtensionQuery query) {
         int loanId = query.getLoanId();
         Loan loan = loanRepository.getById(loanId);
-        LoanExtension loanExtension = loanExtensionFactory.getLoanExtension(loan);
-        Loan extendedLoan = loanFactory.getExtendedLoan(loan, loanExtension);
+        LoanExtension loanExtension = loanExtensionCoreFactory.getLoanExtension(loan);
+        Loan extendedLoan = loanCoreFactory.getExtendedLoan(loan, loanExtension);
         extendedLoan.addLoanExtension(loanExtension);
         loanRepository.update(extendedLoan);
         return new CreateLoanExtensionResponse(true, Messages.LOAN_EXTENSION_OBTAINED_MESSAGE);

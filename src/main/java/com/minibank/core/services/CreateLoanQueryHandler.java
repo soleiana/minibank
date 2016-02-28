@@ -4,8 +4,8 @@ import com.minibank.common.Messages;
 import com.minibank.communications.CreateLoanQuery;
 import com.minibank.communications.CreateLoanResponse;
 import com.minibank.communications.model.LoanRequestDetails;
-import com.minibank.core.factories.LoanFactory;
-import com.minibank.core.factories.LoanRequestFactory;
+import com.minibank.core.factories.LoanCoreFactory;
+import com.minibank.core.factories.LoanRequestCoreFactory;
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.LoanRepository;
@@ -20,10 +20,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class CreateLoanQueryHandler {
 
     @Autowired
-    private LoanRequestFactory loanRequestFactory;
+    private LoanRequestCoreFactory loanRequestCoreFactory;
 
     @Autowired
-    private LoanFactory loanFactory;
+    private LoanCoreFactory loanCoreFactory;
 
     @Autowired
     private LoanExpert loanExpert;
@@ -42,13 +42,13 @@ public class CreateLoanQueryHandler {
     public CreateLoanResponse execute(CreateLoanQuery query) {
         LoanRequestDetails requestDetails = query.getLoanRequestDetails();
 
-        LoanRequest loanRequest = loanRequestFactory.getLoanRequest(requestDetails);
+        LoanRequest loanRequest = loanRequestCoreFactory.getLoanRequest(requestDetails);
         loanRequestRepository.create(loanRequest);
 
         if (isNegativeCreditDecision(loanRequest)) {
             return new CreateLoanResponse(false, Messages.LOAN_ERROR_MESSAGE);
         } else {
-             Loan loan = loanFactory.getNewLoan(loanRequest);
+             Loan loan = loanCoreFactory.getNewLoan(loanRequest);
              loanRequest.getCustomer().addLoan(loan);
              loanRepository.create(loan);
              return new CreateLoanResponse(true, Messages.LOAN_OBTAINED_MESSAGE);
