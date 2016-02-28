@@ -1,9 +1,9 @@
 package com.minibank.rest.controllers;
 
+import com.minibank.common.Messages;
 import com.minibank.communications.CreateLoanExtensionQuery;
 import com.minibank.communications.CreateLoanExtensionResponse;
 import com.minibank.core.services.CreateLoanExtensionQueryHandler;
-import com.minibank.rest.common.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +32,7 @@ public class LoanExtensionController {
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<String> createLoanExtension(@PathVariable Integer id) {
         if (!validate(id)) {
-            return new ResponseEntity<>(Message.INVALID_INPUT_FORMAT, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(Messages.INVALID_INPUT_FORMAT, HttpStatus.BAD_REQUEST);
         }
 
         CreateLoanExtensionQuery createLoanExtensionQuery = new CreateLoanExtensionQuery(id);

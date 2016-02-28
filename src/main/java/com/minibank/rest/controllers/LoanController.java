@@ -1,11 +1,11 @@
 package com.minibank.rest.controllers;
 
+import com.minibank.common.Messages;
 import com.minibank.communications.CreateLoanQuery;
 import com.minibank.communications.CreateLoanResponse;
-import com.minibank.communications.model.LoanRequestDetails;
 import com.minibank.communications.factories.LoanRequestDetailsFactory;
+import com.minibank.communications.model.LoanRequestDetails;
 import com.minibank.core.services.CreateLoanQueryHandler;
-import com.minibank.rest.common.Message;
 import com.minibank.rest.model.LoanRequest;
 import com.minibank.rest.validators.LoanRequestValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +36,7 @@ public class LoanController {
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<String> createLoan(@RequestBody LoanRequest loanRequest, HttpServletRequest httpServletRequest) {
         if (!loanRequestValidator.validate(loanRequest)) {
-            return new ResponseEntity<>(Message.INVALID_INPUT_FORMAT, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(Messages.INVALID_INPUT_FORMAT, HttpStatus.BAD_REQUEST);
         }
 
         String ip = httpServletRequest.getRemoteAddr();
