@@ -34,17 +34,18 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
     @Mock
     private LoanRepository loanRepository;
 
+    @Mock
     private LoanExtension loanExtension;
+
+    @Mock
     private Loan loan;
+
+    @Mock
     private Loan extendedLoan;
 
 
     @Before
     public void setUp() {
-        loan = mock(Loan.class);
-        extendedLoan = mock(Loan.class);
-        loanExtension = mock(LoanExtension.class);
-
         when(loanRepository.getById(loanId)).thenReturn(loan);
         when(loanExtensionCoreFactory.getLoanExtension(loan)).thenReturn(loanExtension);
         when(loanCoreFactory.getExtendedLoan(loan, loanExtension)).thenReturn(extendedLoan);

@@ -4,6 +4,7 @@ import com.minibank.InjectMocksTest;
 import com.minibank.communications.GetAllLoansQuery;
 import com.minibank.communications.GetAllLoansResponse;
 import com.minibank.communications.factories.AllLoansDetailsFactory;
+import com.minibank.communications.fixtures.AllLoanDetailsFixture;
 import com.minibank.communications.model.AllLoansDetails;
 import com.minibank.core.factories.AllLoansCoreFactory;
 import com.minibank.core.model.AllLoans;
@@ -21,6 +22,8 @@ import static org.mockito.Mockito.*;
 
 public class GetAllLoansQueryHandlerTest extends InjectMocksTest {
 
+    private static final int CUSTOMER_ID = 2;
+
     @InjectMocks
     private GetAllLoansQueryHandler queryHandler;
 
@@ -30,29 +33,26 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest {
     @Mock
     private AllLoansDetailsFactory allLoansDetailsFactory;
 
+    @Mock
     private AllLoans allLoans;
-    private AllLoansDetails allLoansDetails;
-    private Integer customerId;
+
 
     @Before
     public void setUp() {
-        customerId = 1;
-        allLoans = mock(AllLoans.class);
-        allLoansDetails = mock(AllLoansDetails.class);
-        when(allLoansCoreFactory.getAllLoans(customerId)).thenReturn(allLoans);
+        when(allLoansCoreFactory.getAllLoans(CUSTOMER_ID)).thenReturn(allLoans);
     }
 
     @Test
     public void testExecuteCustomerObtainsLoanHistory() {
+        AllLoansDetails allLoansDetails = AllLoanDetailsFixture.standardAllLoansDetails();
         when(allLoansDetailsFactory.getAllLoansDetails(allLoans)).thenReturn(allLoansDetails);
-
-        GetAllLoansQuery query = new GetAllLoansQuery(customerId);
+        GetAllLoansQuery query = new GetAllLoansQuery(CUSTOMER_ID);
         GetAllLoansResponse expectedResponse = new GetAllLoansResponse(allLoansDetails, true);
 
         GetAllLoansResponse response = queryHandler.execute(query);
 
         TestUtility.assertResponse(expectedResponse, response);
-        verify(allLoansCoreFactory,times(1)).getAllLoans(customerId);
+        verify(allLoansCoreFactory,times(1)).getAllLoans(CUSTOMER_ID);
         verify(allLoansDetailsFactory,times(1)).getAllLoansDetails(allLoans);
     }
 
@@ -61,16 +61,14 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest {
         AllLoansDetails emptyAllLoansDetails = new AllLoansDetails();
         List<com.minibank.communications.model.Loan> emptyLoans = new ArrayList<>();
         emptyAllLoansDetails.setLoans(emptyLoans);
-
         when(allLoansDetailsFactory.getAllLoansDetails(allLoans)).thenReturn(emptyAllLoansDetails);
-
-        GetAllLoansQuery query = new GetAllLoansQuery(customerId);
+        GetAllLoansQuery query = new GetAllLoansQuery(CUSTOMER_ID);
         GetAllLoansResponse expectedResponse = new GetAllLoansResponse(emptyAllLoansDetails, false);
 
         GetAllLoansResponse response = queryHandler.execute(query);
 
         TestUtility.assertResponse(expectedResponse, response);
-        verify(allLoansCoreFactory,times(1)).getAllLoans(customerId);
+        verify(allLoansCoreFactory,times(1)).getAllLoans(CUSTOMER_ID);
         verify(allLoansDetailsFactory,times(1)).getAllLoansDetails(allLoans);
     }
 

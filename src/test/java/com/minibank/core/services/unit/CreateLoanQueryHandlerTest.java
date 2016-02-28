@@ -48,18 +48,20 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
     @Mock
     private LoanRepository loanRepository;
 
+    @Mock
     private Customer customer;
+
+    @Mock
     private LoanRequest loanRequest;
+
+    @Mock
     private Loan loan;
+
+    @Mock
     private LoanRequestDetails loanRequestDetails;
 
     @Before
     public void setUp() {
-        customer = mock(Customer.class);
-        loanRequest = mock(LoanRequest.class);
-        loan = mock(Loan.class);
-        loanRequestDetails = mock(LoanRequestDetails.class);
-
         when(loanRequestCoreFactory.getLoanRequest(any(LoanRequestDetails.class))).thenReturn(loanRequest);
         when(loanRequest.getCustomer()).thenReturn(customer);
         when(loanCoreFactory.getNewLoan(any(LoanRequest.class))).thenReturn(loan);
@@ -69,11 +71,11 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
     public void testExecuteCustomerObtainsLoan() {
         when(loanExpert.riskSurroundsLoan(any(LoanRequest.class))).thenReturn(false);
         when(loanAmountValidator.isValid(any(BigDecimal.class))).thenReturn(true);
-
         CreateLoanResponse expectedResponse = new CreateLoanResponse(true, Messages.LOAN_OBTAINED_MESSAGE);
         CreateLoanQuery query = new CreateLoanQuery(loanRequestDetails);
 
         CreateLoanResponse response = queryHandler.execute(query);
+
         TestUtility.assertResponse(expectedResponse, response);
         verify(loanRequestCoreFactory, times(1)).getLoanRequest(loanRequestDetails);
         verify(loanRequestRepository, times(1)).create(loanRequest);
@@ -88,7 +90,6 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
     public void testExecuteCustomerDoesNotObtainLoanBecauseOfRisk() {
         when(loanExpert.riskSurroundsLoan(any(LoanRequest.class))).thenReturn(true);
         when(loanAmountValidator.isValid(any(BigDecimal.class))).thenReturn(true);
-
         CreateLoanResponse expectedResponse = new CreateLoanResponse(false, Messages.LOAN_ERROR_MESSAGE);
         CreateLoanQuery query =  new CreateLoanQuery(loanRequestDetails);
 
@@ -107,7 +108,6 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
     public void testExecuteCustomerDoesNotObtainLoanBecauseLoanAmountExceedsMaximum() {
         when(loanExpert.riskSurroundsLoan(any(LoanRequest.class))).thenReturn(false);
         when(loanAmountValidator.isValid(any(BigDecimal.class))).thenReturn(false);
-
         CreateLoanResponse expectedResponse = new CreateLoanResponse(false, Messages.LOAN_ERROR_MESSAGE);
         CreateLoanQuery query =  new CreateLoanQuery(loanRequestDetails);
 
