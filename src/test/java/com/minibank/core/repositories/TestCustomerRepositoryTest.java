@@ -18,16 +18,14 @@ public class TestCustomerRepositoryTest extends SpringContextTest {
     @Autowired
     private TestCustomerRepository testCustomerRepository;
 
-    private Customer customer;
-
     @Before
     public void setUp() {
         dbCleaner.clear();
-        customer = CustomerFixture.standardCustomer();
     }
 
     @Test
     public void testCreate() {
+        Customer customer =  CustomerFixture.standardCustomer();
         testCustomerRepository.create(customer);
         assertNotNull(customer.getId());
     }

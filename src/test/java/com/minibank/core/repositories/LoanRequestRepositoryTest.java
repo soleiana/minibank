@@ -3,7 +3,6 @@ package com.minibank.core.repositories;
 import com.minibank.SpringContextTest;
 import com.minibank.core.fixtures.CustomerFixture;
 import com.minibank.core.fixtures.LoanRequestFixture;
-import com.minibank.core.fixtures.RequestIPFixture;
 import com.minibank.core.model.Customer;
 import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.helpers.DBCleaner;
@@ -19,6 +18,8 @@ import static org.junit.Assert.assertNotNull;
 
 public class LoanRequestRepositoryTest extends SpringContextTest {
 
+    public static final String IP = "127.0.0.1";
+
     @Autowired
     private DBCleaner dbCleaner;
 
@@ -28,39 +29,37 @@ public class LoanRequestRepositoryTest extends SpringContextTest {
     @Autowired
     private TestCustomerRepository testCustomerRepository;
 
-    private LoanRequest loanRequest;
     private Customer customer;
-    private String requestIp;
 
     @Before
     public void setUp() {
         dbCleaner.clear();
-        requestIp = RequestIPFixture.IP;
         customer = CustomerFixture.standardCustomer();
         testCustomerRepository.create(customer);
-        createLoanRequest();
     }
 
     @Test
     public void testCreate() {
+        LoanRequest loanRequest = createLoanRequest();
         loanRequestRepository.create(loanRequest);
         assertNotNull(loanRequest.getId());
     }
 
     @Test
     public void testGetByRequestIp() {
-        createLoanRequest();
-        loanRequestRepository.create(loanRequest);
-        createLoanRequest();
-        loanRequestRepository.create(loanRequest);
-        List<LoanRequest> loanRequests = loanRequestRepository.getByRequestIp(requestIp);
+        LoanRequest loanRequest1 = createLoanRequest();
+        loanRequestRepository.create(loanRequest1);
+        LoanRequest loanRequest2 = createLoanRequest();
+        loanRequestRepository.create(loanRequest2);
+        List<LoanRequest> loanRequests = loanRequestRepository.getByRequestIp(IP);
         assertEquals(2, loanRequests.size());
     }
 
-    private void createLoanRequest() {
-        loanRequest = LoanRequestFixture.standardLoanRequest();
+    private LoanRequest createLoanRequest() {
+        LoanRequest loanRequest = LoanRequestFixture.standardLoanRequest();
         loanRequest.setCustomer(customer);
-        loanRequest.setRequestIp(requestIp);
+        loanRequest.setRequestIp(IP);
+        return loanRequest;
     }
 
 }

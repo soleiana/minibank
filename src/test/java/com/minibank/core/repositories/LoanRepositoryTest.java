@@ -26,8 +26,6 @@ public class LoanRepositoryTest extends SpringContextTest {
     private LoanRepository loanRepository;
 
     private Customer customer;
-    private Loan loan;
-
 
     @Before
     public void setUp() {
@@ -35,17 +33,18 @@ public class LoanRepositoryTest extends SpringContextTest {
 
         customer = CustomerFixture.standardCustomer();
         testCustomerRepository.create(customer);
-        createLoan();
     }
 
     @Test
     public void testCreate() {
+        Loan loan =  LoanFixture.standardLoan();
         loanRepository.create(loan);
         assertNotNull(loan.getId());
     }
 
     @Test
     public void testUpdate() {
+        Loan loan =  LoanFixture.standardLoan();
         loanRepository.create(loan);
         loan.setCurrInterestRate(LoanFixture.NEW_CURRENT_INTEREST_RATE);
         loan.setCurrInterest(LoanFixture.NEW_CURRENT_INTEREST);
@@ -60,13 +59,10 @@ public class LoanRepositoryTest extends SpringContextTest {
 
     @Test
     public void testGetById() {
+        Loan loan =  LoanFixture.standardLoan();
         loanRepository.create(loan);
-        Loan ln = loanRepository.getById(loan.getId());
-        assertEquals(loan,ln);
-    }
-
-    private void createLoan() {
-        loan = LoanFixture.standardLoan();
+        Loan retrievedLoan = loanRepository.getById(loan.getId());
+        assertEquals(loan, retrievedLoan);
     }
 
 }

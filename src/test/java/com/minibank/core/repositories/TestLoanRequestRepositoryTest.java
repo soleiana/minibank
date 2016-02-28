@@ -27,7 +27,6 @@ public class TestLoanRequestRepositoryTest extends SpringContextTest {
     @Autowired
     private TestCustomerRepository testCustomerRepository;
 
-    private LoanRequest loanRequest;
     private Customer customer;
 
     @Before
@@ -45,14 +44,15 @@ public class TestLoanRequestRepositoryTest extends SpringContextTest {
 
     @Test
     public void testGetLastIfLoanRequestExists() {
-        createLoanRequest();
+        LoanRequest loanRequest = createLoanRequest();
         LoanRequest retrievedLoanRequest = testLoanRequestRepository.getLast();
         assertEquals(loanRequest, retrievedLoanRequest);
     }
 
-    private void createLoanRequest() {
-        loanRequest = LoanRequestFixture.standardLoanRequest();
+    private LoanRequest createLoanRequest() {
+        LoanRequest loanRequest = LoanRequestFixture.standardLoanRequest();
         loanRequest.setCustomer(customer);
         loanRequestRepository.create(loanRequest);
+        return loanRequest;
     }
 }
