@@ -9,10 +9,9 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
-
-public class BankParametersRepositoryTest extends SpringContextTest {
+public class RepositoryTemplateMethodTest extends SpringContextTest {
 
     @Autowired
     private DBCleaner dbCleaner;
@@ -20,29 +19,36 @@ public class BankParametersRepositoryTest extends SpringContextTest {
     @Autowired
     private BankParametersRepository bankParametersRepository;
 
+    @Autowired
+    private RepositoryTemplateMethod<BankParameters> repositoryTemplateMethod;
+
 
     @Before
-    public void setUp() {
+    public void setUp()  {
         dbCleaner.clear();
     }
 
     @Test
-    public void testCreate() {
-        BankParameters bankParameters = BankParametersFixture.standardBankParameters();
-        bankParametersRepository.create(bankParameters);
-        assertNotNull(bankParameters.getId());
+    public void testGetLastIfNoRecordsExist() {
+        BankParameters retrievedBankParameters = repositoryTemplateMethod.getLast(BankParameters.class);
+        assertNull(retrievedBankParameters);
     }
 
     @Test
-    public void testGetLast() {
-        BankParameters bankParameters1 = BankParametersFixture.standardBankParameters();
-        bankParameters1.setLoanExtensionTerm(BankParametersFixture.NEW_LOAN_EXTENSION_TERM);
-        BankParameters bankParameters2 = BankParametersFixture.standardBankParameters();
-        bankParameters2.setInterestRateFactor(BankParametersFixture.NEW_INTEREST_RATE_FACTOR);
-        bankParametersRepository.create(bankParameters1);
-        bankParametersRepository.create(bankParameters2);
+    public void testGetLastIfOneRecordExists() {
+        BankParameters bankParameters = BankParametersFixture.standardBankParameters();
+        bankParametersRepository.create(bankParameters);
+        BankParameters retrievedBankParameters = repositoryTemplateMethod.getLast(BankParameters.class);
+        assertEquals(bankParameters, retrievedBankParameters);
+    }
 
-        BankParameters retrievedBankParameters = bankParametersRepository.getCurrentBankParameters();
+    @Test
+    public void testGetLastIfFewRecordsExist() {
+        BankParameters bankParameters1 = BankParametersFixture.standardBankParameters();
+        bankParametersRepository.create(bankParameters1);
+        BankParameters bankParameters2 = BankParametersFixture.newBankParameters();
+        bankParametersRepository.create(bankParameters2);
+        BankParameters retrievedBankParameters = repositoryTemplateMethod.getLast(BankParameters.class);
         assertEquals(bankParameters2, retrievedBankParameters);
     }
 }

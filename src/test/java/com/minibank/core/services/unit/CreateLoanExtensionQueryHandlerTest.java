@@ -8,7 +8,6 @@ import com.minibank.core.factories.LoanExtensionFactory;
 import com.minibank.core.factories.LoanFactory;
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanExtension;
-import com.minibank.core.repositories.LoanExtensionRepository;
 import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.services.CreateLoanExtensionQueryHandler;
 import org.junit.Before;
@@ -35,9 +34,6 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
     @Mock
     private LoanRepository loanRepository;
 
-    @Mock
-    private LoanExtensionRepository loanExtensionRepository;
-
     private LoanExtension loanExtension;
     private Loan loan;
     private Loan extendedLoan;
@@ -63,7 +59,7 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
 
         TestUtility.assertResponse(expectedResponse, response);
         verify(loanExtensionFactory, times(1)).getLoanExtension(loan);
-        verify(loanExtensionRepository, times(1)).create(loanExtension);
+        verify(extendedLoan, times(1)). addLoanExtension(loanExtension);
         verify(loanFactory, times(1)).getExtendedLoan(loan, loanExtension);
         verify(loanRepository, times(1)).update(extendedLoan);
     }

@@ -13,6 +13,7 @@ public class DBCleaner extends SessionProvider {
         hqlTruncate("Loan");
         hqlTruncate("LoanRequest");
         hqlTruncate("Customer");
+        hqlTruncate("BankParameters");
     }
 
     private void hqlTruncate(String myTable){

@@ -22,16 +22,15 @@ public class CustomerRepositoryTest extends SpringContextTest {
     @Autowired
     private TestCustomerRepository testCustomerRepository;
 
-    private Customer customer;
 
     @Before
     public void setUp() {
         dbCleaner.clear();
-        customer = CustomerFixture.standardCustomer();
     }
 
     @Test
     public void testGetById() {
+        Customer customer = CustomerFixture.standardCustomer();
         testCustomerRepository.create(customer);
         Integer id = customer.getId();
         assertEquals(customer, customerRepository.getById(id));

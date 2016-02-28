@@ -6,7 +6,10 @@ import com.minibank.communications.GetAllLoansResponse;
 import com.minibank.communications.model.AllLoansDetails;
 import com.minibank.core.fixtures.*;
 import com.minibank.core.model.*;
-import com.minibank.core.repositories.*;
+import com.minibank.core.repositories.BankParametersRepository;
+import com.minibank.core.repositories.LoanRepository;
+import com.minibank.core.repositories.LoanRequestRepository;
+import com.minibank.core.repositories.TestCustomerRepository;
 import com.minibank.core.repositories.helpers.DBCleaner;
 import com.minibank.core.services.GetAllLoansQueryHandler;
 import org.junit.Before;
@@ -35,9 +38,6 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
 
     @Autowired
     private BankParametersRepository bankParametersRepository;
-
-    @Autowired
-    private LoanExtensionRepository loanExtensionRepository;
 
     @Autowired
     private GetAllLoansQueryHandler getAllLoansQueryHandler;
@@ -128,8 +128,8 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
         for (int i = 1; i <= numberOfExtensions; i++) {
             LoanExtension loanExtension = LoanExtensionFixture.standardLoanExtension();
             loan.addLoanExtension(loanExtension);
-            loanExtensionRepository.create(loanExtension);
         }
+        loanRepository.update(loan);
     }
 
 }

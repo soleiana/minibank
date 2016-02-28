@@ -25,8 +25,6 @@ public class TestLoanExtensionRepositoryTest extends SpringContextTest {
     @Autowired
     private TestLoanExtensionRepository testLoanExtensionRepository;
 
-    @Autowired
-    private LoanExtensionRepository loanExtensionRepository;
 
     @Autowired
     private TestCustomerRepository testCustomerRepository;
