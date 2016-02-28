@@ -1,6 +1,6 @@
-package com.minibank.communications.fixtures;
+package com.minibank.rest.fixtures;
 
-import com.minibank.communications.model.Customer;
+import com.minibank.rest.model.Customer;
 
 public class CustomerFixture {
 
