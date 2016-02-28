@@ -40,11 +40,22 @@ public class LoanExtensionControllerTest {
 
     @Test
     public void testCreateLoanExtensionUsesHttpCreated() throws Exception {
-        when(createLoanExtensionQueryHandler.execute(any(CreateLoanExtensionQuery.class))).thenReturn(new CreateLoanExtensionResponse(true, Messages.LOAN_EXTENSION_OBTAINED_MESSAGE));
+        when(createLoanExtensionQueryHandler.execute(any(CreateLoanExtensionQuery.class)))
+                .thenReturn(new CreateLoanExtensionResponse(true, Messages.LOAN_EXTENSION_OBTAINED_MESSAGE));
         this.mockMvc.perform(
                   post("/loans/1/extensions")
                   .contentType(MediaType.APPLICATION_JSON))
                   .andExpect(status().isCreated());
+    }
+
+    @Test
+    public void testCreateLoanExtensionUsesHttpHttpInternalServerErrorOnFailureToGetLoanExtension() throws Exception {
+        when(createLoanExtensionQueryHandler.execute(any(CreateLoanExtensionQuery.class)))
+                .thenReturn(new CreateLoanExtensionResponse(false, Messages.LOAN_EXTENSION_ERROR_MESSAGE));
+        this.mockMvc.perform(
+                post("/loans/1/extensions")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isInternalServerError());
     }
 
     @Test

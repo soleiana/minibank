@@ -52,7 +52,7 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
     }
 
     @Test
-    public void testExecute() {
+    public void testExecuteCustomerObtainsLoanExtension() {
         CreateLoanExtensionResponse expectedResponse = new CreateLoanExtensionResponse(true, Messages.LOAN_EXTENSION_OBTAINED_MESSAGE);
         CreateLoanExtensionQuery query = new CreateLoanExtensionQuery(loanId);
 
@@ -63,5 +63,16 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
         verify(extendedLoan, times(1)). addLoanExtension(loanExtension);
         verify(loanCoreFactory, times(1)).getExtendedLoan(loan, loanExtension);
         verify(loanRepository, times(1)).update(extendedLoan);
+    }
+
+    @Test
+    public void testExecuteCustomerDoesNotObtainLoanExtensionBecauseOfInternalException() {
+        CreateLoanExtensionResponse expectedResponse = new CreateLoanExtensionResponse(false, Messages.LOAN_EXTENSION_ERROR_MESSAGE);
+        CreateLoanExtensionQuery query = new CreateLoanExtensionQuery(loanId);
+        doThrow(new RuntimeException()).when(loanRepository).getById(loanId);
+
+        CreateLoanExtensionResponse response = queryHandler.execute(query);
+
+        TestUtility.assertResponse(expectedResponse, response);
     }
 }

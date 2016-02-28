@@ -40,9 +40,8 @@ public class CreateLoanQueryHandler {
 
     @Transactional
     public CreateLoanResponse execute(CreateLoanQuery query) {
-        LoanRequestDetails requestDetails = query.getLoanRequestDetails();
-
         try {
+            LoanRequestDetails requestDetails = query.getLoanRequestDetails();
             LoanRequest loanRequest = loanRequestCoreFactory.getLoanRequest(requestDetails);
             loanRequestRepository.create(loanRequest);
 

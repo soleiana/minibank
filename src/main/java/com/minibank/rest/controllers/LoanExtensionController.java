@@ -34,11 +34,15 @@ public class LoanExtensionController {
         if (!validate(id)) {
             return new ResponseEntity<>(Messages.INVALID_INPUT_FORMAT, HttpStatus.BAD_REQUEST);
         }
-
         CreateLoanExtensionQuery createLoanExtensionQuery = new CreateLoanExtensionQuery(id);
 
         CreateLoanExtensionResponse createLoanExtensionResponse = createLoanExtensionQueryHandler.execute(createLoanExtensionQuery);
         String message = createLoanExtensionResponse.getMessage();
-        return new ResponseEntity<>(message, HttpStatus.CREATED);
+        if (createLoanExtensionResponse.isCreated()) {
+            return new ResponseEntity<>(message, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 }
