@@ -7,7 +7,7 @@ import com.minibank.core.fixtures.LoanRequestFixture;
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.BankParametersRepository;
-import com.minibank.core.repositories.helpers.DBCleaner;
+import com.minibank.core.repositories.helpers.DatabaseCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class LoanCalculatorTest extends SpringContextTest {
     private static final BigDecimal FACTOR = new BigDecimal("0.0000277777");
 
     @Autowired
-    private DBCleaner dbCleaner;
+    private DatabaseCleaner databaseCleaner;
 
     @Autowired
     private BankParametersRepository bankParametersRepository;
@@ -39,7 +39,7 @@ public class LoanCalculatorTest extends SpringContextTest {
 
     @Before
     public void setUp() {
-        dbCleaner.clear();
+        databaseCleaner.clear();
         bankParameters = BankParametersFixture.standardBankParameters();
         bankParametersRepository.create(bankParameters);
         loanRequest = LoanRequestFixture.standardLoanRequest();

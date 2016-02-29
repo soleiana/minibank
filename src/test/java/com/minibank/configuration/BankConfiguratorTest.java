@@ -3,7 +3,7 @@ package com.minibank.configuration;
 import com.minibank.SpringContextTest;
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.repositories.BankParametersRepository;
-import com.minibank.core.repositories.helpers.DBCleaner;
+import com.minibank.core.repositories.helpers.DatabaseCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNotNull;
 public class BankConfiguratorTest extends SpringContextTest {
 
     @Autowired
-    private DBCleaner dbCleaner;
+    private DatabaseCleaner databaseCleaner;
 
     @Autowired
     private BankConfigurator bankConfigurator;
@@ -28,7 +28,7 @@ public class BankConfiguratorTest extends SpringContextTest {
 
     @Before
     public void setUp() {
-        dbCleaner.clear();
+        databaseCleaner.clear();
     }
 
     @Test

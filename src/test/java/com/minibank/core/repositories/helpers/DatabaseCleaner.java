@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class DBCleaner extends SessionProvider {
+public class DatabaseCleaner extends SessionProvider {
 
     public void clear() {
         hqlTruncate("LoanExtension");

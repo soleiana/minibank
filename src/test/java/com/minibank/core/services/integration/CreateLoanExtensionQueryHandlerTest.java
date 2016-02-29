@@ -12,7 +12,7 @@ import com.minibank.core.model.LoanExtension;
 import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.repositories.TestLoanExtensionRepository;
-import com.minibank.core.repositories.helpers.DBCleaner;
+import com.minibank.core.repositories.helpers.DatabaseCleaner;
 import com.minibank.core.services.CreateLoanExtensionQueryHandler;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +24,7 @@ import static org.junit.Assert.*;
 public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest {
 
     @Autowired
-    private DBCleaner dbCleaner;
+    private DatabaseCleaner databaseCleaner;
 
     @Autowired
     private LoanRepository loanRepository;
@@ -43,7 +43,7 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest {
 
     @Before
     public void setUp() {
-        dbCleaner.clear();
+        databaseCleaner.clear();
         bankParameters = BankParametersFixture.standardBankParameters();
         bankParametersRepository.create(bankParameters);
     }

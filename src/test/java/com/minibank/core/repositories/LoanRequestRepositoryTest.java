@@ -5,7 +5,7 @@ import com.minibank.core.fixtures.CustomerFixture;
 import com.minibank.core.fixtures.LoanRequestFixture;
 import com.minibank.core.model.Customer;
 import com.minibank.core.model.LoanRequest;
-import com.minibank.core.repositories.helpers.DBCleaner;
+import com.minibank.core.repositories.helpers.DatabaseCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class LoanRequestRepositoryTest extends SpringContextTest {
     public static final String IP = "127.0.0.1";
 
     @Autowired
-    private DBCleaner dbCleaner;
+    private DatabaseCleaner databaseCleaner;
 
     @Autowired
     private LoanRequestRepository loanRequestRepository;
@@ -33,7 +33,7 @@ public class LoanRequestRepositoryTest extends SpringContextTest {
 
     @Before
     public void setUp() {
-        dbCleaner.clear();
+        databaseCleaner.clear();
         customer = CustomerFixture.standardCustomer();
         testCustomerRepository.create(customer);
     }
