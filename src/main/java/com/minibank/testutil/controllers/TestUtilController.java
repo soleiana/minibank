@@ -63,7 +63,7 @@ public class TestUtilController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value ="/loans", produces = "application/json")
-    public ResponseEntity<Integer> getLasLoanId() {
+    public ResponseEntity<Integer> getLastLoanId() {
         Integer loanId = null;
         try {
             loanId = loanIdProvider.getLastLoanId();
