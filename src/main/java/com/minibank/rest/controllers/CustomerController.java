@@ -27,18 +27,19 @@ public class CustomerController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/loans", produces = "application/json")
     public ResponseEntity<AllLoans> requestAllLoans(@PathVariable Integer id) {
-        AllLoans allLoans = new AllLoans();
+
         GetAllLoansQuery getAllLoansQuery = new GetAllLoansQuery(id);
 
         GetAllLoansResponse getAllLoansResponse = getAllLoansQueryHandler.execute(getAllLoansQuery);
+        AllLoansDetails allLoansDetails = getAllLoansResponse.getAllLoansDetails();
+        AllLoans allLoans = allLoansRestFactory.getAllLoans(allLoansDetails);
 
-        if(getAllLoansResponse.isEntityFound()) {
-            AllLoansDetails allLoansDetails = getAllLoansResponse.getAllLoansDetails();
-            allLoans = allLoansRestFactory.getAllLoans(allLoansDetails);
+        if (getAllLoansResponse.isEntityFound()) {
             return new ResponseEntity<>(allLoans, HttpStatus.OK);
 
         } else if (getAllLoansResponse.isErrorResponse()){
-            return new ResponseEntity<>(allLoans, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(new AllLoans(), HttpStatus.INTERNAL_SERVER_ERROR);
+
         } else {
             return new ResponseEntity<>(allLoans, HttpStatus.NOT_FOUND);
         }

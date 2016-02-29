@@ -16,8 +16,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static com.minibank.rest.fixtures.AllLoansFixture.emptyAllLoans;
 import static com.minibank.rest.fixtures.AllLoansFixture.standardAllLoans;
-import static com.minibank.rest.fixtures.JsonAllLoansFixture.standardAllLoansResponse;
+import static com.minibank.rest.fixtures.JsonAllLoansFixture.*;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -47,7 +48,8 @@ public class CustomerControllerTest extends InjectMocksTest {
 
     @Test
     public void testCustomerControllerUsesHttpOkOnSuccess() throws Exception {
-        when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
+        when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class)))
+                .thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
         when(allLoansRestFactory.getAllLoans(any(AllLoansDetails.class))).thenReturn(new AllLoans());
 
         this.mockMvc.perform(
@@ -64,7 +66,8 @@ public class CustomerControllerTest extends InjectMocksTest {
 
     @Test
     public void testCustomerControllerRendersResponseCorrectly() throws Exception {
-        when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
+        when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class)))
+                .thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
         when(allLoansRestFactory.getAllLoans(any(AllLoansDetails.class))).thenReturn(standardAllLoans());
 
         this.mockMvc.perform(
@@ -76,22 +79,26 @@ public class CustomerControllerTest extends InjectMocksTest {
 
     @Test
     public void testCustomerControllerUsesHttpNotFoundIfNoLoansFound() throws Exception {
-        when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), false));
-        when(allLoansRestFactory.getAllLoans(any(AllLoansDetails.class))).thenReturn(new AllLoans());
+        when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class)))
+                .thenReturn(new GetAllLoansResponse(new AllLoansDetails(), false));
+        when(allLoansRestFactory.getAllLoans(any(AllLoansDetails.class))).thenReturn(emptyAllLoans());
 
         this.mockMvc.perform(
                 get("/customers/{id}/loans", 1))
                 .andExpect(status().isNotFound())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().string(loansNotFoundResponse()));
     }
 
     @Test
     public void testCustomerControllerUsesHttpInternalServerErrorOnFailureToGetLoans() throws Exception {
-        when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(true));
+        when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class)))
+                .thenReturn(new GetAllLoansResponse(true));
 
         this.mockMvc.perform(
                 get("/customers/{id}/loans", 1))
                 .andExpect(status().isInternalServerError())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().string(emptyAllResponse()));
     }
 }

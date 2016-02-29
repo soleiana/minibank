@@ -1,5 +1,6 @@
 package com.minibank.core.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -7,7 +8,7 @@ public class AllLoans {
 
     private Customer customer;
 
-    private List<Loan> loans;
+    private List<Loan> loans = new ArrayList<>();
 
     public Customer getCustomer() {
         return customer;
