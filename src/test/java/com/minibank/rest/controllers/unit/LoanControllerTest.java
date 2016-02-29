@@ -18,9 +18,9 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.test.web.servlet.MockMvc;
 
 import static com.minibank.rest.fixtures.JsonLoanRequestFixture.*;
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
@@ -54,20 +54,38 @@ public class LoanControllerTest extends InjectMocksTest {
               post("/loans")
                 .content(standardLoanRequest())
                 .contentType(MediaType.APPLICATION_JSON))
-              .andExpect(status().isCreated());
+              .andExpect(status().isCreated())
+              .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+              .andExpect(content().string("\"Loan obtained successfully\""));
     }
 
     @Test
-    public void testCreateLoanUsesHttpInternalServerErrorOnFailureToGetLoan() throws Exception {
+    public void testCreateLoanUsesHttpInternalServerErrorOnFailureToObtainLoan() throws Exception {
         when(loanRequestDetailsFactory.getLoanRequestDetails(any(LoanRequest.class))).thenReturn(new LoanRequestDetails());
-        when(createLoanQueryHandler.execute(any(CreateLoanQuery.class))).thenReturn(new CreateLoanResponse(false, Messages.LOAN_ERROR_MESSAGE));
+        when(createLoanQueryHandler.execute(any(CreateLoanQuery.class))).
+                thenReturn(new CreateLoanResponse(false, Messages.LOAN_ERROR_MESSAGE));
 
         this.mockMvc.perform(
                 post("/loans")
                         .content(standardLoanRequest())
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isInternalServerError());
+                .andExpect(status().isInternalServerError())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().string("\"Failure to obtain loan\""));
+    }
 
+    @Test
+    public void testCreateLoanUsesHttpInternalServerErrorOnFailureToObtainLoanBecauseOfInternalException() throws Exception {
+        when(loanRequestDetailsFactory.getLoanRequestDetails(any(LoanRequest.class))).thenReturn(new LoanRequestDetails());
+        doThrow(new RuntimeException("Exception")).when(createLoanQueryHandler).execute(any(CreateLoanQuery.class));
+
+        this.mockMvc.perform(
+                post("/loans")
+                        .content(standardLoanRequest())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isInternalServerError())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().string("\"Exception\""));
     }
 
     @Test

@@ -126,16 +126,4 @@ public class CreateLoanQueryHandlerTest extends InjectMocksTest {
         verify(loanCoreFactory, times(0)).getNewLoan(loanRequest);
         verify(loanRepository, times(0)).create(loan);
     }
-
-    @Test
-    public void testExecuteCustomerDoesNotObtainLoanBecauseOfInternalException() {
-        doThrow(new RuntimeException()).when(loanRequestRepository).create(loanRequest);
-        CreateLoanResponse expectedResponse = new CreateLoanResponse(false, Messages.LOAN_ERROR_MESSAGE);
-        CreateLoanQuery query = new CreateLoanQuery(loanRequestDetails);
-
-        CreateLoanResponse response = queryHandler.execute(query);
-
-        TestUtility.assertResponse(expectedResponse, response);
-    }
-
 }

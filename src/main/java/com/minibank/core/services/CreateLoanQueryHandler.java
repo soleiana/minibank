@@ -40,22 +40,18 @@ public class CreateLoanQueryHandler {
 
     @Transactional
     public CreateLoanResponse execute(CreateLoanQuery query) {
-        try {
-            LoanRequestDetails requestDetails = query.getLoanRequestDetails();
-            LoanRequest loanRequest = loanRequestCoreFactory.getLoanRequest(requestDetails);
-            loanRequestRepository.create(loanRequest);
 
-            if (isNegativeCreditDecision(loanRequest)) {
-                return new CreateLoanResponse(false, Messages.LOAN_ERROR_MESSAGE);
-            } else {
-                Loan loan = loanCoreFactory.getNewLoan(loanRequest);
-                loanRequest.getCustomer().addLoan(loan);
-                loanRepository.create(loan);
-                return new CreateLoanResponse(true, Messages.LOAN_OBTAINED_MESSAGE);
-            }
+        LoanRequestDetails requestDetails = query.getLoanRequestDetails();
+        LoanRequest loanRequest = loanRequestCoreFactory.getLoanRequest(requestDetails);
+        loanRequestRepository.create(loanRequest);
 
-        } catch (Exception exception) {
+        if (isNegativeCreditDecision(loanRequest)) {
             return new CreateLoanResponse(false, Messages.LOAN_ERROR_MESSAGE);
+        } else {
+            Loan loan = loanCoreFactory.getNewLoan(loanRequest);
+            loanRequest.getCustomer().addLoan(loan);
+            loanRepository.create(loan);
+            return new CreateLoanResponse(true, Messages.LOAN_OBTAINED_MESSAGE);
         }
     }
 

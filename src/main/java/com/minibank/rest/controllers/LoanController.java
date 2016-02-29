@@ -31,17 +31,22 @@ public class LoanController {
 
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> createLoan(@RequestBody @Valid LoanRequest loanRequest, HttpServletRequest httpServletRequest) {
-        String ip = httpServletRequest.getRemoteAddr();
-        loanRequest.setRequestIp(ip);
-        LoanRequestDetails loanRequestDetails = loanRequestDetailsFactory.getLoanRequestDetails(loanRequest);
+        try {
+            String ip = httpServletRequest.getRemoteAddr();
+            loanRequest.setRequestIp(ip);
+            LoanRequestDetails loanRequestDetails = loanRequestDetailsFactory.getLoanRequestDetails(loanRequest);
+            CreateLoanResponse createLoanResponse = createLoanQueryHandler.execute(new CreateLoanQuery(loanRequestDetails));
+            String message = createLoanResponse.getMessage();
 
-        CreateLoanResponse createLoanResponse = createLoanQueryHandler.execute(new CreateLoanQuery(loanRequestDetails));
+            if (createLoanResponse.isCreated()) {
+                return new ResponseEntity<>(message, HttpStatus.CREATED);
 
-        String message = createLoanResponse.getMessage();
-        if(createLoanResponse.isCreated()) {
-            return new ResponseEntity<>(message, HttpStatus.CREATED);
-        } else {
-            return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
+            } else {
+                return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
+
+            }
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
