@@ -269,6 +269,14 @@
             <version>${jackson-datatype-jsr310.version}</version>
         </dependency>
 
+        <!-- Restassured dependencies -->
+
+        <dependency>
+            <groupId>com.jayway.restassured</groupId>
+            <artifactId>json-path</artifactId>
+            <version>${restassured.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
