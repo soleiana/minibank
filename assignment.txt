@@ -1,8 +1,6 @@
-Technical assignment:
-Goal
-Create a simple micro-lending app api similar to one of our existing products.
+Goal: create a simple micro-lending app api similar to one of our existing products.
 
-Business requirements
+Business requirements:
 o    User can apply for loan by passing amount and term to api.
 o    Loan application risk analysis is performed. Risk is considered too high if:
 ?  the attempt to take loan is made after 00:00 with max possible amount.
