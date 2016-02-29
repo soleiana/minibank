@@ -9,8 +9,7 @@ import java.time.LocalTime;
 
 public class LoanRequestFixture {
 
-    public static final LocalDate SUBMISSION_DATE = LocalDate.of(2014, 9, 1);
-
+    private static final LocalDate SUBMISSION_DATE = LocalDate.of(2014, 9, 1);
     private static final LocalTime SUBMISSION_TIME = LocalTime.of(14, 0, 0);
     private static final Integer TERM = 30;
     private static final BigDecimal AMOUNT = new BigDecimal("200.00");

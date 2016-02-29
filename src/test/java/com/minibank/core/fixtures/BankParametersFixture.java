@@ -8,10 +8,8 @@ import java.time.LocalTime;
 
 public class BankParametersFixture {
 
-    public static final BigDecimal NEW_MAX_LOAN_AMOUNT = new BigDecimal("5000.00");
-    public static final BigDecimal NEW_BASE_INTEREST_RATE = new BigDecimal("150.00");
+
     public static final BigDecimal NEW_INTEREST_RATE_FACTOR = new BigDecimal("2.00");
-    public static final Byte NEW_MAX_LOAN_ATTEMPTS = new Byte("5");
     public static final LocalTime NEW_RISK_TIME_START = LocalTime.of(22, 0, 0);
     public static final LocalTime NEW_RISK_TIME_END = LocalTime.of(8, 0, 0);
     public static final Short NEW_LOAN_EXTENSION_TERM = new Short("14");
@@ -21,6 +19,9 @@ public class BankParametersFixture {
     public static final LocalTime STANDARD_RISK_TIME_START = LocalTime.of(0, 0, 0);
     public static final LocalTime STANDARD_RISK_TIME_END = LocalTime.of(7, 0, 0);
 
+    private static final BigDecimal NEW_MAX_LOAN_AMOUNT = new BigDecimal("5000.00");
+    private static final Byte NEW_MAX_LOAN_ATTEMPTS = new Byte("5");
+    private static final BigDecimal NEW_BASE_INTEREST_RATE = new BigDecimal("150.00");
     private static final BigDecimal STANDARD_BASE_INTEREST_RATE = new BigDecimal("100.00");
     private static final BigDecimal STANDARD_INTEREST_RATE_FACTOR = new BigDecimal("1.50");
     private static final Short STANDARD_lOAN_EXTENSION_TERM = new Short("7");
