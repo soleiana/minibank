@@ -35,16 +35,32 @@ public class LoanExtension {
         return interestRate;
     }
 
+    public void setInterestRate(BigDecimal interestRate) {
+        this.interestRate = interestRate;
+    }
+
     public BigDecimal getInterest() {
         return interest;
+    }
+
+    public void setInterest(BigDecimal interest) {
+        this.interest = interest;
     }
 
     public LocalDate getStartDate() {
         return startDate;
     }
 
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
     public LocalDate getEndDate() {
         return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
     public LocalDate getSubmissionDate() {
@@ -54,21 +70,4 @@ public class LoanExtension {
     public void setSubmissionDate(LocalDate submissionDate) {
         this.submissionDate = submissionDate;
     }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    public void setInterest(BigDecimal interest) {
-        this.interest = interest;
-    }
-
-    public void setInterestRate(BigDecimal interestRate) {
-        this.interestRate = interestRate;
-    }
-
 }

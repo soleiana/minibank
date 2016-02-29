@@ -36,26 +36,6 @@ public class Loan {
 
     public Loan() {}
 
-    public BigDecimal getCurrInterestRate() {
-        return currInterestRate;
-    }
-
-    public BigDecimal getCurrInterest() {
-        return currInterest;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -64,31 +44,51 @@ public class Loan {
         this.id = id;
     }
 
-    public List<LoanExtension> getLoanExtensions() {
-        return loanExtensions;
-    }
-
-    public void setLoanExtensions(List<LoanExtension> loanExtensions) {
-        this.loanExtensions = loanExtensions;
+    public BigDecimal getCurrInterestRate() {
+        return currInterestRate;
     }
 
     public void setCurrInterestRate(BigDecimal currInterestRate) {
         this.currInterestRate = currInterestRate;
     }
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+    public BigDecimal getCurrInterest() {
+        return currInterest;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public void setCurrInterest(BigDecimal currInterest) {
+        this.currInterest = currInterest;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
     }
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
-    public void setCurrInterest(BigDecimal currInterest) {
-        this.currInterest = currInterest;
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public List<LoanExtension> getLoanExtensions() {
+        return loanExtensions;
+    }
+
+    public void setLoanExtensions(List<LoanExtension> loanExtensions) {
+        this.loanExtensions = loanExtensions;
     }
 }
