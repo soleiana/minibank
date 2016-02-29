@@ -30,10 +30,10 @@ public class Loan {
     private Integer term;
 
     @Column(name = "CURRENT_INTEREST_RATE", precision = 10, scale = 2, nullable = false)
-    private BigDecimal currInterestRate;
+    private BigDecimal currentInterestRate;
 
     @Column(name = "CURRENT_INTEREST", precision = 10, scale = 2, nullable = false)
-    private BigDecimal currInterest;
+    private BigDecimal currentInterest;
 
     @Column(name = "START_DATE", nullable = false)
     private LocalDate startDate;
@@ -63,20 +63,20 @@ public class Loan {
         this.term = term;
     }
 
-    public BigDecimal getCurrInterestRate() {
-        return currInterestRate;
+    public BigDecimal getCurrentInterestRate() {
+        return currentInterestRate;
     }
 
-    public void setCurrInterestRate(BigDecimal currInterestRate) {
-        this.currInterestRate = currInterestRate;
+    public void setCurrentInterestRate(BigDecimal currentInterestRate) {
+        this.currentInterestRate = currentInterestRate;
     }
 
-    public BigDecimal getCurrInterest() {
-        return currInterest;
+    public BigDecimal getCurrentInterest() {
+        return currentInterest;
     }
 
-    public void setCurrInterest(BigDecimal currInterest) {
-        this.currInterest = currInterest;
+    public void setCurrentInterest(BigDecimal currentInterest) {
+        this.currentInterest = currentInterest;
     }
 
     public LocalDate getStartDate() {
@@ -112,8 +112,8 @@ public class Loan {
 
         if (!amount.equals(loan.amount)) return false;
         if (!term.equals(loan.term)) return false;
-        if (!currInterestRate.equals(loan.currInterestRate)) return false;
-        if (!currInterest.equals(loan.currInterest)) return false;
+        if (!currentInterestRate.equals(loan.currentInterestRate)) return false;
+        if (!currentInterest.equals(loan.currentInterest)) return false;
         if (!startDate.equals(loan.startDate)) return false;
         return endDate.equals(loan.endDate);
     }
@@ -122,8 +122,8 @@ public class Loan {
     public int hashCode() {
         int result = amount.hashCode();
         result = 31 * result + term.hashCode();
-        result = 31 * result + currInterestRate.hashCode();
-        result = 31 * result + currInterest.hashCode();
+        result = 31 * result + currentInterestRate.hashCode();
+        result = 31 * result + currentInterest.hashCode();
         result = 31 * result + startDate.hashCode();
         result = 31 * result + endDate.hashCode();
         return result;

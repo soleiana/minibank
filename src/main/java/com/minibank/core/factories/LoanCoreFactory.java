@@ -32,16 +32,16 @@ public class LoanCoreFactory {
         LocalDate endDate = loanCalculator.getLoanEndDate(loanRequest);
         loan.setEndDate(endDate);
         BigDecimal interest = loanCalculator.getInterest(loanRequest);
-        loan.setCurrInterest(interest);
+        loan.setCurrentInterest(interest);
 
         BankParameters bankParams = parametersProvider.getBankParameters();
-        loan.setCurrInterestRate(bankParams.getBaseInterestRate());
+        loan.setCurrentInterestRate(bankParams.getBaseInterestRate());
         return loan;
     }
 
     public Loan getExtendedLoan(Loan loan, LoanExtension loanExtension) {
-        loan.setCurrInterestRate(loanExtension.getInterestRate());
-        loan.setCurrInterest(loanExtension.getInterest());
+        loan.setCurrentInterestRate(loanExtension.getInterestRate());
+        loan.setCurrentInterest(loanExtension.getInterest());
         loan.setEndDate(loanExtension.getEndDate());
         return loan;
     }

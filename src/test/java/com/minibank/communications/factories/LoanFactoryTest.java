@@ -86,7 +86,7 @@ public class LoanFactoryTest extends InjectMocksTest {
         assertEquals(coreLoan.getAmount(), communicationLoan.getAmount());
         assertEquals(coreLoan.getStartDate(), communicationLoan.getStartDate());
         assertEquals(coreLoan.getEndDate(), communicationLoan.getEndDate());
-        assertEquals(coreLoan.getCurrInterest(), communicationLoan.getCurrInterest());
-        assertEquals(coreLoan.getCurrInterestRate(), communicationLoan.getCurrInterestRate());
+        assertEquals(coreLoan.getCurrentInterest(), communicationLoan.getCurrInterest());
+        assertEquals(coreLoan.getCurrentInterestRate(), communicationLoan.getCurrInterestRate());
     }
 }

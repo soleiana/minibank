@@ -23,8 +23,8 @@ public class LoanFactory {
     private Loan convert(com.minibank.core.model.Loan fromLoan) {
         Loan toLoan = new Loan();
         toLoan.setId(fromLoan.getId());
-        toLoan.setCurrInterestRate(fromLoan.getCurrInterestRate());
-        toLoan.setCurrInterest(fromLoan.getCurrInterest());
+        toLoan.setCurrInterestRate(fromLoan.getCurrentInterestRate());
+        toLoan.setCurrInterest(fromLoan.getCurrentInterest());
         toLoan.setAmount(fromLoan.getAmount());
         toLoan.setStartDate(fromLoan.getStartDate());
         toLoan.setEndDate(fromLoan.getEndDate());

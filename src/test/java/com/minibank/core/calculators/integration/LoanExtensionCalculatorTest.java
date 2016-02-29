@@ -56,7 +56,7 @@ public class LoanExtensionCalculatorTest extends SpringContextTest {
         BigDecimal interestRate = new BigDecimal("100.00");
         loan.setAmount(amount);
         loan.setTerm(term);
-        loan.setCurrInterestRate(interestRate);
+        loan.setCurrentInterestRate(interestRate);
         BigDecimal interest = loanExtensionCalculator.getInterest(loan);
         assertTrue(interest.compareTo(new BigDecimal("22.50")) == 0);
     }

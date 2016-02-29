@@ -23,8 +23,8 @@ public class LoanFixture {
         Loan loan = new Loan();
         loan.setAmount(STANDARD_AMOUNT);
         loan.setTerm(STANDARD_TERM);
-        loan.setCurrInterest(STANDARD_CURRENT_INTEREST);
-        loan.setCurrInterestRate(STANDARD_CURRENT_INTEREST_RATE);
+        loan.setCurrentInterest(STANDARD_CURRENT_INTEREST);
+        loan.setCurrentInterestRate(STANDARD_CURRENT_INTEREST_RATE);
         loan.setStartDate(START_DATE);
         loan.setEndDate(STANDARD_END_DATE);
         return loan;

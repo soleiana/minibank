@@ -63,8 +63,8 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest {
 
         loanExtension = testLoanExtensionRepository.getLast();
         assertNotNull(loanExtension);
-        assertEquals(loan.getCurrInterest(), loanExtension.getInterest());
-        assertEquals(loan.getCurrInterestRate(), loanExtension.getInterestRate());
+        assertEquals(loan.getCurrentInterest(), loanExtension.getInterest());
+        assertEquals(loan.getCurrentInterestRate(), loanExtension.getInterestRate());
         assertEquals(loan.getEndDate(), loanExtension.getEndDate());
     }
 

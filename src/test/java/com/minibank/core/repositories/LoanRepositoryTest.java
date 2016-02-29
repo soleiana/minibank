@@ -46,14 +46,14 @@ public class LoanRepositoryTest extends SpringContextTest {
     public void testUpdate() {
         Loan loan =  LoanFixture.standardLoan();
         loanRepository.create(loan);
-        loan.setCurrInterestRate(LoanFixture.NEW_CURRENT_INTEREST_RATE);
-        loan.setCurrInterest(LoanFixture.NEW_CURRENT_INTEREST);
+        loan.setCurrentInterestRate(LoanFixture.NEW_CURRENT_INTEREST_RATE);
+        loan.setCurrentInterest(LoanFixture.NEW_CURRENT_INTEREST);
         loan.setEndDate(LoanFixture.NEW_END_DATE);
 
         loanRepository.update(loan);
 
-        assertEquals(LoanFixture.NEW_CURRENT_INTEREST_RATE, loan.getCurrInterestRate());
-        assertEquals(LoanFixture.NEW_CURRENT_INTEREST, loan.getCurrInterest());
+        assertEquals(LoanFixture.NEW_CURRENT_INTEREST_RATE, loan.getCurrentInterestRate());
+        assertEquals(LoanFixture.NEW_CURRENT_INTEREST, loan.getCurrentInterest());
         assertEquals(LoanFixture.NEW_END_DATE, loan.getEndDate());
     }
 
