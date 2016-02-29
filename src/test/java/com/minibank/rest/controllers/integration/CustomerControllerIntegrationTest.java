@@ -1,17 +1,23 @@
 package com.minibank.rest.controllers.integration;
 
-import com.minibank.SpringContextTest;
-import com.minibank.testutil.repositories.DatabaseCleaner;
-import org.junit.Before;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.Test;
 
-public class CustomerControllerIntegrationTest extends SpringContextTest {
+import static com.jayway.restassured.RestAssured.given;
 
-    @Autowired
-    private DatabaseCleaner databaseCleaner;
+public class CustomerControllerIntegrationTest extends IntegrationTest {
 
-    @Before
-    public void setUp() {
-        databaseCleaner.clear();
+    @Test
+    public void testGetAllLoans() {
+        Integer customerId = RestResourceManager.getCustomerId();
+        Integer loanId = RestResourceManager.getLoanId(customerId);
+        RestResourceManager.createLoanExtension(loanId);
+        given().
+                when().
+                get("/minibank/customers/" + customerId.toString() + "/loans").
+                then().
+                contentType("application/json").
+                assertThat().
+                statusCode(200);
     }
+
 }

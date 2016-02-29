@@ -26,7 +26,7 @@ public class CustomerController {
     private AllLoansRestFactory allLoansRestFactory;
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/loans", produces = "application/json")
-    public ResponseEntity<AllLoans> requestAllLoans(@PathVariable Integer id) {
+    public ResponseEntity<AllLoans> getAllLoans(@PathVariable Integer id) {
         try {
 
             GetAllLoansQuery getAllLoansQuery = new GetAllLoansQuery(id);

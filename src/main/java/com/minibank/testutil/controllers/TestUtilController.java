@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -41,7 +40,6 @@ public class TestUtilController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value ="/bank-parameters", produces = "application/json")
-    @Transactional
     public ResponseEntity<String> createTestBankParameters() {
         try {
             bankConfigurator.persistParameters();
@@ -53,7 +51,6 @@ public class TestUtilController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value ="/customers", produces = "application/json")
-    @Transactional
     public ResponseEntity<Integer> createTestCustomer() {
         Integer customerId = null;
         try {
@@ -66,7 +63,6 @@ public class TestUtilController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value ="/loans", produces = "application/json")
-    @Transactional
     public ResponseEntity<Integer> getLasLoanId() {
         Integer loanId = null;
         try {
@@ -75,6 +71,6 @@ public class TestUtilController {
         } catch (Exception e) {
             return new ResponseEntity<>(loanId, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<>(loanId, HttpStatus.CREATED);
+        return new ResponseEntity<>(loanId, HttpStatus.OK);
     }
 }
