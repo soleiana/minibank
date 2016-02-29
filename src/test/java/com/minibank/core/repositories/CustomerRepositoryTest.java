@@ -3,7 +3,7 @@ package com.minibank.core.repositories;
 import com.minibank.SpringContextTest;
 import com.minibank.core.fixtures.CustomerFixture;
 import com.minibank.core.model.Customer;
-import com.minibank.core.repositories.helpers.DatabaseCleaner;
+import com.minibank.testutil.repositories.DatabaseCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

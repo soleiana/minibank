@@ -1,7 +1,7 @@
 package com.minibank.rest.controllers.integration;
 
 import com.minibank.SpringContextTest;
-import com.minibank.core.repositories.helpers.DatabaseCleaner;
+import com.minibank.testutil.repositories.DatabaseCleaner;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 

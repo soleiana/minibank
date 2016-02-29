@@ -1,11 +1,11 @@
-package com.minibank.core.repositories;
+package com.minibank.testutil.repositories;
 
 import com.minibank.SpringContextTest;
 import com.minibank.core.fixtures.LoanExtensionFixture;
 import com.minibank.core.fixtures.LoanFixture;
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanExtension;
-import com.minibank.core.repositories.helpers.DatabaseCleaner;
+import com.minibank.core.repositories.LoanRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

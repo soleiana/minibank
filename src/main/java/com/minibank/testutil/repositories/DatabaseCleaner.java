@@ -1,4 +1,4 @@
-package com.minibank.core.repositories.helpers;
+package com.minibank.testutil.repositories;
 
 import com.minibank.core.repositories.SessionProvider;
 import org.hibernate.Query;

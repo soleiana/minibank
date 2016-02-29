@@ -1,4 +1,4 @@
-package com.minibank.configuration;
+package com.minibank.testutil.services;
 
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.repositories.BankParametersRepository;
@@ -26,7 +26,7 @@ public class BankConfigurator {
 
 
     @Transactional
-    public void setParameters() {
+    public void persistParameters() {
         BankParameters bankParameters = getBankParameters();
         bankParametersRepository.create(bankParameters);
     }

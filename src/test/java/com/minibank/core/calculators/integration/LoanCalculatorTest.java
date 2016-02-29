@@ -7,7 +7,7 @@ import com.minibank.core.fixtures.LoanRequestFixture;
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.BankParametersRepository;
-import com.minibank.core.repositories.helpers.DatabaseCleaner;
+import com.minibank.testutil.repositories.DatabaseCleaner;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

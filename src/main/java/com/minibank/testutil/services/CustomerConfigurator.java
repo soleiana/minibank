@@ -1,4 +1,4 @@
-package com.minibank.configuration;
+package com.minibank.testutil.services;
 
 import com.minibank.core.model.Customer;
 import com.minibank.core.repositories.CustomerRepository;
@@ -22,7 +22,7 @@ public class CustomerConfigurator {
     private CustomerRepository customerRepository;
 
     @Transactional
-    public int persistCustomer() {
+    public Integer persistCustomer() {
         Customer customer = getCustomer();
         customerRepository.create(customer);
         return customer.getId();
