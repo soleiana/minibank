@@ -23,8 +23,6 @@ public class BankParametersFixture {
 
     private static final BigDecimal STANDARD_BASE_INTEREST_RATE = new BigDecimal("100.00");
     private static final BigDecimal STANDARD_INTEREST_RATE_FACTOR = new BigDecimal("1.50");
-
-
     private static final Short STANDARD_lOAN_EXTENSION_TERM = new Short("7");
 
     public static BankParameters standardBankParameters() {
