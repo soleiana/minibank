@@ -24,18 +24,16 @@ public class GetAllLoansQueryHandler {
 
     @Transactional
     public GetAllLoansResponse execute(GetAllLoansQuery query) {
-        try {
-            AllLoans allLoans;
-            int customerId = query.getCustomerId();
-            allLoans = allLoansCoreFactory.getAllLoans(customerId);
-            AllLoansDetails allLoansDetails = allLoansDetailsFactory.getAllLoansDetails(allLoans);
-            if (allLoansDetails.isEmpty()) {
-                return new GetAllLoansResponse(allLoansDetails, false);
-            } else {
-                return new GetAllLoansResponse(allLoansDetails, true);
-            }
-        } catch (Exception exception) {
-            return new GetAllLoansResponse(true);
+        AllLoans allLoans;
+        int customerId = query.getCustomerId();
+        allLoans = allLoansCoreFactory.getAllLoans(customerId);
+        AllLoansDetails allLoansDetails = allLoansDetailsFactory.getAllLoansDetails(allLoans);
+
+        if (allLoansDetails.isEmpty()) {
+            return new GetAllLoansResponse(allLoansDetails, false);
+
+        } else {
+            return new GetAllLoansResponse(allLoansDetails, true);
         }
     }
 

@@ -57,17 +57,6 @@ public class GetAllLoansQueryHandlerTest extends InjectMocksTest {
     }
 
     @Test
-    public void testExecuteCustomerDoesNotObtainLoanHistoryBecauseOfInternalException() {
-        doThrow(new RuntimeException()).when(allLoansCoreFactory).getAllLoans(CUSTOMER_ID);
-        GetAllLoansQuery query = new GetAllLoansQuery(CUSTOMER_ID);
-        GetAllLoansResponse expectedResponse = new GetAllLoansResponse(true);
-
-        GetAllLoansResponse response = queryHandler.execute(query);
-
-        TestUtility.assertResponse(expectedResponse, response);
-    }
-
-    @Test
     public void testExecuteCustomerDoesNotHaveLoanHistory() {
         AllLoansDetails emptyAllLoansDetails = new AllLoansDetails();
         List<com.minibank.communications.model.Loan> emptyLoans = new ArrayList<>();

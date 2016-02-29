@@ -13,11 +13,6 @@ public class GetAllLoansResponse extends GetEntityResponse {
         this.allLoansDetails = allLoansDetails;
     }
 
-    public GetAllLoansResponse(boolean isErrorResponse) {
-        super(false, isErrorResponse);
-        this.allLoansDetails = null;
-    }
-
     public AllLoansDetails getAllLoansDetails() {
         return allLoansDetails;
     }

@@ -27,21 +27,23 @@ public class CustomerController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/loans", produces = "application/json")
     public ResponseEntity<AllLoans> requestAllLoans(@PathVariable Integer id) {
+        try {
 
-        GetAllLoansQuery getAllLoansQuery = new GetAllLoansQuery(id);
+            GetAllLoansQuery getAllLoansQuery = new GetAllLoansQuery(id);
 
-        GetAllLoansResponse getAllLoansResponse = getAllLoansQueryHandler.execute(getAllLoansQuery);
-        AllLoansDetails allLoansDetails = getAllLoansResponse.getAllLoansDetails();
-        AllLoans allLoans = allLoansRestFactory.getAllLoans(allLoansDetails);
+            GetAllLoansResponse getAllLoansResponse = getAllLoansQueryHandler.execute(getAllLoansQuery);
+            AllLoansDetails allLoansDetails = getAllLoansResponse.getAllLoansDetails();
+            AllLoans allLoans = allLoansRestFactory.getAllLoans(allLoansDetails);
 
-        if (getAllLoansResponse.isEntityFound()) {
-            return new ResponseEntity<>(allLoans, HttpStatus.OK);
+            if (getAllLoansResponse.isEntityFound()) {
+                return new ResponseEntity<>(allLoans, HttpStatus.OK);
 
-        } else if (getAllLoansResponse.isErrorResponse()){
+            } else {
+                return new ResponseEntity<>(allLoans, HttpStatus.NOT_FOUND);
+
+            }
+        } catch (RuntimeException e) {
             return new ResponseEntity<>(new AllLoans(), HttpStatus.INTERNAL_SERVER_ERROR);
-
-        } else {
-            return new ResponseEntity<>(allLoans, HttpStatus.NOT_FOUND);
         }
     }
 }
