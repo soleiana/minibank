@@ -11,10 +11,6 @@ public class BankParametersRepository extends SessionProvider {
     @Autowired
     private RepositoryTemplateMethod<BankParameters> repositoryTemplateMethod;
 
-    public void create(BankParameters bankParameters) {
-        getCurrentSession().saveOrUpdate(bankParameters);
-    }
-
     public BankParameters getCurrentBankParameters() {
         return repositoryTemplateMethod.getLast(BankParameters.class);
     }

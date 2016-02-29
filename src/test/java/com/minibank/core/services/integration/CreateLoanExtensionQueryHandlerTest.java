@@ -9,10 +9,10 @@ import com.minibank.core.fixtures.LoanFixture;
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.Loan;
 import com.minibank.core.model.LoanExtension;
-import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.core.repositories.LoanRepository;
 import com.minibank.core.services.CreateLoanExtensionQueryHandler;
 import com.minibank.testutil.repositories.DatabaseCleaner;
+import com.minibank.testutil.repositories.TestBankParametersRepository;
 import com.minibank.testutil.repositories.TestLoanExtensionRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,7 +30,7 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest {
     private LoanRepository loanRepository;
 
     @Autowired
-    private BankParametersRepository bankParametersRepository;
+    private TestBankParametersRepository testBankParametersRepository;
 
     @Autowired
     private TestLoanExtensionRepository testLoanExtensionRepository;
@@ -45,7 +45,7 @@ public class CreateLoanExtensionQueryHandlerTest extends SpringContextTest {
     public void setUp() {
         databaseCleaner.clear();
         bankParameters = BankParametersFixture.standardBankParameters();
-        bankParametersRepository.create(bankParameters);
+        testBankParametersRepository.create(bankParameters);
     }
 
     @Test

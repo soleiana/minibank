@@ -7,11 +7,11 @@ import com.minibank.core.fixtures.LoanRequestFixture;
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.Customer;
 import com.minibank.core.model.LoanRequest;
-import com.minibank.core.repositories.BankParametersRepository;
-import com.minibank.core.repositories.CustomerRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
 import com.minibank.core.services.LoanExpert;
 import com.minibank.testutil.repositories.DatabaseCleaner;
+import com.minibank.testutil.repositories.TestBankParametersRepository;
+import com.minibank.testutil.repositories.TestCustomerRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +33,10 @@ public class LoanExpertTest extends SpringContextTest {
     private LoanRequestRepository loanRequestRepository;
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private TestCustomerRepository testCustomerRepository;
 
     @Autowired
-    private BankParametersRepository bankParametersRepository;
+    private TestBankParametersRepository testBankParametersRepository;
 
     @Autowired
     private LoanExpert loanExpert;
@@ -47,7 +47,7 @@ public class LoanExpertTest extends SpringContextTest {
     public void setUp() {
         databaseCleaner.clear();
         bankParameters = BankParametersFixture.standardBankParameters();
-        bankParametersRepository.create(bankParameters);
+        testBankParametersRepository.create(bankParameters);
     }
 
     @Test
@@ -100,7 +100,7 @@ public class LoanExpertTest extends SpringContextTest {
     private LoanRequest createLoanRequest() {
         Customer customer = CustomerFixture.standardCustomer();
         LoanRequest loanRequest = LoanRequestFixture.standardLoanRequest();
-        customerRepository.create(customer);
+        testCustomerRepository.create(customer);
         loanRequest.setCustomer(customer);
         return loanRequest;
     }

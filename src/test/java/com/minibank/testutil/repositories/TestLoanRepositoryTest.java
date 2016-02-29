@@ -5,7 +5,6 @@ import com.minibank.core.fixtures.CustomerFixture;
 import com.minibank.core.fixtures.LoanFixture;
 import com.minibank.core.model.Customer;
 import com.minibank.core.model.Loan;
-import com.minibank.core.repositories.CustomerRepository;
 import com.minibank.core.repositories.LoanRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +25,7 @@ public class TestLoanRepositoryTest extends SpringContextTest {
     private TestLoanRepository testLoanRepository;
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private TestCustomerRepository testCustomerRepository;
 
     private Customer customer;
     private Loan loan;
@@ -35,7 +34,7 @@ public class TestLoanRepositoryTest extends SpringContextTest {
     public void setUp() {
         databaseCleaner.clear();
         customer = CustomerFixture.standardCustomer();
-        customerRepository.create(customer);
+        testCustomerRepository.create(customer);
         loan = LoanFixture.standardLoan();
     }
 

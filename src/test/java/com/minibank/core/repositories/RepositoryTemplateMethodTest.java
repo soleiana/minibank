@@ -4,6 +4,7 @@ import com.minibank.SpringContextTest;
 import com.minibank.core.fixtures.BankParametersFixture;
 import com.minibank.core.model.BankParameters;
 import com.minibank.testutil.repositories.DatabaseCleaner;
+import com.minibank.testutil.repositories.TestBankParametersRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class RepositoryTemplateMethodTest extends SpringContextTest {
     private DatabaseCleaner databaseCleaner;
 
     @Autowired
-    private BankParametersRepository bankParametersRepository;
+    private TestBankParametersRepository testBankParametersRepository;
 
     @Autowired
     private RepositoryTemplateMethod<BankParameters> repositoryTemplateMethod;
@@ -37,7 +38,7 @@ public class RepositoryTemplateMethodTest extends SpringContextTest {
     @Test
     public void testGetLastIfOneRecordExists() {
         BankParameters bankParameters = BankParametersFixture.standardBankParameters();
-        bankParametersRepository.create(bankParameters);
+        testBankParametersRepository.create(bankParameters);
         BankParameters retrievedBankParameters = repositoryTemplateMethod.getLast(BankParameters.class);
         assertEquals(bankParameters, retrievedBankParameters);
     }
@@ -45,9 +46,9 @@ public class RepositoryTemplateMethodTest extends SpringContextTest {
     @Test
     public void testGetLastIfFewRecordsExist() {
         BankParameters bankParameters1 = BankParametersFixture.standardBankParameters();
-        bankParametersRepository.create(bankParameters1);
+        testBankParametersRepository.create(bankParameters1);
         BankParameters bankParameters2 = BankParametersFixture.newBankParameters();
-        bankParametersRepository.create(bankParameters2);
+        testBankParametersRepository.create(bankParameters2);
         BankParameters retrievedBankParameters = repositoryTemplateMethod.getLast(BankParameters.class);
         assertEquals(bankParameters2, retrievedBankParameters);
     }

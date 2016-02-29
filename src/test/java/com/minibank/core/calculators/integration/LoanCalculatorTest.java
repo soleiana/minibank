@@ -6,8 +6,8 @@ import com.minibank.core.fixtures.BankParametersFixture;
 import com.minibank.core.fixtures.LoanRequestFixture;
 import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.LoanRequest;
-import com.minibank.core.repositories.BankParametersRepository;
 import com.minibank.testutil.repositories.DatabaseCleaner;
+import com.minibank.testutil.repositories.TestBankParametersRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class LoanCalculatorTest extends SpringContextTest {
     private DatabaseCleaner databaseCleaner;
 
     @Autowired
-    private BankParametersRepository bankParametersRepository;
+    private TestBankParametersRepository testBankParametersRepository;
 
     @Autowired
     private LoanCalculator loanCalculator;
@@ -41,7 +41,7 @@ public class LoanCalculatorTest extends SpringContextTest {
     public void setUp() {
         databaseCleaner.clear();
         bankParameters = BankParametersFixture.standardBankParameters();
-        bankParametersRepository.create(bankParameters);
+        testBankParametersRepository.create(bankParameters);
         loanRequest = LoanRequestFixture.standardLoanRequest();
     }
 

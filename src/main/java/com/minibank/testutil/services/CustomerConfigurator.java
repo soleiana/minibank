@@ -1,7 +1,7 @@
 package com.minibank.testutil.services;
 
 import com.minibank.core.model.Customer;
-import com.minibank.core.repositories.CustomerRepository;
+import com.minibank.testutil.repositories.TestCustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.PropertySource;
@@ -19,7 +19,7 @@ public class CustomerConfigurator {
     private Environment env;
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private TestCustomerRepository customerRepository;
 
     @Transactional
     public Integer persistCustomer() {

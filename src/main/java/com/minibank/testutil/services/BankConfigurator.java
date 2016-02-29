@@ -1,7 +1,7 @@
 package com.minibank.testutil.services;
 
 import com.minibank.core.model.BankParameters;
-import com.minibank.core.repositories.BankParametersRepository;
+import com.minibank.testutil.repositories.TestBankParametersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.PropertySource;
@@ -22,13 +22,13 @@ public class BankConfigurator {
     private Environment env;
 
     @Autowired
-    private BankParametersRepository bankParametersRepository;
+    private TestBankParametersRepository testBankParametersRepository;
 
 
     @Transactional
     public void persistParameters() {
         BankParameters bankParameters = getBankParameters();
-        bankParametersRepository.create(bankParameters);
+        testBankParametersRepository.create(bankParameters);
     }
 
     private BankParameters getBankParameters() {
