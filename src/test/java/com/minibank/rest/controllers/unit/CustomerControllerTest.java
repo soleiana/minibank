@@ -5,7 +5,7 @@ import com.minibank.communications.GetAllLoansQuery;
 import com.minibank.communications.GetAllLoansResponse;
 import com.minibank.communications.model.AllLoansDetails;
 import com.minibank.core.services.GetAllLoansQueryHandler;
-import com.minibank.rest.controllers.LoanInfoController;
+import com.minibank.rest.controllers.CustomerController;
 import com.minibank.rest.factories.AllLoansRestFactory;
 import com.minibank.rest.model.AllLoans;
 import org.junit.Before;
@@ -26,12 +26,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 
-public class LoanInfoControllerTest extends InjectMocksTest {
+public class CustomerControllerTest extends InjectMocksTest {
 
     private MockMvc mockMvc;
 
     @InjectMocks
-    private LoanInfoController loanInfoController;
+    private CustomerController customerController;
 
     @Mock
     private GetAllLoansQueryHandler getAllLoansQueryHandler;
@@ -41,12 +41,12 @@ public class LoanInfoControllerTest extends InjectMocksTest {
 
     @Before
     public void setUp() {
-        this.mockMvc = standaloneSetup(loanInfoController)
+        this.mockMvc = standaloneSetup(customerController)
                 .setMessageConverters(new MappingJackson2HttpMessageConverter()).build();
     }
 
     @Test
-    public void testLoanInfoControllerUsesHttpOkOnSuccess() throws Exception {
+    public void testCustomerControllerUsesHttpOkOnSuccess() throws Exception {
         when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
         when(allLoansRestFactory.getAllLoans(any(AllLoansDetails.class))).thenReturn(new AllLoans());
 
@@ -56,14 +56,14 @@ public class LoanInfoControllerTest extends InjectMocksTest {
     }
 
     @Test
-    public void testLoanInfoControllerUsesHttpBadRequestIfCustomerIdIsNotInteger() throws Exception {
+    public void testCustomerControllerUsesHttpBadRequestIfCustomerIdIsNotInteger() throws Exception {
         this.mockMvc.perform(
                 get("/customers/{id}/loans", "1a"))
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void testLoanInfoControllerRendersResponseCorrectly() throws Exception {
+    public void testCustomerControllerRendersResponseCorrectly() throws Exception {
         when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), true));
         when(allLoansRestFactory.getAllLoans(any(AllLoansDetails.class))).thenReturn(standardAllLoans());
 
@@ -75,7 +75,7 @@ public class LoanInfoControllerTest extends InjectMocksTest {
     }
 
     @Test
-    public void testLoanInfoControllerUsesHttpNotFoundIfNoLoansFound() throws Exception {
+    public void testCustomerControllerUsesHttpNotFoundIfNoLoansFound() throws Exception {
         when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(new AllLoansDetails(), false));
         when(allLoansRestFactory.getAllLoans(any(AllLoansDetails.class))).thenReturn(new AllLoans());
 
@@ -86,7 +86,7 @@ public class LoanInfoControllerTest extends InjectMocksTest {
     }
 
     @Test
-    public void testLoanInfoControllerUsesHttpInternalServerErrorOnFailureToGetLoans() throws Exception {
+    public void testCustomerControllerUsesHttpInternalServerErrorOnFailureToGetLoans() throws Exception {
         when(getAllLoansQueryHandler.execute(any(GetAllLoansQuery.class))).thenReturn(new GetAllLoansResponse(true));
 
         this.mockMvc.perform(

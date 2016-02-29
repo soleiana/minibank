@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/customers")
-public class LoanInfoController {
+public class CustomerController {
 
     @Autowired
     private GetAllLoansQueryHandler getAllLoansQueryHandler;
