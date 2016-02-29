@@ -3,21 +3,28 @@ package com.minibank.rest.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.minibank.common.DateTimeParameters;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 
 public class LoanExtension {
 
+    @NotNull
     private BigDecimal interestRate;
+
+    @NotNull
     private BigDecimal interest;
 
+    @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateTimeParameters.DATE_FORMAT)
     private LocalDate startDate;
 
+    @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateTimeParameters.DATE_FORMAT)
     private LocalDate endDate;
 
+    @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateTimeParameters.DATE_FORMAT)
     private LocalDate submissionDate;
 
