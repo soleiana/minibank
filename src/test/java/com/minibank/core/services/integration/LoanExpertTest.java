@@ -8,8 +8,8 @@ import com.minibank.core.model.BankParameters;
 import com.minibank.core.model.Customer;
 import com.minibank.core.model.LoanRequest;
 import com.minibank.core.repositories.BankParametersRepository;
+import com.minibank.core.repositories.CustomerRepository;
 import com.minibank.core.repositories.LoanRequestRepository;
-import com.minibank.core.repositories.TestCustomerRepository;
 import com.minibank.core.repositories.helpers.DatabaseCleaner;
 import com.minibank.core.services.LoanExpert;
 import org.junit.Before;
@@ -33,7 +33,7 @@ public class LoanExpertTest extends SpringContextTest {
     private LoanRequestRepository loanRequestRepository;
 
     @Autowired
-    private TestCustomerRepository testCustomerRepository;
+    private CustomerRepository customerRepository;
 
     @Autowired
     private BankParametersRepository bankParametersRepository;
@@ -100,7 +100,7 @@ public class LoanExpertTest extends SpringContextTest {
     private LoanRequest createLoanRequest() {
         Customer customer = CustomerFixture.standardCustomer();
         LoanRequest loanRequest = LoanRequestFixture.standardLoanRequest();
-        testCustomerRepository.create(customer);
+        customerRepository.create(customer);
         loanRequest.setCustomer(customer);
         return loanRequest;
     }

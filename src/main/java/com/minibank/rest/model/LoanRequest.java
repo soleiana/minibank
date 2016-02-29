@@ -33,20 +33,28 @@ public class LoanRequest {
         return customerId;
     }
 
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+
     public String getRequestIp() {
         return requestIp;
+    }
+
+    public void setRequestIp(String requestIp) {
+        this.requestIp = requestIp;
     }
 
     public Integer getTerm() {
         return term;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
+    public void setTerm(Integer term) {
+        this.term = term;
     }
 
-    public void setRequestIp(String requestIp) {
-        this.requestIp = requestIp;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
     public void setAmount(BigDecimal amount) {

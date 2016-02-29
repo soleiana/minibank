@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 
 public class CustomerRepositoryTest extends SpringContextTest {
@@ -19,9 +20,6 @@ public class CustomerRepositoryTest extends SpringContextTest {
     @Autowired
     private CustomerRepository customerRepository;
 
-    @Autowired
-    private TestCustomerRepository testCustomerRepository;
-
 
     @Before
     public void setUp() {
@@ -29,9 +27,16 @@ public class CustomerRepositoryTest extends SpringContextTest {
     }
 
     @Test
+    public void testCreate() {
+        Customer customer =  CustomerFixture.standardCustomer();
+        customerRepository.create(customer);
+        assertNotNull(customer.getId());
+    }
+
+    @Test
     public void testGetById() {
         Customer customer = CustomerFixture.standardCustomer();
-        testCustomerRepository.create(customer);
+        customerRepository.create(customer);
         Integer id = customer.getId();
         assertEquals(customer, customerRepository.getById(id));
     }
