@@ -28,17 +28,13 @@ public class CreateLoanExtensionQueryHandler {
 
     @Transactional
     public CreateLoanExtensionResponse execute(CreateLoanExtensionQuery query) {
-        try {
-            int loanId = query.getLoanId();
-            Loan loan = loanRepository.getById(loanId);
-            LoanExtension loanExtension = loanExtensionCoreFactory.getLoanExtension(loan);
-            Loan extendedLoan = loanCoreFactory.getExtendedLoan(loan, loanExtension);
-            extendedLoan.addLoanExtension(loanExtension);
-            loanRepository.update(extendedLoan);
-            return new CreateLoanExtensionResponse(true, Messages.LOAN_EXTENSION_OBTAINED_MESSAGE);
-        } catch (Exception exception) {
-            return new CreateLoanExtensionResponse(false, Messages.LOAN_EXTENSION_ERROR_MESSAGE);
-        }
+        int loanId = query.getLoanId();
+        Loan loan = loanRepository.getById(loanId);
+        LoanExtension loanExtension = loanExtensionCoreFactory.getLoanExtension(loan);
+        Loan extendedLoan = loanCoreFactory.getExtendedLoan(loan, loanExtension);
+        extendedLoan.addLoanExtension(loanExtension);
+        loanRepository.update(extendedLoan);
+        return new CreateLoanExtensionResponse(true, Messages.LOAN_EXTENSION_OBTAINED_MESSAGE);
     }
 
 }

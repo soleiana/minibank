@@ -22,13 +22,14 @@ public class LoanExtensionController {
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json" )
     public ResponseEntity<String> createLoanExtension(@PathVariable Integer id) {
-        CreateLoanExtensionQuery createLoanExtensionQuery = new CreateLoanExtensionQuery(id);
-        CreateLoanExtensionResponse createLoanExtensionResponse = createLoanExtensionQueryHandler.execute(createLoanExtensionQuery);
-        String message = createLoanExtensionResponse.getMessage();
-        if (createLoanExtensionResponse.isCreated()) {
+        try {
+            CreateLoanExtensionQuery createLoanExtensionQuery = new CreateLoanExtensionQuery(id);
+            CreateLoanExtensionResponse createLoanExtensionResponse = createLoanExtensionQueryHandler.execute(createLoanExtensionQuery);
+            String message = createLoanExtensionResponse.getMessage();
             return new ResponseEntity<>(message, HttpStatus.CREATED);
-        } else {
-            return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
+
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }

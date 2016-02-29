@@ -14,8 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -46,18 +45,20 @@ public class LoanExtensionControllerTest extends InjectMocksTest {
                   post("/loans/1/extensions")
                   .contentType(MediaType.APPLICATION_JSON))
                   .andExpect(status().isCreated())
-                  .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+                  .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                  .andExpect(content().string("\"Loan extension obtained successfully\""));
     }
 
     @Test
     public void testCreateLoanExtensionUsesHttpHttpInternalServerErrorOnFailureToExtendLoan() throws Exception {
-        when(createLoanExtensionQueryHandler.execute(any(CreateLoanExtensionQuery.class)))
-                .thenReturn(new CreateLoanExtensionResponse(false, Messages.LOAN_EXTENSION_ERROR_MESSAGE));
+        doThrow(new RuntimeException("Exception")).when(createLoanExtensionQueryHandler).execute(any(CreateLoanExtensionQuery.class));
+
         this.mockMvc.perform(
                 post("/loans/1/extensions")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isInternalServerError())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().string("\"Exception\""));
     }
 
     @Test
