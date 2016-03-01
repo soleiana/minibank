@@ -1,16 +1,11 @@
 package com.minibank.rest.model;
 
-import javax.validation.constraints.NotNull;
-
 public class Customer {
 
-    @NotNull
     private Integer id;
 
-    @NotNull
     private String name;
 
-    @NotNull
     private String surname;
 
     public Integer getId() {
