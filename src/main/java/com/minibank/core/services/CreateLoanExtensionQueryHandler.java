@@ -33,7 +33,6 @@ public class CreateLoanExtensionQueryHandler {
         LoanExtension loanExtension = loanExtensionCoreFactory.getLoanExtension(loan);
         Loan extendedLoan = loanCoreFactory.getExtendedLoan(loan, loanExtension);
         extendedLoan.addLoanExtension(loanExtension);
-        loanRepository.update(extendedLoan);
         return new CreateLoanExtensionResponse(true, Messages.LOAN_EXTENSION_OBTAINED_MESSAGE);
     }
 

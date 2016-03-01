@@ -12,10 +12,6 @@ public class LoanRepository extends SessionProvider {
         getCurrentSession().saveOrUpdate(loan);
     }
 
-    public void update(Loan loan) {
-        getCurrentSession().saveOrUpdate(loan);
-    }
-
     public Loan getById(Integer id) {
         return getCurrentSession().get(Loan.class, id);
     }

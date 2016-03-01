@@ -8,10 +8,6 @@ import java.time.LocalDate;
 
 public class LoanFixture {
 
-    public static final BigDecimal NEW_CURRENT_INTEREST_RATE = new BigDecimal("150.00");
-    public static final BigDecimal NEW_CURRENT_INTEREST = new BigDecimal("300.00");
-    public static final LocalDate NEW_END_DATE = LocalDate.of(2014, 10, 6);
-
     private static final Integer STANDARD_TERM = 30;
     private static final BigDecimal STANDARD_AMOUNT = new BigDecimal("200.00");
     private static final BigDecimal STANDARD_CURRENT_INTEREST_RATE = new BigDecimal("100.00");

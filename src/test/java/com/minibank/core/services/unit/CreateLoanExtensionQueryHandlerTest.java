@@ -62,6 +62,5 @@ public class CreateLoanExtensionQueryHandlerTest extends InjectMocksTest {
         verify(loanExtensionCoreFactory, times(1)).getLoanExtension(loan);
         verify(extendedLoan, times(1)). addLoanExtension(loanExtension);
         verify(loanCoreFactory, times(1)).getExtendedLoan(loan, loanExtension);
-        verify(loanRepository, times(1)).update(extendedLoan);
     }
 }

@@ -130,7 +130,6 @@ public class GetAllLoansQueryHandlerTest extends SpringContextTest {
             LoanExtension loanExtension = LoanExtensionFixture.standardLoanExtension();
             loan.addLoanExtension(loanExtension);
         }
-        loanRepository.update(loan);
     }
 
 }
