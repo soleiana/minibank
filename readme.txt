@@ -1,21 +1,10 @@
-MiniBank-1.0-SNAPSHOT is an executable jar file.
-The app can be launched from an IDE by running com.minibank.rest.Application.java.
-Restassured tests can be run manually from an IDE.
-Other tests are launched by executing mvn clean install.
+Goal: create a simple micro-lending app api similar to one of our existing products.
 
-
-Technologies applied:
-- Java 8
-- Spring 4
-- Spring Boot 1.3
-- Hibernate 5
-- JUnit 4
-- MockMvc
-- Mockito
-- Restassured
-- HSQLDB
-- Maven
-etc.
-
-
-Author: Anna Suleymanova
+Business requirements:
+- User can apply for loan by passing amount and term to api.
+- Loan application risk analysis is performed. Risk is considered too high if:
+?   the attempt to take loan is made after 00:00 with max possible amount.
+?   reached max applications (e.g. 3) per day from a single IP.
+- Loan is issued if there are no risks associated with the application. If so, client gets response status ok. However, if       risk is surrounding the application, client error with message.
+- Client should be able to extend a loan. Loan term gets extended for one week, interest gets increased by a factor of 1.5.
+- The whole history of loans is visible for clients, including loan extensions.
