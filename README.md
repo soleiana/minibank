@@ -1,4 +1,4 @@
-Goal: create a simple micro-lending app api similar to one of our existing products.
+Goal: create a simple micro-lending app api.
 
 Business requirements:
 - User can apply for loan by passing amount and term to api.
